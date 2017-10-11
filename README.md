@@ -1,2 +1,2 @@
 # CCU-SE-Project
-An unknown project
+International Talents Matching System
