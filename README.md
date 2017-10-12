@@ -24,6 +24,13 @@ Run the Laravel Server:
 # move to project dictionary
 $ cd ~/CCU-SE-Project/iTalents
 
+# update laravel vendor
+$ composer install
+
+# generate laravel secrurity key
+$ php artisan key:generate
+
+
 # start server
 $ php artisan serve
 ```
