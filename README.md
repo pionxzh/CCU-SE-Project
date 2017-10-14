@@ -24,6 +24,7 @@ Run the Laravel Server:
 # move to project dictionary
 $ cd ~/CCU-SE-Project/iTalents
 
+<<<<<<< HEAD
 # install module
 $ composer install
 $ npm install 
@@ -38,6 +39,14 @@ $ gulp
 # 開發中會修改js用
 $ gulp watch
 ****
+=======
+# update laravel vendor
+$ composer install
+
+# generate laravel secrurity key
+$ php artisan key:generate
+
+>>>>>>> 09dd2bff3634b1142be8fc96107f0ffbd56236e7
 
 # start server
 $ php artisan serve
