@@ -24,13 +24,26 @@ Run the Laravel Server:
 # move to project dictionary
 $ cd ~/CCU-SE-Project/iTalents
 
+# install module
+$ composer install
+$ npm install 
+
+# 安裝gulp(只要安裝一次)
+$ npm install -g gulp
+
+****
+# 打包用
+$ gulp
+
+# 開發中會修改js用
+$ gulp watch
+****
+
 # start server
 $ php artisan serve
 ```
 
-* Open `localhost:8000` in your browser
+* 瀏覽器打開 [localhost:8000](localhost:8000)
 
-* See if you can see the image below
+* 看到下圖代表成功，沒有的話請問別人~
 ![](https://i.imgur.com/O7SpvV7.png)
-
-* If yes, congratulations, if not..., ask other for help

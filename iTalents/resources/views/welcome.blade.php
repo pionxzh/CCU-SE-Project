@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>iTalent</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -79,16 +79,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel 成功惹
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://laravel.com/docs">DOC</a>
+                    <a href="{{ url('/test') }}">測試連結</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <img src="https://i.imgur.com/B9eijqE.jpg" style="margin-top: 20px;">
             </div>
         </div>
     </body>
