@@ -24,10 +24,14 @@ Run the Laravel Server:
 # move to project dictionary
 $ cd ~/CCU-SE-Project/iTalents
 
-<<<<<<< HEAD
-# install module
+# update laravel vendor
 $ composer install
+
+# install module
 $ npm install 
+
+# generate laravel secrurity key
+$ php artisan key:generate
 
 # 安裝gulp(只要安裝一次)
 $ npm install -g gulp
@@ -39,14 +43,6 @@ $ gulp
 # 開發中會修改js用
 $ gulp watch
 ****
-=======
-# update laravel vendor
-$ composer install
-
-# generate laravel secrurity key
-$ php artisan key:generate
-
->>>>>>> 09dd2bff3634b1142be8fc96107f0ffbd56236e7
 
 # start server
 $ php artisan serve
@@ -55,4 +51,4 @@ $ php artisan serve
 * 瀏覽器打開 [localhost:8000](localhost:8000)
 
 * 看到下圖代表成功，沒有的話請問別人~
-![](https://i.imgur.com/O7SpvV7.png)
+![](https://i.imgur.com/AtcFefI.png)
