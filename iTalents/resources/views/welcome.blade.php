@@ -83,9 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">DOC</a>
-                    <a href="{{ url('/test') }}">測試連結</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ url('/login') }}" style="font-size: 40px;color: blueviolet;">登入</a>
                 </div>
                 <img src="https://i.imgur.com/B9eijqE.jpg" style="margin-top: 20px;">
             </div>

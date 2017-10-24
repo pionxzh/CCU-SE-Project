@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-    return view('test');
+Route::get('login', function () {
+    return view('sign');
+});
+
+Route::get('register', function () {
+    return view('sign');
+});
+
+Route::get('emailVerify', function () {
+    return view('sign');
 });
