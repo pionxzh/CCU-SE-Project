@@ -74,7 +74,7 @@ export default {
             return false
         },
         setIdentify(type) {
-          this.type = type
+            this.type = type
         },
         regist: function() {
             if (this.checkForm()) return
@@ -85,18 +85,18 @@ export default {
                 user_type: this.type
                 // _csrf: window.csrfToken
             })
-            .then(response => {
-                this.loading = false
-                let msg = ['資料格式錯誤', '註冊成功!']
-                let modalMsg = msg[response.data.stat]
-                if (response.data.stat === 1) {
-                    setTimeout(() => {
-                        this.$router.push({name: 'Email'})
-                    }, 1500)
-                }
-                this.showDialog(modalMsg)
-            })
-            .catch(e => this.errHandler(e))
+                .then(response => {
+                    this.loading = false
+                    let msg = ['資料格式錯誤', '註冊成功!']
+                    let modalMsg = msg[response.data.stat]
+                    if (response.data.stat === 1) {
+                        setTimeout(() => {
+                            this.$router.push({name: 'Email'})
+                        }, 1500)
+                    }
+                    this.showDialog(modalMsg)
+                })
+                .catch(e => this.errHandler(e))
         }
     }
 }

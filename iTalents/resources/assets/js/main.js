@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Vmodal from 'vue-js-modal'
 
-import App from './App'
-import Login from './components/Login'
-import Register from './components/Register'
-import Email from './components/Email'
+import App from './App.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import Email from './components/Email.vue'
 
 Vue.use(Router)
 Vue.use(Vmodal, {
@@ -35,7 +35,7 @@ const router = new Router({
     }]
 })
 
-const app = new Vue({
+new Vue({
     el: '#app',
     router,
     render: create => create(App)

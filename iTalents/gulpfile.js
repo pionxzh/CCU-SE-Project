@@ -1,7 +1,8 @@
-const elixir = require('laravel-elixir')
+const gulp = require('gulp')
+const webpack = require('webpack-stream')
 
-require('laravel-elixir-vue-2')
-
-elixir(mix => {
-  mix.webpack('main.js')
+gulp.task('default', function() {
+  	return gulp.src('resources/assets/js/main.js')
+    	.pipe(webpack( require('./webpack.config.js') ))
+    	.pipe(gulp.dest('public/js'))
 })

@@ -69,7 +69,7 @@ export default {
             })
         },
         setIdentify(type) {
-          this.type = type
+            this.type = type
         },
         login: function() {
             this.loading = true
@@ -79,17 +79,17 @@ export default {
                 user_type: this.type
                 // _csrf: window.csrfToken
             })
-            .then(response => {
-                this.loading = false
-                let modalMsg = response.data.stat ? `歡迎回來，用戶 ${response.data.username}，現在將轉回首頁!` : '帳號密碼組合錯誤'
-                if (response.data.stat) {
-                    setTimeout(function() {
-                        window.location.href = '/'
-                    }, 1500)
-                }
-                this.showDialog(modalMsg)
-            })
-            .catch(e => this.errHandler(e))
+                .then(response => {
+                    this.loading = false
+                    let modalMsg = response.data.stat ? `歡迎回來，用戶 ${response.data.username}，現在將轉回首頁!` : '帳號密碼組合錯誤'
+                    if (response.data.stat) {
+                        setTimeout(function() {
+                            window.location.href = '/'
+                        }, 1500)
+                    }
+                    this.showDialog(modalMsg)
+                })
+                .catch(e => this.errHandler(e))
         }
     }
 }

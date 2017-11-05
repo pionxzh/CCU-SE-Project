@@ -62,12 +62,18 @@
             sendVerify() {
                 if (this.loading) return
                 this.loading = true
-                setTimeout(() => {
-                    let sendMsg = ['验证码错误!', '恭喜!验证成功']
-                    this.loading = false
-                    this.stat = this.code === 'testtest'
-                    this.showDialog(sendMsg[this.stat])
-                }, 2000)
+                axios.post('/api/verify/', {code: this.code})
+                    .then(response => {
+                        let sendMsg = ['验证码错误!', '恭喜!验证成功']
+                        this.loading = false
+                        this.showDialog(sendMsg[response.data.stat])
+                        if (response.data.stat === 1) {
+                            setTimeout(function() {
+                                window.location.href = '/login'
+                            }, 2000)
+                        }
+                    })
+                    .catch(e => this.errHandler(e))
             }
         }
     }
