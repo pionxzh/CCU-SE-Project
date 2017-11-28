@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import Vmodal from 'vue-js-modal'
 
 import App from './App.vue'
+import Main from './components/Main.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
-import Email from './components/Email.vue'
 
 Vue.use(Router)
 Vue.use(Vmodal, {
@@ -18,6 +18,13 @@ const router = new Router({
     mode: 'history',
     linkActiveClass: 'active',
     routes: [{
+        name: 'Main',
+        path: '/',
+        component: Main
+    }, {
+        path: '/main',
+        component: Main
+    }, {
         name: 'Login',
         path: '/login',
         component: Login
@@ -25,10 +32,6 @@ const router = new Router({
         name: 'Register',
         path: '/register',
         component: Register
-    }, {
-        name: 'Email',
-        path: '/emailVerify',
-        component: Email
     }, {
         path: '/*',
         redirect: '/login'

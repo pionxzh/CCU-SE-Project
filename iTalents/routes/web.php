@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('login', function () {
-    return view('sign');
-});
-
-Route::get('register', function () {
-    return view('sign');
-});
-
-Route::get('emailVerify', function () {
-    return view('sign');
-});
+Route::get('{all}', function () {
+    return view('main');
+}) -> where(['all' => '.*']);
