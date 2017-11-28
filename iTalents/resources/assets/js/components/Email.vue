@@ -1,5 +1,4 @@
 <template>
-    <div>
     <div class="z-depth-4 card-panel transCard">
         <div class="row">
             <div class="input-field col s12 center"><img class="circle responsive-img" src="http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png"/>
@@ -23,7 +22,6 @@
             <button class="waves-effect waves-light btn blue" @click="sendVerify" @keyup.enter="sendVerify"><i class="fa fa-cog fa-spin fa-fw" v-if="loading"></i><span v-if="!loading">送出</span></button>
         </div>
         </div>
-    </div>
     </div>
 </template>
 

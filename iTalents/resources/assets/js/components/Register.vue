@@ -1,46 +1,38 @@
-<template>
-  <form>
-    <div class="z-depth-4 card-panel socialCard center">
-      <p class="center"> - 選擇您的身分 - </p>
-      <div class="row" style="margin-bottom: 0">
-        <button class="btn waves-effect waves-light col s5 bounce animated student" :class="{active: type === 1, disable: type === 2}" style="height: 70px;" @click.prevent="setIdentify(1)">
-          <i class="fa fa-graduation-cap"></i>
-          <span>外籍生</span>
-        </button>
-        <button class="btn waves-effect waves-light col s5 push-s2 bounce animated company" :class="{active: type === 2, disable: type === 1}" style="height: 70px;" @click.prevent="setIdentify(2)">
-          <i class="fa fa-id-card-o"></i>
-          <span>廠商</span>
-        </button>
-      </div>
-    </div>
-    <div class="z-depth-4 card-panel transCard">
-        <div class="row">
-        <div class="input-field col s12 center"><img class="circle responsive-img" src="http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png"/>
-            <p class="center login-form-text f27">註冊</p>
-        </div>
-        </div>
-        <div class="row margin">
-        <div class="input-field col s12">
-            <input id="email" type="text" v-model.trim="email" @blur="checkEmail" :class="{invalid: sameEmail===true, valid: sameEmail===false}"/>
-            <label>Email</label>
-        </div>
-        <div class="input-field col s12">
-            <input id="password" type="password" v-model.trim="password" @keyup.enter="regist"/>
-            <label for="password">密碼</label>
-        </div>
-        </div>
-        <div class="row">
-        <div class="input-field col s12">
-            <button class="btn waves-effect waves-light col s12" @click.prevent="regist"><i class="fa fa-cog fa-spin fa-fw" v-if="loading"></i><span v-if="!loading">送出</span></button>
-        </div>
-        </div>
-        <div class="row">
-        <div class="input-field col s12">
-            <router-link class="margin" :to="{name: 'Login'}">已經有帳號? 立刻登入<br></router-link>
-        </div>
-        </div>
-    </div>
-    </form>
+<template lang="pug">
+    #table-page
+        #center-page
+            form
+                .z-depth-4.card-panel.socialCard.center
+                    p.center  - 選擇您的身分 - 
+                    .row(style='margin-bottom: 0')
+                        button.btn.waves-effect.waves-light.col.s5.bounce.animated.student(:class='{active: type === 1, disable: type === 2}', style='height: 70px;', @click.prevent='setIdentify(1)')
+                            i.fa.fa-graduation-cap
+                            span 外籍生
+                        button.btn.waves-effect.waves-light.col.s5.push-s2.bounce.animated.company(:class='{active: type === 2, disable: type === 1}', style='height: 70px;', @click.prevent='setIdentify(2)')
+                            i.fa.fa-id-card-o
+                            span 廠商
+                .z-depth-4.card-panel.transCard
+                    .row
+                        .input-field.col.s12.center
+                            img.circle.responsive-img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
+                            p.center.login-form-text.f27 註冊
+                    .row.margin
+                        .input-field.col.s12
+                            input#email(type='text', v-model.trim='email', @blur='checkEmail', :class='{invalid: sameEmail===true, valid: sameEmail===false}')
+                            label Email
+                        .input-field.col.s12
+                            input#password(type='password', v-model.trim='password', @keyup.enter='regist')
+                            label(for='password') 密碼
+                    .row
+                        .input-field.col.s12
+                            button.btn.waves-effect.waves-light.col.s12(@click.prevent='regist')
+                                i.fa.fa-cog.fa-spin.fa-fw(v-if='loading')
+                                span(v-if='!loading') 送出
+                    .row
+                        .input-field.col.s12
+                            router-link.margin(:to="{name: 'Login'}") 已經有帳號? 立刻登入
+                                br
+
 </template>
 
 <script>

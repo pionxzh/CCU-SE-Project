@@ -1,8 +1,7 @@
 <template lang="pug">
-    #table-page
-        #center-page
-            keep-alive
-                router-view
+    div(style="display: initial;")
+        keep-alive
+            router-view
         v-dialog
 </template>
 
