@@ -11,6 +11,17 @@
 |
 */
 
+
+/* edit by Hawa */
+Route::post('register', 'Auth\RegisterController@registrate');
+
+
 Route::get('{all}', function () {
+
     return view('main');
+
 }) -> where(['all' => '.*']);
+
+
+
+

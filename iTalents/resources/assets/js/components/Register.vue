@@ -3,7 +3,7 @@
         #center-page
             form
                 .z-depth-4.card-panel.socialCard.center
-                    p.center  - 選擇您的身分 - 
+                    p.center  - 選擇您的身分 -
                     .row(style='margin-bottom: 0')
                         button.btn.waves-effect.waves-light.col.s5.bounce.animated.student(:class='{active: type === 1, disable: type === 2}', style='height: 70px;', @click.prevent='setIdentify(1)')
                             i.fa.fa-graduation-cap
@@ -18,7 +18,7 @@
                             p.center.login-form-text.f27 註冊
                     .row.margin
                         .input-field.col.s12
-                            input#email(type='text', v-model.trim='email', @blur='checkEmail', :class='{invalid: sameEmail===true, valid: sameEmail===false}')
+                            input#email(type='text', v-model.trim='email', :class='{invalid: sameEmail===true, valid: sameEmail===false}')
                             label Email
                         .input-field.col.s12
                             input#password(type='password', v-model.trim='password', @keyup.enter='regist')
@@ -83,7 +83,7 @@ export default {
                     let modalMsg = msg[response.data.stat]
                     if (response.data.stat === 1) {
                         setTimeout(() => {
-                            this.$router.push({name: 'Email'})
+                            this.$router.push({name: 'Main'})
                         }, 1500)
                     }
                     this.showDialog(modalMsg)
