@@ -42,10 +42,12 @@ class RegisterController extends Controller
      *
      * @return void
      */
+    /*
     public function __construct()
     {
         $this->middleware('guest');
     }
+     */
 
     /**
      * Get a validator for an incoming registration request.
@@ -126,7 +128,8 @@ class RegisterController extends Controller
 
         if(User::where('email', '=', Input::get('email')) ->exists())
         {
-            return json_encode(($ret ->stat = 0));
+            $ret ->stat = 0;
+            return json_encode($ret);
         }
 
         /* V-key */
@@ -165,8 +168,45 @@ class RegisterController extends Controller
             $message ->from('CCU_iTalents@gmail.com', 'CCU_iTalents');
         });
 
+        $ret ->stat = 1;
+        return json_encode($ret);
+    }
 
-        return json_encode(($ret ->stat = 1));
+
+
+    /*****************************Email Verification*****************************
+     *
+     * -------------------------------------------------------------------------*/
+
+    public function emailverify($emailtok)
+    {
+        $ret = new \stdClass();
+
+        if(User::where('emailtok', '=', $emailtok) ->exists())
+        {
+            $thisUser = (User::where('emailtok', '=', $emailtok) ->first());
+
+            switch($thisUser ->user_type)
+            {
+                case 1:
+
+                    $thisUser = Employee::where('uid', '=', $thisUser ->id) ->first();
+                    $thisUser ->is_active = true;
+                    $thisUser ->save();
+                    break;
+
+                case 2:
+
+                    $thisUser = Employer::where('uid', '=', $thisUser ->id) ->first();
+                    $thisUser ->is_active = true;
+                    $thisUser ->save();
+                    break;
+            }
+
+            return json_encode($ret ->stat = 1);
+        }
+
+        return json_encode($ret ->stat = 0);
     }
 
 }

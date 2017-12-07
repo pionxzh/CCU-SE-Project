@@ -14,7 +14,10 @@
 
 /* edit by Hawa */
 Route::post('register', 'Auth\RegisterController@registrate');
-
+Route::get('verify/{emailtok}', 'Auth\RegisterController@emailverify');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout');
+Route::get('api/user', 'Auth\LoginController@getUserInfo');
 
 Route::get('{all}', function () {
 
