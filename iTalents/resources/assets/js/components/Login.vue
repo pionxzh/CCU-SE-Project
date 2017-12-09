@@ -1,38 +1,35 @@
 <template lang="pug">
-    #table-page
-        #center-page
-            form
-                .z-depth-4.card-panel.socialCard.center
-                    p.center  - 選擇您的身分 - 
-                    .row(style='margin-bottom: 0')
-                        button.btn.waves-effect.waves-light.col.s5.bounce.animated.student(:class='{active: type === 1, disable: type === 2}', style='height: 70px;', @click.prevent='setIdentify(1)')
-                            i.fa.fa-graduation-cap
-                            span 外籍生
-                        button.btn.waves-effect.waves-light.col.s5.push-s2.bounce.animated.company(:class='{active: type === 2, disable: type === 1}', style='height: 70px;', @click.prevent='setIdentify(2)')
-                            i.fa.fa-id-card-o
-                            span 廠商
-                .z-depth-4.card-panel.transCard
-                    .row
-                        .input-field.col.s12.center
-                            img.circle.responsive-img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
-                            p.center.login-form-text.f27 登入
-                    .row.margin
-                        .input-field.col.s12
-                            input#email(type='text', v-model.trim='email')
-                            label(for='email') Email
-                        .input-field.col.s12
-                            input#password(type='password', v-model.trim='password', @keyup.enter='login')
-                            label(for='password') 密碼
-                    .row
-                        .input-field.col.s12
-                            button.btn.waves-effect.waves-light.col.s12(@click.prevent='login')
-                                i.fa.fa-cog.fa-spin.fa-fw(v-if='loading')
-                                span(v-if='!loading') 送出
-                    .row
-                        .input-field.col.s8
-                            router-link.margin(:to="{name: 'Register'}") 還沒有帳號? 立刻註冊
-                        .input-field.col.s4
-                            router-link.margin.right(:to="{name: 'Register'}") 忘記密碼 ?
+    v-app.foreienBg(light='')
+        v-content
+            v-layout(row='' justify-space-between='')
+                v-flex(xs0='')
+                v-flex(xs0='')
+                    .identifyCard(:class='{selected: type !== 0}')
+                        p.text-xs-center.white--text - 選擇您的身分 -
+                        .select-card.student(ripple='' :class='{active: type === 1}' @click='setIdentify(1)')
+                            .select-card-text
+                                i.fa.fa-graduation-cap
+                                span &nbsp;學生
+                        .select-card.company(ripple='' :class='{active: type === 2}' @click='setIdentify(2)')
+                            .select-card-text
+                                i.fa.fa-id-card-o
+                                span &nbsp;廠商
+                v-flex(xs0='')
+            v-layout(row='' justify-space-between='')
+                v-flex(xs0='')
+                v-flex(xs0='')
+                    v-card.transCard(dark='' :class='{show: type !== 0}')
+                        v-card-text
+                            v-avatar.center-item(size='180' style='margin-bottom: 10px;')
+                                img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
+                            p.text-xs-center.mb-3(style='font-size: 20px;') 登入
+                            v-text-field(type='text' label='Email' v-model.trim='email' dark='')
+                            v-text-field(type='password' label='密碼' v-model.trim='password' @keyup.enter='login' dark='')
+
+                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login') 送出
+                        router-link.no-decoration.mb-2(:to="{name: 'Register'}") 還沒有帳號? 立刻註冊
+                        router-link.no-decoration.right.mb-2(:to="{name: 'Register'}") 忘記密碼 ?
+                v-flex(xs0='')
 
 </template>
 
@@ -43,7 +40,7 @@ export default {
     data: () => ({
         email: '',
         password: '',
-        type: null,
+        type: 0,
         loading: false
     }),
     methods: {
@@ -59,7 +56,7 @@ export default {
             })
         },
         setIdentify(type) {
-            this.type = type
+            this.type = this.type === type ? 0 : type
         },
         login: function() {
             this.loading = true
