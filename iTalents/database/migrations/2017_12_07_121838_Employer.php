@@ -26,7 +26,7 @@ class Employer extends Migration
             $table ->integer('uid'); // 使用者 ID
             $table ->boolean('is_active') ->default(false);  // 通過認證(email)
             $table ->boolean('is_verify') ->default(false); // 通過核准(company)
-            $table ->integer('cid') ->nullable() ->default(NULL); // 公司行號
+            $table ->string('cid') ->nullable() ->default(NULL); // 公司行號
             $table ->string('cname') ->nullable() ->default(NULL);
             $table ->string('cphone') ->nullable() ->default(NULL);
             $table ->string('caddress') ->nullable() ->default(NULL);
