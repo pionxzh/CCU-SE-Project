@@ -5,9 +5,9 @@ module.exports = {
     entry: path.join(__dirname, 'resources/assets/js/main.js'),
     output: {
         filename: 'main.js',
-        path: __dirname + '/public/js'
+        path: path.join(__dirname, '/public/js')
     },
-	module: {
+    module: {
         rules: [
             {
                 test: /\.(js|vue)$/,
@@ -33,8 +33,8 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            jQuery: "jquery",
-            $: "jquery"
+            jQuery: 'jquery',
+            $: 'jquery'
         })
-  ]
+    ]
 }

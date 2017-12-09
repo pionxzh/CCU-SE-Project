@@ -83,7 +83,7 @@ export default {
                     let modalMsg = msg[response.data.stat]
                     if (response.data.stat === 1) {
                         setTimeout(() => {
-                            this.$router.push({name: 'Login'})
+                            this.$router.push({name: 'Main'})
                         }, 3000)
                     }
                     this.showDialog(modalMsg)

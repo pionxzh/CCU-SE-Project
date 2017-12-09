@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuetify from 'vuetify'
 import Router from 'vue-router'
 import Vmodal from 'vue-js-modal'
 
@@ -7,6 +8,7 @@ import Main from './components/Main.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 
+Vue.use(Vuetify)
 Vue.use(Router)
 Vue.use(Vmodal, {
     dialog: true
