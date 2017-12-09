@@ -12,7 +12,7 @@
 */
 
 
-/**********Hawa*********/
+/**********使用者*********/
 
 // 登入
 Route::post('login', 'Auth\LoginController@login');
@@ -31,8 +31,22 @@ Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
 
 
 
+/***********廠商***********/
 
+// 回傳廠商所有徵才資訊
+Route::get('api/recruit', 'EmployerController@getAllRecruitments');
 
+// 建立新的一筆 recruitments data
+Route::post('recruit', 'EmployerController@newRecruitment');
+
+// 更新工作內容
+Route::post('recruit/{rid}/jobinfo', 'EmployerController@updateJobInfo');
+// 更新工作需求
+Route::post('recruit/{rid}/jobrequire', 'EmployerController@updateJobRequire');
+// 更新工作福利
+Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits');
+// 更新聯絡方式
+Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 
 
 Route::get('{all}', function () {

@@ -16,23 +16,25 @@ class Recruitment extends Migration
         Schema::create('recruitments', function(Blueprint $table)
         {
 
-            /* all fields are necessary required */
-
-
+            /**************************************************************************/
             $table ->increments('id');
             $table ->integer('uid');
-
-            $table ->string('title'); // 徵才標題
-            /* for matching purposes */
-            $table ->string('jobname'); // 職缺名稱
-            $table ->integer('jobtype'); // 全職(1)、兼職(0)
-            $table ->string('lang'); // 語言需求(encode)
-            $table ->integer('upay'); // 薪水 upper_bound
-            $table ->integer('dpay'); // 薪水 lower_bound
-
-            /* other */
-            $table ->string('workplace'); // 工作地點
-            $table ->text('jobinfo'); // 工作描述(high flexibility)
+            $table ->boolean('is_complete') ->default(false);
+            /**************************************************************************/
+            $table ->string('title') ->nullable() ->default(NULL); // 徵才標題
+            $table ->string('jobname')->nullable() ->default(NULL); ; // 職缺名稱, (matching)
+            $table ->integer('jobtype')->nullable() ->default(NULL); ; // 全職(1)、兼職(0), (matching)
+            $table ->string('lang')->nullable() ->default(NULL); ; // 語言需求(encode), (matching)
+            $table ->integer('upay')->nullable() ->default(NULL); ; // 薪水 upper_bound, (matching)
+            $table ->integer('dpay')->nullable() ->default(NULL); ; // 薪水 lower_bound, (matching)
+            $table ->text('jobinfo')->nullable() ->default(NULL); ; // 工作描述, 地點, 性質, 時段, 休假制度,etc.
+            /**************************************************************************/
+            $table ->text('jobrequire')->nullable() ->default(NULL); ; // 條件要求, 學歷, 經歷, 語文條件, 擅長工具, etc
+            /**************************************************************************/
+            $table ->text('benefits')->nullable() ->default(NULL); ; // 工作福利, 勞保, 年終, 節慶獎金, etc
+            /**************************************************************************/
+            $table ->text('contact')->nullable() ->default(NULL); ; // 聯繫方式, 聯絡電話, 人事聯絡人, etc
+            /**************************************************************************/
             $table ->timestamps();
         }
         );
