@@ -82,14 +82,13 @@ class ApiController extends Controller
                 case 1:
 
                     $thisUser = Employee::where('uid', '=', Auth::User() ->id) ->first();
-                    $thisUser ->name = Input::get('');
+                    $thisUser ->firstname = Input::get('');
+                    $thisUser ->lastname = Input::get('');
                     $thisUser ->sex = Input::get('');
                     $thisUser ->birth = Input::get('');
                     $thisUser ->pid = Input::get('');
                     $thisUser ->phone = Input::get('');
                     $thisUser ->nation = Input::get('');
-                    $thisUser ->address = Input::get('');
-                    $thisUser ->addrcode = Input::get('');
                     $thisUser ->save();
                     break;
 
