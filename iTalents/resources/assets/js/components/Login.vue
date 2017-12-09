@@ -73,9 +73,10 @@ export default {
                     this.loading = false
                     let modalMsg = response.data.stat ? `歡迎回來，用戶 ${response.data.username}，現在將轉回首頁!` : '帳號密碼組合錯誤'
                     if (response.data.stat) {
+                        let that = this
                         setTimeout(function() {
-                            window.location.href = '/'
-                        }, 1500)
+                            that.$router.push('main')
+                        }, 3000)
                     }
                     this.showDialog(modalMsg)
                 })

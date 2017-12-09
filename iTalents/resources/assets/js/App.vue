@@ -3,7 +3,7 @@
         transition(name="page",mode="out-in")
             keep-alive
                 router-view
-            v-dialog
+        v-dialog
 </template>
 
 <style lang="stylus">

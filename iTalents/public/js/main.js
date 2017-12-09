@@ -30163,9 +30163,10 @@ var render = function() {
       _c(
         "transition",
         { attrs: { name: "page", mode: "out-in" } },
-        [_c("keep-alive", [_c("router-view")], 1), _c("v-dialog")],
+        [_c("keep-alive", [_c("router-view")], 1)],
         1
-      )
+      ),
+      _c("v-dialog")
     ],
     1
   )
@@ -32047,8 +32048,9 @@ if (false) {(function () {
                     let msg = ['資料格式錯誤', '註冊成功!請至信箱收取認證信，三秒後將自動轉向登入頁面']
                     let modalMsg = msg[response.data.stat]
                     if (response.data.stat === 1) {
-                        setTimeout(() => {
-                            this.$router.push({name: 'Main'})
+                        let that = this
+                        setTimeout(function() {
+                            that.$router.push('login')
                         }, 3000)
                     }
                     this.showDialog(modalMsg)
