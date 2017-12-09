@@ -79,12 +79,12 @@ export default {
             })
                 .then(response => {
                     this.loading = false
-                    let msg = ['資料格式錯誤', '註冊成功!']
+                    let msg = ['資料格式錯誤', '註冊成功!請至信箱收取認證信，三秒後將自動轉向登入頁面']
                     let modalMsg = msg[response.data.stat]
                     if (response.data.stat === 1) {
                         setTimeout(() => {
-                            this.$router.push({name: 'Main'})
-                        }, 1500)
+                            this.$router.push({name: 'Login'})
+                        }, 3000)
                     }
                     this.showDialog(modalMsg)
                 })

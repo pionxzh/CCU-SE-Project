@@ -39,6 +39,7 @@
     "dependencies": {
         "@kazupon/vue-i18n-loader": "^0.2.1",
         "gulp": "^3.9.1",
+        "gulp-watch": "^4.3.11",
         "path": "^0.12.7",
         "pug": "^2.0.0-rc.4",
         "stylus": "^0.54.5",

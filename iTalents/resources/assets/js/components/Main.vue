@@ -29,7 +29,7 @@ export default {
         user: {
             logined: false,
             username: '用戶名不存在',
-            type: 0
+            user_type: 0
         },
         loading: false
     }),
@@ -50,6 +50,7 @@ export default {
             axios.get('/api/user')
                 .then(response => {
                     this.user = response.data
+                    this.$root.user = response.data
                 })
                 .catch(e => this.errHandler(e))
         }
