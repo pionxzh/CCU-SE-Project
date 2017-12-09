@@ -12,12 +12,28 @@
 */
 
 
-/* edit by Hawa */
-Route::post('register', 'Auth\RegisterController@registrate');
-Route::get('verify/{emailtok}', 'Auth\RegisterController@emailverify');
+/**********Hawa*********/
+
+// 登入
 Route::post('login', 'Auth\LoginController@login');
+// 註冊
+Route::post('register', 'Auth\RegisterController@registrate');
+// 認證信箱
+Route::get('verify/{emailtok}', 'Auth\RegisterController@emailverify');
+// 登出
 Route::get('logout', 'Auth\LoginController@logout');
-Route::get('api/user', 'Auth\LoginController@getUserInfo');
+// 回傳登入使用者基本資訊
+Route::get('api/user', 'ApiController@getUserInfo');
+// 回傳使用者(Employer、Employee)基本資訊
+Route::get('api/user/personal', 'ApiController@getPersonalInfo');
+// 修改使用者(Employer、Employee)資料
+Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
+
+
+
+
+
+
 
 Route::get('{all}', function () {
 

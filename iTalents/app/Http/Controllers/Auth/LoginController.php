@@ -86,12 +86,20 @@ class LoginController extends Controller
     public function logout()
     {
         $ret = new \stdClass();
-        Auth::logout();
-        $ret ->stat = 1;
+
+        if(Auth::check())
+        {
+            Auth::logout();
+            $ret ->stat = 1;
+        }
+        else
+        {
+            $ret ->stat = 0;
+        }
         return json_encode($ret);
     }
 
-
+/*
     public function getUserInfo()
     {
         $ret = new \stdClasS();
@@ -109,7 +117,7 @@ class LoginController extends Controller
         }
     }
 
-
+ */
 
 
 

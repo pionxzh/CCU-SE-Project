@@ -23,11 +23,13 @@ class Employee extends Migration
             $table ->integer('uid');
             $table ->boolean('is_active') ->default(false);
             $table ->string('name') ->nullable() ->default(NULL);
-            $table ->boolean('sex') ->nullable() ->default(NULL);
+            $table ->integer('sex') ->nullable() ->default(NULL);
             $table ->date('birth') ->nullable() ->default(NULL);
             $table ->string('pid') ->nullable() ->default(NULL); // 身份證
             $table ->string('phone') ->nullable() ->default(NULL);
             $table ->string('nation') ->nullable() ->default(NULL);
+            $table ->string('address') ->nullable() ->default(NULL);
+            $table ->string('addrcode') ->nullable() ->default(NULL);
             $table ->timestamps();
         }
         );
