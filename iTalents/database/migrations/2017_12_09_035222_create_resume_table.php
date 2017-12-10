@@ -15,10 +15,9 @@ class CreateResumeTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->integer('uid');
 
-            // basuc
+            // basic
             $table->string('firstName') ->nullable() ->default(NULL);  // 英文名
             $table->string('lastName') ->nullable() ->default(NULL); // 英文姓
             $table->string('pid') ->nullable() ->default(NULL);  // 身分證，Ex: A12345679
@@ -48,6 +47,8 @@ class CreateResumeTable extends Migration
 
             // autobiography
             $table->text('bio') ->nullable() ->default(NULL);
+
+            $table->timestamps();
         });
     }
 
