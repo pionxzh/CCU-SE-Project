@@ -26,7 +26,7 @@ class EmployerController extends Controller
     {
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $ret = Recruitment::where('uid', '=', Auth::User() ->id);
+            $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id);
             $ret ->stat = 1;
             return json_encode($ret);
         }
