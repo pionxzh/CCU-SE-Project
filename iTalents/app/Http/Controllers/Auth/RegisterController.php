@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Mail;
 use App\Employee;
 use App\Employer;
+use App\Resume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -106,6 +107,11 @@ class RegisterController extends Controller
                 $newEmployee = new Employee;
                 $newEmployee ->uid = $thisUser ->id;
                 $newEmployee ->save();
+
+                $newResume = new Resume;
+                $newResume ->uid = $thisUser ->id;
+                $newResume ->save();
+
                 break;
 
 

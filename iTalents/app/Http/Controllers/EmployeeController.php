@@ -9,6 +9,7 @@ use Auth;
 use App\User;
 use App\Employee;
 use App\Resume;
+use App\Language;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,13 +20,14 @@ class EmployeeController extends Controller
     /**************************
      * 回傳外籍生寫的履歷 *
      **************************/
-    
+
     public function getAllResumes()
     {
         $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 1)
         {
-            $ret ->data = Resume::where('uid', '=', Auth::User() ->id);
+            $ret ->data = Resume::where('uid', '=', Auth::User() ->id) ->first();
+            $ret ->language = Language::where('uid', '=', Auth::User() ->id) ->get();
             $ret ->stat = 1;   //回傳 登入狀態 1成功 0失敗
             return json_encode($ret);
         }
@@ -33,22 +35,6 @@ class EmployeeController extends Controller
         {
             $ret ->stat = 0;
             return json_encode($ret);
-        }
-    }
-
-     /**********************
-     *     檢查擁有者    *
-     *********************/
-
-    public function checkOwn(&$thisResume)
-    {
-        if(!empty($thisResume) and $thisResume ->uid === Auth::User() ->id)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
         }
     }
 
@@ -62,11 +48,6 @@ class EmployeeController extends Controller
         if(Auth::check() and Auth::User() ->user_type === 1)
         {
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            if(!$this ->checkOwn($thisResume))
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
             $thisResume ->firstName = Input::get('firstName');
             $thisResume ->lastName = Input::get('lastName');
             $thisResume ->pid = Input::get('pid');
@@ -76,7 +57,7 @@ class EmployeeController extends Controller
             $thisResume ->email = Input::get('email');
             $thisResume ->cellphone = Input::get('cellphone');
             $thisResume ->address = Input::get('address');
-            $this ->save();
+            $thisResume ->save();
             $ret ->stat = 1;
             return json_encode($ret);
         }
@@ -85,6 +66,58 @@ class EmployeeController extends Controller
             $ret ->stat = 0;
             return json_encode($ret);
         }
+    }
+
+    /*****************
+   *   更新學歷經驗     *
+   ******************/
+
+   public function updateBackground()
+   {
+       $ret = new \stdClass();
+       if(Auth::check() and Auth::User() ->user_type === 1)
+       {
+           $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
+           $thisResume ->background = Input::get('data');
+           $thisResume ->save();
+           $ret ->stat = 1;
+           return json_encode($ret);
+       }
+       else
+       {
+           $ret ->stat = 0;
+           return json_encode($ret);
+       }
+   }
+
+   /*****************
+   *   更新語言     *
+   ******************/
+
+   public function updateLanguage(Request $request)
+   {
+        $ret = new \stdClass();
+        if(Auth::check() and Auth::User() ->user_type === 1)
+        {
+            DB::table('languages') ->whereIn('uid', Auth::User() ->id) -> delete();
+
+            foreach($request->data as $key => $value)
+            {
+              $language = new Language;
+              $language ->uid = Auth::User() ->id;
+              $language ->language = $key;
+              $language ->langAbility = $value;
+              $language ->save();
+            }
+
+            $ret ->stat = 1;
+            return json_encode($ret);
+       }
+       else
+       {
+            $ret ->stat = 0;
+            return json_encode($ret);
+       }
     }
 
     /*****************
@@ -97,21 +130,16 @@ class EmployeeController extends Controller
         if(Auth::check() and Auth::User() ->user_type === 1)
         {
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            if(!$this ->checkOwn($thisResume))
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
             $thisResume ->expectedJobName = Input::get('expectedJobName');
             $thisResume ->expectedJobType = Input::get('expectedJobType');
-            $thisResume ->SalaryFrom = Input::get('SalaryFrom');
-            $thisResume ->SalaryTo = Input::get('SalaryTo');
+            $thisResume ->salaryFrom = Input::get('salaryFrom');
+            $thisResume ->salaryTo = Input::get('salaryTo');
             $thisResume ->expectedJobDec = Input::get('expectedJobDec');
             $thisResume ->expectedJobCat = Input::get('expectedJobCat');
             $thisResume ->expectedJobArea = Input::get('expectedJobArea');
             $thisResume ->expectedJobTime = Input::get('expectedJobTime');
-            $thisResume ->SalaryType = Input::get('SalaryType');
-            $this ->save();
+            $thisResume ->salaryType = Input::get('salaryType');
+            $thisResume ->save();
             $ret ->stat = 1;
             return json_encode($ret);
         }
@@ -122,32 +150,6 @@ class EmployeeController extends Controller
         }
     }
 
-     /*****************
-    *   更新學歷經驗     *
-    ******************/
-
-    public function updateBackground()
-    {
-        $ret = new \stdClass();
-        if(Auth::check() and Auth::User() ->user_type === 1)
-        {
-            $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            if(!$this ->checkOwn($thisResume))
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
-            $thisResume ->background = Input::get('background');
-            $this ->save();
-            $ret ->stat = 1;
-            return json_encode($ret);
-        }
-        else
-        {
-            $ret ->stat = 0;
-            return json_encode($ret);
-        }
-    }
 
      /*****************
     *   更新技能與證照     *
@@ -159,13 +161,8 @@ class EmployeeController extends Controller
         if(Auth::check() and Auth::User() ->user_type === 1)
         {
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            if(!$this ->checkOwn($thisResume))
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
-            $thisResume ->cert = Input::get('cert');
-            $this ->save();
+            $thisResume ->skill = Input::get('data');
+            $thisResume ->save();
             $ret ->stat = 1;
             return json_encode($ret);
         }
@@ -175,24 +172,19 @@ class EmployeeController extends Controller
             return json_encode($ret);
         }
     }
-    
- /*****************
+
+    /*****************
     *   更新自傳     *
     ******************/
 
-    public function updateAutobiography()
+    public function updateBio()
     {
         $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 1)
         {
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            if(!$this ->checkOwn($thisResume))
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
-            $thisResume ->bio = Input::get('bio');
-            $this ->save();
+            $thisResume ->bio = Input::get('data');
+            $thisResume ->save();
             $ret ->stat = 1;
             return json_encode($ret);
         }
@@ -202,32 +194,5 @@ class EmployeeController extends Controller
             return json_encode($ret);
         }
     }
-
-        public function newLanguage()
-        {
-            $ret = new \stdClass();
-            if(Auth::check() and Auth::User() ->user_type === 1)
-            {
-                $newLanguage = new Language;
-                $newLanguage ->uid = Auth::User() ->id;
-                foreach ($newLanguage as $language)
-                {
-                $language ->langCat = Input::get('langCat');
-                $language ->langAbility = Input::get('langAbility');
-                }
-                $newLanguage ->save();
-                $ret ->stat = 1;
-                $ret ->rid = $newLanguage ->id;
-                return json_encode($ret);
-    
-            }
-            else
-            {
-                $ret ->stat = 0;
-                return json_encode($ret);
-            }
-        }
-
-
 
 }

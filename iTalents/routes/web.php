@@ -55,12 +55,27 @@ Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits'
 Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 
 
+/***********履歷***********/
+
+// 回傳履歷資料
+Route::get('api/resume', 'EmployeeController@getAllResumes');
+
+// 修改履歷-基本資料
+Route::post('/resume/basic', 'EmployeeController@updateBasic');
+// 修改履歷-學歷經驗
+Route::post('/resume/background', 'EmployeeController@updateBackground');
+// 修改履歷-語言能力
+Route::post('/resume/language', 'EmployeeController@updateLanguage');
+// 修改履歷-求職條件
+Route::post('/resume/condition', 'EmployeeController@updateCondition');
+// 修改履歷-技能與證照
+Route::post('/resume/skill', 'EmployeeController@updateSkill');
+// 修改履歷-自傳
+Route::post('/resume/bio', 'EmployeeController@updateBio');
+
+
 Route::get('{all}', function () {
 
     return view('main');
 
 }) -> where(['all' => '.*']);
-
-
-
-
