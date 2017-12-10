@@ -9,6 +9,7 @@ import Nav from './Nav.vue'
 import Footer from './Footer.vue'
 import Main from './components/Main.vue'
 import Login from './components/Login.vue'
+import ResumeEdit from './components/ResumeEdit.vue'
 import Recruit from './components/Recruit.vue'
 import RecruitShow from './components/RecruitShow.vue'
 import RecruitEdit from './components/RecruitEdit.vue'
@@ -41,6 +42,10 @@ const router = new Router({
         name: 'Register',
         path: '/register',
         component: Register
+    }, {
+        name: 'ResumeEdit',
+        path: '/resume/edit',
+        component: ResumeEdit
     }, {
         name: 'Recruit',
         path: '/recruit',

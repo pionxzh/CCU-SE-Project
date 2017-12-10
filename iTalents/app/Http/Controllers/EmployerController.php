@@ -95,7 +95,7 @@ class EmployerController extends Controller
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
         foreach($thisRecruit ->toArray() as $key => $val)
         {
-            if($key !== "is_complete" and empty($val))
+            if($key !== "is_complete" and !isset($val))
             {
                 $thisRecruit ->is_complete = false;
                 $thisRecruit ->save();

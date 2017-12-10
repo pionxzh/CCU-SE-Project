@@ -17,7 +17,7 @@
                                                     v-list-tile-title {{ item.title }}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 
                                                         | {{ item.dpay }}&nbsp;~&nbsp;{{ item.upay }}
-                                                    v-list-tile-sub-title {{ item.jobtype }} 
+                                                    v-list-tile-sub-title {{ item.jobname }} 
                                                 v-list-tile-action
                                                     v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')

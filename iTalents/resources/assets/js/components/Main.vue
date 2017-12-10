@@ -6,6 +6,8 @@
                     v-layout.white--text(column='', align-center='', justify-center='')
                         h1.white--text.mb-2.display-1.text-xs-center 國際人才資料庫
                         .subheading.mb-3.text-xs-center International learnTsai database
+                        router-link.no-decoration(:to="{name: 'ResumeEdit'}")
+                            v-btn.green.lighten-2.mt-5(dark='', large='') 開始使用
                         router-link.no-decoration(:to="{name: 'Recruit'}")
                             v-btn.blue.lighten-2.mt-5(dark='', large='') 開始使用
             section

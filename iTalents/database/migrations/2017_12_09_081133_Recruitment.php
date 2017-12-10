@@ -27,13 +27,13 @@ class Recruitment extends Migration
             $table ->string('lang')->nullable() ->default(NULL); ; // 語言需求(encode), (matching)
             $table ->integer('upay')->nullable() ->default(NULL); ; // 薪水 upper_bound, (matching)
             $table ->integer('dpay')->nullable() ->default(NULL); ; // 薪水 lower_bound, (matching)
-            $table ->text('jobinfo')->nullable() ->default(NULL); ; // 工作描述, 地點, 性質, 時段, 休假制度,etc.
+            $table ->mediumText('jobinfo')->nullable() ->default(NULL); ; // 工作描述, 地點, 性質, 時段, 休假制度,etc.
             /**************************************************************************/
-            $table ->text('jobrequire')->nullable() ->default(NULL); ; // 條件要求, 學歷, 經歷, 語文條件, 擅長工具, etc
+            $table ->mediumText('jobrequire')->nullable() ->default(NULL); ; // 條件要求, 學歷, 經歷, 語文條件, 擅長工具, etc
             /**************************************************************************/
-            $table ->text('benefits')->nullable() ->default(NULL); ; // 工作福利, 勞保, 年終, 節慶獎金, etc
+            $table ->mediumText('benefits')->nullable() ->default(NULL); ; // 工作福利, 勞保, 年終, 節慶獎金, etc
             /**************************************************************************/
-            $table ->text('contact')->nullable() ->default(NULL); ; // 聯繫方式, 聯絡電話, 人事聯絡人, etc
+            $table ->mediumText('contact')->nullable() ->default(NULL); ; // 聯繫方式, 聯絡電話, 人事聯絡人, etc
             /**************************************************************************/
             $table ->timestamps();
         }
