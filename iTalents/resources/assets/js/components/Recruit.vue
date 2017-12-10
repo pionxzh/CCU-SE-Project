@@ -50,7 +50,6 @@ export default {
                 .then(response => {
                     console.log(response.data)
                     if (response.data.stat) {
-                        console.log(response.data)
                         this.items = response.data
                     }
                 })
