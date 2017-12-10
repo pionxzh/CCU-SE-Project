@@ -32456,6 +32456,15 @@ if (false) {(function () {
             bio: false
         },
         editorOption: {
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{'size': ['small', false, 'large']}],
+                    [{'header': 1}, {'header': 2}],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    ['link', 'image']
+                ]
+            },
             placeholder: 'Type here...'
         },
         loading: false
@@ -32493,7 +32502,7 @@ if (false) {(function () {
         },
         save(fieldName) {
             this.loading = true
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/recruit/${this.$route.params.id}/${fieldName}`, {data: this.recruit[fieldName]})
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/${fieldName}`, {data: this.resume[fieldName]})
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
@@ -32504,7 +32513,7 @@ if (false) {(function () {
         },
         saveBasic() {
             this.loading = true
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/recruit/${this.$route.params.id}/basic`, {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/basic`, {
                 firstName: this.resume.firstName,
                 lastName: this.resume.lastName,
                 pid: this.resume.pid,
@@ -32524,7 +32533,7 @@ if (false) {(function () {
         },
         saveRequest() {
             this.loading = true
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/recruit/${this.$route.params.id}/condition`, {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/condition`, {
                 expectedJobName: this.resume.expectedJobName,
                 expectedJobType: this.resume.expectedJobType,
                 salaryFrom: this.resume.salaryFrom,

@@ -147,6 +147,15 @@ export default {
             bio: false
         },
         editorOption: {
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{'size': ['small', false, 'large']}],
+                    [{'header': 1}, {'header': 2}],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    ['link', 'image']
+                ]
+            },
             placeholder: 'Type here...'
         },
         loading: false
@@ -184,7 +193,7 @@ export default {
         },
         save(fieldName) {
             this.loading = true
-            axios.post(`/recruit/${this.$route.params.id}/${fieldName}`, {data: this.recruit[fieldName]})
+            axios.post(`/resume/${fieldName}`, {data: this.resume[fieldName]})
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
@@ -195,7 +204,7 @@ export default {
         },
         saveBasic() {
             this.loading = true
-            axios.post(`/recruit/${this.$route.params.id}/basic`, {
+            axios.post(`/resume/basic`, {
                 firstName: this.resume.firstName,
                 lastName: this.resume.lastName,
                 pid: this.resume.pid,
@@ -215,7 +224,7 @@ export default {
         },
         saveRequest() {
             this.loading = true
-            axios.post(`/recruit/${this.$route.params.id}/condition`, {
+            axios.post(`/resume/condition`, {
                 expectedJobName: this.resume.expectedJobName,
                 expectedJobType: this.resume.expectedJobType,
                 salaryFrom: this.resume.salaryFrom,
