@@ -39,6 +39,7 @@ Route::get('api/recruit', 'EmployerController@getAllRecruitments');
 // 建立新的一筆 recruitments data
 Route::post('recruit', 'EmployerController@newRecruitment');
 
+
 // 更新工作內容
 Route::post('recruit/{rid}/jobinfo', 'EmployerController@updateJobInfo');
 // 更新工作需求

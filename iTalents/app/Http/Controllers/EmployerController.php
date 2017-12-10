@@ -24,6 +24,7 @@ class EmployerController extends Controller
 
     public function getAllRecruitments()
     {
+        $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
             $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id);
@@ -32,7 +33,6 @@ class EmployerController extends Controller
         }
         else
         {
-            $ret = new \stdClass();
             $ret ->stat = 0;
             return json_encode($ret);
         }
