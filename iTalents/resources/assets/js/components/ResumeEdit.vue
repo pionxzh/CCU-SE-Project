@@ -30,7 +30,7 @@
                                         v-text-field(type='text' label='名字' v-model.trim='resume.firstName')
                                         v-text-field(type='text' label='姓氏' v-model.trim='resume.lastName')
                                         v-text-field(type='text' label='身分證' v-model.trim='resume.pid')
-                                        v-text-field(type='text' label='性別' v-model.trim='resume.gender')
+                                        v-text-field(type='number' label='性別' v-model.trim='resume.gender')
                                         v-text-field(type='text' label='生日' v-model.trim='resume.birthday')
                                         v-text-field(type='text' label='國籍' v-model.trim='resume.nation')
                                         v-text-field(type='text' label='信箱' v-model.trim='resume.email')
@@ -51,7 +51,7 @@
                                 .recruit-edit-field
                                     v-flex(xs12='' md6='')
                                         v-text-field(type='text' label='希望職務名稱' v-model.trim='resume.expectedJobName')
-                                        v-text-field(type='text' label='希望工作性質' v-model.trim='resume.expectedJobType')
+                                        v-text-field(type='number' label='希望工作性質' v-model.trim='resume.expectedJobType')
                                         p 薪資條件
                                         v-layout(wrap='')
                                             v-flex(xs5='')
@@ -60,13 +60,11 @@
                                                 | ~
                                             v-flex(xs5='')
                                                 v-text-field(type='number' label='最高薪資' v-model.trim='resume.salaryTo')
-                                        v-text-field(type='text' label='薪資條件' v-model.trim='resume.salaryFrom')
-                                        v-text-field(type='text' label='標題' v-model.trim='resume.salaryTo')
-                                        v-text-field(type='text' label='職位名稱' v-model.trim='resume.expectedJobDec')
-                                        v-text-field(type='text' label='職位名稱' v-model.trim='resume.expectedJobCat')
-                                        v-text-field(type='text' label='標題' v-model.trim='resume.expectedJobArea')
-                                        v-text-field(type='text' label='職位名稱' v-model.trim='resume.expectedJobTime')
-                                        v-text-field(type='text' label='標題' v-model.trim='resume.salaryType')
+                                        v-text-field(type='text' label='職務內容描述' v-model.trim='resume.expectedJobDec')
+                                        v-text-field(type='text' label='希望職務類別' v-model.trim='resume.expectedJobCat')
+                                        v-text-field(type='text' label='希望工作地區' v-model.trim='resume.expectedJobArea')
+                                        v-text-field(type='number' label='希望工作時段' v-model.trim='resume.expectedJobTime')
+                                        v-text-field(type='number' label='希望工作待遇' v-model.trim='resume.salaryType')
 
                             div(v-if='tabIndex === 3')
                                 p.recruit-edit-title 語言能力

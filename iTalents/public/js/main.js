@@ -32403,8 +32403,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
 
 
 
@@ -46126,7 +46124,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "性別" },
+                                  attrs: { type: "number", label: "性別" },
                                   model: {
                                     value: _vm.resume.gender,
                                     callback: function($$v) {
@@ -46354,7 +46352,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "希望工作性質" },
+                                  attrs: { type: "number", label: "希望工作性質" },
                                   model: {
                                     value: _vm.resume.expectedJobType,
                                     callback: function($$v) {
@@ -46433,39 +46431,7 @@ var render = function() {
                                   1
                                 ),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "薪資條件" },
-                                  model: {
-                                    value: _vm.resume.salaryFrom,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.resume,
-                                        "salaryFrom",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "resume.salaryFrom"
-                                  }
-                                }),
-                                _c("v-text-field", {
-                                  attrs: { type: "text", label: "標題" },
-                                  model: {
-                                    value: _vm.resume.salaryTo,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.resume,
-                                        "salaryTo",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "resume.salaryTo"
-                                  }
-                                }),
-                                _c("v-text-field", {
-                                  attrs: { type: "text", label: "職位名稱" },
+                                  attrs: { type: "text", label: "職務內容描述" },
                                   model: {
                                     value: _vm.resume.expectedJobDec,
                                     callback: function($$v) {
@@ -46481,7 +46447,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "職位名稱" },
+                                  attrs: { type: "text", label: "希望職務類別" },
                                   model: {
                                     value: _vm.resume.expectedJobCat,
                                     callback: function($$v) {
@@ -46497,7 +46463,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "標題" },
+                                  attrs: { type: "text", label: "希望工作地區" },
                                   model: {
                                     value: _vm.resume.expectedJobArea,
                                     callback: function($$v) {
@@ -46513,7 +46479,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "職位名稱" },
+                                  attrs: { type: "number", label: "希望工作時段" },
                                   model: {
                                     value: _vm.resume.expectedJobTime,
                                     callback: function($$v) {
@@ -46529,7 +46495,7 @@ var render = function() {
                                   }
                                 }),
                                 _c("v-text-field", {
-                                  attrs: { type: "text", label: "標題" },
+                                  attrs: { type: "number", label: "希望工作待遇" },
                                   model: {
                                     value: _vm.resume.salaryType,
                                     callback: function($$v) {
