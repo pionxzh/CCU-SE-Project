@@ -25,9 +25,22 @@ class ApiController extends Controller
         $ret = new \stdClass();
         if(Auth::check())
         {
-            $ret ->stat = 1;
-            $ret ->user_type = Auth::User() ->user_type;
-            $ret ->username = Auth::User() ->email;
+            switch(Auth::User() ->user_type)
+            {
+                case 1:
+                    $ret ->stat = 1;
+                    $ret ->emailStat = Employee::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
+                    $ret ->user_type = Auth::User() ->user_type;
+                    $ret ->username = Auth::User() ->email;
+                    break;
+                case 2:
+                    $ret ->stat = 1;
+                    $ret ->emailStat = Employer::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
+                    $ret ->verify = Employer::where('uid', '=', Auth::User() ->id) ->first() ->is_verify;
+                    $ret ->user_type = Auth::User() ->user_type;
+                    $ret ->username = Auth::User() ->email;
+                    break;              
+            }
             return json_encode($ret);
         }
         else
@@ -40,7 +53,7 @@ class ApiController extends Controller
 
 
     /* ***********************************
-     * / Route::get('api/user/personel') /
+     * / Route::get('api/user/personal') /
      * **********************************/
     public function getPersonalInfo()
     {

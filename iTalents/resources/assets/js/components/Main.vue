@@ -40,10 +40,7 @@
                                             v-icon.blue--text.text--lighten-2 email
                                         v-list-tile-content
                                             v-list-tile-title test@google.com
-            v-footer.grey.darken-2
-                v-layout(row='', wrap='', align-center='')
-                    v-flex(xs12='')
-                        .black--text.ml-3 CopyRight @2017
+            p-footer
 
 </template>
 

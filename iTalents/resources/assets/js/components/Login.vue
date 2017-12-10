@@ -23,8 +23,8 @@
                             v-avatar.center-item(size='180' style='margin-bottom: 10px;')
                                 img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
                             p.text-xs-center.mb-3(style='font-size: 20px;') 登入
-                            v-text-field(type='text' label='Email' v-model.trim='email' dark='')
-                            v-text-field(type='password' label='密碼' v-model.trim='password' @keyup.enter='login' dark='')
+                            v-text-field(type='text' name='email' label='Email' v-model.trim='email' dark='')
+                            v-text-field(type='password' name='password' label='密碼' v-model.trim='password' @keyup.enter='login' dark='')
 
                             v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login' :loading="loading" :disabled="loading") 送出
                         router-link.no-decoration.mb-2(:to="{name: 'Register'}") 還沒有帳號? 立刻註冊
@@ -70,10 +70,9 @@ export default {
                     this.loading = false
                     let modalMsg = response.data.stat ? `歡迎回來，用戶 ${response.data.username}，現在將轉回首頁!` : '帳號密碼組合錯誤'
                     if (response.data.stat) {
-                        let that = this
                         setTimeout(function() {
-                            that.$router.push('main')
-                        }, 3000)
+                            window.location.href = '/main'
+                        }, 2000)
                     }
                     this.showDialog(modalMsg)
                 })

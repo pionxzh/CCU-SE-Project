@@ -36,11 +36,16 @@ Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
 // 回傳廠商所有徵才資訊
 Route::get('api/recruit', 'EmployerController@getAllRecruitments');
 
-// 建立新的一筆 recruitments data
-Route::post('recruit', 'EmployerController@newRecruitment');
+// 回傳單筆徵才資訊
+Route::get('api/recruit/{rid}', 'EmployerController@getThisRecruitment');
 
+// 建立新的一筆 recruitments data
+Route::post('api/recruit', 'EmployerController@newRecruitment');
 
 // 更新工作內容
+
+Route::post('recruit/{rid}/field', 'EmployerController@updateJobField');
+
 Route::post('recruit/{rid}/jobinfo', 'EmployerController@updateJobInfo');
 // 更新工作需求
 Route::post('recruit/{rid}/jobrequire', 'EmployerController@updateJobRequire');

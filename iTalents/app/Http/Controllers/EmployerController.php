@@ -22,12 +22,35 @@ class EmployerController extends Controller
      *  回傳所有該廠商發過得徵才資訊 *
      ********************************/
 
+
+     /**********************
+     * 回傳單筆徵才表資料 *
+     *********************/
+    public function getThisRecruitment($rid)
+    {
+        $ret = new \stdClass();
+        $thisRecruit = Recruitment::find($rid);
+        if(Auth::check() and Auth::User() ->id === $thisRecruit ->uid)
+        {
+            $ret ->data = $thisRecruit;
+            $ret ->stat = 1;
+            return json_encode($ret);          
+        }
+        else
+        {
+            $ret ->stat = 0;
+            return json_encode($ret);
+        }
+
+    }
+
+
     public function getAllRecruitments()
     {
         $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id);
+            $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id) ->get();
             $ret ->stat = 1;
             return json_encode($ret);
         }
@@ -67,17 +90,20 @@ class EmployerController extends Controller
      * 檢查徵才表是否完整 *
      *********************/
 
-    public function checkCompleteness(&$thisRecruit)
+    public function checkCompleteness($rid)
     {
-        foreach($thisRecruit as $key => $val)
+        $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+        foreach($thisRecruit ->toArray() as $key => $val)
         {
-            if(empty($val))
+            if($key !== "is_complete" and empty($val))
             {
                 $thisRecruit ->is_complete = false;
+                $thisRecruit ->save();
                 return;
             }
         }
         $thisRecruit ->is_complete = true;
+        $thisRecruit ->save();
     }
 
 
@@ -86,45 +112,38 @@ class EmployerController extends Controller
      *     檢查擁有者    *
      *********************/
 
-    public function checkOwn(&$thisRecruit)
+    public function checkOwn($rid)
     {
-        if(!empty($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        $thisRecruit = Recruitment::where('id', '=', $rid) -> first();
+        return (!empty($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id);
     }
 
 
-    /**********************
-     * 更新徵才表工作描述 *
-     *********************/
 
-    public function updateJobInfo()
+
+    public function updateJobField($rid)
     {
         $ret = new \stdClass();
 
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $thisRecruit = Recruitment::where('id', '=', Input::get('rid')) ->first();
-            if(!$this ->checkOwn($thisRecruit))
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+            if(!$this ->checkOwn($thisRecruit ->id))
             {
                 $ret ->stat = 0;
                 return json_encode($ret);
             }
-            $thisRecruit ->title = Input::get('');
-            $thisRecruit ->jobname = Input::get('');
-            $thisRecruit ->jobtype = Input::get('');
-            $thisRecruit ->lang = Input::get('');
-            $thisRecruit ->upay = Input::get('');
-            $thisRecruit ->dpay = Input::get('');
-            $thisRecruit ->jobinfo = Input::get('');
-            $this ->checkCompleteness($thisRecruit);
+            $thisRecruit ->title = Input::get('title');
+            $thisRecruit ->jobname = Input::get('jobname');
+            $thisRecruit ->jobtype = Input::get('jobtype');
+            $thisRecruit ->lang = Input::get('lang');
+            $thisRecruit ->upay = Input::get('upay');
+            $thisRecruit ->dpay = Input::get('dpay');
             $thisRecruit ->save();
+            $this ->checkCompleteness($thisRecruit ->id);
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
             $ret ->stat = 1;
+            $ret ->is_complete = $thisRecruit ->is_complete;
             return json_encode($ret);
         }
         else
@@ -136,23 +155,59 @@ class EmployerController extends Controller
 
 
     /**********************
-     * 更新徵才表條件要求 *
+     * 更新徵才表工作描述 *
      *********************/
-    public function updateJobRequire()
+
+    public function updateJobInfo($rid)
     {
         $ret = new \stdClass();
+
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $thisRecruit = Recruitment::where('id', '=', Input::get('rid')) ->first();
-            if(!$this ->checkOwn($thisRecruit))
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+            if(!$this ->checkOwn($thisRecruit ->id))
             {
                 $ret ->stat = 0;
                 return json_encode($ret);
             }
-            $thisRecruit ->jobrequire = Input::get('');
-            $this ->checkCompleteness($thisRecruit);
-            $this ->save();
+            
+            $thisRecruit ->jobinfo = Input::get('data');
+            $thisRecruit ->save();
+            $this ->checkCompleteness($thisRecruit ->id);
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
             $ret ->stat = 1;
+            $ret ->is_complete = $thisRecruit ->is_complete;
+            return json_encode($ret);
+        }
+        else
+        {
+            $ret ->stat = 0;
+            return json_encode($ret);
+        }
+    }
+
+    
+
+    /**********************
+     * 更新徵才表條件要求 *
+     *********************/
+    public function updateJobRequire($rid)
+    {
+        $ret = new \stdClass();
+        if(Auth::check() and Auth::User() ->user_type === 2)
+        {
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+            if(!$this ->checkOwn($thisRecruit ->id))
+            {
+                $ret ->stat = 0;
+                return json_encode($ret);
+            }
+            $thisRecruit ->jobrequire = Input::get('data');
+            $thisRecruit ->save();
+            $this ->checkCompleteness($thisRecruit ->id);
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+            $ret ->stat = 1;
+            $ret ->is_complete = $thisRecruit ->is_complete;
             return json_encode($ret);
         }
         else
@@ -165,21 +220,23 @@ class EmployerController extends Controller
     /**********************
      * 更新徵才表福利內容 *
      *********************/
-    public function updateCompanyBenefits()
+    public function updateCompanyBenefits($rid)
     {
         $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $thisRecruit = Recruitment::where('id', '=', Input::get('rid')) ->first();
-            if(!$this ->checkOwn($thisRecruit))
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+            if(!$this ->checkOwn($thisRecruit ->id))
             {
                 $ret ->stat = 0;
                 return json_encode($ret);
             }
-            $thisRecruit ->benefits = Input::get('');
-            $this ->checkCompleteness($thisRecruit);
-            $this ->save();
+            $thisRecruit ->benefits = Input::get('data');
+            $thisRecruit ->save();
+            $this ->checkCompleteness($thisRecruit ->id);
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
             $ret ->stat = 1;
+            $ret ->is_complete = $thisRecruit ->is_complete;
             return json_encode($ret);
         }
         else
@@ -193,21 +250,23 @@ class EmployerController extends Controller
     /**********************
      * 更新徵才表聯繫方式 *
      *********************/
-    public function updateCompanyContact()
+    public function updateCompanyContact($rid)
     {
         $ret = new \stdClass();
         if(Auth::check() and Auth::User() ->user_type === 2)
         {
-            $thisRecruit = Recruitment::where('id', '=', Input::get('rid')) ->first();
-            if(!$this ->checkOwn($thisRecruit))
+            $thisRecruit = Recruitment::where('id', '=',$rid) ->first();
+            if(!$this ->checkOwn($thisRecruit ->id))
             {
                 $ret ->stat = 0;
                 return json_encode($ret);
             }
-            $thisRecruit ->contact = Input::get('');
-            $this ->checkCompleteness($thisRecruit);
-            $this ->save();
+            $thisRecruit ->contact = Input::get('data');
+            $thisRecruit ->save();
+            $this ->checkCompleteness($thisRecruit ->id);
+            $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
             $ret ->stat = 1;
+            $ret ->is_complete = $thisRecruit ->is_complete;
             return json_encode($ret);
         }
         else
