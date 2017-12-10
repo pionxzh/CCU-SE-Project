@@ -1,23 +1,13 @@
 <template lang="pug">
-    v-app(light='')
-        v-toolbar.primary(color="blue darken-3" dark="" app="" clipped-left="" fixed="")
-            v-toolbar-title iTalent
-            v-spacer
-            v-text-field(light="" solo prepend-icon="search" placeholder="Search" style="max-width: 500px; min-width: 128px")
-            v-spacer
-            .d-flex(align-center="" style="margin-left: auto")
-                router-link(:to="{name: 'Login'}")
-                    v-btn 登入
-                    
-                v-btn(icon="")
-                    v-icon notifications
+    div    
         v-content
             section
                 v-parallax(src='https://i.imgur.com/zhgtd7S.jpg', height='600')
                     v-layout.white--text(column='', align-center='', justify-center='')
                         h1.white--text.mb-2.display-1.text-xs-center 國際人才資料庫
                         .subheading.mb-3.text-xs-center International learnTsai database
-                        v-btn.blue.lighten-2.mt-5(dark='', large='', href='/pre-made-themes') 開始使用
+                        router-link.no-decoration(:to="{name: 'Recruit'}")
+                            v-btn.blue.lighten-2.mt-5(dark='', large='') 開始使用
             section
                 v-container(grid-list-xl='')
                     v-layout.my-5(row='', wrap='', justify-center='')
@@ -33,8 +23,7 @@
                             v-card.elevation-0.transparent
                                 v-card-title.layout.justify-center(primary-title='')
                                     .headline Contact us
-                                v-card-text
-                                    | Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
+                                v-card-text Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
                                 v-list.transparent
                                     v-list-tile
                                         v-list-tile-action
@@ -54,21 +43,13 @@
             v-footer.grey.darken-2
                 v-layout(row='', wrap='', align-center='')
                     v-flex(xs12='')
-                        .black--text.ml-3
-                            | CopyRight @2017
+                        .black--text.ml-3 CopyRight @2017
 
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
     data: () => ({
-        user: {
-            logined: false,
-            username: '用戶名不存在',
-            user_type: 0
-        },
         loading: false
     }),
     methods: {
@@ -82,15 +63,6 @@ export default {
                 text: msg,
                 buttons: [{title: '關閉'}]
             })
-        },
-        getUser: function() {
-            this.loading = true
-            axios.get('/api/user')
-                .then(response => {
-                    this.user = response.data
-                    this.$root.user = response.data
-                })
-                .catch(e => this.errHandler(e))
         }
     }
 }
