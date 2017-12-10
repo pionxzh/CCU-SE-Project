@@ -20,13 +20,13 @@
                 v-flex(xs0='')
                     v-card.transCard(dark='' :class='{show: type !== 0}')
                         v-card-text
-                            v-avatar.center-item(size='180' style='margin-bottom: 10px;')
+                            v-avatar.center-item.mb-0(size='180')
                                 img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
                             p.text-xs-center.mb-3(style='font-size: 20px;') 註冊
                             v-text-field(type='text' label='Email' v-model.trim='email' dark='')
                             v-text-field(type='password' label='密碼' v-model.trim='password' @keyup.enter='regist' dark='')
 
-                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='regist') 送出
+                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='regist' :loading="loading" :disabled="loading") 送出
                         router-link.no-decoration.right.mb-2(:to="{name: 'Login'}") 已經有帳號? 立刻登入
                 v-flex(xs0='')
 

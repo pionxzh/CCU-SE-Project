@@ -26,7 +26,7 @@
                             v-text-field(type='text' label='Email' v-model.trim='email' dark='')
                             v-text-field(type='password' label='密碼' v-model.trim='password' @keyup.enter='login' dark='')
 
-                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login') 送出
+                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login' :loading="loading" :disabled="loading") 送出
                         router-link.no-decoration.mb-2(:to="{name: 'Register'}") 還沒有帳號? 立刻註冊
                         router-link.no-decoration.right.mb-2(:to="{name: 'Register'}") 忘記密碼 ?
                 v-flex(xs0='')

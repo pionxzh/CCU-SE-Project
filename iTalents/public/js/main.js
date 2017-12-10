@@ -30301,6 +30301,11 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -31244,24 +31249,69 @@ var render = function() {
             }
           }),
           _c("v-spacer"),
-          _c(
-            "div",
-            {
-              staticClass: "d-flex",
-              staticStyle: { "margin-left": "auto" },
-              attrs: { "align-center": "" }
-            },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "Login" } } },
-                [_c("v-btn", [_vm._v("登入")])],
+          !_vm.user.logined
+            ? _c(
+                "div",
+                {
+                  staticClass: "d-flex",
+                  staticStyle: { "margin-left": "auto" },
+                  attrs: { "align-center": "" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "Login" } } },
+                    [_c("v-btn", [_vm._v("登入/註冊")])],
+                    1
+                  )
+                ],
                 1
-              ),
+              )
+            : _vm._e(),
+          _c(
+            "v-menu",
+            [
+              _vm.user.logined
+                ? _c(
+                    "v-btn",
+                    {
+                      staticClass: "mr-5",
+                      attrs: { slot: "activator", icon: "" },
+                      slot: "activator"
+                    },
+                    [_vm._v(_vm._s(_vm.user.username))]
+                  )
+                : _vm._e(),
               _c(
-                "v-btn",
-                { attrs: { icon: "" } },
-                [_c("v-icon", [_vm._v("notifications")])],
+                "v-list",
+                [
+                  _c(
+                    "v-list-tile",
+                    { staticClass: "list__tile--link" },
+                    [
+                      _c(
+                        "v-list-tile-title",
+                        {
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              _vm.flag.setting = true
+                            }
+                          }
+                        },
+                        [_vm._v("會員中心")]
+                      )
+                    ],
+                    1
+                  ),
+                  _c("v-divider"),
+                  _c(
+                    "v-list-tile",
+                    { staticClass: "list__tile--link" },
+                    [_c("v-list-tile-title", [_vm._v("登出")])],
+                    1
+                  )
+                ],
                 1
               )
             ],
@@ -31853,7 +31903,11 @@ var render = function() {
                             {
                               staticClass: "wide-btn mb-4",
                               staticStyle: { "margin-left": "0px" },
-                              attrs: { color: "primary" },
+                              attrs: {
+                                color: "primary",
+                                loading: _vm.loading,
+                                disabled: _vm.loading
+                              },
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
@@ -32162,8 +32216,7 @@ var render = function() {
                           _c(
                             "v-avatar",
                             {
-                              staticClass: "center-item",
-                              staticStyle: { "margin-bottom": "10px" },
+                              staticClass: "center-item mb-0",
                               attrs: { size: "180" }
                             },
                             [
@@ -32226,7 +32279,11 @@ var render = function() {
                             {
                               staticClass: "wide-btn mb-4",
                               staticStyle: { "margin-left": "0px" },
-                              attrs: { color: "primary" },
+                              attrs: {
+                                color: "primary",
+                                loading: _vm.loading,
+                                disabled: _vm.loading
+                              },
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
