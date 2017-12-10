@@ -1,5 +1,6 @@
 <template lang="pug">
-    div#app(style="display: initial;")
+    v-app#app(light='')
+        navbar
         transition(name="page",mode="out-in")
             keep-alive
                 router-view
