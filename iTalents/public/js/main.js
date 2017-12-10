@@ -32209,7 +32209,7 @@ var render = function() {
                                 ) {
                                   return null
                                 }
-                                _vm.login($event)
+                                _vm.regist($event)
                               }
                             },
                             model: {
@@ -32230,7 +32230,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  _vm.login($event)
+                                  _vm.regist($event)
                                 }
                               }
                             },
