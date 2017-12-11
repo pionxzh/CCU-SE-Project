@@ -73,7 +73,6 @@ export default {
         recruit: {
             title: '',
             jobname: '',
-            jobtype: '',
             lang: '',
             upay: null,
             dpay: null,
@@ -139,7 +138,6 @@ export default {
             axios.post(`/recruit/${this.$route.params.id}/field`, {
                 title: this.recruit.title,
                 jobname: this.recruit.jobname,
-                jobtype: this.recruit.jobtype,
                 lang: this.recruit.lang,
                 upay: this.recruit.upay,
                 dpay: this.recruit.dpay

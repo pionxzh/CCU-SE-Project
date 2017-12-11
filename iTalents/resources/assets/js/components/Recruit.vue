@@ -14,9 +14,9 @@
                                         router-link.no-decoration(:to="{path: 'recruit/edit/' + item.id}")
                                             v-list-tile(avatar='', ripple='', :key='item.title')
                                                 v-list-tile-content
-                                                    v-list-tile-title {{ item.title }}
+                                                    v-list-tile-title {{ item.title || '尚未填寫' }}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 
-                                                        | {{ item.dpay }}&nbsp;~&nbsp;{{ item.upay }}
+                                                        | {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
                                                     v-list-tile-sub-title {{ item.jobname }} 
                                                 v-list-tile-action
                                                     v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
@@ -51,7 +51,7 @@ export default {
             })
         },
         checkPermission() {
-            if (!this.$root.user.username.length || this.$root.user.user_type !== 2 || !this.$root.user.emailStat || !this.$root.user.verify) {
+            if (!this.$root.user.username.length || this.$root.user.userType !== 2 || !this.$root.user.emailStat || !this.$root.user.verify) {
                 this.$router.push({name: 'Main'})
             }
         },
@@ -70,9 +70,7 @@ export default {
             axios.post('/api/recruit', {})
                 .then(response => {
                     this.loading = false
-                    console.log(response.data)
                     if (response.data.stat) {
-                        console.log(`recruit/edit/${response.data.rid}`)
                         this.$router.push(`recruit/edit/${response.data.rid}`)
                     }
                 })
