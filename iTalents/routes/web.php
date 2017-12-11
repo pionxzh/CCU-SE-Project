@@ -54,12 +54,8 @@ Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 /***********外籍生***********/
 
 // 回傳履歷資料
-<<<<<<< HEAD
-Route::get('api/resume', 'EmployeeController@getAllResumes');
-=======
 Route::get('api/resume', 'EmployeeController@getUserResume');
 
->>>>>>> 3c469ebd11024976163aaee2b455fc2fbf4a03ad
 // 修改履歷-基本資料
 Route::post('/resume/basic', 'EmployeeController@updateBasic');
 // 修改履歷-學歷經驗

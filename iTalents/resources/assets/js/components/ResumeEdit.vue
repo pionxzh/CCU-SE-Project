@@ -30,26 +30,19 @@
                                         v-text-field(type='text' label='姓氏' v-model.trim='resume.lastName')
                                         v-text-field(type='text' label='名字' v-model.trim='resume.firstName')
                                         v-text-field(type='number' label='性別' v-model.trim='resume.gender')
-                                        v-radio-group(v-model="resume.gender" row)
+                                        v-radio-group(v-model.number="resume.gender" row)
                                             v-radio(label="男" value=1)
                                             v-radio(label="女" value=2)
                                             v-radio(label="第三性" value=3)
-                                        v-text-field(slot="activator" label="Date in M/D/Y format"
-          v-model="dateFormatted"
-          prepend-icon="event"
-          @blur="date = parseDate(dateFormatted)"
-        ></v-text-field>
-        <v-date-picker v-model="date" @input="dateFormatted = formatDate($event)" no-title scrollable actions>
-          <template slot-scope="{ save, cancel }">
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
-              <v-btn flat color="primary" @click="save">OK</v-btn>
-            </v-card-actions>
-          </template>
-        </v-date-picker>
-                                        v-date-picker(v-model='resume.birth' landscape)
-                                        v-text-field(type='text' label='生日' v-model.trim='resume.birth' mask='####-##-##')
+                                        v-text-field(slot="activator" label="生日" v-model="resume.birth" prepend-icon="event")
+                                            v-date-picker(v-model="resume.birth" scrollable='' actions='' landscape='')
+                                                template(slot-scope="{ save, cancel }")
+                                                    v-card-actions
+                                                        v-spacer
+                                                        v-btn(flat color="primary" @click="cancel") Cancel
+                                                        v-btn(flat color="primary" @click="save") OK
+
+                                        v-text-field(type='text' label='生日' v-model.trim='resume.birth')
                                         v-text-field(type='text' label='國籍' v-model.trim='resume.nation')
                                         v-text-field(type='text' label='信箱' v-model.trim='resume.email')
                                         v-text-field(type='text' label='手機' v-model.trim='resume.phone')
@@ -215,7 +208,7 @@ export default {
                     tmp[element] = this.resume[element]
                 })
             } else {
-                tmp = this.resume[fieldName]
+                tmp.data = this.resume[fieldName]
             }
             axios.post(`/resume/${fieldName}`, tmp)
                 .then(response => {
