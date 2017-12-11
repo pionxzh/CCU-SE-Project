@@ -15,7 +15,8 @@ class CreateUsersTable extends Migration
     /* This will be triggered when calling artisan migrate, Hawa*/
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table)
+        {
 
             $table ->increments('id');
             $table ->string('email') ->unique();
@@ -24,7 +25,8 @@ class CreateUsersTable extends Migration
             $table ->string('emailtok') ->nullable() ->default(NULL);
             $table->rememberToken();
             $table->timestamps();
-        });
+        }
+        );
     }
 
     /**

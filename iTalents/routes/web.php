@@ -35,17 +35,13 @@ Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
 
 // 回傳廠商所有徵才資訊
 Route::get('api/recruit', 'EmployerController@getAllRecruitments');
-
 // 回傳單筆徵才資訊
 Route::get('api/recruit/{rid}', 'EmployerController@getThisRecruitment');
-
 // 建立新的一筆 recruitments data
 Route::post('api/recruit', 'EmployerController@newRecruitment');
-
-// 更新工作內容
-
+// 更新工作基本欄位
 Route::post('recruit/{rid}/field', 'EmployerController@updateJobField');
-
+// 更新工作內容
 Route::post('recruit/{rid}/jobinfo', 'EmployerController@updateJobInfo');
 // 更新工作需求
 Route::post('recruit/{rid}/jobrequire', 'EmployerController@updateJobRequire');
@@ -55,11 +51,10 @@ Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits'
 Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 
 
-/***********履歷***********/
+/***********外籍生***********/
 
 // 回傳履歷資料
 Route::get('api/resume', 'EmployeeController@getAllResumes');
-
 // 修改履歷-基本資料
 Route::post('/resume/basic', 'EmployeeController@updateBasic');
 // 修改履歷-學歷經驗
@@ -72,6 +67,9 @@ Route::post('/resume/condition', 'EmployeeController@updateCondition');
 Route::post('/resume/skill', 'EmployeeController@updateSkill');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
+// 查看主動配對廠商徵才結果
+// 投出履歷表
+// 回傳所有該使用者投過的徵才表
 
 
 Route::get('{all}', function () {
