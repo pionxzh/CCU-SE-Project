@@ -24,11 +24,9 @@ class Employee extends Migration
             $table ->boolean('is_active') ->default(false);
             $table ->string('firstname') ->nullable() ->default(NULL);
             $table ->string('lastname') ->nullable() ->default(NULL);
-            $table ->integer('sex') ->nullable() ->default(NULL);
-            $table ->date('birth') ->nullable() ->default(NULL);
-            $table ->string('pid') ->nullable() ->default(NULL); // 身份證
+            $table ->string('studentID') ->nullable() ->default(NULL);
+            $table ->integer('gender') ->nullable() ->default(NULL);
             $table ->string('phone') ->nullable() ->default(NULL);
-            $table ->string('nation') ->nullable() ->default(NULL);
             $table ->timestamps();
         }
         );

@@ -25,29 +25,29 @@ class ApiController extends Controller
         $ret = new \stdClass();
         if(Auth::check())
         {
+            $ret ->stat = 1;
+
             switch(Auth::User() ->user_type)
             {
                 case 1:
-                    $ret ->stat = 1;
                     $ret ->emailStat = Employee::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
-                    $ret ->user_type = Auth::User() ->user_type;
+                    $ret ->userType = Auth::User() ->user_type;
                     $ret ->username = Auth::User() ->email;
                     break;
                 case 2:
-                    $ret ->stat = 1;
-                    $ret ->emailStat = Employer::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
-                    $ret ->verify = Employer::where('uid', '=', Auth::User() ->id) ->first() ->is_verify;
-                    $ret ->user_type = Auth::User() ->user_type;
+                    $tempUser = Employer::where('uid', '=', Auth::User() ->id) ->first();
+                    $ret ->emailState = $tempUser ->is_active;
+                    $ret ->verify = $tempUser ->is_verify;
+                    $ret ->userType = Auth::User() ->user_type;
                     $ret ->username = Auth::User() ->email;
-                    break;              
+                    break;
             }
-            return json_encode($ret);
         }
         else
         {
             $ret ->stat = 0;
-            return json_encode($ret);
         }
+        return json_encode($ret);
     }
 
 
@@ -57,6 +57,8 @@ class ApiController extends Controller
      * **********************************/
     public function getPersonalInfo()
     {
+        $ret = new \stdClass();
+
         if(Auth::check())
         {
             switch(Auth::User() ->user_type)
@@ -64,28 +66,27 @@ class ApiController extends Controller
                 case 1:
 
                     $ret = Employee::where('uid', '=', Auth::User() ->id) ->first();
-                    $ret ->stat = 1;
-                    return json_encode($ret);
+                    break;
 
                 case 2:
 
                     $ret = Employer::where('uid', '=', Auth::User() ->id) ->first();
-                    $ret -> stat = 1;
-                    return json_encode($ret);
+                    break;
             }
+            $ret ->stat = 1;
         }
         else
         {
-            $ret = new \stdClass();
             $ret ->stat = 0;
-            return json_encode($ret);
         }
+        return json_encode($ret);
     }
 
 
     public function updatePersonalInfo()
     {
         $ret = new \stdClass();
+        $ret ->stat = 0;
 
         if(Auth::check())
         {
@@ -95,40 +96,28 @@ class ApiController extends Controller
                 case 1:
 
                     $thisUser = Employee::where('uid', '=', Auth::User() ->id) ->first();
-                    $thisUser ->firstname = Input::get('');
-                    $thisUser ->lastname = Input::get('');
-                    $thisUser ->sex = Input::get('');
-                    $thisUser ->birth = Input::get('');
-                    $thisUser ->pid = Input::get('');
-                    $thisUser ->phone = Input::get('');
-                    $thisUser ->nation = Input::get('');
+                    $thisUser ->firstname = Input::get('firstname');
+                    $thisUser ->lastname = Input::get('lastname');
+                    $thisUser ->studentID = Input::get('studentID');
+                    $thisUser ->gender = Input::get('gender');
+                    $thisUser ->phone = Input::get('phone');
                     $thisUser ->save();
                     break;
 
-
                 case 2:
 
-                    $thisUser = Employer::where('id', '=', Auth::User() ->id) ->first();
-                    $thisUser ->cid = Input::get('');
-                    $thisUser ->cname = Input::get('');
-                    $thisUser ->cphone = Input::get('');
-                    $thisUser ->caddress = Input::get('');
+                    $thisUser = Employer::where('uid', '=', Auth::User() ->id) ->first();
+                    $thisUser ->name = Input::get('name');
+                    $thisUser ->EIN = Input::get('EIN'); // 公司統編
+                    $thisUser ->email = Input::get('email'); // 人事部信箱
+                    $thisUser ->phone = Input::get('phone'); // 人事部電話
                     $thisUser ->save();
                     break;
 
             }
             $ret ->stat = 1;
-            return json_encode($ret);
         }
-        else
-        {
-            $ret ->stat = 0;
-            return json_encode($ret);
-        }
+
+        return json_encode($ret);
     }
-
-
-
-
-
 }

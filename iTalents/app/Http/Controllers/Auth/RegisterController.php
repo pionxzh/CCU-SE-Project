@@ -103,25 +103,22 @@ class RegisterController extends Controller
         switch($thisUser ->user_type)
         {
             case 1:
-
+                /* 建立 Employee表資訊 */
                 $newEmployee = new Employee;
                 $newEmployee ->uid = $thisUser ->id;
                 $newEmployee ->save();
-
+                /* 建立 Resume表資訊*/
                 $newResume = new Resume;
                 $newResume ->uid = $thisUser ->id;
                 $newResume ->save();
-
                 break;
 
-
             case 2:
-
+                /* 建立 Employer表資訊*/
                 $newEmployer = new Employer;
                 $newEmployer ->uid = $thisUser ->id;
                 $newEmployer ->save();
                 break;
-
         }
     }
 
@@ -132,25 +129,30 @@ class RegisterController extends Controller
 
         $ret = new \stdClass();
 
+        if(Input::get('userType') !== 1 and Input::get('userType') !== 2)
+        {
+            $ret ->stat = 0;
+            return json_encode($ret);
+        }
+
         if(User::where('email', '=', Input::get('email')) ->exists())
         {
             $ret ->stat = 0;
             return json_encode($ret);
         }
 
-        /* V-key */
+        /* Email-token */
         $emailtok = str_random(30);
 
-
+        /* 建立新的 user 資料*/
         $newUser = new User;
         $newUser ->email = Input::get('email');
         $newUser ->password = bcrypt(Input::get('password'));
-        $newUser ->user_type = Input::get('user_type');
+        $newUser ->user_type = Input::get('userType');
         $newUser ->emailtok = $emailtok;
         $newUser ->save();
 
-        /*
-        ************************* Mass Assignment will fail*********************
+        /************************* Mass Assignment will fail*********************
         User::create([
 
             'email' => Input::get('email'),
@@ -160,11 +162,10 @@ class RegisterController extends Controller
         ]);
          ***********************************************************************/
 
-
+        // 建立資訊到對應的表(廠商、外籍生)
         $this ->makeCreate($newUser);
-
+        // 轉 key value 型態
         $emailtok = ['emailtok' => $emailtok];
-
 
         Mail::send('email.verify', $emailtok, function($message)    {
 
@@ -187,9 +188,11 @@ class RegisterController extends Controller
     public function emailverify($emailtok)
     {
         $ret = new \stdClass();
+        $ret ->stat = 0;
 
         if(User::where('emailtok', '=', $emailtok) ->exists())
         {
+            $ret ->stat = 1;
             $thisUser = (User::where('emailtok', '=', $emailtok) ->first());
 
             switch($thisUser ->user_type)
@@ -208,11 +211,7 @@ class RegisterController extends Controller
                     $thisUser ->save();
                     break;
             }
-
-            return json_encode($ret ->stat = 1);
         }
-
-        return json_encode($ret ->stat = 0);
+        return json_encode($ret);
     }
-
 }

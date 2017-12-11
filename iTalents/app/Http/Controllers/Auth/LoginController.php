@@ -67,58 +67,25 @@ class LoginController extends Controller
     public function login()
     {
         $ret = new \stdClass();
-
+        $ret ->stat = 0;
 
         if(Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]))
         {
             $ret ->stat = 1;
-            $ret ->username = Auth::User() ->email;
-            return json_encode($ret);
         }
-
-        else
-        {
-            $ret ->stat = 0;
-            return json_encode($ret);
-        }
+        return json_encode($ret);
     }
 
     public function logout()
     {
         $ret = new \stdClass();
+        $ret ->stat = 0;
 
         if(Auth::check())
         {
             Auth::logout();
             $ret ->stat = 1;
         }
-        else
-        {
-            $ret ->stat = 0;
-        }
         return json_encode($ret);
     }
-
-/*
-    public function getUserInfo()
-    {
-        $ret = new \stdClasS();
-        if(Auth::check())
-        {
-            $ret ->stat = 1;
-            $ret ->user_type = Auth::User() ->user_type;
-            $ret ->username = Auth::User() ->email;
-            return json_encode($ret);
-        }
-        else
-        {
-            $ret ->stat = 0;
-            return json_encode($ret);
-        }
-    }
-
- */
-
-
-
 }

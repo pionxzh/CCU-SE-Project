@@ -13,22 +13,28 @@ class CreateLanguageTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table)
+        {
             $table->increments('id');
-
-            $table->integer('uid'); // user id
-            $table->string('language'); // language
-            $table->integer('langAbility');  // language Ability
-
+            $table->integer('uid'); // User ID
+            $table->string('language'); // 語言(encode過後)
+            $table->integer('langAbility');  // 語言能力分級
             $table->timestamps();
-        });
+        }
+        );
     }
+
+
+
+
+
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('languages');

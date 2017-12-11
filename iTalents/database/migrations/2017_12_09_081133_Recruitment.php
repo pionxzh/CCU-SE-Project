@@ -23,7 +23,6 @@ class Recruitment extends Migration
             /**************************************************************************/
             $table ->string('title') ->nullable() ->default(NULL); // 徵才標題
             $table ->string('jobname')->nullable() ->default(NULL); ; // 職缺名稱, (matching)
-            $table ->integer('jobtype')->nullable() ->default(NULL); ; // 全職(1)、兼職(0), (matching)
             $table ->string('lang')->nullable() ->default(NULL); ; // 語言需求(encode), (matching)
             $table ->integer('upay')->nullable() ->default(NULL); ; // 薪水 upper_bound, (matching)
             $table ->integer('dpay')->nullable() ->default(NULL); ; // 薪水 lower_bound, (matching)
