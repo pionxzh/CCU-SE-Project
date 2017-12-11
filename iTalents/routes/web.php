@@ -49,13 +49,17 @@ Route::post('recruit/{rid}/jobrequire', 'EmployerController@updateJobRequire');
 Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits');
 // 更新聯絡方式
 Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
-
+// 查看主動配對外籍生
+Route::get('api/getComMatch', 'EmployerController@getComMatch');
+// 送出申請
+Route::post('invite/{uid}', 'EmployerController@applicationRequest');
+// 回傳所有投過該徵才表的外籍生、我送出的邀請
+Route::get('api/throw/{rid}', 'EmployerController@getComHistory');
 
 /***********外籍生***********/
 
 // 回傳履歷資料
 Route::get('api/resume', 'EmployeeController@getUserResume');
-
 // 修改履歷-基本資料
 Route::post('/resume/basic', 'EmployeeController@updateBasic');
 // 修改履歷-學歷經驗
@@ -70,8 +74,11 @@ Route::post('/resume/certificate', 'EmployeeController@updateCertificate');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
 // 查看主動配對廠商徵才結果
+Route::get('api/getStdMatch', 'EmployeeController@getStdMatch');
 // 投出履歷表
-// 回傳所有該使用者投過的徵才表
+Route::post('throw/{rid}', 'EmployeeController@applicationSubmit');
+// 回傳所有該使用者投過的徵才表、廠商邀請
+Route::get('api/throw', 'EmployeeController@getStdHistory');
 
 
 Route::get('{all}', function () {
