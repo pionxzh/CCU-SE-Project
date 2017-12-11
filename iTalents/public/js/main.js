@@ -32412,7 +32412,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
@@ -32429,6 +32428,7 @@ if (false) {(function () {
             {title: '技能與證照 ', icon: 'dashboard'},
             {title: '自傳', icon: 'dashboard'}
         ],
+        menu: false,
         tabIndex: 0,
         resume: {
             firstName: '',
@@ -32505,6 +32505,7 @@ if (false) {(function () {
                     console.log(response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
+                        this.resume.gender = '' + this.resume.gender
                     }
                 })
                 .catch(e => this.errHandler(e))
@@ -32516,6 +32517,9 @@ if (false) {(function () {
                 this.dataList[fieldName].forEach(element => {
                     tmp[element] = this.resume[element]
                 })
+                if (fieldName === 'basic') {
+                    tmp.gender = parseInt(tmp.gender)
+                }
             } else {
                 tmp.data = this.resume[fieldName]
             }
@@ -46134,22 +46138,6 @@ var render = function() {
                                       expression: "resume.firstName"
                                     }
                                   }),
-                                  _c("v-text-field", {
-                                    attrs: { type: "number", label: "性別" },
-                                    model: {
-                                      value: _vm.resume.gender,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.resume,
-                                          "gender",
-                                          typeof $$v === "string"
-                                            ? $$v.trim()
-                                            : $$v
-                                        )
-                                      },
-                                      expression: "resume.gender"
-                                    }
-                                  }),
                                   _c(
                                     "v-radio-group",
                                     {
@@ -46157,11 +46145,7 @@ var render = function() {
                                       model: {
                                         value: _vm.resume.gender,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.resume,
-                                            "gender",
-                                            _vm._n($$v)
-                                          )
+                                          _vm.$set(_vm.resume, "gender", $$v)
                                         },
                                         expression: "resume.gender"
                                       }
@@ -46180,96 +46164,112 @@ var render = function() {
                                     1
                                   ),
                                   _c(
-                                    "v-text-field",
+                                    "v-menu",
                                     {
                                       attrs: {
-                                        slot: "activator",
-                                        label: "生日",
-                                        "prepend-icon": "event"
+                                        lazy: "lazy",
+                                        "close-on-content-click": false,
+                                        transition: "scale-transition",
+                                        "offset-y": "offset-y",
+                                        "full-width": "full-width",
+                                        "nudge-right": 40,
+                                        "max-width": "290px",
+                                        "min-width": "290px"
                                       },
-                                      slot: "activator",
                                       model: {
-                                        value: _vm.resume.birth,
+                                        value: _vm.menu,
                                         callback: function($$v) {
-                                          _vm.$set(_vm.resume, "birth", $$v)
+                                          _vm.menu = $$v
                                         },
-                                        expression: "resume.birth"
+                                        expression: "menu"
                                       }
                                     },
                                     [
-                                      _c("v-date-picker", {
-                                        attrs: {
-                                          scrollable: "",
-                                          actions: "",
-                                          landscape: ""
-                                        },
-                                        scopedSlots: _vm._u([
-                                          {
-                                            key: "default",
-                                            fn: function(ref) {
-                                              var save = ref.save
-                                              var cancel = ref.cancel
-                                              return [
-                                                _c(
-                                                  "v-card-actions",
-                                                  [
-                                                    _c("v-spacer"),
-                                                    _c(
-                                                      "v-btn",
-                                                      {
-                                                        attrs: {
-                                                          flat: "flat",
-                                                          color: "primary"
-                                                        },
-                                                        on: { click: cancel }
-                                                      },
-                                                      [_vm._v("Cancel")]
-                                                    ),
-                                                    _c(
-                                                      "v-btn",
-                                                      {
-                                                        attrs: {
-                                                          flat: "flat",
-                                                          color: "primary"
-                                                        },
-                                                        on: { click: save }
-                                                      },
-                                                      [_vm._v("OK")]
-                                                    )
-                                                  ],
-                                                  1
-                                                )
-                                              ]
-                                            }
-                                          }
-                                        ]),
-                                        model: {
-                                          value: _vm.resume.birth,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.resume, "birth", $$v)
+                                      _c(
+                                        "v-text-field",
+                                        {
+                                          attrs: {
+                                            slot: "activator",
+                                            label: "生日",
+                                            "prepend-icon": "event",
+                                            readonly: ""
                                           },
-                                          expression: "resume.birth"
-                                        }
-                                      })
+                                          slot: "activator",
+                                          model: {
+                                            value: _vm.resume.birth,
+                                            callback: function($$v) {
+                                              _vm.$set(_vm.resume, "birth", $$v)
+                                            },
+                                            expression: "resume.birth"
+                                          }
+                                        },
+                                        [
+                                          _c("v-date-picker", {
+                                            attrs: {
+                                              scrollable: "",
+                                              actions: "",
+                                              landscape: ""
+                                            },
+                                            scopedSlots: _vm._u([
+                                              {
+                                                key: "default",
+                                                fn: function(ref) {
+                                                  var save = ref.save
+                                                  var cancel = ref.cancel
+                                                  return [
+                                                    _c(
+                                                      "v-card-actions",
+                                                      [
+                                                        _c("v-spacer"),
+                                                        _c(
+                                                          "v-btn",
+                                                          {
+                                                            attrs: {
+                                                              flat: "flat",
+                                                              color: "primary"
+                                                            },
+                                                            on: {
+                                                              click: cancel
+                                                            }
+                                                          },
+                                                          [_vm._v("Cancel")]
+                                                        ),
+                                                        _c(
+                                                          "v-btn",
+                                                          {
+                                                            attrs: {
+                                                              flat: "flat",
+                                                              color: "primary"
+                                                            },
+                                                            on: { click: save }
+                                                          },
+                                                          [_vm._v("OK")]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ]),
+                                            model: {
+                                              value: _vm.resume.birth,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.resume,
+                                                  "birth",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "resume.birth"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
                                     ],
                                     1
                                   ),
-                                  _c("v-text-field", {
-                                    attrs: { type: "text", label: "生日" },
-                                    model: {
-                                      value: _vm.resume.birth,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.resume,
-                                          "birth",
-                                          typeof $$v === "string"
-                                            ? $$v.trim()
-                                            : $$v
-                                        )
-                                      },
-                                      expression: "resume.birth"
-                                    }
-                                  }),
                                   _c("v-text-field", {
                                     attrs: { type: "text", label: "國籍" },
                                     model: {
@@ -46959,7 +46959,8 @@ if (false) {(function () {
             })
         },
         checkPermission() {
-            if (!this.$root.user.username.length || this.$root.user.userType !== 2 || !this.$root.user.emailStat || !this.$root.user.verify) {
+            console.log(this.$root.user)
+            if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
                 this.$router.push({name: 'Main'})
             }
         },

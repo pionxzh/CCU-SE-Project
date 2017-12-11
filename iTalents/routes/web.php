@@ -66,6 +66,7 @@ Route::post('/resume/language', 'EmployeeController@updateLanguage');
 Route::post('/resume/condition', 'EmployeeController@updateCondition');
 // 修改履歷-技能與證照
 Route::post('/resume/skill', 'EmployeeController@updateSkill');
+Route::post('/resume/certificate', 'EmployeeController@updateCertificate');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
 // 查看主動配對廠商徵才結果

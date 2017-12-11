@@ -51,7 +51,8 @@ export default {
             })
         },
         checkPermission() {
-            if (!this.$root.user.username.length || this.$root.user.userType !== 2 || !this.$root.user.emailStat || !this.$root.user.verify) {
+            console.log(this.$root.user)
+            if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
                 this.$router.push({name: 'Main'})
             }
         },
