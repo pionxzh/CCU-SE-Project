@@ -8,7 +8,6 @@
                         section
                             p.page-title 徵才訊息詳情 完成度{{ recruit.is_complete ? 'O' : 'X' }}
                                 v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
-                            .recruit-edit-field
 
                             p.recruit-edit-title 徵才資訊
                                 v-btn.right(color='primary' @click='saveField' :loading="loading" :disabled="loading") 保存
@@ -16,7 +15,6 @@
                                 v-flex(xs12='' md6='')
                                     v-text-field(type='text' label='標題' v-model.trim='recruit.title')
                                     v-text-field(type='text' label='職位名稱' v-model.trim='recruit.jobname')
-                                    v-text-field(type='number' label='職位類別' v-model.trim='recruit.jobtype')
                                     v-text-field(type='text' label='語言條件' v-model.trim='recruit.lang')
                                     v-layout(wrap='')
                                         v-flex(xs5='')

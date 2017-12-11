@@ -7,6 +7,7 @@ import Vmodal from 'vue-js-modal'
 import App from './App.vue'
 import Nav from './Nav.vue'
 import Footer from './Footer.vue'
+import User from './components/User.vue'
 import Main from './components/Main.vue'
 import Login from './components/Login.vue'
 import ResumeEdit from './components/ResumeEdit.vue'
@@ -42,6 +43,10 @@ const router = new Router({
         name: 'Register',
         path: '/register',
         component: Register
+    }, {
+        name: 'User',
+        path: '/user',
+        component: User
     }, {
         name: 'ResumeEdit',
         path: '/resume/edit',
