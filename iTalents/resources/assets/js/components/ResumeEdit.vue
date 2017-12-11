@@ -10,7 +10,7 @@
                                         v-list-tile-title.title Application
                             v-divider
                             v-list.pt-0(dense='')
-                                v-list-tile(v-for='(item, key) in items', :key='item.title', @click='toggleTab(key)')
+                                v-list-tile(v-for='(item, key) in items', :key='item.title' @click='toggleTab(key)')
                                     v-list-tile-action
                                         v-icon {{ item.icon }}
                                     v-list-tile-content
@@ -21,21 +21,38 @@
                             p.page-title 修改履歷
                                 v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
                             .recruit-edit-field
-
+                            div(v-for='(item, key) in dataList', :key='item.title')
                             div(v-if='tabIndex === 0')
                                 p.recruit-edit-title 基本資料
-                                    v-btn.right(color='primary' @click='saveBasic' :loading="loading" :disabled="loading") 保存
+                                    v-btn.right(color='primary' @click='save("basic")' :loading="loading" :disabled="loading") 保存
                                 .recruit-edit-field
                                     v-flex(xs12='' md6='')
-                                        v-text-field(type='text' label='名字' v-model.trim='resume.firstName')
                                         v-text-field(type='text' label='姓氏' v-model.trim='resume.lastName')
-                                        v-text-field(type='text' label='身分證' v-model.trim='resume.pid')
+                                        v-text-field(type='text' label='名字' v-model.trim='resume.firstName')
                                         v-text-field(type='number' label='性別' v-model.trim='resume.gender')
-                                        v-text-field(type='text' label='生日' v-model.trim='resume.birthday')
+                                        v-radio-group(v-model="resume.gender" row)
+                                            v-radio(label="男" value=1)
+                                            v-radio(label="女" value=2)
+                                            v-radio(label="第三性" value=3)
+                                        v-text-field(slot="activator" label="Date in M/D/Y format"
+          v-model="dateFormatted"
+          prepend-icon="event"
+          @blur="date = parseDate(dateFormatted)"
+        ></v-text-field>
+        <v-date-picker v-model="date" @input="dateFormatted = formatDate($event)" no-title scrollable actions>
+          <template slot-scope="{ save, cancel }">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
+              <v-btn flat color="primary" @click="save">OK</v-btn>
+            </v-card-actions>
+          </template>
+        </v-date-picker>
+                                        v-date-picker(v-model='resume.birth' landscape)
+                                        v-text-field(type='text' label='生日' v-model.trim='resume.birth' mask='####-##-##')
                                         v-text-field(type='text' label='國籍' v-model.trim='resume.nation')
                                         v-text-field(type='text' label='信箱' v-model.trim='resume.email')
-                                        v-text-field(type='text' label='手機' v-model.trim='resume.cellphone')
-                                        v-text-field(type='text' label='地址' v-model.trim='resume.address')
+                                        v-text-field(type='text' label='手機' v-model.trim='resume.phone')
 
                             div(v-if='tabIndex === 1')
                                 p.recruit-edit-title 學歷經驗
@@ -47,11 +64,10 @@
 
                             div(v-if='tabIndex === 2')
                                 p.recruit-edit-title 求職條件
-                                    v-btn.right(color='primary' @click='saveRequest' :loading="loading" :disabled="loading") 保存
+                                    v-btn.right(color='primary' @click='save("condition")' :loading="loading" :disabled="loading") 保存
                                 .recruit-edit-field
                                     v-flex(xs12='' md6='')
-                                        v-text-field(type='text' label='希望職務名稱' v-model.trim='resume.expectedJobName')
-                                        v-text-field(type='number' label='希望工作性質' v-model.trim='resume.expectedJobType')
+                                        v-text-field(type='text' label='希望職位' v-model.trim='resume.expectedJobName')
                                         p 薪資條件
                                         v-layout(wrap='')
                                             v-flex(xs5='')
@@ -60,13 +76,7 @@
                                                 | ~
                                             v-flex(xs5='')
                                                 v-text-field(type='number' label='最高薪資' v-model.trim='resume.salaryTo')
-                                        v-text-field(type='text' label='職務內容描述' v-model.trim='resume.expectedJobDec')
-                                        v-text-field(type='text' label='希望職務類別' v-model.trim='resume.expectedJobCat')
-                                        v-text-field(type='text' label='希望工作地區' v-model.trim='resume.expectedJobArea')
-                                        v-text-field(type='number' label='希望工作時段' v-model.trim='resume.expectedJobTime')
-                                        v-text-field(type='number' label='希望工作待遇' v-model.trim='resume.salaryType')
 
-                            div(v-if='tabIndex === 3')
                                 p.recruit-edit-title 語言能力
                                     v-btn.white--text(flat='' color='primary' icon='' @click='edit.language = true' v-if='!edit.language')
                                         v-icon edit
@@ -74,15 +84,22 @@
                                     p.recruit-edit-content.ql-editor(v-if='!edit.language' v-html='resume.language')
                                 quill-editor(:content="resume.language" :options="editorOption" @change="onEditorChange($event, 'language')" v-if='edit.language')
 
-                            div(v-if='tabIndex === 4')
-                                p.recruit-edit-title 技能與證照
+                            div(v-if='tabIndex === 3')
+                                p.recruit-edit-title 技能
                                     v-btn.white--text(flat='' color='primary' icon='' @click='edit.skill = true' v-if='!edit.skill')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("skill")' :loading="loading" :disabled="loading" v-if='edit.skill') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.skill' v-html='resume.skill')
                                 quill-editor(:content="resume.skill" :options="editorOption" @change="onEditorChange($event, 'skill')" v-if='edit.skill')
 
-                            div(v-if='tabIndex === 5')
+                                p.recruit-edit-title 證照
+                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.certificate = true' v-if='!edit.certificate')
+                                        v-icon edit
+                                    v-btn.right(color='primary' @click='save("certificate")' :loading="loading" :disabled="loading" v-if='edit.certificate') 保存
+                                    p.recruit-edit-content.ql-editor(v-if='!edit.certificate' v-html='resume.certificate')
+                                quill-editor(:content="resume.certificate" :options="editorOption" @change="onEditorChange($event, 'certificate')" v-if='edit.certificate')
+
+                            div(v-if='tabIndex === 4')
                                 p.recruit-edit-title 自傳
                                     v-btn.white--text(flat='' color='primary' icon='' @click='edit.bio = true' v-if='!edit.bio')
                                         v-icon edit
@@ -106,37 +123,34 @@ export default {
         items: [
             {title: '基本資料', icon: 'dashboard'},
             {title: '學歷經驗', icon: 'dashboard'},
-            {title: '求職條件', icon: 'dashboard'},
-            {title: '語言能力', icon: 'dashboard'},
-            {title: '技能與證照', icon: 'dashboard'},
+            {title: '求職條件 / 語言能力', icon: 'dashboard'},
+            {title: '技能與證照 ', icon: 'dashboard'},
             {title: '自傳', icon: 'dashboard'}
         ],
         tabIndex: 0,
         resume: {
             firstName: '',
             lastName: '',
-            pid: '',
-            gender: '',
-            birthday: '',
+            gender: null,
+            birth: null,
             nation: '',
             email: '',
-            cellphone: null,
-            address: '',
+            phone: '',
 
             expectedJobName: '',
-            expectedJobType: '',
-            salaryFrom: '',
-            salaryTo: '',
-            expectedJobDec: '',
-            expectedJobCat: '',
-            expectedJobArea: '',
-            expectedJobTime: '',
-            salaryType: '',
+            salaryFrom: null,
+            salaryTo: null,
 
             background: '',
             language: '',
             skill: '',
+            certificate: '',
             bio: ''
+        },
+        dataList: {
+            basic: ['firstName', 'lastName', 'gender', 'birth', 'nation', 'email', 'phone'],
+            condition: ['expectedJobName', 'salaryFrom', 'salaryTo']
+
         },
         edit: {
             basic: false,
@@ -144,6 +158,7 @@ export default {
             language: false,
             condition: false,
             skill: false,
+            certificate: false,
             bio: false
         },
         editorOption: {
@@ -151,8 +166,9 @@ export default {
                 toolbar: [
                     ['bold', 'italic', 'underline'],
                     [{'size': ['small', false, 'large']}],
-                    [{'header': 1}, {'header': 2}],
                     [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'header': [1, 2, 3, false] }],
                     ['link', 'image']
                 ]
             },
@@ -193,7 +209,15 @@ export default {
         },
         save(fieldName) {
             this.loading = true
-            axios.post(`/resume/${fieldName}`, {data: this.resume[fieldName]})
+            let tmp = {}
+            if (this.dataList[fieldName]) {
+                this.dataList[fieldName].forEach(element => {
+                    tmp[element] = this.resume[element]
+                })
+            } else {
+                tmp = this.resume[fieldName]
+            }
+            axios.post(`/resume/${fieldName}`, tmp)
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
@@ -207,13 +231,11 @@ export default {
             axios.post(`/resume/basic`, {
                 firstName: this.resume.firstName,
                 lastName: this.resume.lastName,
-                pid: this.resume.pid,
                 gender: this.resume.gender,
-                birthday: this.resume.birthday,
+                birth: this.resume.birth,
                 nation: this.resume.nation,
                 email: this.resume.email,
-                cellphone: this.resume.cellphone,
-                address: this.resume.address
+                phone: this.resume.phone
             })
                 .then(response => {
                     this.loading = false
@@ -226,14 +248,8 @@ export default {
             this.loading = true
             axios.post(`/resume/condition`, {
                 expectedJobName: this.resume.expectedJobName,
-                expectedJobType: this.resume.expectedJobType,
                 salaryFrom: this.resume.salaryFrom,
-                salaryTo: this.resume.lasalaryTong,
-                expectedJobDec: this.resume.expectedJobDec,
-                expectedJobCat: this.resume.expectedJobCat,
-                expectedJobArea: this.resume.expectedJobArea,
-                expectedJobTime: this.resume.expectedJobTime,
-                salaryType: this.resume.salaryType
+                salaryTo: this.resume.salaryTo
             })
                 .then(response => {
                     this.loading = false

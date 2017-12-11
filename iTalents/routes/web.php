@@ -58,7 +58,7 @@ Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 /***********履歷***********/
 
 // 回傳履歷資料
-Route::get('api/resume', 'EmployeeController@getAllResumes');
+Route::get('api/resume', 'EmployeeController@getUserResume');
 
 // 修改履歷-基本資料
 Route::post('/resume/basic', 'EmployeeController@updateBasic');

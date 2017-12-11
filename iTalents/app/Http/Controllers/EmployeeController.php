@@ -20,7 +20,7 @@ class EmployeeController extends Controller
     /**********************
      * 回傳外籍生寫的履歷 *
      **********************/
-    public function getThisResume()
+    public function getUserResume()
     {
         $ret = new \stdClass();
         $ret ->stat = 0;

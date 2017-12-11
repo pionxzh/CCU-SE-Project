@@ -63,12 +63,12 @@ export default {
             axios.post('/login', {
                 email: this.email,
                 password: this.password,
-                user_type: this.type
+                userType: this.type
                 // _csrf: window.csrfToken
             })
                 .then(response => {
                     this.loading = false
-                    let modalMsg = response.data.stat ? `歡迎回來，用戶 ${response.data.username}，現在將轉回首頁!` : '帳號密碼組合錯誤'
+                    let modalMsg = response.data.stat ? `歡迎回來，用戶 ${this.email.split('@', 1)[0]}，現在將轉回首頁!` : '帳號密碼組合錯誤'
                     if (response.data.stat) {
                         setTimeout(function() {
                             window.location.href = '/main'

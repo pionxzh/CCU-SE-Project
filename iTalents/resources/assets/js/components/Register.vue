@@ -71,7 +71,7 @@ export default {
             axios.post('/register', {
                 email: this.email,
                 password: this.password,
-                user_type: this.type
+                userType: this.type
                 // _csrf: window.csrfToken
             })
                 .then(response => {
