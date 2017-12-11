@@ -31223,6 +31223,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -31330,9 +31331,19 @@ var render = function() {
                 "v-list",
                 [
                   _c(
-                    "v-list-tile",
-                    { staticClass: "list__tile--link" },
-                    [_c("v-list-tile-title", [_vm._v("會員中心")])],
+                    "router-link",
+                    {
+                      staticClass: "no-decoration",
+                      attrs: { to: { name: "User" } }
+                    },
+                    [
+                      _c(
+                        "v-list-tile",
+                        { staticClass: "list__tile--link" },
+                        [_c("v-list-tile-title", [_vm._v("會員中心")])],
+                        1
+                      )
+                    ],
                     1
                   ),
                   _c("v-divider"),

@@ -11,8 +11,9 @@
         v-menu(v-if='$root.user.username.length')
             v-btn.mr-5(slot="activator") {{ username }}
             v-list
-                v-list-tile.list__tile--link
-                    v-list-tile-title 會員中心
+                router-link.no-decoration(:to="{name: 'User'}")
+                    v-list-tile.list__tile--link
+                        v-list-tile-title 會員中心
                 v-divider
                 v-list-tile.list__tile--link(@click='logout')
                     v-list-tile-title 登出
