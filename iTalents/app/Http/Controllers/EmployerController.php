@@ -115,7 +115,6 @@ class EmployerController extends Controller
             // Variable Assignment
             $thisRecruit ->title = Input::get('title');
             $thisRecruit ->jobname = Input::get('jobname');
-            $thisRecruit ->jobtype = Input::get('jobtype');
             $thisRecruit ->lang = Input::get('lang');
             $thisRecruit ->upay = Input::get('upay');
             $thisRecruit ->dpay = Input::get('dpay');
