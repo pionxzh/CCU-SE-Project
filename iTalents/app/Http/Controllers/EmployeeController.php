@@ -10,6 +10,7 @@ use App\User;
 use App\Employee;
 use App\Resume;
 use App\Language;
+use App\Matching;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 

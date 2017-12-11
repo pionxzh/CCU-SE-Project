@@ -10,6 +10,7 @@ use Auth;
 use App\User;
 use App\Employer;
 use App\Recruitment;
+use App\Matching;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
