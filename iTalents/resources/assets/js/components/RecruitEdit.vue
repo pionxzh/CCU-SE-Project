@@ -1,38 +1,38 @@
 <template lang="pug">
     div    
         v-content
-            v-layout(row='' justify-space-between='')
+            v-layout(row justify-space-between)
 
-                    v-flex(xs0='')
-                    v-flex(xs10='' lg6='')
+                    v-flex(xs0)
+                    v-flex(xs10 lg6)
                         section
                             p.page-title 徵才訊息詳情 完成度{{ recruit.is_complete ? 'O' : 'X' }}
-                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
+                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') 返回列表
 
                             p.recruit-edit-title 徵才資訊
                                 v-btn.right(color='primary' @click='saveField' :loading="loading" :disabled="loading") 保存
                             .recruit-edit-field
-                                v-flex(xs12='' md6='')
+                                v-flex(xs12 md6)
                                     v-text-field(type='text' label='標題' v-model.trim='recruit.title')
                                     v-text-field(type='text' label='職位名稱' v-model.trim='recruit.jobname')
                                     v-text-field(type='text' label='語言條件' v-model.trim='recruit.lang')
-                                    v-layout(wrap='')
-                                        v-flex(xs5='')
+                                    v-layout(wrap)
+                                        v-flex(xs5)
                                             v-text-field(type='number' label='最低薪資' v-model.trim='recruit.dpay')
-                                        v-flex(xs0='') 
+                                        v-flex(xs0) 
                                             | ~
-                                        v-flex(xs5='')
+                                        v-flex(xs5)
                                             v-text-field(type='number' label='最高薪資' v-model.trim='recruit.upay')
 
                             p.recruit-edit-title 工作內容
-                                v-btn.white--text(flat='' color='primary' icon='' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
+                                v-btn.white--text(flat color='primary' icon @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
                                 v-btn.right(color='primary' @click='save("jobinfo")' :loading="loading" :disabled="loading" v-if='edit.jobinfo') 保存
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobinfo' v-html='recruit.jobinfo')
                             quill-editor(:content="recruit.jobinfo" :options="editorOption" @change="onEditorChange($event, 'jobinfo')" v-if='edit.jobinfo')
 
                             p.recruit-edit-title 條件要求
-                                v-btn.white--text(flat='' color='primary' icon='' @click='edit.jobrequire = true' v-if='!edit.jobrequire')
+                                v-btn.white--text(flat color='primary' icon @click='edit.jobrequire = true' v-if='!edit.jobrequire')
                                         v-icon edit
                                 v-btn.right(color='primary' @click='save("jobrequire")' :loading="loading" :disabled="loading" v-if='edit.jobrequire') 保存
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobrequire' v-html='recruit.jobrequire')
@@ -42,19 +42,19 @@
                                 v-if='edit.jobrequire')
 
                             p.recruit-edit-title 公司福利
-                                v-btn.white--text(flat='' color='primary' icon='' @click='edit.benefits = true' v-if='!edit.benefits')
+                                v-btn.white--text(flat color='primary' icon @click='edit.benefits = true' v-if='!edit.benefits')
                                     v-icon edit
                                 v-btn.right(color='primary' @click='save("benefits")' :loading="loading" :disabled="loading" v-if='edit.benefits') 保存
                                 p.recruit-edit-content.ql-editor(v-if='!edit.benefits' v-html='recruit.benefits')
                             quill-editor(:content="recruit.benefits" :options="editorOption" @change="onEditorChange($event, 'benefits')" v-if='edit.benefits')
 
                             p.recruit-edit-title 聯絡方式
-                                v-btn.white--text(flat='' color='primary' icon='' @click='edit.contact = true' v-if='!edit.contact')
+                                v-btn.white--text(flat color='primary' icon @click='edit.contact = true' v-if='!edit.contact')
                                     v-icon edit
                                 v-btn.right(color='primary' @click='save("contact")' :loading="loading" :disabled="loading" v-if='edit.contact') 保存
                                 p.recruit-edit-content.ql-editor(v-if='!edit.contact' v-html='recruit.contact')
                             quill-editor(:content="recruit.contact" :options="editorOption" @change="onEditorChange($event, 'contact')" v-if='edit.contact')
-                    v-flex(xs0='')
+                    v-flex(xs0)
         p-footer
 
 </template>
@@ -93,6 +93,7 @@ export default {
         loading: false
     }),
     activated() {
+        this.checkPermission()
         this.getRecruitInfo()
     },
     methods: {
@@ -106,6 +107,11 @@ export default {
                 text: msg,
                 buttons: [{title: '關閉'}]
             })
+        },
+        checkPermission() {
+            if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
+                this.$router.push({name: 'Main'})
+            }
         },
         onEditorChange(event, fieldName) {
             this.recruit[fieldName] = event.html
@@ -127,6 +133,10 @@ export default {
                     this.loading = false
                     this.edit[fieldName] = false
                     let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
+                    if (response.data.is_complete != null) {
+                        this.recruit.is_complete = response.data.is_complete
+                        if (response.data.is_complete) msg = '所有資訊已填寫完整! 徵才訊息將很快公開'
+                    }
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))

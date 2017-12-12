@@ -31,7 +31,7 @@ class ApiController extends Controller
             switch(Auth::User() ->user_type)
             {
                 case 1:
-                    $ret ->emailStat = Employee::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
+                    $ret ->emailState = Employee::where('uid', '=', Auth::User() ->id) ->first() ->is_active;
                     $ret ->userType = Auth::User() ->user_type;
                     $ret ->username = Auth::User() ->email;
                     break;

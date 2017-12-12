@@ -10,6 +10,7 @@ import Footer from './Footer.vue'
 import User from './components/User.vue'
 import Main from './components/Main.vue'
 import Login from './components/Login.vue'
+import ResumeShow from './components/ResumeShow.vue'
 import ResumeEdit from './components/ResumeEdit.vue'
 import Recruit from './components/Recruit.vue'
 import RecruitShow from './components/RecruitShow.vue'
@@ -47,6 +48,10 @@ const router = new Router({
         name: 'User',
         path: '/user',
         component: User
+    }, {
+        name: 'ResumeShow',
+        path: '/resume',
+        component: ResumeShow
     }, {
         name: 'ResumeEdit',
         path: '/resume/edit',

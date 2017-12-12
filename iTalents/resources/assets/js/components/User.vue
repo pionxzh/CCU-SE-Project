@@ -1,16 +1,16 @@
 <template lang="pug">
     div    
         v-content
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs0='')
-                    v-flex(xs10='' lg6='')
+            v-layout(row justify-space-between)
+                    v-flex(xs0)
+                    v-flex(xs10 lg6)
                         section
-                            p.page-title 個人資料
+                            p.page-title 個人資料修改
 
                             p.recruit-edit-title 基本資訊
                                 v-btn.right(color='primary' @click='save' :loading="loading" :disabled="loading") 保存
                             .recruit-edit-field(v-if='$root.user.userType === 1')
-                                v-flex(xs12='' md6='')
+                                v-flex(xs12 md6)
                                     v-text-field(type='text' label='姓氏' v-model.trim='user.lastname')
                                     v-text-field(type='text' label='名稱' v-model.trim='user.firstname')
                                     v-text-field(type='text' label='學號' v-model.trim='user.studentID')
@@ -21,13 +21,13 @@
                                     v-text-field(type='text' label='手機' v-model.trim='user.phone')
 
                             .recruit-edit-field(v-if='$root.user.userType === 2')
-                                v-flex(xs12='' md6='')
+                                v-flex(xs12 md6)
                                     v-text-field(type='text' label='公司名稱' v-model.trim='user.name')
                                     v-text-field(type='text' label='公司統編' v-model.trim='user.EIN')
                                     v-text-field(type='text' label='人資部Email' v-model.trim='user.email')
                                     v-text-field(type='text' label='人資部電話' v-model.trim='user.phone')
                                    
-                    v-flex(xs0='')
+                    v-flex(xs0)
         p-footer
 
 </template>

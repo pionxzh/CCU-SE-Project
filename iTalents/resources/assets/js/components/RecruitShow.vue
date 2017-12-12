@@ -1,9 +1,9 @@
 <template lang="pug">
     div    
         v-content
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs0='')
-                    v-flex(xs10='' lg6='')
+            v-layout(row justify-space-between)
+                    v-flex(xs0)
+                    v-flex(xs10 lg6)
                         section
                             p.page-title {{ recruit.title }}
                                 v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
@@ -11,24 +11,24 @@
 
                             p.recruit-show-title 徵才資訊
                             .recruit-edit-field
-                                v-flex(xs12='' md6='')
-                                    p.recruit-show-info 職位名稱: {{ recruit.jobname }}
+                                v-flex(xs12 md6)
+                                    p.recruit-show-info 職位名稱: {{ recruit.jobname || '尚未填寫'}}
                                     p.recruit-show-info 工作類型: {{ recruit.jobtype === 0 ? '兼職' : '全職' }}
-                                    p.recruit-show-info 語言需求: {{ recruit.lang }}
+                                    p.recruit-show-info 語言需求: {{ recruit.lang || '尚未填寫'}}
                                     p.recruit-show-info 薪資條件: {{ recruit.dpay }} ~ {{recruit.upay}}
                             p.recruit-show-title 工作內容
                                 p.recruit-edit-content.ql-editor(v-html='recruit.jobinfo')
 
                             p.recruit-show-title 條件要求
-                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire')
+                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire || "尚未填寫"')
                             
 
                             p.recruit-show-title 公司福利
-                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits')
+                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits || "尚未填寫"')
 
                             p.recruit-show-title 聯絡方式
-                                p.recruit-edit-content.ql-editor(v-html='recruit.contact')
-                    v-flex(xs0='')
+                                p.recruit-edit-content.ql-editor(v-html='recruit.contact || "尚未填寫"')
+                    v-flex(xs0)
         p-footer
 
 </template>

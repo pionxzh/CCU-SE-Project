@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-app#app(light='' :class='{fullscreen: isFullScreen || full}')
+    v-app#app(light :class='{fullscreen: isFullScreen || full}')
         navbar
         transition(name="page",mode="out-in")
             keep-alive

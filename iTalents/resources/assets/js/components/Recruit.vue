@@ -17,7 +17,7 @@
                                                     v-list-tile-title {{ item.title || '尚未填寫' }}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 
                                                         | {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
-                                                    v-list-tile-sub-title {{ item.jobname }} 
+                                                    v-list-tile-sub-title {{ item.jobname || '尚未填寫'}} 
                                                 v-list-tile-action
                                                     v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
@@ -51,7 +51,6 @@ export default {
             })
         },
         checkPermission() {
-            console.log(this.$root.user)
             if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
                 this.$router.push({name: 'Main'})
             }

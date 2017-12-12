@@ -1,32 +1,33 @@
 <template lang="pug">
     div    
         v-content
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs4='')
-                        v-navigation-drawer(permanent='', light='')
-                            v-toolbar(flat='')
+            v-layout(row justify-space-between)
+                    v-flex(xs4)
+                        v-navigation-drawer(permanent, light)
+                            v-toolbar(flat)
                                 v-list
                                     v-list-tile
-                                        v-list-tile-title.title Application
+                                        v-list-tile-title.title 類別
                             v-divider
-                            v-list.pt-0(dense='')
+                            v-list.pt-0(dense)
                                 v-list-tile(v-for='(item, key) in items', :key='item.title' @click='toggleTab(key)')
                                     v-list-tile-action
                                         v-icon {{ item.icon }}
                                     v-list-tile-content
                                         v-list-tile-title {{ item.title }}
 
-                    v-flex(xs10='' lg6='')
+                    v-flex(xs10 lg6)
                         section
-                            p.page-title 修改履歷
-                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
+                            v-flex(xs12 md6)
+                                p.page-title 修改履歷
+                                    v-btn.right(color='primary' @click='$router.push({name: "ResumeShow"})') 返回
                             .recruit-edit-field
                             div(v-for='(item, key) in dataList', :key='item.title')
                             div(v-if='tabIndex === 0')
                                 p.recruit-edit-title 基本資料
-                                    v-btn.right(color='primary' @click='save("basic")' :loading="loading" :disabled="loading") 保存
+                                    v-btn.ml-4(color='teal' @click='save("basic")' :loading="loading" :disabled="loading" dark) 保存
                                 .recruit-edit-field
-                                    v-flex(xs12='' md6='')
+                                    v-flex(xs12 md6)
                                         v-text-field(type='text' label='姓氏' v-model.trim='resume.lastName')
                                         v-text-field(type='text' label='名字' v-model.trim='resume.firstName')
                                         v-radio-group(v-model="resume.gender" row)
@@ -34,8 +35,8 @@
                                             v-radio(label="女" value=2)
                                             v-radio(label="第三性" value=3)
                                         v-menu(lazy :close-on-content-click="false" v-model="menu" transition="scale-transition" offset-y full-width :nudge-right="40" max-width="290px" min-width="290px")
-                                            v-text-field(slot="activator" label="生日" v-model="resume.birth" prepend-icon="event" readonly='')
-                                                v-date-picker(v-model="resume.birth" scrollable='' actions='' landscape='')
+                                            v-text-field(slot="activator" label="生日" v-model="resume.birth" prepend-icon="event" readonly)
+                                                v-date-picker(v-model="resume.birth" scrollable actions landscape)
                                                     template(slot-scope="{ save, cancel }")
                                                         v-card-actions
                                                             v-spacer
@@ -48,7 +49,7 @@
 
                             div(v-if='tabIndex === 1')
                                 p.recruit-edit-title 學歷經驗
-                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.background = true' v-if='!edit.background')
+                                    v-btn.white--text(flat color='primary' icon @click='edit.background = true' v-if='!edit.background')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("background")' :loading="loading" :disabled="loading" v-if='edit.background') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.background' v-html='resume.background')
@@ -58,19 +59,19 @@
                                 p.recruit-edit-title 求職條件
                                     v-btn.right(color='primary' @click='save("condition")' :loading="loading" :disabled="loading") 保存
                                 .recruit-edit-field
-                                    v-flex(xs12='' md6='')
+                                    v-flex(xs12 md6)
                                         v-text-field(type='text' label='希望職位' v-model.trim='resume.expectedJobName')
                                         p 薪資條件
-                                        v-layout(wrap='')
-                                            v-flex(xs5='')
+                                        v-layout(wrap)
+                                            v-flex(xs5)
                                                 v-text-field(type='number' label='最低薪資' v-model.trim='resume.salaryFrom')
-                                            v-flex(xs0='') 
+                                            v-flex(xs0) 
                                                 | ~
-                                            v-flex(xs5='')
+                                            v-flex(xs5)
                                                 v-text-field(type='number' label='最高薪資' v-model.trim='resume.salaryTo')
 
                                 p.recruit-edit-title 語言能力
-                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.language = true' v-if='!edit.language')
+                                    v-btn.white--text(flat color='primary' icon @click='edit.language = true' v-if='!edit.language')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("language")' :loading="loading" :disabled="loading" v-if='edit.language') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.language' v-html='resume.language')
@@ -78,14 +79,14 @@
 
                             div(v-if='tabIndex === 3')
                                 p.recruit-edit-title 技能
-                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.skill = true' v-if='!edit.skill')
+                                    v-btn.white--text(flat color='primary' icon @click='edit.skill = true' v-if='!edit.skill')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("skill")' :loading="loading" :disabled="loading" v-if='edit.skill') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.skill' v-html='resume.skill')
                                 quill-editor(:content="resume.skill" :options="editorOption" @change="onEditorChange($event, 'skill')" v-if='edit.skill')
 
                                 p.recruit-edit-title 證照
-                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.certificate = true' v-if='!edit.certificate')
+                                    v-btn.white--text(flat color='primary' icon @click='edit.certificate = true' v-if='!edit.certificate')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("certificate")' :loading="loading" :disabled="loading" v-if='edit.certificate') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.certificate' v-html='resume.certificate')
@@ -93,12 +94,12 @@
 
                             div(v-if='tabIndex === 4')
                                 p.recruit-edit-title 自傳
-                                    v-btn.white--text(flat='' color='primary' icon='' @click='edit.bio = true' v-if='!edit.bio')
+                                    v-btn.white--text(flat color='primary' icon @click='edit.bio = true' v-if='!edit.bio')
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("bio")' :loading="loading" :disabled="loading" v-if='edit.bio') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.bio' v-html='resume.bio')
                                 quill-editor(:content="resume.bio" :options="editorOption" @change="onEditorChange($event, 'bio')" v-if='edit.bio')
-                    v-flex(xs0='')
+                    v-flex(xs0)
         p-footer
 
 </template>
@@ -170,6 +171,7 @@ export default {
         loading: false
     }),
     activated() {
+        this.checkPermission()
         this.getResumeInfo()
     },
     methods: {
@@ -183,6 +185,11 @@ export default {
                 text: msg,
                 buttons: [{title: '關閉'}]
             })
+        },
+        checkPermission() {
+            if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
+                this.$router.push({name: 'Main'})
+            }
         },
         onEditorChange(event, fieldName) {
             this.resume[fieldName] = event.html
