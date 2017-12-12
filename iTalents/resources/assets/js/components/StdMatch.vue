@@ -2,12 +2,10 @@
     div    
         v-content
             v-layout(row='' justify-space-between='')
-
                     v-flex(xs0='')
                     v-flex(xs6='')
                         section
-                            .page-title 徵才總覽
-                                v-btn.right(color='primary' @click='askNewRecruit' :loading='loading' :disabled='loading') 新增徵才訊息
+                            .page-title 配對結果
                             v-card
                                 v-list(two-line='')
                                     template(v-for='(item, index) in items')
@@ -17,18 +15,10 @@
                                                     v-list-tile-title {{ item.title || '尚未填寫' }}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || '尚未填寫' }}
                                                     v-list-tile-sub-title 薪資: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
-                                                v-list-tile-action
-                                                    v-tooltip(top)
-                                                        v-btn(flat icon dark color='primary' slot='activator')
-                                                            v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
-                                                        span 配對結果 / 新進履歷
-                                                    v-tooltip(top)
-                                                        v-btn(flat icon dark color='red' slot='activator')
-                                                            v-icon(color='red') delete
-                                                        span 刪除
 
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
                     v-flex(xs0='')
+        p-footer
 
 </template>
 
@@ -41,7 +31,7 @@ export default {
         loading: false
     }),
     activated() {
-        this.getRecruitList()
+        this.getMatchResult()
     },
     methods: {
         errHandler (e) {
@@ -56,13 +46,13 @@ export default {
             })
         },
         checkPermission() {
-            if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
+            if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
                 this.$router.push({name: 'Main'})
             }
         },
-        getRecruitList() {
+        getMatchResult() {
             this.checkPermission()
-            axios.get('/api/recruit')
+            axios.get('/api/stdMatch')
                 .then(response => {
                     console.log(response.data)
                     if (response.data.stat) {
@@ -71,7 +61,7 @@ export default {
                 })
                 .catch(e => this.errHandler(e))
         },
-        askNewRecruit() {
+        postNewRecruit() {
             this.loading = true
             axios.post('/api/recruit', {})
                 .then(response => {

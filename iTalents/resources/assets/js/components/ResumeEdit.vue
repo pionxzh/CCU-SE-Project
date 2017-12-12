@@ -1,6 +1,5 @@
 <template lang="pug">
-    div    
-        v-content
+   v-content
             v-layout(row justify-space-between)
                     v-flex(xs4)
                         v-navigation-drawer(permanent, light)
@@ -33,15 +32,15 @@
                                         v-radio-group(v-model="resume.gender" row)
                                             v-radio(label="男" value=1)
                                             v-radio(label="女" value=2)
-                                            v-radio(label="第三性" value=3)
+                                            v-radio(label="其他" value=3)
                                         v-menu(lazy :close-on-content-click="false" v-model="menu" transition="scale-transition" offset-y full-width :nudge-right="40" max-width="290px" min-width="290px")
                                             v-text-field(slot="activator" label="生日" v-model="resume.birth" prepend-icon="event" readonly)
-                                                v-date-picker(v-model="resume.birth" scrollable actions landscape)
-                                                    template(slot-scope="{ save, cancel }")
-                                                        v-card-actions
-                                                            v-spacer
-                                                            v-btn(flat color="primary" @click="cancel") Cancel
-                                                            v-btn(flat color="primary" @click="save") OK
+                                            v-date-picker(v-model="resume.birth" scrollable actions)
+                                                template(slot-scope="{ save, cancel }")
+                                                    v-card-actions
+                                                        v-spacer
+                                                        v-btn(flat color="primary" @click="cancel") Cancel
+                                                        v-btn(flat color="primary" @click="save") OK
 
                                         v-text-field(type='text' label='國籍' v-model.trim='resume.nation')
                                         v-text-field(type='text' label='信箱' v-model.trim='resume.email')
@@ -75,6 +74,18 @@
                                         v-icon edit
                                     v-btn.right(color='primary' @click='save("language")' :loading="loading" :disabled="loading" v-if='edit.language') 保存
                                     p.recruit-edit-content.ql-editor(v-if='!edit.language' v-html='resume.language')
+                                div.language-select
+                                    v-chip(close)
+                                        v-avatar.teal S
+                                        | 英語
+                                    v-select(v-bind:items="languageList" v-model="lang.code" label="Select" single-line bottom)
+                                    v-radio-group(v-model="lang.ability" :mandatory="false")
+                                        v-radio(label="不會" value="0")
+                                        v-radio(label="略懂" value="1")
+                                        v-radio(label="中等" value="2")
+                                        v-radio(label="熟練" value="3")
+                                        v-radio(label="精通" value="4")
+                                    v-btn(color='primary' @click='addLanguage') +
                                 quill-editor(:content="resume.language" :options="editorOption" @change="onEditorChange($event, 'language')" v-if='edit.language')
 
                             div(v-if='tabIndex === 3')
@@ -100,8 +111,6 @@
                                     p.recruit-edit-content.ql-editor(v-if='!edit.bio' v-html='resume.bio')
                                 quill-editor(:content="resume.bio" :options="editorOption" @change="onEditorChange($event, 'bio')" v-if='edit.bio')
                     v-flex(xs0)
-        p-footer
-
 </template>
 
 <script>
@@ -144,7 +153,16 @@ export default {
         dataList: {
             basic: ['firstName', 'lastName', 'gender', 'birth', 'nation', 'email', 'phone'],
             condition: ['expectedJobName', 'salaryFrom', 'salaryTo']
-
+        },
+        languageList: [
+            {text: '英語', val: 'en'},
+            {text: '中文', val: 'ch'},
+            {text: '日文', val: 'jp'},
+            {text: '法語', val: 'fr'}
+        ],
+        lang: {
+            code: '',
+            ability: null
         },
         edit: {
             basic: false,
@@ -171,7 +189,6 @@ export default {
         loading: false
     }),
     activated() {
-        this.checkPermission()
         this.getResumeInfo()
     },
     methods: {
@@ -198,6 +215,7 @@ export default {
             this.tabIndex = index
         },
         getResumeInfo() {
+            this.checkPermission()
             axios.get(`/api/resume`)
                 .then(response => {
                     console.log(response.data)
@@ -207,6 +225,8 @@ export default {
                     }
                 })
                 .catch(e => this.errHandler(e))
+        },
+        addLanguage() {
         },
         save(fieldName) {
             this.loading = true
@@ -226,42 +246,6 @@ export default {
                     this.loading = false
                     this.edit[fieldName] = false
                     let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
-                    this.showDialog(msg)
-                })
-                .catch(e => this.errHandler(e))
-        },
-        saveBasic() {
-            this.loading = true
-            axios.post(`/resume/basic`, {
-                firstName: this.resume.firstName,
-                lastName: this.resume.lastName,
-                gender: this.resume.gender,
-                birth: this.resume.birth,
-                nation: this.resume.nation,
-                email: this.resume.email,
-                phone: this.resume.phone
-            })
-                .then(response => {
-                    this.loading = false
-                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
-                    this.showDialog(msg)
-                })
-                .catch(e => this.errHandler(e))
-        },
-        saveRequest() {
-            this.loading = true
-            axios.post(`/resume/condition`, {
-                expectedJobName: this.resume.expectedJobName,
-                salaryFrom: this.resume.salaryFrom,
-                salaryTo: this.resume.salaryTo
-            })
-                .then(response => {
-                    this.loading = false
-                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
-                    if (response.data.is_complete != null) {
-                        this.resume.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = '所有資訊已填寫完整! 徵才訊息將很快公開'
-                    }
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))

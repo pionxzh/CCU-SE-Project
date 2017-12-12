@@ -6,7 +6,10 @@
                     v-flex(xs10 lg6)
                         section
                             p.page-title {{ recruit.title }}
-                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
+                                v-btn.hidden.right.hide(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
+                                v-btn(color='yellow' @click='$router.push({name: "Recruit"})' large)
+                                    v-icon receipt
+                                    | &nbsp;投履歷
                             .recruit-edit-field
 
                             p.recruit-show-title 徵才資訊

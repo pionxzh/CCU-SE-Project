@@ -1,8 +1,6 @@
 <template lang="pug">
-    div    
-        v-content
+    v-content
             v-layout(row justify-space-between)
-
                     v-flex(xs0)
                     v-flex(xs10 lg6)
                         section
@@ -55,7 +53,6 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.contact' v-html='recruit.contact')
                             quill-editor(:content="recruit.contact" :options="editorOption" @change="onEditorChange($event, 'contact')" v-if='edit.contact')
                     v-flex(xs0)
-        p-footer
 
 </template>
 
@@ -93,7 +90,6 @@ export default {
         loading: false
     }),
     activated() {
-        this.checkPermission()
         this.getRecruitInfo()
     },
     methods: {
@@ -117,6 +113,7 @@ export default {
             this.recruit[fieldName] = event.html
         },
         getRecruitInfo() {
+            this.checkPermission()
             axios.get(`/api/recruit/${this.$route.params.id}`)
                 .then(response => {
                     console.log(response.data)

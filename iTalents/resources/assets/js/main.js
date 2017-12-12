@@ -10,12 +10,14 @@ import Footer from './Footer.vue'
 import User from './components/User.vue'
 import Main from './components/Main.vue'
 import Login from './components/Login.vue'
+import Register from './components/Register.vue'
 import ResumeShow from './components/ResumeShow.vue'
 import ResumeEdit from './components/ResumeEdit.vue'
 import Recruit from './components/Recruit.vue'
 import RecruitShow from './components/RecruitShow.vue'
 import RecruitEdit from './components/RecruitEdit.vue'
-import Register from './components/Register.vue'
+import StdMatch from './components/stdMatch.vue'
+import ComMatch from './components/comMatch.vue'
 
 Vue.component('navbar', Nav)
 Vue.component('p-footer', Footer)
@@ -53,9 +55,17 @@ const router = new Router({
         path: '/resume',
         component: ResumeShow
     }, {
+        name: 'ResumeShow',
+        path: '/resume/:id',
+        component: ResumeShow
+    }, {
         name: 'ResumeEdit',
         path: '/resume/edit',
         component: ResumeEdit
+    }, {
+        name: 'StdMatch',
+        path: '/resume/match',
+        component: StdMatch
     }, {
         name: 'Recruit',
         path: '/recruit',
@@ -64,6 +74,10 @@ const router = new Router({
         name: 'RecruitShow',
         path: '/recruit/:id',
         component: RecruitShow
+    }, {
+        name: 'ComMatch',
+        path: '/recruit/:id/match',
+        component: ComMatch
     }, {
         name: 'RecruitEdit',
         path: '/recruit/edit/:id',

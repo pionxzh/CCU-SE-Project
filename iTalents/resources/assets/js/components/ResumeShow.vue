@@ -7,18 +7,21 @@
                         section
                             p.page-title 履歷
                                 router-link.no-decoration(:to="{name: 'ResumeEdit'}")
-                                    v-btn.ml-4(color='primary')
+                                    v-btn.hide.ml-4(color='primary')
                                         v-icon edit
                                         | 編輯
+                                    v-btn.ml-4(color='yellow' large)
+                                        v-icon card_giftcard
+                                        | &nbsp;寄出邀請
 
                             p.recruit-show-title 基本資料
                             .recruit-edit-field
                                 v-flex(xs12 md6)
                                     p.recruit-show-info 姓名: {{ resume.lastName }} {{ resume.firstName }}
-                                    p.recruit-show-info 性別: {{ resume.gender }}
+                                    p.recruit-show-info 性別: {{ gender }}
                                     p.recruit-show-info 生日: {{ resume.birth }}
                                     p.recruit-show-info 國籍: {{ resume.nation }}
-                                    p.recruit-show-info Email: {{ resume.email }}
+                                    p.recruit-show-info 信箱: {{ resume.email }}
                                     p.recruit-show-info 手機: {{ resume.phone }}
                             p.recruit-show-title 職業資訊
                             .recruit-edit-field
@@ -69,11 +72,17 @@ export default {
             certificate: '',
             bio: ''
         },
+        genderList: ['', '男', '女', '其他'],
         loading: false
     }),
     activated() {
         this.checkPermission()
         this.getResumeInfo()
+    },
+    computed: {
+        gender() {
+            return this.genderList[this.resume.gender]
+        }
     },
     methods: {
         errHandler (e) {
