@@ -10,6 +10,7 @@ use Auth;
 use App\User;
 use App\Employer;
 use App\Employee;
+use App\Recruitment;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -118,6 +119,23 @@ class ApiController extends Controller
             $ret ->stat = 1;
         }
 
+        return json_encode($ret);
+    }
+
+    /****************
+     * 回傳單筆徵才表
+     * *************/
+    public function getThisRecruitment($rid)
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find($rid);
+
+        if(Auth::check() and isset($thisRecruit))
+        {
+            $ret ->data = $thisRecruit;
+            $ret ->stat = 1;
+        }
         return json_encode($ret);
     }
 }

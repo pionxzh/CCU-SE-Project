@@ -19,25 +19,6 @@ class EmployerController extends Controller
 {
 
 
-     /**********************
-     * 回傳單筆徵才表資料 *
-     *********************/
-    public function getThisRecruitment($rid)
-    {
-        $ret = new \stdClass();
-        $ret ->stat = 0;
-        $thisRecruit = Recruitment::find($rid);
-
-        if(Auth::check() and Auth::User() ->id === $thisRecruit ->uid)
-        {
-            $ret ->data = $thisRecruit;
-            $ret ->stat = 1;
-        }
-        return json_encode($ret);
-
-    }
-
-
     /*********************************
      *  回傳所有該廠商發過得徵才資訊 *
      ********************************/

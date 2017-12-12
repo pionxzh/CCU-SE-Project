@@ -30,13 +30,13 @@ Route::get('api/user/personal', 'ApiController@getPersonalInfo');
 Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
 
 
+// 回傳單筆徵才資訊
+Route::get('api/recruit/{rid}', 'ApiController@getThisRecruitment');
 
 /***********廠商***********/
 
 // 回傳廠商所有徵才資訊
 Route::get('api/recruit', 'EmployerController@getAllRecruitments');
-// 回傳單筆徵才資訊
-Route::get('api/recruit/{rid}', 'EmployerController@getThisRecruitment');
 // 建立新的一筆 recruitments data
 Route::post('api/recruit', 'EmployerController@newRecruitment');
 // 更新工作基本欄位
