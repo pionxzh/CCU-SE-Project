@@ -13,10 +13,22 @@ use App\Language;
 use App\Matching;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Scheme;
 
 
 class EmployeeController extends Controller
 {
+
+
+    /**************************
+     * 確認學生帳號已授權啟用 *
+     **************************/
+    public function checkIfActive()
+    {
+        return (Auth::User() ->user_type === 1 and Auth::User() ->is_active) ? true : false;
+    }
+
+
 
     /**********************
      * 回傳外籍生寫的履歷 *
@@ -26,22 +38,17 @@ class EmployeeController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $ret ->data = Resume::where('uid', '=', Auth::User() ->id) ->first();
-            $ret ->language = Language::where('uid', '=', Auth::User() ->id) ->get();
+            $ret ->language = Language::where('uid', '=', Auth::User() ->id) ->first();
         }
         return json_encode($ret);
     }
 
 
-
-
-
-
-
-    /******************
+    /*******************
      *   更新基本資料  *
      ******************/
     public function updateBasic()
@@ -49,7 +56,7 @@ class EmployeeController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -66,21 +73,15 @@ class EmployeeController extends Controller
     }
 
 
-
-
-
-
-
     /*****************
      *   更新求職條件     *
      ******************/
-
     public function updateCondition()
     {
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -93,12 +94,6 @@ class EmployeeController extends Controller
     }
 
 
-
-
-
-
-
-
     /******************
      *    更新自傳    *
      *****************/
@@ -106,7 +101,7 @@ class EmployeeController extends Controller
     {
         $ret = new \stdClass();
         $ret ->stat = 0;
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -117,13 +112,6 @@ class EmployeeController extends Controller
     }
 
 
-
-
-
-
-
-
-
     /******************
      *   更新學歷經驗 *
      ******************/
@@ -132,7 +120,7 @@ class EmployeeController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -143,11 +131,6 @@ class EmployeeController extends Controller
     }
 
 
-
-
-
-
-
     /***************
      *   更新技能  *
      ***************/
@@ -156,7 +139,7 @@ class EmployeeController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -167,8 +150,6 @@ class EmployeeController extends Controller
     }
 
 
-
-
     /***************
      *   更新證照  *
      ***************/
@@ -177,7 +158,7 @@ class EmployeeController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
             $ret ->stat = 1;
             $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
@@ -188,8 +169,6 @@ class EmployeeController extends Controller
     }
 
 
-
-
     /*************
      *  更新語言 *
      *************/
@@ -197,25 +176,23 @@ class EmployeeController extends Controller
     {
         $ret = new \stdClass();
         $ret ->stat = 0;
-        if(Auth::check() and Auth::User() ->user_type === 1)
+        if(Auth::check() and Auth::User() ->user_type === 1 and checkIfActive())
         {
-            $ret ->stat = 1;
-            Language::where('uid', '=', Auth::User() ->id) ->delete();
+            $thisLanguage = Language::where('uid', '=', Auth::User() ->id) ->first();
+
             foreach(Input::get('data') as $key => $value)
             {
-                $language = new Language;
-                $language ->uid = Auth::User() ->id;
-                $language ->language = $key;
-                $language ->langAbility = $value;
-                $language ->save();
+                if(!Schema::hasColumn('employees', $key))
+                {
+                    // 惡意偵測
+                    return $ret;
+                }
+                $language ->{$key} = $value;
             }
+            $language ->save();
         }
+        $ret ->stat = 1;
         return json_encode($ret);
     }
-
-
-
-
-
 
 }

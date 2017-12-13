@@ -15,18 +15,16 @@ class CreateLanguageTable extends Migration
     {
         Schema::create('languages', function (Blueprint $table)
         {
-            $table->increments('id');
-            $table->integer('uid'); // User ID
-            $table->string('language'); // 語言(encode過後)
-            $table->integer('langAbility');  // 語言能力分級
-            $table->timestamps();
+            $table ->increments('id');
+            $table ->integer('uid');
+            $table ->integer('en') ->default(0); // 英文
+            $table ->integer('ch') ->default(0); // 中文
+            $table ->integer('jp') ->default(0); // 日文
+            $table ->integer('fr') ->default(0); // 德文
+            $table ->timestamps();
         }
         );
     }
-
-
-
-
 
 
     /**

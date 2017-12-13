@@ -16,6 +16,7 @@ class Matching extends Migration
         Schema::create('matchings', function(Blueprint $table)
         {
             $table ->increments('id');
+            $table ->integer('cid');
             $table ->integer('rid');
             $table ->integer('uid');
             $table ->boolean('employeeCheck');

@@ -122,20 +122,28 @@ class ApiController extends Controller
         return json_encode($ret);
     }
 
+
     /****************
-     * 回傳單筆徵才表
+     * 回傳指定徵才表
      * *************/
     public function getThisRecruitment($rid)
     {
         $ret = new \stdClass();
         $ret ->stat = 0;
         $thisRecruit = Recruitment::find($rid);
-
-        if(Auth::check() and isset($thisRecruit))
+        // not necessary to check 'isset($thisRecruit)';
+        if(Auth::check() and isset($thisRecruit) and Auth::User() ->id === $thisRecruit ->uid)
         {
             $ret ->data = $thisRecruit;
             $ret ->stat = 1;
         }
+        else if(Auth::check() and isset($thisRecruit) and $thisRecruit ->is_complete)
+        {
+            $ret ->data = $thisRecruit;
+            $ret ->stat = 1;
+        }
+
         return json_encode($ret);
     }
+
 }

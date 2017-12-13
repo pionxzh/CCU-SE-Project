@@ -12,7 +12,9 @@
 */
 
 
-/**********使用者*********/
+
+
+/**********(使用者)共同介面*********/
 
 // 登入
 Route::post('login', 'Auth\LoginController@login');
@@ -28,12 +30,12 @@ Route::get('api/user', 'ApiController@getUserInfo');
 Route::get('api/user/personal', 'ApiController@getPersonalInfo');
 // 修改使用者(Employer、Employee)資料
 Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
-
-
 // 回傳單筆徵才資訊
 Route::get('api/recruit/{rid}', 'ApiController@getThisRecruitment');
 
-/***********廠商***********/
+
+
+/***********廠商介面***********/
 
 // 回傳廠商所有徵才資訊
 Route::get('api/recruit', 'EmployerController@getAllRecruitments');
@@ -49,16 +51,20 @@ Route::post('recruit/{rid}/jobrequire', 'EmployerController@updateJobRequire');
 Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits');
 // 更新聯絡方式
 Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
+// 回傳指定學生之履歷表
+Route::get('api/resume/{uid}', 'EmployerController@getThisResume');
 // 查看主動配對外籍生
-Route::get('api/getComMatch', 'EmployerController@getComMatch');
+Route::get('api/recruit/match', 'EmployerController@getRecruitMatch');
 // 送出申請
-Route::post('invite/{uid}', 'EmployerController@applicationRequest');
+Route::post('invite/{uid}', 'EmployerController@inviteThisEmployee');
 // 回傳所有投過該徵才表的外籍生、我送出的邀請
-Route::get('api/throw/{rid}', 'EmployerController@getComHistory');
+Route::get('api/resume/histroy', 'EmployerController@getResumeHistory');
 
-/***********外籍生***********/
 
-// 回傳履歷資料
+
+/***********外籍生介面***********/
+
+// 回傳當前使用者履歷資料
 Route::get('api/resume', 'EmployeeController@getUserResume');
 // 修改履歷-基本資料
 Route::post('/resume/basic', 'EmployeeController@updateBasic');
@@ -74,11 +80,11 @@ Route::post('/resume/certificate', 'EmployeeController@updateCertificate');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
 // 查看主動配對廠商徵才結果
-Route::get('api/getStdMatch', 'EmployeeController@getStdMatch');
+Route::get('api/resume/match', 'EmployeeController@getResumeMatch');
 // 投出履歷表
-Route::post('throw/{rid}', 'EmployeeController@applicationSubmit');
+Route::post('throw/{rid}', 'EmployeeController@throwThisRecruitment');
 // 回傳所有該使用者投過的徵才表、廠商邀請
-Route::get('api/throw', 'EmployeeController@getStdHistory');
+Route::get('api/recruit/histroy', 'EmployeeController@getRecruitHistory');
 
 
 Route::get('{all}', function () {

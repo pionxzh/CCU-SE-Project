@@ -10,6 +10,8 @@ use Auth;
 use App\User;
 use App\Employer;
 use App\Recruitment;
+use App\Resume;
+use App\Language;
 use App\Matching;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +19,16 @@ use Illuminate\Support\Facades\Redirect;
 
 class EmployerController extends Controller
 {
+
+
+
+    /***************************
+     *  確認該廠商已被授權啟用 *
+     ***************************/
+    public function checkIfActive()
+    {
+        return (Auth::User() ->user_type === 2 and Auth::User() ->is_active and Auth::User() ->is_verify) ? true : false;
+    }
 
 
     /*********************************
@@ -27,16 +39,13 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 2)
+        if(Auth::check() and Auth::User() ->user_type === 2 and checkIfActive())
         {
             $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id) ->get();
             $ret ->stat = 1;
         }
         return json_encode($ret);
     }
-
-
-
 
 
     /**********************
@@ -47,7 +56,7 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 2)
+        if(Auth::check() and Auth::User() ->user_type === 2 and checkIfActive())
         {
             $newRecruit = new Recruitment;
             $newRecruit ->uid = Auth::User() ->id;
@@ -59,16 +68,13 @@ class EmployerController extends Controller
     }
 
 
-
-
-
-
     /**********************
      * 檢查徵才表是否完整 *
      *********************/
     public function checkCompleteness($rid)
     {
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
+
         foreach($thisRecruit ->toArray() as $key => $val)
         {
             if($key !== "is_complete" and !isset($val))
@@ -83,14 +89,16 @@ class EmployerController extends Controller
     }
 
 
-
+    /**********************
+     * 檢查徵才表是否完整 *
+     *********************/
     public function updateJobField($rid)
     {
         $ret = new \stdClass();
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
         {
             $ret ->stat = 1;
             // Variable Assignment
@@ -119,7 +127,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->jobinfo = Input::get('data');
@@ -141,7 +149,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->jobrequire = Input::get('data');
@@ -153,9 +161,6 @@ class EmployerController extends Controller
     }
 
 
-
-
-
     /**********************
      * 更新徵才表福利內容 *
      *********************/
@@ -165,7 +170,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->benefits = Input::get('data');
@@ -177,10 +182,6 @@ class EmployerController extends Controller
     }
 
 
-
-
-
-
     /**********************
      * 更新徵才表聯繫方式 *
      *********************/
@@ -190,7 +191,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id)
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->contact = Input::get('data');
@@ -200,4 +201,40 @@ class EmployerController extends Controller
         }
         return json_encode($ret);
     }
+
+
+
+    /**********************
+     * 回傳指定學生的履歷表 *
+     *********************/
+    public function getThisResume($uid)
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisResume = Resume::where('uid', '=', $uid) ->first();
+        if(Auth::check() and Auth::User() ->user_type === 2 and isset($thisResume) and checkIfActive())
+        {
+            // 如果廠商與學生之間有配對關係, 則回傳完整資訊, 且stat = 2
+            if(Mathing::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid]]) ->exists())
+            {
+                $ret ->data = $thisResume;
+                $ret ->stat = 2;
+            }
+            // 如果廠商與學生之間沒有配對關係, 則回傳部份預設公開資訊, 且stat = 1
+            else
+            {
+                // erase 隱藏欄位
+                $thisResume ->forget('lastname');
+                $thisResume ->forget('birth');
+                $thisResume ->forget('phone');
+                $thisResume ->forget('email');
+                $ret ->data = $thisResume;
+                $ret ->stat = 1;
+            }
+
+        }
+        // 駁回請求, stat = 0
+        return json_encode($ret);
+    }
+
 }
