@@ -12,6 +12,7 @@ use Mail;
 use App\Employee;
 use App\Employer;
 use App\Resume;
+use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -111,6 +112,10 @@ class RegisterController extends Controller
                 $newResume = new Resume;
                 $newResume ->uid = $thisUser ->id;
                 $newResume ->save();
+                /*  建立 語言能力表 */
+                $newLanguage = new Language;
+                $newLanguage ->uid = $thisUser ->id;
+                $newLanguage ->save();
                 break;
 
             case 2:

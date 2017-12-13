@@ -27,7 +27,8 @@ class EmployerController extends Controller
      ***************************/
     public function checkIfActive()
     {
-        return (Auth::User() ->user_type === 2 and Auth::User() ->is_active and Auth::User() ->is_verify) ? true : false;
+        $thisUser = Employer::where('uid', '=', Auth::User() ->id) ->first();
+        return (Auth::User() ->user_type === 2 and $thisUser ->is_active and $thisUser ->is_verify) ? true : false;
     }
 
 
@@ -39,7 +40,7 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 2 and checkIfActive())
+        if(Auth::check() and Auth::User() ->user_type === 2 and $this ->checkIfActive())
         {
             $ret ->data = Recruitment::where('uid', '=', Auth::User() ->id) ->get();
             $ret ->stat = 1;
@@ -56,7 +57,7 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
 
-        if(Auth::check() and Auth::User() ->user_type === 2 and checkIfActive())
+        if(Auth::check() and Auth::User() ->user_type === 2 and $this ->checkIfActive())
         {
             $newRecruit = new Recruitment;
             $newRecruit ->uid = Auth::User() ->id;
@@ -98,7 +99,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
             // Variable Assignment
@@ -127,7 +128,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->jobinfo = Input::get('data');
@@ -149,7 +150,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->jobrequire = Input::get('data');
@@ -170,7 +171,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->benefits = Input::get('data');
@@ -191,7 +192,7 @@ class EmployerController extends Controller
         $ret ->stat = 0;
 
         $thisRecruit = Recruitment::where('id', '=', $rid) ->first();
-        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and checkIfActive())
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
             $thisRecruit ->contact = Input::get('data');
@@ -212,10 +213,10 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
         $thisResume = Resume::where('uid', '=', $uid) ->first();
-        if(Auth::check() and Auth::User() ->user_type === 2 and isset($thisResume) and checkIfActive())
+        if(Auth::check() and Auth::User() ->user_type === 2 and isset($thisResume) and $this ->checkIfActive())
         {
             // 如果廠商與學生之間有配對關係, 則回傳完整資訊, 且stat = 2
-            if(Mathing::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid]]) ->exists())
+            if(Matching::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid]]) ->exists())
             {
                 $ret ->data = $thisResume;
                 $ret ->stat = 2;
@@ -224,10 +225,10 @@ class EmployerController extends Controller
             else
             {
                 // erase 隱藏欄位
-                $thisResume ->forget('lastname');
-                $thisResume ->forget('birth');
-                $thisResume ->forget('phone');
-                $thisResume ->forget('email');
+                unset($thisResume ->lastName);
+                unset($thisResume ->birth);
+                unset($thisResume ->phone);
+                unset($thisResume ->email);
                 $ret ->data = $thisResume;
                 $ret ->stat = 1;
             }
