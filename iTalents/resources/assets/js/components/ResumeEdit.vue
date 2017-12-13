@@ -79,10 +79,16 @@
                                         v-icon clear
                                     v-btn.ml-4(fab dark small color='green' @click='saveLanguage' :loading="loading" :disabled="loading" v-if='edit.language')
                                         v-icon done
-                                    p.recruit-edit-content.ql-editor(v-if='!edit.language' v-html='resume.language')
+                                    
+                                    div.language-select(v-if='!edit.language')
+                                        v-chip(v-for="item in lang.list" :key='item.id' v-if='item.stat')
+                                            v-avatar(:class='langColor[item.ability]')
+                                                span.white--text.headline {{langLevel[item.ability]}}
+                                            | {{langMap[item.language]}}
                                     div.language-select(v-if='edit.language')
                                         v-chip(close v-for="item in lang.list" :key='item.id' v-model='item.stat')
-                                            v-avatar(:class='langColor[item.ability]') {{langLevel[item.ability]}}
+                                            v-avatar(:class='langColor[item.ability]')
+                                                span.white--text.headline {{langLevel[item.ability]}}
                                             | {{langMap[item.language]}}
                                         v-layout(wrap)
                                             v-flex(xs4)
@@ -161,7 +167,7 @@ export default {
             salaryTo: null,
 
             background: '',
-            language: '',
+            language: null,
             skill: '',
             certificate: '',
             bio: ''
@@ -183,7 +189,7 @@ export default {
             {text: '熟練', value: 3},
             {text: '精通', value: 4}
         ],
-        langColor: ['light-blue', 'light-green', 'yellow', 'amber', 'pink'],
+        langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
         langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
         langLevel: ['D', 'C', 'B', 'A', 'S'],
         lang: {
@@ -248,7 +254,15 @@ export default {
                     console.log(response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
-                        this.resume.gender = '' + this.resume.gender
+                        this.resume.gender = this.resume.gender.toString()
+                        for (const key in response.data.language) {
+                            this.lang.list.push({
+                                id: Math.floor(Math.random() * 10000),
+                                language: key,
+                                ability: response.data.language[key],
+                                stat: true
+                            })
+                        }
                     }
                 })
                 .catch(e => this.errHandler(e))

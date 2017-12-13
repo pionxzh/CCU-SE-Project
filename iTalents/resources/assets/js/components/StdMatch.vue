@@ -9,7 +9,7 @@
                             v-card
                                 v-list(two-line='')
                                     template(v-for='(item, index) in items')
-                                        router-link.no-decoration(:to="{path: 'recruit/edit/' + item.id}")
+                                        router-link.no-decoration(:to="{path: 'resume/' + item.id}")
                                             v-list-tile(avatar='', ripple='', :key='item.title')
                                                 v-list-tile-content
                                                     v-list-tile-title {{ item.title || '尚未填寫' }}
@@ -52,7 +52,7 @@ export default {
         },
         getMatchResult() {
             this.checkPermission()
-            axios.get('/api/stdMatch')
+            axios.get('/api/resume/history')
                 .then(response => {
                     console.log(response.data)
                     if (response.data.stat) {

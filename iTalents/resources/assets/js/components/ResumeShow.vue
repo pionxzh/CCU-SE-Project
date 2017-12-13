@@ -30,7 +30,11 @@
                                     p.recruit-show-info 薪資條件: {{ resume.salaryFrom }}&nbsp;~&nbsp;{{ resume.salaryTo }}
 
                             p.recruit-show-title 語言能力
-                                p.recruit-edit-content.ql-editor(v-html='resume.language || "還沒有填寫喔~"')
+                                div.language-show
+                                        v-chip(v-for="(value, key) in resume.language" :key='key')
+                                            v-avatar(:class='langColor[value]')
+                                                span.white--text.headline {{langLevel[value]}}
+                                            | {{langMap[key]}}
 
                             p.recruit-show-title 學歷經驗
                                 p.recruit-edit-content.ql-editor(v-html='resume.background')
@@ -67,12 +71,15 @@ export default {
             salaryTo: null,
 
             background: '',
-            language: '',
+            language: null,
             skill: '',
             certificate: '',
             bio: ''
         },
         genderList: ['', '男', '女', '其他'],
+        langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
+        langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
+        langLevel: ['D', 'C', 'B', 'A', 'S'],
         loading: false
     }),
     activated() {
@@ -97,8 +104,14 @@ export default {
             })
         },
         checkPermission() {
-            if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
-                this.$router.push({name: 'Main'})
+            if (!this.$route.params.id) {
+                if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
+                    this.$router.push({name: 'Main'})
+                }
+            } else {
+                if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
+                    this.$router.push({name: 'Main'})
+                }
             }
         },
         getResumeInfo() {
@@ -109,6 +122,7 @@ export default {
                     console.log(response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
+                        this.resume.language = response.data.language
                     }
                 })
                 .catch(e => this.errHandler(e))
