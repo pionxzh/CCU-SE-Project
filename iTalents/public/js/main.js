@@ -1161,6 +1161,10 @@ const router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
         path: '/user',
         component: __WEBPACK_IMPORTED_MODULE_8__components_User_vue__["a" /* default */]
     }, {
+        name: 'ResumeEdit',
+        path: '/resume/edit',
+        component: __WEBPACK_IMPORTED_MODULE_13__components_ResumeEdit_vue__["a" /* default */]
+    }, {
         name: 'ResumeShow',
         path: '/resume',
         component: __WEBPACK_IMPORTED_MODULE_12__components_ResumeShow_vue__["a" /* default */]
@@ -1168,10 +1172,6 @@ const router = new __WEBPACK_IMPORTED_MODULE_3_vue_router__["a" /* default */]({
         name: 'ResumeShow',
         path: '/resume/:id',
         component: __WEBPACK_IMPORTED_MODULE_12__components_ResumeShow_vue__["a" /* default */]
-    }, {
-        name: 'ResumeEdit',
-        path: '/resume/edit',
-        component: __WEBPACK_IMPORTED_MODULE_13__components_ResumeEdit_vue__["a" /* default */]
     }, {
         name: 'StdMatch',
         path: '/resume/match',
@@ -31723,7 +31723,8 @@ var render = function() {
                             {
                               staticClass: "right",
                               attrs: {
-                                color: "primary",
+                                dark: "dark",
+                                color: "green",
                                 loading: _vm.loading,
                                 disabled: _vm.loading
                               },
@@ -33330,7 +33331,9 @@ if (false) {(function () {
             }
         },
         getResumeInfo() {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume`)
+            let url = this.$route.params.id ? this.$route.params.id : ''
+            console.log(url)
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume/${url}`)
                 .then(response => {
                     console.log(response.data)
                     if (response.data.stat) {
@@ -33382,27 +33385,31 @@ var render = function() {
                           attrs: { to: { name: "ResumeEdit" } }
                         },
                         [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "hide ml-4",
-                              attrs: { color: "primary" }
-                            },
-                            [_c("v-icon", [_vm._v("edit")]), _vm._v("編輯")],
-                            1
-                          ),
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "ml-4",
-                              attrs: { color: "yellow", large: "large" }
-                            },
-                            [
-                              _c("v-icon", [_vm._v("card_giftcard")]),
-                              _vm._v(" 寄出邀請")
-                            ],
-                            1
-                          )
+                          !_vm.$route.params.id
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "hide ml-4",
+                                  attrs: { color: "primary" }
+                                },
+                                [_c("v-icon", [_vm._v("edit")]), _vm._v("編輯")],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm.$route.params.id
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "ml-4",
+                                  attrs: { color: "yellow", large: "large" }
+                                },
+                                [
+                                  _c("v-icon", [_vm._v("card_giftcard")]),
+                                  _vm._v(" 寄出邀請")
+                                ],
+                                1
+                              )
+                            : _vm._e()
                         ],
                         1
                       )
@@ -33711,6 +33718,22 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -33752,15 +33775,26 @@ if (false) {(function () {
             basic: ['firstName', 'lastName', 'gender', 'birth', 'nation', 'email', 'phone'],
             condition: ['expectedJobName', 'salaryFrom', 'salaryTo']
         },
-        languageList: [
-            {text: '英語', val: 'en'},
-            {text: '中文', val: 'ch'},
-            {text: '日文', val: 'jp'},
-            {text: '法語', val: 'fr'}
+        languageOpt: [
+            {text: '英語', value: 'en'},
+            {text: '中文', value: 'ch'},
+            {text: '日文', value: 'jp'},
+            {text: '法語', value: 'fr'}
         ],
+        abilityOpt: [
+            {text: '不會', value: 0},
+            {text: '略懂', value: 1},
+            {text: '中等', value: 2},
+            {text: '熟練', value: 3},
+            {text: '精通', value: 4}
+        ],
+        langColor: ['light-blue', 'light-green', 'yellow', 'amber', 'pink'],
+        langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
+        langLevel: ['D', 'C', 'B', 'A', 'S'],
         lang: {
-            code: '',
-            ability: null
+            value: null,
+            ability: null,
+            list: []
         },
         edit: {
             basic: false,
@@ -33825,6 +33859,29 @@ if (false) {(function () {
                 .catch(e => this.errHandler(e))
         },
         addLanguage() {
+            this.lang.list.push({
+                id: Math.floor(Math.random() * 10000),
+                language: this.lang.value,
+                ability: this.lang.ability,
+                stat: true
+            })
+            this.lang.value = null
+            this.lang.ability = null
+        },
+        saveLanguage() {
+            let langData = {}
+            this.lang.list.forEach(element => {
+                console.log(element)
+                if (element.stat) langData[element.language] = element.value
+            })
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/language`, {data: langData})
+                .then(response => {
+                    this.loading = false
+                    this.edit.language = false
+                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
+                    this.showDialog(msg)
+                })
+                .catch(e => this.errHandler(e))
         },
         save(fieldName) {
             this.loading = true
@@ -47363,7 +47420,7 @@ var render = function() {
                             {
                               staticClass: "ml-4",
                               attrs: {
-                                color: "teal",
+                                color: "green",
                                 loading: _vm.loading,
                                 disabled: _vm.loading,
                                 dark: "dark"
@@ -47617,9 +47674,33 @@ var render = function() {
                               ? _c(
                                   "v-btn",
                                   {
-                                    staticClass: "right",
+                                    staticClass: "ml-4",
                                     attrs: {
-                                      color: "primary",
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "red"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.edit.background = false
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("clear")])],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm.edit.background
+                              ? _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "ml-4",
+                                    attrs: {
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "green",
                                       loading: _vm.loading,
                                       disabled: _vm.loading
                                     },
@@ -47629,7 +47710,8 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("保存")]
+                                  [_c("v-icon", [_vm._v("done")])],
+                                  1
                                 )
                               : _vm._e()
                           ],
@@ -47662,271 +47744,308 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm.tabIndex === 2
-                  ? _c(
-                      "div",
-                      [
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
-                          [
-                            _vm._v("求職條件"),
-                            _c(
-                              "v-btn",
-                              {
-                                staticClass: "right",
-                                attrs: {
-                                  color: "primary",
-                                  loading: _vm.loading,
-                                  disabled: _vm.loading
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.save("condition")
-                                  }
-                                }
+                  ? _c("div", [
+                      _c(
+                        "p",
+                        { staticClass: "recruit-edit-title" },
+                        [
+                          _vm._v("求職條件"),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "ml-4",
+                              attrs: {
+                                color: "primary",
+                                loading: _vm.loading,
+                                disabled: _vm.loading
                               },
-                              [_vm._v("保存")]
-                            )
-                          ],
-                          1
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: "recruit-edit-field" },
-                          [
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "xs12", md6: "md6" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { type: "text", label: "希望職位" },
-                                  model: {
-                                    value: _vm.resume.expectedJobName,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.resume,
-                                        "expectedJobName",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "resume.expectedJobName"
+                              on: {
+                                click: function($event) {
+                                  _vm.save("condition")
+                                }
+                              }
+                            },
+                            [_vm._v("保存")]
+                          )
+                        ],
+                        1
+                      ),
+                      _c(
+                        "div",
+                        { staticClass: "recruit-edit-field" },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "text", label: "希望職位" },
+                                model: {
+                                  value: _vm.resume.expectedJobName,
+                                  callback: function($$v) {
+                                    _vm.$set(
+                                      _vm.resume,
+                                      "expectedJobName",
+                                      typeof $$v === "string" ? $$v.trim() : $$v
+                                    )
+                                  },
+                                  expression: "resume.expectedJobName"
+                                }
+                              }),
+                              _c("p", [_vm._v("薪資條件")]),
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "wrap" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs5: "xs5" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          type: "number",
+                                          label: "最低薪資"
+                                        },
+                                        model: {
+                                          value: _vm.resume.salaryFrom,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.resume,
+                                              "salaryFrom",
+                                              typeof $$v === "string"
+                                                ? $$v.trim()
+                                                : $$v
+                                            )
+                                          },
+                                          expression: "resume.salaryFrom"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _c("v-flex", { attrs: { xs0: "xs0" } }, [
+                                    _vm._v(" ~")
+                                  ]),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs5: "xs5" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          type: "number",
+                                          label: "最高薪資"
+                                        },
+                                        model: {
+                                          value: _vm.resume.salaryTo,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.resume,
+                                              "salaryTo",
+                                              typeof $$v === "string"
+                                                ? $$v.trim()
+                                                : $$v
+                                            )
+                                          },
+                                          expression: "resume.salaryTo"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _c(
+                        "p",
+                        { staticClass: "recruit-edit-title" },
+                        [
+                          _vm._v("語言能力"),
+                          !_vm.edit.language
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: {
+                                    flat: "flat",
+                                    color: "primary",
+                                    icon: "icon"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.edit.language = true
+                                    }
                                   }
-                                }),
-                                _c("p", [_vm._v("薪資條件")]),
-                                _c(
-                                  "v-layout",
-                                  { attrs: { wrap: "wrap" } },
+                                },
+                                [_c("v-icon", [_vm._v("edit")])],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm.edit.language
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "ml-4",
+                                  attrs: {
+                                    fab: "fab",
+                                    dark: "dark",
+                                    small: "small",
+                                    color: "red"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.edit.language = false
+                                    }
+                                  }
+                                },
+                                [_c("v-icon", [_vm._v("clear")])],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm.edit.language
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "ml-4",
+                                  attrs: {
+                                    fab: "fab",
+                                    dark: "dark",
+                                    small: "small",
+                                    color: "green",
+                                    loading: _vm.loading,
+                                    disabled: _vm.loading
+                                  },
+                                  on: { click: _vm.saveLanguage }
+                                },
+                                [_c("v-icon", [_vm._v("done")])],
+                                1
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      ),
+                      !_vm.edit.language
+                        ? _c("p", {
+                            staticClass: "recruit-edit-content ql-editor",
+                            domProps: { innerHTML: _vm._s(_vm.resume.language) }
+                          })
+                        : _vm._e(),
+                      _vm.edit.language
+                        ? _c(
+                            "div",
+                            { staticClass: "language-select" },
+                            [
+                              _vm._l(_vm.lang.list, function(item) {
+                                return _c(
+                                  "v-chip",
+                                  {
+                                    key: item.id,
+                                    attrs: { close: "close" },
+                                    model: {
+                                      value: item.stat,
+                                      callback: function($$v) {
+                                        _vm.$set(item, "stat", $$v)
+                                      },
+                                      expression: "item.stat"
+                                    }
+                                  },
                                   [
                                     _c(
-                                      "v-flex",
-                                      { attrs: { xs5: "xs5" } },
+                                      "v-avatar",
+                                      { class: _vm.langColor[item.ability] },
                                       [
-                                        _c("v-text-field", {
-                                          attrs: {
-                                            type: "number",
-                                            label: "最低薪資"
-                                          },
-                                          model: {
-                                            value: _vm.resume.salaryFrom,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.resume,
-                                                "salaryFrom",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
-                                              )
-                                            },
-                                            expression: "resume.salaryFrom"
-                                          }
-                                        })
-                                      ],
-                                      1
+                                        _vm._v(
+                                          _vm._s(_vm.langLevel[item.ability])
+                                        )
+                                      ]
                                     ),
-                                    _c("v-flex", { attrs: { xs0: "xs0" } }, [
-                                      _vm._v(" ~")
-                                    ]),
-                                    _c(
-                                      "v-flex",
-                                      { attrs: { xs5: "xs5" } },
-                                      [
-                                        _c("v-text-field", {
-                                          attrs: {
-                                            type: "number",
-                                            label: "最高薪資"
-                                          },
-                                          model: {
-                                            value: _vm.resume.salaryTo,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.resume,
-                                                "salaryTo",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
-                                              )
-                                            },
-                                            expression: "resume.salaryTo"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
+                                    _vm._v(_vm._s(_vm.langMap[item.language]))
                                   ],
                                   1
                                 )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
-                          [
-                            _vm._v("語言能力"),
-                            !_vm.edit.language
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "white--text",
-                                    attrs: {
-                                      flat: "flat",
-                                      color: "primary",
-                                      icon: "icon"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.language = true
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("edit")])],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm.edit.language
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "right",
-                                    attrs: {
-                                      color: "primary",
-                                      loading: _vm.loading,
-                                      disabled: _vm.loading
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.save("language")
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("保存")]
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        !_vm.edit.language
-                          ? _c("p", {
-                              staticClass: "recruit-edit-content ql-editor",
-                              domProps: {
-                                innerHTML: _vm._s(_vm.resume.language)
-                              }
-                            })
-                          : _vm._e(),
-                        _c("p"),
-                        _c(
-                          "div",
-                          { staticClass: "language-select" },
-                          [
-                            _c(
-                              "v-chip",
-                              { attrs: { close: "close" } },
-                              [
-                                _c("v-avatar", { staticClass: "teal" }, [
-                                  _vm._v("S")
-                                ]),
-                                _vm._v("英語")
-                              ],
-                              1
-                            ),
-                            _c("v-select", {
-                              attrs: {
-                                items: _vm.languageList,
-                                label: "Select",
-                                "single-line": "single-line",
-                                bottom: "bottom"
-                              },
-                              model: {
-                                value: _vm.lang.code,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.lang, "code", $$v)
-                                },
-                                expression: "lang.code"
-                              }
-                            }),
-                            _c(
-                              "v-radio-group",
-                              {
-                                attrs: { mandatory: false },
-                                model: {
-                                  value: _vm.lang.ability,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.lang, "ability", $$v)
-                                  },
-                                  expression: "lang.ability"
-                                }
-                              },
-                              [
-                                _c("v-radio", {
-                                  attrs: { label: "不會", value: "0" }
-                                }),
-                                _c("v-radio", {
-                                  attrs: { label: "略懂", value: "1" }
-                                }),
-                                _c("v-radio", {
-                                  attrs: { label: "中等", value: "2" }
-                                }),
-                                _c("v-radio", {
-                                  attrs: { label: "熟練", value: "3" }
-                                }),
-                                _c("v-radio", {
-                                  attrs: { label: "精通", value: "4" }
-                                })
-                              ],
-                              1
-                            ),
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "primary" },
-                                on: { click: _vm.addLanguage }
-                              },
-                              [_vm._v("+")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm.edit.language
-                          ? _c("quill-editor", {
-                              attrs: {
-                                content: _vm.resume.language,
-                                options: _vm.editorOption
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.onEditorChange($event, "language")
-                                }
-                              }
-                            })
-                          : _vm._e()
-                      ],
-                      1
-                    )
+                              }),
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "wrap" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs4: "xs4" } },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          items: _vm.languageOpt,
+                                          label: "語言",
+                                          "single-line": "single-line",
+                                          bottom: "bottom"
+                                        },
+                                        model: {
+                                          value: _vm.lang.value,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.lang, "value", $$v)
+                                          },
+                                          expression: "lang.value"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _c("v-flex", { attrs: { xs1: "xs1" } }),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs4: "xs4" } },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          items: _vm.abilityOpt,
+                                          label: "程度",
+                                          "single-line": "single-line",
+                                          bottom: "bottom"
+                                        },
+                                        model: {
+                                          value: _vm.lang.ability,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.lang, "ability", $$v)
+                                          },
+                                          expression: "lang.ability"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _c("v-flex", { attrs: { xs1: "xs1" } }),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs2: "xs2" } },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            color: "teal",
+                                            dark: "dark"
+                                          },
+                                          on: { click: _vm.addLanguage }
+                                        },
+                                        [_vm._v("新增")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            2
+                          )
+                        : _vm._e(),
+                      _c("p")
+                    ])
                   : _vm._e(),
                 _vm.tabIndex === 3
                   ? _c(
@@ -47961,9 +48080,33 @@ var render = function() {
                               ? _c(
                                   "v-btn",
                                   {
-                                    staticClass: "right",
+                                    staticClass: "ml-4",
                                     attrs: {
-                                      color: "primary",
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "red"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.edit.skill = false
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("clear")])],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm.edit.skill
+                              ? _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "ml-4",
+                                    attrs: {
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "green",
                                       loading: _vm.loading,
                                       disabled: _vm.loading
                                     },
@@ -47973,7 +48116,8 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("保存")]
+                                  [_c("v-icon", [_vm._v("done")])],
+                                  1
                                 )
                               : _vm._e()
                           ],
@@ -48028,9 +48172,33 @@ var render = function() {
                               ? _c(
                                   "v-btn",
                                   {
-                                    staticClass: "right",
+                                    staticClass: "ml-4",
                                     attrs: {
-                                      color: "primary",
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "red"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.edit.certificate = false
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("clear")])],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm.edit.certificate
+                              ? _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "ml-4",
+                                    attrs: {
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "green",
                                       loading: _vm.loading,
                                       disabled: _vm.loading
                                     },
@@ -48040,7 +48208,8 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("保存")]
+                                  [_c("v-icon", [_vm._v("done")])],
+                                  1
                                 )
                               : _vm._e()
                           ],
@@ -48088,6 +48257,7 @@ var render = function() {
                                     staticClass: "white--text",
                                     attrs: {
                                       flat: "flat",
+                                      dark: "dark",
                                       color: "primary",
                                       icon: "icon"
                                     },
@@ -48105,9 +48275,33 @@ var render = function() {
                               ? _c(
                                   "v-btn",
                                   {
-                                    staticClass: "right",
+                                    staticClass: "ml-4",
                                     attrs: {
-                                      color: "primary",
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "red"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.edit.bio = false
+                                      }
+                                    }
+                                  },
+                                  [_c("v-icon", [_vm._v("clear")])],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm.edit.bio
+                              ? _c(
+                                  "v-btn",
+                                  {
+                                    staticClass: "ml-4",
+                                    attrs: {
+                                      fab: "fab",
+                                      dark: "dark",
+                                      small: "small",
+                                      color: "green",
                                       loading: _vm.loading,
                                       disabled: _vm.loading
                                     },
@@ -48117,7 +48311,8 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("保存")]
+                                  [_c("v-icon", [_vm._v("done")])],
+                                  1
                                 )
                               : _vm._e()
                           ],

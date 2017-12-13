@@ -9,7 +9,7 @@
                                 
                                 v-flex(xs12 md6)
                                     p.recruit-edit-title 基本資訊
-                                        v-btn.right(color='primary' @click='save' :loading="loading" :disabled="loading") 保存
+                                        v-btn.right(dark color='green' @click='save' :loading="loading" :disabled="loading") 保存
                                 .recruit-edit-field(v-if='$root.user.userType === 1')
                                     v-flex(xs12 md6)
                                         v-text-field(type='text' label='姓氏' v-model.trim='user.lastname')

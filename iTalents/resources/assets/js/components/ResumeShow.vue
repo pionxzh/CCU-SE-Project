@@ -7,10 +7,10 @@
                         section
                             p.page-title 履歷
                                 router-link.no-decoration(:to="{name: 'ResumeEdit'}")
-                                    v-btn.hide.ml-4(color='primary')
+                                    v-btn.hide.ml-4(color='primary' v-if='!$route.params.id')
                                         v-icon edit
                                         | 編輯
-                                    v-btn.ml-4(color='yellow' large)
+                                    v-btn.ml-4(color='yellow' v-if='$route.params.id' large)
                                         v-icon card_giftcard
                                         | &nbsp;寄出邀請
 
@@ -102,7 +102,9 @@ export default {
             }
         },
         getResumeInfo() {
-            axios.get(`/api/resume`)
+            let url = this.$route.params.id ? this.$route.params.id : ''
+            console.log(url)
+            axios.get(`/api/resume/${url}`)
                 .then(response => {
                     console.log(response.data)
                     if (response.data.stat) {

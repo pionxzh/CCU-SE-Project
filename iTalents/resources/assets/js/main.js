@@ -51,6 +51,10 @@ const router = new Router({
         path: '/user',
         component: User
     }, {
+        name: 'ResumeEdit',
+        path: '/resume/edit',
+        component: ResumeEdit
+    }, {
         name: 'ResumeShow',
         path: '/resume',
         component: ResumeShow
@@ -58,10 +62,6 @@ const router = new Router({
         name: 'ResumeShow',
         path: '/resume/:id',
         component: ResumeShow
-    }, {
-        name: 'ResumeEdit',
-        path: '/resume/edit',
-        component: ResumeEdit
     }, {
         name: 'StdMatch',
         path: '/resume/match',
