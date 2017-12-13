@@ -267,7 +267,7 @@ export default {
             let langData = {}
             this.lang.list.forEach(element => {
                 console.log(element)
-                if (element.stat) langData[element.language] = element.value
+                if (element.stat) langData[element.language] = element.ability
             })
             axios.post(`/resume/language`, {data: langData})
                 .then(response => {

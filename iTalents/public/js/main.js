@@ -33872,7 +33872,7 @@ if (false) {(function () {
             let langData = {}
             this.lang.list.forEach(element => {
                 console.log(element)
-                if (element.stat) langData[element.language] = element.value
+                if (element.stat) langData[element.language] = element.ability
             })
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/language`, {data: langData})
                 .then(response => {
