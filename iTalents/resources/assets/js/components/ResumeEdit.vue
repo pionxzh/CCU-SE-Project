@@ -73,7 +73,7 @@
                                                 v-text-field(type='number' label='最高薪資' v-model.trim='resume.salaryTo')
 
                                 p.recruit-edit-title 語言能力
-                                    v-btn.white--text(flat color='primary' icon @click='edit.language = true' v-if='!edit.language')
+                                    v-btn.white--text(flat icon color='primary' @click='edit.language = true' v-if='!edit.language')
                                         v-icon edit
                                     v-btn.ml-4(fab dark small color='red' @click='edit.language = false' v-if='edit.language')
                                         v-icon clear
@@ -210,9 +210,8 @@ export default {
             modules: {
                 toolbar: [
                     ['bold', 'italic', 'underline'],
-                    [{'size': ['small', false, 'large']}],
                     [{'list': 'ordered'}, {'list': 'bullet'}],
-                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'size': [false, 'large', 'huge'] }],
                     [{ 'header': [1, 2, 3, false] }],
                     ['link', 'image']
                 ]
@@ -239,7 +238,9 @@ export default {
         checkPermission() {
             if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
                 this.$router.push({name: 'Main'})
+                return true
             }
+            return false
         },
         onEditorChange(event, fieldName) {
             this.resume[fieldName] = event.html
@@ -248,7 +249,7 @@ export default {
             this.tabIndex = index
         },
         getResumeInfo() {
-            this.checkPermission()
+            if (this.checkPermission()) return
             axios.get(`/api/resume`)
                 .then(response => {
                     console.log(response.data)

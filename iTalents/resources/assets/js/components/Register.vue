@@ -25,8 +25,8 @@
                             p.text-xs-center.mb-3(style='font-size: 20px;') 註冊
                             v-text-field(type='text' name='email' label='Email' v-model.trim='email' dark)
                             v-text-field(type='password' name='password' label='密碼' v-model.trim='password' @keyup.enter='regist' dark)
-                            v-checkbox(label="我已詳細閱讀並同意" v-model="agreement" dark)
-                            span 《授權條款》
+                            v-checkbox(v-html="我已詳細閱讀並同意" v-model="agreement" dark)
+                                span 《授權條款》
 
                             v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='regist' :loading="loading" :disabled="loading") 送出
                         router-link.no-decoration.right.mb-2(:to="{name: 'Login'}") 已經有帳號? 立刻登入

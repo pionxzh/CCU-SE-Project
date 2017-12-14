@@ -33100,17 +33100,21 @@ var render = function() {
                               expression: "password"
                             }
                           }),
-                          _c("v-checkbox", {
-                            attrs: { label: "我已詳細閱讀並同意", dark: "dark" },
-                            model: {
-                              value: _vm.agreement,
-                              callback: function($$v) {
-                                _vm.agreement = $$v
-                              },
-                              expression: "agreement"
-                            }
-                          }),
-                          _c("span", [_vm._v("《授權條款》")]),
+                          _c(
+                            "v-checkbox",
+                            {
+                              attrs: { dark: "dark" },
+                              domProps: { innerHTML: _vm._s(_vm.我已詳細閱讀並同意) },
+                              model: {
+                                value: _vm.agreement,
+                                callback: function($$v) {
+                                  _vm.agreement = $$v
+                                },
+                                expression: "agreement"
+                              }
+                            },
+                            [_c("span", [_vm._v("《授權條款》")])]
+                          ),
                           _c(
                             "v-btn",
                             {
@@ -33312,7 +33316,6 @@ if (false) {(function () {
         loading: false
     }),
     activated() {
-        this.checkPermission()
         this.getResumeInfo()
     },
     computed: {
@@ -33344,8 +33347,8 @@ if (false) {(function () {
             }
         },
         getResumeInfo() {
+            this.checkPermission()
             let url = this.$route.params.id ? this.$route.params.id : ''
-            console.log(url)
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume/${url}`)
                 .then(response => {
                     console.log(response.data)
@@ -33873,7 +33876,9 @@ if (false) {(function () {
         checkPermission() {
             if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
                 this.$router.push({name: 'Main'})
+                return true
             }
+            return false
         },
         onEditorChange(event, fieldName) {
             this.resume[fieldName] = event.html
@@ -33882,7 +33887,7 @@ if (false) {(function () {
             this.tabIndex = index
         },
         getResumeInfo() {
-            this.checkPermission()
+            if (this.checkPermission()) return
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume`)
                 .then(response => {
                     console.log(response.data)
@@ -33890,13 +33895,10 @@ if (false) {(function () {
                         this.resume = response.data.data
                         this.resume.gender = this.resume.gender.toString()
                         for (const key in response.data.language) {
-                            console.log(key)
-                            const element = response.data.language[key]
-                            console.log(element)
                             this.lang.list.push({
                                 id: Math.floor(Math.random() * 10000),
                                 language: key,
-                                ability: element,
+                                ability: response.data.language[key],
                                 stat: true
                             })
                         }
@@ -47919,8 +47921,8 @@ var render = function() {
                                   staticClass: "white--text",
                                   attrs: {
                                     flat: "flat",
-                                    color: "primary",
-                                    icon: "icon"
+                                    icon: "icon",
+                                    color: "primary"
                                   },
                                   on: {
                                     click: function($event) {
@@ -49243,6 +49245,36 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -49252,6 +49284,11 @@ if (false) {(function () {
         quillEditor: __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__["quillEditor"]
     },
     data: () => ({
+        footprint: [
+            {text: '首頁', link: 'Main', disabled: false},
+            {text: '徵才列表', link: 'Recruit', disabled: false},
+            {text: '修改徵才訊息', link: 'RecruitEdit', disabled: true}
+        ],
         recruit: {
             title: '',
             jobname: '',
@@ -49272,6 +49309,15 @@ if (false) {(function () {
             contact: false
         },
         editorOption: {
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['link', 'image']
+                ]
+            },
             placeholder: 'Type here...'
         },
         loading: false
@@ -49374,13 +49420,27 @@ var render = function() {
           _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
             _c(
               "section",
+              { staticClass: "mb-5" },
               [
+                _c(
+                  "v-breadcrumbs",
+                  { attrs: { divider: "/" } },
+                  _vm._l(_vm.footprint, function(item) {
+                    return _c(
+                      "v-breadcrumbs-item",
+                      { key: item.text, attrs: { disabled: item.disabled } },
+                      [_vm._v(_vm._s(item.text))]
+                    )
+                  })
+                ),
                 _c(
                   "p",
                   { staticClass: "page-title" },
                   [
                     _vm._v(
-                      "徵才訊息詳情 完成度" + _vm._s(_vm.recruit.is_complete ? "O" : "X")
+                      "徵才訊息詳情 (完成度" +
+                        _vm._s(_vm.recruit.is_complete ? "O" : "X") +
+                        ")"
                     ),
                     _c(
                       "v-btn",
@@ -49403,122 +49463,211 @@ var render = function() {
                   { staticClass: "recruit-edit-title" },
                   [
                     _vm._v("徵才資訊"),
-                    _c(
-                      "v-btn",
-                      {
-                        staticClass: "right",
-                        attrs: {
-                          color: "primary",
-                          loading: _vm.loading,
-                          disabled: _vm.loading
-                        },
-                        on: { click: _vm.saveField }
-                      },
-                      [_vm._v("保存")]
-                    )
+                    !_vm.edit.field
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "white--text",
+                            attrs: {
+                              flat: "flat",
+                              icon: "icon",
+                              color: "primary"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.field = true
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("edit")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.field
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "red"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.field = false
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("clear")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.field
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "green",
+                              loading: _vm.loading,
+                              disabled: _vm.loading
+                            },
+                            on: { click: _vm.saveField }
+                          },
+                          [_c("v-icon", [_vm._v("done")])],
+                          1
+                        )
+                      : _vm._e()
                   ],
                   1
                 ),
-                _c(
-                  "div",
-                  { staticClass: "recruit-edit-field" },
-                  [
-                    _c(
-                      "v-flex",
-                      { attrs: { xs12: "xs12", md6: "md6" } },
+                !_vm.edit.field
+                  ? _c(
+                      "div",
+                      { staticClass: "recruit-edit-field" },
                       [
-                        _c("v-text-field", {
-                          attrs: { type: "text", label: "標題" },
-                          model: {
-                            value: _vm.recruit.title,
-                            callback: function($$v) {
-                              _vm.$set(
-                                _vm.recruit,
-                                "title",
-                                typeof $$v === "string" ? $$v.trim() : $$v
-                              )
-                            },
-                            expression: "recruit.title"
-                          }
-                        }),
-                        _c("v-text-field", {
-                          attrs: { type: "text", label: "職位名稱" },
-                          model: {
-                            value: _vm.recruit.jobname,
-                            callback: function($$v) {
-                              _vm.$set(
-                                _vm.recruit,
-                                "jobname",
-                                typeof $$v === "string" ? $$v.trim() : $$v
-                              )
-                            },
-                            expression: "recruit.jobname"
-                          }
-                        }),
-                        _c("v-text-field", {
-                          attrs: { type: "text", label: "語言條件" },
-                          model: {
-                            value: _vm.recruit.lang,
-                            callback: function($$v) {
-                              _vm.$set(
-                                _vm.recruit,
-                                "lang",
-                                typeof $$v === "string" ? $$v.trim() : $$v
-                              )
-                            },
-                            expression: "recruit.lang"
-                          }
-                        }),
+                        _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
+                          _c("p", { staticClass: "recruit-show-info" }, [
+                            _vm._v("標題: " + _vm._s(_vm.recruit.title || "尚未填寫"))
+                          ]),
+                          _c("p", { staticClass: "recruit-show-info" }, [
+                            _vm._v(
+                              "職位名稱: " + _vm._s(_vm.recruit.jobname || "尚未填寫")
+                            )
+                          ]),
+                          _c("p", { staticClass: "recruit-show-info" }, [
+                            _vm._v(
+                              "工作類型: " +
+                                _vm._s(_vm.recruit.jobtype === 0 ? "兼職" : "全職")
+                            )
+                          ]),
+                          _c("p", { staticClass: "recruit-show-info" }, [
+                            _vm._v(
+                              "語言需求: " + _vm._s(_vm.recruit.lang || "尚未填寫")
+                            )
+                          ]),
+                          _c("p", { staticClass: "recruit-show-info" }, [
+                            _vm._v(
+                              "薪資條件: " +
+                                _vm._s(_vm.recruit.dpay) +
+                                " ~ " +
+                                _vm._s(_vm.recruit.upay)
+                            )
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm.edit.field
+                  ? _c(
+                      "div",
+                      { staticClass: "recruit-edit-field" },
+                      [
                         _c(
-                          "v-layout",
-                          { attrs: { wrap: "wrap" } },
+                          "v-flex",
+                          { attrs: { xs12: "xs12", md6: "md6" } },
                           [
+                            _c("v-text-field", {
+                              attrs: { type: "text", label: "標題" },
+                              model: {
+                                value: _vm.recruit.title,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.recruit,
+                                    "title",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "recruit.title"
+                              }
+                            }),
+                            _c("v-text-field", {
+                              attrs: { type: "text", label: "職位名稱" },
+                              model: {
+                                value: _vm.recruit.jobname,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.recruit,
+                                    "jobname",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "recruit.jobname"
+                              }
+                            }),
+                            _c("v-text-field", {
+                              attrs: { type: "text", label: "語言條件" },
+                              model: {
+                                value: _vm.recruit.lang,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.recruit,
+                                    "lang",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "recruit.lang"
+                              }
+                            }),
                             _c(
-                              "v-flex",
-                              { attrs: { xs5: "xs5" } },
+                              "v-layout",
+                              { attrs: { wrap: "wrap" } },
                               [
-                                _c("v-text-field", {
-                                  attrs: { type: "number", label: "最低薪資" },
-                                  model: {
-                                    value: _vm.recruit.dpay,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.recruit,
-                                        "dpay",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "recruit.dpay"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _c("v-flex", { attrs: { xs0: "xs0" } }, [
-                              _vm._v(" ~")
-                            ]),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs5: "xs5" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { type: "number", label: "最高薪資" },
-                                  model: {
-                                    value: _vm.recruit.upay,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.recruit,
-                                        "upay",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "recruit.upay"
-                                  }
-                                })
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs5: "xs5" } },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: { type: "number", label: "最低薪資" },
+                                      model: {
+                                        value: _vm.recruit.dpay,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.recruit,
+                                            "dpay",
+                                            typeof $$v === "string"
+                                              ? $$v.trim()
+                                              : $$v
+                                          )
+                                        },
+                                        expression: "recruit.dpay"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _c("v-flex", { attrs: { xs0: "xs0" } }, [
+                                  _vm._v(" ~")
+                                ]),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs5: "xs5" } },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: { type: "number", label: "最高薪資" },
+                                      model: {
+                                        value: _vm.recruit.upay,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.recruit,
+                                            "upay",
+                                            typeof $$v === "string"
+                                              ? $$v.trim()
+                                              : $$v
+                                          )
+                                        },
+                                        expression: "recruit.upay"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             )
@@ -49528,9 +49677,7 @@ var render = function() {
                       ],
                       1
                     )
-                  ],
-                  1
-                ),
+                  : _vm._e(),
                 _c(
                   "p",
                   { staticClass: "recruit-edit-title" },
@@ -49543,8 +49690,8 @@ var render = function() {
                             staticClass: "white--text",
                             attrs: {
                               flat: "flat",
-                              color: "primary",
-                              icon: "icon"
+                              icon: "icon",
+                              color: "primary"
                             },
                             on: {
                               click: function($event) {
@@ -49560,9 +49707,33 @@ var render = function() {
                       ? _c(
                           "v-btn",
                           {
-                            staticClass: "right",
+                            staticClass: "ml-4",
                             attrs: {
-                              color: "primary",
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "red"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.jobinfo = false
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("clear")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.jobinfo
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "green",
                               loading: _vm.loading,
                               disabled: _vm.loading
                             },
@@ -49572,7 +49743,8 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("保存")]
+                          [_c("v-icon", [_vm._v("done")])],
+                          1
                         )
                       : _vm._e()
                   ],
@@ -49610,8 +49782,8 @@ var render = function() {
                             staticClass: "white--text",
                             attrs: {
                               flat: "flat",
-                              color: "primary",
-                              icon: "icon"
+                              icon: "icon",
+                              color: "primary"
                             },
                             on: {
                               click: function($event) {
@@ -49627,9 +49799,33 @@ var render = function() {
                       ? _c(
                           "v-btn",
                           {
-                            staticClass: "right",
+                            staticClass: "ml-4",
                             attrs: {
-                              color: "primary",
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "red"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.jobrequire = false
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("clear")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.jobrequire
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "green",
                               loading: _vm.loading,
                               disabled: _vm.loading
                             },
@@ -49639,7 +49835,8 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("保存")]
+                          [_c("v-icon", [_vm._v("done")])],
+                          1
                         )
                       : _vm._e()
                   ],
@@ -49677,8 +49874,8 @@ var render = function() {
                             staticClass: "white--text",
                             attrs: {
                               flat: "flat",
-                              color: "primary",
-                              icon: "icon"
+                              icon: "icon",
+                              color: "primary"
                             },
                             on: {
                               click: function($event) {
@@ -49694,9 +49891,33 @@ var render = function() {
                       ? _c(
                           "v-btn",
                           {
-                            staticClass: "right",
+                            staticClass: "ml-4",
                             attrs: {
-                              color: "primary",
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "red"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.benefits = false
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("clear")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.benefits
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "green",
                               loading: _vm.loading,
                               disabled: _vm.loading
                             },
@@ -49706,7 +49927,8 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("保存")]
+                          [_c("v-icon", [_vm._v("done")])],
+                          1
                         )
                       : _vm._e()
                   ],
@@ -49744,8 +49966,8 @@ var render = function() {
                             staticClass: "white--text",
                             attrs: {
                               flat: "flat",
-                              color: "primary",
-                              icon: "icon"
+                              icon: "icon",
+                              color: "primary"
                             },
                             on: {
                               click: function($event) {
@@ -49761,9 +49983,33 @@ var render = function() {
                       ? _c(
                           "v-btn",
                           {
-                            staticClass: "right",
+                            staticClass: "ml-4",
                             attrs: {
-                              color: "primary",
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "red"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.edit.contact = false
+                              }
+                            }
+                          },
+                          [_c("v-icon", [_vm._v("clear")])],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.contact
+                      ? _c(
+                          "v-btn",
+                          {
+                            staticClass: "ml-4",
+                            attrs: {
+                              fab: "fab",
+                              dark: "dark",
+                              small: "small",
+                              color: "green",
                               loading: _vm.loading,
                               disabled: _vm.loading
                             },
@@ -49773,7 +50019,8 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("保存")]
+                          [_c("v-icon", [_vm._v("done")])],
+                          1
                         )
                       : _vm._e()
                   ],

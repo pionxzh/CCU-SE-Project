@@ -83,7 +83,6 @@ export default {
         loading: false
     }),
     activated() {
-        this.checkPermission()
         this.getResumeInfo()
     },
     computed: {
@@ -115,8 +114,8 @@ export default {
             }
         },
         getResumeInfo() {
+            this.checkPermission()
             let url = this.$route.params.id ? this.$route.params.id : ''
-            console.log(url)
             axios.get(`/api/resume/${url}`)
                 .then(response => {
                     console.log(response.data)

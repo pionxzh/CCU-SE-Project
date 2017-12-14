@@ -3,13 +3,27 @@
             v-layout(row justify-space-between)
                     v-flex(xs0)
                     v-flex(xs10 lg6)
-                        section
-                            p.page-title 徵才訊息詳情 完成度{{ recruit.is_complete ? 'O' : 'X' }}
+                        section.mb-5
+                            v-breadcrumbs(divider="/")
+                                v-breadcrumbs-item(v-for="item in footprint" :key="item.text" :disabled="item.disabled") {{ item.text }}
+                            p.page-title 徵才訊息詳情 (完成度{{ recruit.is_complete ? 'O' : 'X' }})
                                 v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') 返回列表
 
                             p.recruit-edit-title 徵才資訊
-                                v-btn.right(color='primary' @click='saveField' :loading="loading" :disabled="loading") 保存
-                            .recruit-edit-field
+                                v-btn.white--text(flat icon color='primary' @click='edit.field = true' v-if='!edit.field')
+                                    v-icon edit
+                                v-btn.ml-4(fab dark small color='red' @click='edit.field = false' v-if='edit.field')
+                                    v-icon clear
+                                v-btn.ml-4(fab dark small color='green' @click='saveField' :loading="loading" :disabled="loading" v-if='edit.field')
+                                    v-icon done
+                            .recruit-edit-field(v-if='!edit.field')
+                                v-flex(xs12 md6)
+                                    p.recruit-show-info 標題: {{ recruit.title || '尚未填寫'}}
+                                    p.recruit-show-info 職位名稱: {{ recruit.jobname || '尚未填寫'}}
+                                    p.recruit-show-info 工作類型: {{ recruit.jobtype === 0 ? '兼職' : '全職' }}
+                                    p.recruit-show-info 語言需求: {{ recruit.lang || '尚未填寫'}}
+                                    p.recruit-show-info 薪資條件: {{ recruit.dpay }} ~ {{recruit.upay}}
+                            .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
                                     v-text-field(type='text' label='標題' v-model.trim='recruit.title')
                                     v-text-field(type='text' label='職位名稱' v-model.trim='recruit.jobname')
@@ -23,16 +37,24 @@
                                             v-text-field(type='number' label='最高薪資' v-model.trim='recruit.upay')
 
                             p.recruit-edit-title 工作內容
-                                v-btn.white--text(flat color='primary' icon @click='edit.jobinfo = true' v-if='!edit.jobinfo')
+                                v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
-                                v-btn.right(color='primary' @click='save("jobinfo")' :loading="loading" :disabled="loading" v-if='edit.jobinfo') 保存
+                                v-btn.ml-4(fab dark small color='red' @click='edit.jobinfo = false' v-if='edit.jobinfo')
+                                    v-icon clear
+                                v-btn.ml-4(fab dark small color='green' @click='save("jobinfo")' :loading="loading" :disabled="loading" v-if='edit.jobinfo')
+                                    v-icon done
+
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobinfo' v-html='recruit.jobinfo')
                             quill-editor(:content="recruit.jobinfo" :options="editorOption" @change="onEditorChange($event, 'jobinfo')" v-if='edit.jobinfo')
 
                             p.recruit-edit-title 條件要求
-                                v-btn.white--text(flat color='primary' icon @click='edit.jobrequire = true' v-if='!edit.jobrequire')
-                                        v-icon edit
-                                v-btn.right(color='primary' @click='save("jobrequire")' :loading="loading" :disabled="loading" v-if='edit.jobrequire') 保存
+                                v-btn.white--text(flat icon color='primary' @click='edit.jobrequire = true' v-if='!edit.jobrequire')
+                                    v-icon edit
+                                v-btn.ml-4(fab dark small color='red' @click='edit.jobrequire = false' v-if='edit.jobrequire')
+                                    v-icon clear
+                                v-btn.ml-4(fab dark small color='green' @click='save("jobrequire")' :loading="loading" :disabled="loading" v-if='edit.jobrequire')
+                                    v-icon done
+
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobrequire' v-html='recruit.jobrequire')
                             quill-editor(:content="recruit.jobrequire" 
                                 :options="editorOption" 
@@ -40,16 +62,24 @@
                                 v-if='edit.jobrequire')
 
                             p.recruit-edit-title 公司福利
-                                v-btn.white--text(flat color='primary' icon @click='edit.benefits = true' v-if='!edit.benefits')
+                                v-btn.white--text(flat icon color='primary' @click='edit.benefits = true' v-if='!edit.benefits')
                                     v-icon edit
-                                v-btn.right(color='primary' @click='save("benefits")' :loading="loading" :disabled="loading" v-if='edit.benefits') 保存
+                                v-btn.ml-4(fab dark small color='red' @click='edit.benefits = false' v-if='edit.benefits')
+                                    v-icon clear
+                                v-btn.ml-4(fab dark small color='green' @click='save("benefits")' :loading="loading" :disabled="loading" v-if='edit.benefits')
+                                    v-icon done
+
                                 p.recruit-edit-content.ql-editor(v-if='!edit.benefits' v-html='recruit.benefits')
                             quill-editor(:content="recruit.benefits" :options="editorOption" @change="onEditorChange($event, 'benefits')" v-if='edit.benefits')
 
                             p.recruit-edit-title 聯絡方式
-                                v-btn.white--text(flat color='primary' icon @click='edit.contact = true' v-if='!edit.contact')
+                                v-btn.white--text(flat icon color='primary' @click='edit.contact = true' v-if='!edit.contact')
                                     v-icon edit
-                                v-btn.right(color='primary' @click='save("contact")' :loading="loading" :disabled="loading" v-if='edit.contact') 保存
+                                v-btn.ml-4(fab dark small color='red' @click='edit.contact = false' v-if='edit.contact')
+                                    v-icon clear
+                                v-btn.ml-4(fab dark small color='green' @click='save("contact")' :loading="loading" :disabled="loading" v-if='edit.contact')
+                                    v-icon done
+
                                 p.recruit-edit-content.ql-editor(v-if='!edit.contact' v-html='recruit.contact')
                             quill-editor(:content="recruit.contact" :options="editorOption" @change="onEditorChange($event, 'contact')" v-if='edit.contact')
                     v-flex(xs0)
@@ -65,6 +95,11 @@ export default {
         quillEditor
     },
     data: () => ({
+        footprint: [
+            {text: '首頁', link: 'Main', disabled: false},
+            {text: '徵才列表', link: 'Recruit', disabled: false},
+            {text: '修改徵才訊息', link: 'RecruitEdit', disabled: true}
+        ],
         recruit: {
             title: '',
             jobname: '',
@@ -85,6 +120,15 @@ export default {
             contact: false
         },
         editorOption: {
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{ 'size': [false, 'large', 'huge'] }],
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['link', 'image']
+                ]
+            },
             placeholder: 'Type here...'
         },
         loading: false
