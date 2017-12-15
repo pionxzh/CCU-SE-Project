@@ -58,7 +58,7 @@ Route::get('api/recruit/match', 'EmployerController@getRecruitMatch');
 // 送出申請
 Route::post('invite/{uid}', 'EmployerController@inviteThisEmployee');
 // 回傳所有投過該徵才表的外籍生、我送出的邀請
-Route::get('api/resume/histroy', 'EmployerController@getResumeHistory');
+Route::get('api/recruit/histroy', 'EmployerController@getRecruitHistory');
 
 
 
@@ -84,7 +84,7 @@ Route::get('api/resume/match', 'EmployeeController@getResumeMatch');
 // 投出履歷表
 Route::post('throw/{rid}', 'EmployeeController@throwThisRecruitment');
 // 回傳所有該使用者投過的徵才表、廠商邀請
-Route::get('api/recruit/histroy', 'EmployeeController@getRecruitHistory');
+Route::get('api/resume/histroy', 'EmployeeController@getResumeHistory');
 
 
 Route::get('{all}', function () {
