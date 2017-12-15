@@ -1,0 +1,18 @@
+{
+    "common": {
+        "login": "Login",
+        "register": "Register",
+        "student": "Student",
+        "company": "Company",
+        "email": "Email",
+        "password": "password",
+        "submit": "Submit",
+        "hint": "Hint",
+        "close": "Close"
+    },
+    "login": {
+        "chooseIdentify": "- Choose your Identify -",
+        "alreadyHaveAcc": "Already have an account? Login now!"
+    }
+    
+}

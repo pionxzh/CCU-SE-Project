@@ -1,0 +1,18 @@
+{
+    "common": {
+        "login": "登入",
+        "register": "註冊",
+        "student": "學生",
+        "company": "廠商",
+        "email": "信箱",
+        "password": "密碼",
+        "submit": "送出",
+        "hint": "提示",
+        "close": "關閉"
+    },
+    "login": {
+        "chooseIdentify": "- 選擇您的身分 -",
+        "alreadyHaveAcc": "已經有帳號? 立刻登入"
+    }
+    
+}

@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Vuetify from 'vuetify'
+import VueI18n from 'vue-i18n'
 import Router from 'vue-router'
 import Vmodal from 'vue-js-modal'
+import VueI18nDirectives from 'vue-i18n-directives'
 
 import App from './App.vue'
 import Nav from './Nav.vue'
@@ -26,6 +28,19 @@ Vue.use(Vuetify)
 Vue.use(Router)
 Vue.use(Vmodal, {
     dialog: true
+})
+Vue.use(VueI18n)
+Vue.use(VueI18nDirectives)
+
+let english = require('../config/i18n/en.json')
+let zh = require('../config/i18n/zh.json')
+
+const i18n = new VueI18n({
+    locale: 'zh',
+    messages: {
+        en: english,
+        zh: zh
+    }
 })
 
 const router = new Router({
@@ -95,6 +110,7 @@ axios.get('/api/user')
         if (response.data.stat) Vue.prototype.user = response.data
 
         new Vue({
+            i18n,
             el: '#app',
             router,
             render: create => create(App)

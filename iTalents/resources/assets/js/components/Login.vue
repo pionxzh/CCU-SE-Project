@@ -50,9 +50,9 @@ export default {
         },
         showDialog(msg) {
             this.$modal.show('dialog', {
-                title: '提示',
+                title: this.$t('common.hint'),
                 text: msg,
-                buttons: [{title: '關閉'}]
+                buttons: [{ title: this.$t('common.close') }]
             })
         },
         setIdentify(type) {

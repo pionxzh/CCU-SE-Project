@@ -5,15 +5,15 @@
                 v-flex(xs0)
                 v-flex(xs0)
                     .identifyCard(:class='{selected: type !== 0}')
-                        p.text-xs-center.white--text - 選擇您的身分 -
+                        p.text-xs-center.white--text {{ $t('login.chooseIdentify') }}
                         .select-card.student(ripple :class='{active: type === 1}' @click='setIdentify(1)')
                             .select-card-text
                                 i.fa.fa-graduation-cap
-                                span &nbsp;學生
+                                span &nbsp;{{ $t('common.student') }}
                         .select-card.company(ripple :class='{active: type === 2}' @click='setIdentify(2)')
                             .select-card-text
                                 i.fa.fa-id-card-o
-                                span &nbsp;廠商
+                                span &nbsp;{{ $t('common.company') }}
                 v-flex(xs0)
             v-layout(row justify-space-between)
                 v-flex(xs0)
@@ -22,14 +22,13 @@
                         v-card-text
                             v-avatar.center-item.mb-0(size='180')
                                 img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
-                            p.text-xs-center.mb-3(style='font-size: 20px;') 註冊
+                            p.text-xs-center.mb-3(style='font-size: 20px;') {{ $t('common.register') }}
                             v-text-field(type='text' name='email' label='Email' v-model.trim='email' dark)
-                            v-text-field(type='password' name='password' label='密碼' v-model.trim='password' @keyup.enter='regist' dark)
-                            v-checkbox(v-html="我已詳細閱讀並同意" v-model="agreement" dark)
-                                span 《授權條款》
+                            v-text-field(type='password' name='password' label='$t("common.password")' v-model.trim='password' @keyup.enter='regist' dark)
+                            v-checkbox(label="我已詳細閱讀並同意《授權條款》" v-model="agreement" dark)
 
-                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='regist' :loading="loading" :disabled="loading") 送出
-                        router-link.no-decoration.right.mb-2(:to="{name: 'Login'}") 已經有帳號? 立刻登入
+                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='regist' :loading="loading" :disabled="loading") {{ $t('common.submit') }}
+                        router-link.no-decoration.right.mb-2(:to="{name: 'Login'}") {{ $t('login.alreadyHaveAcc') }}
                 v-flex(xs0)
 
 </template>
@@ -53,9 +52,9 @@ export default {
         },
         showDialog(msg) {
             this.$modal.show('dialog', {
-                title: '提示',
+                title: this.$t('common.hint'),
                 text: msg,
-                buttons: [{title: '關閉'}]
+                buttons: [{ title: this.$t('common.close') }]
             })
         },
         checkForm() {
