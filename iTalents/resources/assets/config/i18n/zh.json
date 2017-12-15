@@ -13,6 +13,11 @@
     "login": {
         "chooseIdentify": "- 選擇您的身分 -",
         "alreadyHaveAcc": "已經有帳號? 立刻登入"
-    }
-    
+    },
+    "register": {},
+    "Main": {},
+    "Recruit": {},
+    "Resume": {},
+    "User": {},
+    "Nav": {}
 }
