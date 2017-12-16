@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 /*********Hawa*********/
 use Auth;
 use App\User;
+use App\Employee;
 use App\Employer;
 use App\Recruitment;
 use App\Resume;
 use App\Language;
 use App\Matching;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
@@ -213,10 +215,17 @@ class EmployerController extends Controller
         $ret = new \stdClass();
         $ret ->stat = 0;
         $thisResume = Resume::where('uid', '=', $uid) ->first();
-        if(Auth::check() and Auth::User() ->user_type === 2 and isset($thisResume) and $this ->checkIfActive())
+        $thisLang = Language::where('uid', '=', $uid) ->first();
+        if(Auth::check() and Auth::User() ->user_type === 2 and isset($thisResume) and isset($thisLang) and $this ->checkIfActive())
         {
+            // 回傳學生語言資訊
+            unset($thisLang ->id);
+            unset($thisLang ->uid);
+            unset($thisLang ->updated_at);
+            unset($thisLang ->created_at);
+            $ret ->lang = $thisLang;
             // 如果廠商與學生之間有配對關係, 則回傳完整資訊, 且stat = 2
-            if(Matching::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid]]) ->exists())
+            if(Matching::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid], ['employeeCheck', '=', 1]]) ->exists())
             {
                 $ret ->data = $thisResume;
                 $ret ->stat = 2;
@@ -235,6 +244,111 @@ class EmployerController extends Controller
 
         }
         // 駁回請求, stat = 0
+        return json_encode($ret);
+    }
+
+
+    /**********************
+     * 刪除指定的徵才表 *
+     *********************/
+    public function deleteThisRecruit($rid)
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find($rid);
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            // 刪除相關配對紀錄
+            Matching::where('rid', '=', $rid) ->delete();
+            $thisRecruit ->delete();
+        }
+        return json_encode($ret);
+    }
+
+
+    /******************************************
+     * 徵才配對,目前只能選擇一種語言且無程度之分 *
+     ******************************************/
+    public function getRecruitMatch()
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find(Input::get('rid'));
+        if(Auth::check() and isset($thisRecruit) and Schema::hasColumn('languages', $thisRecruit ->lang)
+            and Auth::User() ->id === $thisRecruit ->uid and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            // 配對
+            $ret ->data = Resume::where([
+                ['expectedJobName', '=', $thisRecruit ->jobname],
+                ['salaryFrom', '<=', $thisRecruit ->dpay],
+                ['salaryTo', '<=', $thisRecruit ->upay]]) ->get();
+
+            // 篩選語言
+            foreach($ret ->data as $offset => $resume)
+            {
+                $thisLang = Language::where('uid', '=', $resume ->uid) ->first();
+                if($thisLang ->{$thisRecruit ->lang} ===  0)
+                {
+                    // 如果不會的話
+                    unset(($ret ->data) ->$offset);
+                }
+                else
+                {
+                    unset($thisLang ->id);
+                    unset($thisLang ->uid);
+                    unset($thisLang ->updated_at);
+                    unset($thisLang ->created_at);
+                    $ret ->data ->offset ->offsetSet('lang', $thisLang);
+                }
+            }
+        }
+        return json_encode($ret);
+    }
+
+    /************
+     * 寄送邀請 *
+     ************/
+    public function inviteThisEmployee()
+    {
+        // given $uid & $rid
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find(Input::get('rid'));
+        if(Auth::check() and isset($thisRecruit) and Auth::User() ->id === $thisRecruit ->uid and Employee::where('uid', '=', Input::get('uid')) ->exists()
+            and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            if(!Matching::where([['rid', '=', Input::get('rid')], ['uid', '=', Input::get('uid')]]) ->exists())
+            {
+                $newMatching = new Matching;
+                $newMatching ->cid = Auth::User() ->id;
+                $newMatching ->rid = Input::get('rid');
+                $newMatching ->uid = Input::get('uid');
+                $newMatching ->employerCheck = 1;
+                $newMatching ->save();
+            }
+        }
+        return json_encode($ret);
+    }
+
+
+
+    /*******************************
+     * 查看單筆徵才廣告的徵才資訊 *
+     ******************************/
+    public function getRecruitHistory()
+    {
+        // given $rid
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find(Input::get('rid'));
+        if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            $ret ->data = Matching::where('rid', '=', Input::get('rid'));
+        }
         return json_encode($ret);
     }
 

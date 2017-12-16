@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Employee;
+use App\Employer;
+use App\Recruitment;
 use App\Resume;
 use App\Language;
 use App\Matching;
@@ -201,5 +203,82 @@ class EmployeeController extends Controller
         $ret ->stat = 1;
         return json_encode($ret);
     }
+
+
+    /************
+     * 配對職缺 *
+     * *********/
+    public function getResumeMatch()
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
+        $thisLang = Language::where('uid', '=', Auth::User() ->id) ->first();
+        if(Auth::check() and Auth::User() ->user_type === 1 and isset($thisResume) and isset($thisLang) and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            $ret ->data = Recruitment::where([['jobname', '=', $thisResume ->expectedJobName], ['dpay', '>=', $thisResume ->salaryFrom],
+                ['upay', '>=', $thisResume ->salaryTo]]) ->get();
+            foreach($ret ->data as $offset => $recruit)
+            {
+                if($thisLang ->{$recruit ->lang} === 0)
+                {
+                    unset($ret ->data ->$offset);
+                }
+            }
+        }
+        return json_encode($ret);
+    }
+
+
+    /************
+     * 投擲履歷 *
+     * *********/
+    public function throwThisRecruitment()
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisRecruit = Recruitment::find(Input::get('rid'));
+        // given $rid;
+        if(Auth::check() and Auth::User() ->user_type === 1 and isset($thisRecruit) and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            $thisMatch = Matching::where([['uid', '=', Auth::User() ->id], ['rid', '=', Input::get('rid')]]) ->first();
+            if(isset($thisMatch))
+            {
+                $thisMatch ->employeeCheck = 1;
+                $thisMatch ->save();
+            }
+            else
+            {
+                $newMatch = new Matching;
+                $newMatch ->cid = $thisRecruit ->uid;
+                $newMatch ->rid = $thisRecruit ->id;
+                $newMatch ->uid = Auth::User() ->id;
+                $newMatch ->employeeCheck = 1;
+                $newMatch ->employerCheck = 1;
+                $newMatch ->save();
+            }
+        }
+        return json_encode($ret);
+    }
+
+
+    /************************
+     * 查看學生履歷投擲歷史 *
+     ***********************/
+    public function getResumeHistory()
+    {
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+
+        if(Auth::check() and Auth::User() ->user_type === 1 and $this ->checkIfActive())
+        {
+            $ret ->stat = 1;
+            $ret ->data = Matching::where('uid', '=', Auth::User() ->id) ->get();
+        }
+        return json_encode($ret);
+    }
+
 
 }

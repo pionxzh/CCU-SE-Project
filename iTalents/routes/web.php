@@ -53,12 +53,14 @@ Route::post('recruit/{rid}/benefits', 'EmployerController@updateCompanyBenefits'
 Route::post('recruit/{rid}/contact', 'EmployerController@updateCompanyContact');
 // 回傳指定學生之履歷表
 Route::get('api/resume/{uid}', 'EmployerController@getThisResume');
+// 刪除指定的徵才廣告
+Route::post('api/recruit/delete/{rid}', 'EmployerController@deleteThisRecruit');
 // 查看主動配對外籍生
-Route::get('api/recruit/match', 'EmployerController@getRecruitMatch');
+Route::post('api/recruit/match', 'EmployerController@getRecruitMatch');
 // 送出申請
 Route::post('invite/{uid}', 'EmployerController@inviteThisEmployee');
 // 回傳所有投過該徵才表的外籍生、我送出的邀請
-Route::get('api/recruit/histroy', 'EmployerController@getRecruitHistory');
+Route::post('api/recruit/histroy', 'EmployerController@getRecruitHistory');
 
 
 
@@ -74,17 +76,18 @@ Route::post('/resume/background', 'EmployeeController@updateBackground');
 Route::post('/resume/language', 'EmployeeController@updateLanguage');
 // 修改履歷-求職條件
 Route::post('/resume/condition', 'EmployeeController@updateCondition');
-// 修改履歷-技能與證照
+// 修改履歷-技能
 Route::post('/resume/skill', 'EmployeeController@updateSkill');
+// 修改履歷-證照
 Route::post('/resume/certificate', 'EmployeeController@updateCertificate');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
 // 查看主動配對廠商徵才結果
-Route::get('api/resume/match', 'EmployeeController@getResumeMatch');
+Route::post('api/resume/match', 'EmployeeController@getResumeMatch');
 // 投出履歷表
 Route::post('throw/{rid}', 'EmployeeController@throwThisRecruitment');
 // 回傳所有該使用者投過的徵才表、廠商邀請
-Route::get('api/resume/histroy', 'EmployeeController@getResumeHistory');
+Route::post('api/resume/histroy', 'EmployeeController@getResumeHistory');
 
 
 Route::get('{all}', function () {
