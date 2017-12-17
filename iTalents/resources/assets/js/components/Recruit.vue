@@ -1,22 +1,22 @@
-<template lang='pug'>
-    div    
+notCompleted<template lang='pug'>
+    div
         v-content
             v-layout(row='' justify-space-between='')
 
                     v-flex(xs0='')
                     v-flex(xs6='')
                         section
-                            .page-title 徵才總覽
-                                v-btn.right(color='primary' @click='askNewRecruit' :loading='loading' :disabled='loading') 新增徵才訊息
+                            .page-title {{ $t('common.allRecruit') }}
+                                v-btn.right(color='primary' @click='askNewRecruit' :loading='loading' :disabled='loading') {{ $t('common.postJob') }}
                             v-card
                                 v-list(two-line='')
                                     template(v-for='(item, index) in items')
                                         router-link.no-decoration(:to="{path: 'recruit/edit/' + item.id}")
                                             v-list-tile(avatar='', ripple='', :key='item.title')
                                                 v-list-tile-content
-                                                    v-list-tile-title {{ item.title || '尚未填寫' }}
-                                                    v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || '尚未填寫' }}
-                                                    v-list-tile-sub-title 薪資: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
+                                                    v-list-tile-title {{ item.title || {{ $t('common.notCompleted') }} }}
+                                                    v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || {{ $t('common.notCompleted') }} }}
+                                                    v-list-tile-sub-title {{ $t('common.salary') }}: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
                                                 v-list-tile-action
                                                     v-tooltip(top)
                                                         v-btn(flat icon dark color='primary' slot='activator')
@@ -25,7 +25,7 @@
                                                     v-tooltip(top)
                                                         v-btn(flat icon dark color='red' slot='activator')
                                                             v-icon(color='red') delete
-                                                        span 刪除
+                                                        span {{ $t('common.delete') }}
 
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
                     v-flex(xs0='')

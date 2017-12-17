@@ -6,10 +6,10 @@
                         section.mb-5
                             v-breadcrumbs(divider="/")
                                 v-breadcrumbs-item(v-for="item in footprint" :key="item.text" :disabled="item.disabled") {{ item.text }}
-                            p.page-title 徵才訊息詳情 (完成度{{ recruit.is_complete ? 'O' : 'X' }})
-                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') 返回列表
+                            p.page-title {{ $t('common.JobOpening') }} ({{ $t('common.completeness') }} {{ recruit.is_complete ? 'O' : 'X' }})
+                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') {{ $t('common.back')}}
 
-                            p.recruit-edit-title 徵才資訊
+                            p.recruit-edit-title {{ $t('common.JobOpening') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.field = true' v-if='!edit.field')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.field = false' v-if='edit.field')
@@ -18,25 +18,25 @@
                                     v-icon done
                             .recruit-edit-field(v-if='!edit.field')
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info 標題: {{ recruit.title || '尚未填寫'}}
-                                    p.recruit-show-info 職位名稱: {{ recruit.jobname || '尚未填寫'}}
-                                    p.recruit-show-info 工作類型: {{ recruit.jobtype === 0 ? '兼職' : '全職' }}
-                                    p.recruit-show-info 語言需求: {{ recruit.lang || '尚未填寫'}}
-                                    p.recruit-show-info 薪資條件: {{ recruit.dpay }} ~ {{recruit.upay}}
+                                    p.recruit-show-info {{ $t('common.jobTitle') }}: {{ recruit.title || {{ $t('common.notCompleted') }} }}
+                                    p.recruit-show-info {{ $t('common.jobName') }}: {{ recruit.jobname || {{ $t('common.notCompleted') }} }}
+                                    p.recruit-show-info {{ $t('common.jobType') }}: {{ recruit.jobtype === 0 ? {{ $t('common.parttime') }} : {{ $t('common.fulltime')}} }}
+                                    p.recruit-show-info {{ $t('common.requirementLang') }}: {{ recruit.lang || {{ $t('common.notCompleted') }} }}
+                                    p.recruit-show-info {{ $t('salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
                             .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
-                                    v-text-field(type='text' label='標題' v-model.trim='recruit.title')
-                                    v-text-field(type='text' label='職位名稱' v-model.trim='recruit.jobname')
-                                    v-text-field(type='text' label='語言條件' v-model.trim='recruit.lang')
+                                    v-text-field(type='text' label='$t("common.jobTitle")' v-model.trim='recruit.title')
+                                    v-text-field(type='text' label='$t("common.jobName")' v-model.trim='recruit.jobname')
+                                    v-text-field(type='text' label='$t("common.requirementLang")' v-model.trim='recruit.lang')
                                     v-layout(wrap)
                                         v-flex(xs5)
                                             v-text-field(type='number' label='最低薪資' v-model.trim='recruit.dpay')
-                                        v-flex(xs0) 
+                                        v-flex(xs0)
                                             | ~
                                         v-flex(xs5)
                                             v-text-field(type='number' label='最高薪資' v-model.trim='recruit.upay')
 
-                            p.recruit-edit-title 工作內容
+                            p.recruit-edit-title {{ $t('common.jobDescription') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobinfo = false' v-if='edit.jobinfo')
@@ -47,7 +47,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobinfo' v-html='recruit.jobinfo')
                             quill-editor(:content="recruit.jobinfo" :options="editorOption" @change="onEditorChange($event, 'jobinfo')" v-if='edit.jobinfo')
 
-                            p.recruit-edit-title 條件要求
+                            p.recruit-edit-title {{ $t('common.qualifications') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobrequire = true' v-if='!edit.jobrequire')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobrequire = false' v-if='edit.jobrequire')
@@ -56,12 +56,12 @@
                                     v-icon done
 
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobrequire' v-html='recruit.jobrequire')
-                            quill-editor(:content="recruit.jobrequire" 
-                                :options="editorOption" 
-                                @change="onEditorChange($event, 'jobrequire')" 
+                            quill-editor(:content="recruit.jobrequire"
+                                :options="editorOption"
+                                @change="onEditorChange($event, 'jobrequire')"
                                 v-if='edit.jobrequire')
 
-                            p.recruit-edit-title 公司福利
+                            p.recruit-edit-title {{ $t('common.companyBenefits') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.benefits = true' v-if='!edit.benefits')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.benefits = false' v-if='edit.benefits')
@@ -72,7 +72,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.benefits' v-html='recruit.benefits')
                             quill-editor(:content="recruit.benefits" :options="editorOption" @change="onEditorChange($event, 'benefits')" v-if='edit.benefits')
 
-                            p.recruit-edit-title 聯絡方式
+                            p.recruit-edit-title {{ $t('common.contactInform' )}}
                                 v-btn.white--text(flat icon color='primary' @click='edit.contact = true' v-if='!edit.contact')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.contact = false' v-if='edit.contact')
@@ -173,10 +173,10 @@ export default {
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
-                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
+                    let msg = response.data.stat ? this.$t('common.savedSucessfully') : this.$t('common.savedFailed')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = '所有資訊已填寫完整! 徵才訊息將很快公開'
+                        if (response.data.is_complete) msg = this.$t('common.dataCompleted')
                     }
                     this.showDialog(msg)
                 })
@@ -193,10 +193,10 @@ export default {
             })
                 .then(response => {
                     this.loading = false
-                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
+                    let msg = response.data.stat ? this.$t('common.savedSucessfully') : this.$t('common.savedFailed')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = '所有資訊已填寫完整! 徵才訊息將很快公開'
+                        if (response.data.is_complete) msg = this.$t('common.dataCompleted')
                     }
                     this.showDialog(msg)
                 })

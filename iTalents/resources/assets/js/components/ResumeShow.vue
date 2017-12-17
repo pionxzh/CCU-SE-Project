@@ -1,5 +1,5 @@
 <template lang="pug">
-    div    
+    div
         v-content
             v-layout(row justify-space-between)
                     v-flex(xs)
@@ -21,7 +21,7 @@
                                     p.recruit-show-info 性別: {{ gender }}
                                     p.recruit-show-info 生日: {{ resume.birth }}
                                     p.recruit-show-info 國籍: {{ resume.nation }}
-                                    p.recruit-show-info 信箱: {{ resume.email }}
+                                    p.recruit-show-info {{ $t('common.email') }}: {{ resume.email }}
                                     p.recruit-show-info 手機: {{ resume.phone }}
                             p.recruit-show-title 職業資訊
                             .recruit-edit-field

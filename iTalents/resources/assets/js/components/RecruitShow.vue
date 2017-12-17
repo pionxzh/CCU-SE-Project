@@ -1,36 +1,36 @@
 <template lang="pug">
-    div    
+    div
         v-content
             v-layout(row justify-space-between)
                     v-flex(xs0)
                     v-flex(xs10 lg6)
                         section
                             p.page-title {{ recruit.title }}
-                                v-btn.hidden.right.hide(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") 返回列表
+                                v-btn.hidden.right.hide(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") {{ $t('common.back') }}
                                 v-btn(color='yellow' @click='$router.push({name: "Recruit"})' large)
                                     v-icon receipt
                                     | &nbsp;投履歷
                             .recruit-edit-field
 
-                            p.recruit-show-title 徵才資訊
+                            p.recruit-show-title {{ $t('common.JobOpening') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info 職位名稱: {{ recruit.jobname || '尚未填寫'}}
-                                    p.recruit-show-info 工作類型: {{ recruit.jobtype === 0 ? '兼職' : '全職' }}
-                                    p.recruit-show-info 語言需求: {{ recruit.lang || '尚未填寫'}}
-                                    p.recruit-show-info 薪資條件: {{ recruit.dpay }} ~ {{recruit.upay}}
-                            p.recruit-show-title 工作內容
+                                    p.recruit-show-info {{ $t('common.jobName') }}: {{ recruit.jobname || {{ $t('common.notCompleted') }} }}
+                                    p.recruit-show-info {{ $t('common.jobType') }}: {{ recruit.jobtype === 0 ?  {{ $t('common.parttime') }}: {{ $t('common.fulltime') }} }}
+                                    p.recruit-show-info {{ $t('common.requirementLang') }}: {{ recruit.lang || {{ $t('common.notCompleted') }} }}
+                                    p.recruit-show-info {{ $t('common.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
+                            p.recruit-show-title {{ $t('common.jobDescription') }}
                                 p.recruit-edit-content.ql-editor(v-html='recruit.jobinfo')
 
-                            p.recruit-show-title 條件要求
-                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire || "尚未填寫"')
-                            
+                            p.recruit-show-title {{ $t('common.qualifications') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire || {{ $t("common.notCompleted") }}')
 
-                            p.recruit-show-title 公司福利
-                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits || "尚未填寫"')
 
-                            p.recruit-show-title 聯絡方式
-                                p.recruit-edit-content.ql-editor(v-html='recruit.contact || "尚未填寫"')
+                            p.recruit-show-title {{ $t('common.companyBenefits') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits || {{ $t("common.notCompleted") }}')
+
+                            p.recruit-show-title {{ $t('common.contactInform') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.contact || {{ $t("common.notCompleted") }}')
                     v-flex(xs0)
         p-footer
 

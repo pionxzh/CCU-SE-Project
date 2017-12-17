@@ -5,15 +5,15 @@
                 v-flex(xs0)
                 v-flex(xs0)
                     .identifyCard(:class='{selected: type !== 0}')
-                        p.text-xs-center.white--text - 選擇您的身分 -
+                        p.text-xs-center.white--text {{ $t('login.chooseIdentify') }}
                         .select-card.student(ripple :class='{active: type === 1}' @click='setIdentify(1)')
                             .select-card-text
                                 i.fa.fa-graduation-cap
-                                span &nbsp;學生
+                                span &nbsp;{{ $t('common.student') }}
                         .select-card.company(ripple :class='{active: type === 2}' @click='setIdentify(2)')
                             .select-card-text
                                 i.fa.fa-id-card-o
-                                span &nbsp;廠商
+                                span &nbsp;{{ $t('common.company') }}
                 v-flex(xs0)
             v-layout(row justify-space-between)
                 v-flex(xs0)
@@ -22,13 +22,13 @@
                         v-card-text
                             v-avatar.center-item(size='180' style='margin-bottom: 10px;')
                                 img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
-                            p.text-xs-center.mb-3(style='font-size: 20px;') 登入
+                            p.text-xs-center.mb-3(style='font-size: 20px;') {{ $t('common.register') }}
                             v-text-field(type='text' name='email' label='Email' v-model.trim='email' dark)
-                            v-text-field(type='password' name='password' label='密碼' v-model.trim='password' @keyup.enter='login' dark)
+                            v-text-field(type='password' name='password' label='$t("common.password")' v-model.trim='password' @keyup.enter='login' dark)
 
-                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login' :loading="loading" :disabled="loading") 送出
-                        router-link.no-decoration.mb-2(:to="{name: 'Register'}") 還沒有帳號? 立刻註冊
-                        router-link.no-decoration.right.mb-2(:to="{name: 'Register'}") 忘記密碼 ?
+                            v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login' :loading="loading" :disabled="loading") {{ $t('common.submit') }}
+                        router-link.no-decoration.mb-2(:to="{name: 'Register'}") {{ $t('login.registerNow') }}
+                        router-link.no-decoration.right.mb-2(:to="{name: 'Register'}") {{ $t('login.forgetAccount') }}
                 v-flex(xs0)
 
 </template>
@@ -68,7 +68,7 @@ export default {
             })
                 .then(response => {
                     this.loading = false
-                    let modalMsg = response.data.stat ? `歡迎回來，用戶 ${this.email.split('@', 1)[0]}，現在將轉回首頁!` : '帳號密碼組合錯誤'
+                    let modalMsg = response.data.stat ? `歡迎回來，用戶 ${this.email.split('@', 1)[0]}，現在將轉回首頁!` : this.$t('login.wrongAccount')
                     if (response.data.stat) {
                         setTimeout(function() {
                             window.location.href = '/main'

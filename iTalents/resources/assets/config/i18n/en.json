@@ -8,11 +8,52 @@
         "password": "password",
         "submit": "Submit",
         "hint": "Hint",
-        "close": "Close"
+        "close": "Close",
+
+        "back": "Previous page",
+        "delete": "Delete",
+        "notCompleted": "Not completed",
+        "contactInform": "Contact information",
+        "allRecruit": "All recruit",
+        "JobOpening": "Job opening",
+        "completeness": "completeness",
+        "postJob":"Post job",
+        "salary": "Salary",
+        "jogTitle": "Job title",
+        "jobName": "position",
+        "jobType": "Job type",
+        "parttime": "part-time",
+        "fulltime": "full-time",
+        "requirementLang": "Requirement language",
+        "jobDescription": "Job description",
+        "qualifications": "qualifications",
+        "companyBenefits": "company benefits",
+        "savedSucessfully": "Saved sucessfully",
+        "savedFailed": "Saved failed, try again!",
+        "dataCompleted": "所有資訊已填寫完整! 徵才訊息將很快公開",
+
+        "type": "類別",
+        "editResume": "修改履歷",
+        "personalInformation": "基本資料",
+        "lastName": "姓氏",
+        "firstName": "名字",
+        "male": "男",
+        "female": "女",
+        "other": "其他",
+        "birthday": "生日",
+        "nationaility": "國籍",
+        "skill": "技能",
+        "background": "學歷經驗",
+        "certification": "證照",
+        "autobiography": "自傳"
     },
     "login": {
         "chooseIdentify": "- Choose your Identify -",
-        "alreadyHaveAcc": "Already have an account? Login now!"
+        "alreadyHaveAcc": "Already have an account? Login now!",
+
+        "forgetAccount": "I forget my Email or password.",
+        "registerNow": "Register now!",
+        "wrongAccount": "Wrong Email and password combination."
     }
-    
+
 }
