@@ -190,7 +190,7 @@ class RegisterController extends Controller
      *
      * -------------------------------------------------------------------------*/
 
-    public function emailverify($emailtok)
+    public function emailVerify($emailtok)
     {
         $ret = new \stdClass();
         $ret ->stat = 0;

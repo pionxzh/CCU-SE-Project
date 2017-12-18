@@ -6,10 +6,10 @@
                         section.mb-5
                             v-breadcrumbs(divider="/")
                                 v-breadcrumbs-item(v-for="item in footprint" :key="item.text" :disabled="item.disabled") {{ item.text }}
-                            p.page-title {{ $t('common.JobOpening') }} ({{ $t('common.completeness') }} {{ recruit.is_complete ? 'O' : 'X' }})
+                            p.page-title {{ $t('recruit.JobOpening') }} ({{ $t('recruit.completeness') }} {{ recruit.is_complete ? 'O' : 'X' }})
                                 v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') {{ $t('common.back')}}
 
-                            p.recruit-edit-title {{ $t('common.JobOpening') }}
+                            p.recruit-edit-title {{ $t('recruit.JobOpening') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.field = true' v-if='!edit.field')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.field = false' v-if='edit.field')
@@ -18,16 +18,16 @@
                                     v-icon done
                             .recruit-edit-field(v-if='!edit.field')
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info {{ $t('common.jobTitle') }}: {{ recruit.title || {{ $t('common.notCompleted') }} }}
-                                    p.recruit-show-info {{ $t('common.jobName') }}: {{ recruit.jobname || {{ $t('common.notCompleted') }} }}
-                                    p.recruit-show-info {{ $t('common.jobType') }}: {{ recruit.jobtype === 0 ? {{ $t('common.parttime') }} : {{ $t('common.fulltime')}} }}
-                                    p.recruit-show-info {{ $t('common.requirementLang') }}: {{ recruit.lang || {{ $t('common.notCompleted') }} }}
-                                    p.recruit-show-info {{ $t('salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
+                                    p.recruit-show-info {{ $t('recruit.jobTitle') }}: {{ recruit.title || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.jobName') }}: {{ recruit.jobname || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.jobType') }}: {{ recruit.jobtype === 0 ? $t('recruit.partTime') : $t('recruit.fullTime') }}
+                                    p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ recruit.lang || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
                             .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
-                                    v-text-field(type='text' label='$t("common.jobTitle")' v-model.trim='recruit.title')
-                                    v-text-field(type='text' label='$t("common.jobName")' v-model.trim='recruit.jobname')
-                                    v-text-field(type='text' label='$t("common.requirementLang")' v-model.trim='recruit.lang')
+                                    v-text-field(type='text' label='$t("recruit.jobTitle")' v-model.trim='recruit.title')
+                                    v-text-field(type='text' label='$t("recruit.jobName")' v-model.trim='recruit.jobname')
+                                    v-text-field(type='text' label='$t("recruit.requireLanguage")' v-model.trim='recruit.lang')
                                     v-layout(wrap)
                                         v-flex(xs5)
                                             v-text-field(type='number' label='最低薪資' v-model.trim='recruit.dpay')
@@ -36,7 +36,7 @@
                                         v-flex(xs5)
                                             v-text-field(type='number' label='最高薪資' v-model.trim='recruit.upay')
 
-                            p.recruit-edit-title {{ $t('common.jobDescription') }}
+                            p.recruit-edit-title {{ $t('recruit.jobDescription') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobinfo = false' v-if='edit.jobinfo')
@@ -47,7 +47,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobinfo' v-html='recruit.jobinfo')
                             quill-editor(:content="recruit.jobinfo" :options="editorOption" @change="onEditorChange($event, 'jobinfo')" v-if='edit.jobinfo')
 
-                            p.recruit-edit-title {{ $t('common.qualifications') }}
+                            p.recruit-edit-title {{ $t('recruit.qualifications') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobrequire = true' v-if='!edit.jobrequire')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobrequire = false' v-if='edit.jobrequire')
@@ -61,7 +61,7 @@
                                 @change="onEditorChange($event, 'jobrequire')"
                                 v-if='edit.jobrequire')
 
-                            p.recruit-edit-title {{ $t('common.companyBenefits') }}
+                            p.recruit-edit-title {{ $t('recruit.companyBenefits') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.benefits = true' v-if='!edit.benefits')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.benefits = false' v-if='edit.benefits')
@@ -72,7 +72,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.benefits' v-html='recruit.benefits')
                             quill-editor(:content="recruit.benefits" :options="editorOption" @change="onEditorChange($event, 'benefits')" v-if='edit.benefits')
 
-                            p.recruit-edit-title {{ $t('common.contactInform' )}}
+                            p.recruit-edit-title {{ $t('recruit.contactInform' )}}
                                 v-btn.white--text(flat icon color='primary' @click='edit.contact = true' v-if='!edit.contact')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.contact = false' v-if='edit.contact')
@@ -173,7 +173,7 @@ export default {
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
-                    let msg = response.data.stat ? this.$t('common.savedSucessfully') : this.$t('common.savedFailed')
+                    let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
                         if (response.data.is_complete) msg = this.$t('common.dataCompleted')
@@ -193,10 +193,10 @@ export default {
             })
                 .then(response => {
                     this.loading = false
-                    let msg = response.data.stat ? this.$t('common.savedSucessfully') : this.$t('common.savedFailed')
+                    let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = this.$t('common.dataCompleted')
+                        if (response.data.is_complete) msg = this.$t('recruit.dataCompleted')
                     }
                     this.showDialog(msg)
                 })

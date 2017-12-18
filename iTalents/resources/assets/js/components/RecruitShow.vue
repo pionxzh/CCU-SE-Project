@@ -7,30 +7,29 @@
                         section
                             p.page-title {{ recruit.title }}
                                 v-btn.hidden.right.hide(color='primary' @click='$router.push({name: "Recruit"})' :loading="loading" :disabled="loading") {{ $t('common.back') }}
-                                v-btn(color='yellow' @click='$router.push({name: "Recruit"})' large)
+                                v-btn(large color='yellow' @click='throwResume')
                                     v-icon receipt
                                     | &nbsp;投履歷
                             .recruit-edit-field
 
-                            p.recruit-show-title {{ $t('common.JobOpening') }}
+                            p.recruit-show-title {{ $t('recruit.JobOpening') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info {{ $t('common.jobName') }}: {{ recruit.jobname || {{ $t('common.notCompleted') }} }}
-                                    p.recruit-show-info {{ $t('common.jobType') }}: {{ recruit.jobtype === 0 ?  {{ $t('common.parttime') }}: {{ $t('common.fulltime') }} }}
-                                    p.recruit-show-info {{ $t('common.requirementLang') }}: {{ recruit.lang || {{ $t('common.notCompleted') }} }}
-                                    p.recruit-show-info {{ $t('common.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
-                            p.recruit-show-title {{ $t('common.jobDescription') }}
+                                    p.recruit-show-info {{ $t('recruit.jobName') }}: {{ recruit.jobname || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.jobType') }}: {{recruit.jobtype === 0 ?  $t('recruit.partTime') : $t('recruit.fullTime') }}
+                                    p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ recruit.lang || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
+                            p.recruit-show-title {{ $t('recruit.jobDescription') }}
                                 p.recruit-edit-content.ql-editor(v-html='recruit.jobinfo')
 
-                            p.recruit-show-title {{ $t('common.qualifications') }}
-                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire || {{ $t("common.notCompleted") }}')
+                            p.recruit-show-title {{ $t('recruit.jobRequire') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.jobrequire || $t("recruit.notCompleted")')
 
+                            p.recruit-show-title {{ $t('recruit.benefits') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits || $t("recruit.notCompleted")')
 
-                            p.recruit-show-title {{ $t('common.companyBenefits') }}
-                                p.recruit-edit-content.ql-editor(v-html='recruit.benefits || {{ $t("common.notCompleted") }}')
-
-                            p.recruit-show-title {{ $t('common.contactInform') }}
-                                p.recruit-edit-content.ql-editor(v-html='recruit.contact || {{ $t("common.notCompleted") }}')
+                            p.recruit-show-title {{ $t('recruit.contact') }}
+                                p.recruit-edit-content.ql-editor(v-html='recruit.contact || $t("recruit.notCompleted")')
                     v-flex(xs0)
         p-footer
 
@@ -78,6 +77,15 @@ export default {
                     if (response.data.stat) {
                         this.recruit = response.data.data
                     }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        throwResume() {
+            axios.post(`/throw`, {rid: this.$route.params.id})
+                .then(response => {
+                    console.log('Throw Result', response.data)
+                    let msg = response.data.stat ? this.$t('recruit.throwSuccess') : this.$t('recruit.throwFail')
+                    this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))
         }

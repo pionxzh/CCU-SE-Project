@@ -210,10 +210,12 @@ class EmployeeController extends Controller
      * *********/
     public function getResumeMatch()
     {
+        
         $ret = new \stdClass();
         $ret ->stat = 0;
         $thisResume = Resume::where('uid', '=', Auth::User() ->id) ->first();
         $thisLang = Language::where('uid', '=', Auth::User() ->id) ->first();
+        
         if(Auth::check() and Auth::User() ->user_type === 1 and isset($thisResume) and isset($thisLang) and $this ->checkIfActive())
         {
             $ret ->stat = 1;
@@ -276,6 +278,18 @@ class EmployeeController extends Controller
         {
             $ret ->stat = 1;
             $ret ->data = Matching::where('uid', '=', Auth::User() ->id) ->get();
+            foreach($ret ->data as $offset => $recruit)
+            {
+                
+                $thisRecruit = Recruitment::find($recruit ->rid);
+                if(isset($thisRecruit)) // just in case 
+                {
+                    (($ret ->data)[$offset]) ->title = $thisRecruit ->title;
+                    (($ret ->data)[$offset]) ->jobname = $thisRecruit ->jobname;
+                    (($ret ->data)[$offset]) ->dpay = $thisRecruit ->dpay;
+                    (($ret ->data)[$offset]) ->upay = $thisRecruit ->upay;
+                }    
+            }
         }
         return json_encode($ret);
     }

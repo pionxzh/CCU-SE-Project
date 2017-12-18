@@ -5,7 +5,7 @@
                     v-flex(xs0='')
                     v-flex(xs6='')
                         section
-                            .page-title 配對結果
+                            .page-title 投遞紀錄
                             v-card
                                 v-list(two-line='')
                                     template(v-for='(item, index) in items')
@@ -18,7 +18,6 @@
 
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
                     v-flex(xs0='')
-        p-footer
 
 </template>
 
@@ -52,22 +51,11 @@ export default {
         },
         getMatchResult() {
             this.checkPermission()
-            axios.post('/api/resume/match', {})
+            axios.post('/api/resume/history', {})
                 .then(response => {
-                    console.log('Match Result', response.data)
+                    console.log('Match History', response.data)
                     if (response.data.stat) {
                         this.items = response.data.data
-                    }
-                })
-                .catch(e => this.errHandler(e))
-        },
-        postNewRecruit() {
-            this.loading = true
-            axios.post('/api/recruit', {})
-                .then(response => {
-                    this.loading = false
-                    if (response.data.stat) {
-                        this.$router.push(`recruit/edit/${response.data.rid}`)
                     }
                 })
                 .catch(e => this.errHandler(e))

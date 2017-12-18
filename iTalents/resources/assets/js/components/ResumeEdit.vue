@@ -183,7 +183,6 @@ export default {
             {text: '法語', value: 'fr'}
         ],
         abilityOpt: [
-            {text: '不會', value: 0},
             {text: '略懂', value: 1},
             {text: '中等', value: 2},
             {text: '熟練', value: 3},

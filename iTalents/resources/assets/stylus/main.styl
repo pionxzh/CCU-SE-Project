@@ -5,6 +5,12 @@ html, body
     min-width 100%
     height 100%
 
+user-select(val)
+    -webkit-user-select: val
+    -moz-user-select: val
+    -ms-user-select: val
+    user-select: val
+
 .application {
     font-family: inherit!important;
 }
@@ -68,21 +74,18 @@ html, body
     padding 10px
     background-color rgba(0,0,0,.8)!important
     width 450px
+    z-index: 99
     margin-bottom 10px
     border-radius 5px
-    margin-top: 40%
-    margin-left: auto
-    margin-right: auto
     transition: .5s
+    user-select(none)
 
-@media only screen and (max-width: 600px) {
+.cards-wrapper.selected {
+    display: block
+
     .identifyCard {
-        width 350px
+        margin-top: -95%
     }
-}
-
-.identifyCard.selected {
-    margin-top: 10%
 
     .select-card {
         display: none
@@ -133,13 +136,41 @@ html, body
     background-color rgba(0,0,0,.8)!important
     width 350px
     border-radius 5px
-    margin-left: auto
-    margin-right: auto
     opacity: 0
+    position: absolute
+    margin-left: 50px
     transition: .5s
 
 .transCard.show
     opacity: 1
+
+@media only screen and (max-width: 600px) {
+    .transCard, .identifyCard {
+        width: 320px
+    }
+
+    .transCard {        
+        margin-left: 0
+    }
+}
+
+@media only screen and (max-height: 800px) {
+    .cards-wrapper {
+        display: inherit
+    }
+
+    .transCard .avatar img {
+        height: 120px
+    }
+
+    .cards-wrapper.selected .transCard {
+        position: inherit
+    }
+
+    .cards-wrapper.selected .identifyCard {
+        display: none
+    }
+}
 
 .wide-btn
     width: 100%

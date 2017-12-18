@@ -10,42 +10,42 @@
                                     v-btn.hide.ml-4(color='primary' v-if='!$route.params.id')
                                         v-icon edit
                                         | 編輯
-                                    v-btn.ml-4(color='yellow' v-if='$route.params.id' large)
-                                        v-icon card_giftcard
-                                        | &nbsp;寄出邀請
+                                v-btn.ml-4(large color='yellow' v-if='$route.params.id' @click='invite')
+                                    v-icon card_giftcard
+                                    | &nbsp;寄出邀請
 
                             p.recruit-show-title 基本資料
                             .recruit-edit-field
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info 姓名: {{ resume.lastName }} {{ resume.firstName }}
-                                    p.recruit-show-info 性別: {{ gender }}
-                                    p.recruit-show-info 生日: {{ resume.birth }}
-                                    p.recruit-show-info 國籍: {{ resume.nation }}
-                                    p.recruit-show-info {{ $t('common.email') }}: {{ resume.email }}
-                                    p.recruit-show-info 手機: {{ resume.phone }}
-                            p.recruit-show-title 職業資訊
+                                    p.recruit-show-info {{ $t('resume.name') }}: {{ resume.lastName }} {{ resume.firstName }}
+                                    p.recruit-show-info {{ $t('resume.gender') }}: {{ gender }}
+                                    p.recruit-show-info {{ $t('resume.birth') }}: {{ resume.birth }}
+                                    p.recruit-show-info {{ $t('resume.nation') }}: {{ resume.nation }}
+                                    p.recruit-show-info {{ $t('resume.email') }}: {{ resume.email }}
+                                    p.recruit-show-info {{ $t('resume.phone') }}: {{ resume.phone }}
+                            p.recruit-show-title {{ $t('resume.jobInfo') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info 希望職務名稱: {{ resume.expectedJobName }}
-                                    p.recruit-show-info 薪資條件: {{ resume.salaryFrom }}&nbsp;~&nbsp;{{ resume.salaryTo }}
+                                    p.recruit-show-info {{ $t('resume.expectedJobName') }}: {{ resume.expectedJobName }}
+                                    p.recruit-show-info {{ $t('resume.salaryRequest') }}: {{ resume.salaryFrom }}&nbsp;~&nbsp;{{ resume.salaryTo }}
 
-                            p.recruit-show-title 語言能力
+                            p.recruit-show-title {{ $t('resume.language') }}
                                 div.language-show
                                         v-chip(v-for="(value, key) in resume.language" :key='key')
                                             v-avatar(:class='langColor[value]')
                                                 span.white--text.headline {{langLevel[value]}}
                                             | {{langMap[key]}}
 
-                            p.recruit-show-title 學歷經驗
+                            p.recruit-show-title {{ $t('resume.background') }}
                                 p.recruit-edit-content.ql-editor(v-html='resume.background')
 
-                            p.recruit-show-title 具備技能
+                            p.recruit-show-title {{ $t('resume.skill') }}
                                 p.recruit-edit-content.ql-editor(v-html='resume.skill')
 
-                            p.recruit-show-title 證照能力
+                            p.recruit-show-title {{ $t('resume.certificate') }}
                                 p.recruit-edit-content.ql-editor(v-html='resume.certificate')
 
-                            p.recruit-show-title 自傳
+                            p.recruit-show-title {{ $t('resume.bio') }}自傳
                                 p.recruit-edit-content.ql-editor(v-html='resume.bio')
                     v-flex(xs0)
         p-footer
@@ -82,6 +82,12 @@ export default {
         langLevel: ['D', 'C', 'B', 'A', 'S'],
         loading: false
     }),
+    created() {
+        this.genderList.push('')
+        this.genderList.push(this.$t('gender.male'))
+        this.genderList.push(this.$t('gender.female'))
+        this.genderList.push(this.$t('gender.other'))
+    },
     activated() {
         this.getResumeInfo()
     },
@@ -121,6 +127,17 @@ export default {
                     console.log(response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
+                        this.resume.language = response.data.language
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        invite() {
+            this.loading = true
+            axios.post(`/invite/${this.$route.params.id}`)
+                .then(response => {
+                    console.log(response.data)
+                    if (response.data.stat) {
                         this.resume.language = response.data.language
                     }
                 })

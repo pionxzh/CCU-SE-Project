@@ -15,9 +15,11 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import ResumeShow from './components/ResumeShow.vue'
 import ResumeEdit from './components/ResumeEdit.vue'
+import ResumeHistory from './components/ResumeHistory.vue'
 import Recruit from './components/Recruit.vue'
 import RecruitShow from './components/RecruitShow.vue'
 import RecruitEdit from './components/RecruitEdit.vue'
+import RecruitHistory from './components/RecruitHistory.vue'
 import StdMatch from './components/stdMatch.vue'
 import ComMatch from './components/comMatch.vue'
 
@@ -70,17 +72,20 @@ const router = new Router({
         path: '/resume/edit',
         component: ResumeEdit
     }, {
+        name: 'StdMatch',
+        path: '/resume/match',
+        component: StdMatch
+    }, {
+        name: 'ResumeHistory',
+        path: '/resume/history',
+        component: ResumeHistory
+    }, {
         name: 'ResumeShow',
         path: '/resume',
         component: ResumeShow
     }, {
-        name: 'ResumeShow',
         path: '/resume/:id',
         component: ResumeShow
-    }, {
-        name: 'StdMatch',
-        path: '/resume/match',
-        component: StdMatch
     }, {
         name: 'Recruit',
         path: '/recruit',
@@ -91,8 +96,12 @@ const router = new Router({
         component: RecruitShow
     }, {
         name: 'ComMatch',
-        path: '/recruit/:id/match',
+        path: '/recruit/match/:id',
         component: ComMatch
+    }, {
+        name: 'RecruitHistory',
+        path: '/recruit/history/:id',
+        component: RecruitHistory
     }, {
         name: 'RecruitEdit',
         path: '/recruit/edit/:id',

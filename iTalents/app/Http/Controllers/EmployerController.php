@@ -280,7 +280,7 @@ class EmployerController extends Controller
         {
             $ret ->stat = 1;
             // 配對
-            $ret ->data = Resume::where([
+            $ret ->data = Resume::select('uid', 'lastName', 'gender', 'nation', 'background', 'birth') ->where([
                 ['expectedJobName', '=', $thisRecruit ->jobname],
                 ['salaryFrom', '<=', $thisRecruit ->dpay],
                 ['salaryTo', '<=', $thisRecruit ->upay]]) ->get();
@@ -288,19 +288,16 @@ class EmployerController extends Controller
             // 篩選語言
             foreach($ret ->data as $offset => $resume)
             {
-                $thisLang = Language::where('uid', '=', $resume ->uid) ->first();
+                $thisLang = Language::select('en', 'ch', 'fr', 'jp') ->where('uid', '=', $resume ->uid) ->first();
                 if($thisLang ->{$thisRecruit ->lang} ===  0)
                 {
                     // 如果不會的話
-                    unset(($ret ->data) ->$offset);
+                    unset(($ret ->data)[$offset]);
                 }
                 else
                 {
-                    unset($thisLang ->id);
-                    unset($thisLang ->uid);
-                    unset($thisLang ->updated_at);
-                    unset($thisLang ->created_at);
-                    $ret ->data ->offset ->offsetSet('lang', $thisLang);
+                    $ret ->data[$offset] ->lang = $thisLang;
+                    $ret ->data[$offset] ->birth = floor((time() - strtotime($ret ->data[$offset] ->birth)) / 31556926);
                 }
             }
         }

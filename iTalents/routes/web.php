@@ -20,17 +20,17 @@
 Route::post('login', 'Auth\LoginController@login');
 // 註冊
 Route::post('register', 'Auth\RegisterController@registrate');
-// 認證信箱
-Route::get('verify/{emailtok}', 'Auth\RegisterController@emailverify');
+// 信箱認證
+Route::get('verify/{emailtok}', 'Auth\RegisterController@emailVerify');
 // 登出
 Route::get('logout', 'Auth\LoginController@logout');
-// 回傳登入使用者基本資訊
+// 回傳 使用者基本資訊
 Route::get('api/user', 'ApiController@getUserInfo');
-// 回傳使用者(Employer、Employee)基本資訊
+// 回傳 使用者個人資料
 Route::get('api/user/personal', 'ApiController@getPersonalInfo');
-// 修改使用者(Employer、Employee)資料
+// 修改 使用者(Employer、Employee)資料
 Route::post('api/user/personal', 'ApiController@updatePersonalInfo');
-// 回傳單筆徵才資訊
+// 回傳 單筆徵才資訊
 Route::get('api/recruit/{rid}', 'ApiController@getThisRecruitment');
 
 
@@ -39,7 +39,7 @@ Route::get('api/recruit/{rid}', 'ApiController@getThisRecruitment');
 
 // 回傳廠商所有徵才資訊
 Route::get('api/recruit', 'EmployerController@getAllRecruitments');
-// 建立新的一筆 recruitments data
+// 建立新的一筆 recruitment data
 Route::post('api/recruit', 'EmployerController@newRecruitment');
 // 更新工作基本欄位
 Route::post('recruit/{rid}/field', 'EmployerController@updateJobField');
@@ -60,7 +60,7 @@ Route::post('api/recruit/match', 'EmployerController@getRecruitMatch');
 // 送出申請
 Route::post('invite/{uid}', 'EmployerController@inviteThisEmployee');
 // 回傳所有投過該徵才表的外籍生、我送出的邀請
-Route::post('api/recruit/histroy', 'EmployerController@getRecruitHistory');
+Route::post('api/recruit/history', 'EmployerController@getRecruitHistory');
 
 
 
@@ -83,11 +83,11 @@ Route::post('/resume/certificate', 'EmployeeController@updateCertificate');
 // 修改履歷-自傳
 Route::post('/resume/bio', 'EmployeeController@updateBio');
 // 查看主動配對廠商徵才結果
-Route::post('api/resume/match', 'EmployeeController@getResumeMatch');
+Route::post('/api/resume/match', 'EmployeeController@getResumeMatch');
 // 投出履歷表
-Route::post('throw/{rid}', 'EmployeeController@throwThisRecruitment');
+Route::post('throw', 'EmployeeController@throwThisRecruitment');
 // 回傳所有該使用者投過的徵才表、廠商邀請
-Route::post('api/resume/histroy', 'EmployeeController@getResumeHistory');
+Route::post('api/resume/history', 'EmployeeController@getResumeHistory');
 
 
 Route::get('{all}', function () {
