@@ -24,6 +24,16 @@ user-select(val)
 .hidden
     display: none!important
 
+.cool-search
+    position: absolute
+    margin-left: calc(50% - 175px);
+    margin-top: 0
+    z-index: 99
+    transition: .3s
+
+.blind
+    margin-top: -64px
+
 .center-item
     display: block!important
     margin: 0 auto!important
@@ -218,6 +228,15 @@ user-select(val)
     font-size: 18px
     margin-left: 40px
     line-height: 25px
+
+@media only screen and (max-width: 600px) {
+    .recruit-show-info {
+        margin-left: 20px
+    }
+}
+
+label:first-letter, .recruit-show-title:first-letter, .recruit-show-info:first-letter
+    text-transform: uppercase
 
 .recruit-edit-field
     margin-left: 20px;

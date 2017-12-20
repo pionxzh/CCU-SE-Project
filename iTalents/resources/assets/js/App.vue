@@ -32,19 +32,19 @@
                         v-list-tile-title {{ $t('common.logout') }}
 
         v-toolbar.primary(color='blue darken-3' dark app clipped-left fixed)
-            v-toolbar-side-icon.hidden-md-and-up(@click.stop="drawer = !drawer" v-if='!searchToggle')
-            router-link.no-decoration(:to="{name: 'Main'}" v-if='!searchToggle')
-                v-toolbar-title.f27 iTalent
+            v-toolbar-side-icon.hidden-md-and-up(@click.stop="drawer = !drawer")
+            router-link.no-decoration(:to="{name: 'Main'}")
+                v-toolbar-title.ml-5.f27 iTalent
             v-spacer
             v-text-field.hidden-sm-and-down(light solo prepend-icon='search' placeholder='Search' style='max-width: 500px; min-width: 300px')
-            v-text-field.hidden-md-and-up(light solo prepend-icon='search' placeholder='Search' style='max-width: 300px; min-width: 300px' v-if='searchToggle' @blur='searchToggle = false')
+            v-text-field.hidden-md-and-up.cool-search(light solo prepend-icon='search' placeholder='Search' style='max-width: 350px; min-width: 350px' :class='{ blind: !searchToggle}' @blur='searchToggle = false')
             v-spacer
-            v-btn.hidden-md-and-up(flat icon datk @click='searchToggle = !searchToggle' v-if='!searchToggle')
+            v-btn.hidden-md-and-up(flat icon datk @click='searchToggle = !searchToggle')
                 v-icon search
             .d-flex(align-center style='margin-left: auto' v-if='!$root.user.username.length')
                 router-link.no-decoration(:to="{name: 'Login'}")
                     v-btn {{ $t('common.login') }}/{{ $t('common.register') }}
-            v-menu(offset-y v-if='!searchToggle')
+            v-menu(offset-y)
                 v-btn(slot='activator')
                     v-icon(flat icon dark) public
                 v-list
@@ -53,7 +53,7 @@
                     v-list-tile.list__tile--link(@click='setLanguage("zh")')
                         v-list-tile-title 中文
 
-            v-menu.hidden-sm-and-down(v-if='$root.user.username.length && !searchToggle' offset-y)
+            v-menu.hidden-sm-and-down(v-if='$root.user.username.length' offset-y)
                 v-btn.mr-5(slot='activator') {{ username }}
                 v-list
                     router-link.no-decoration(:to="{name: 'User'}")

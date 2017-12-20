@@ -19,7 +19,7 @@
                                 p.recruit-show-info {{ $t('recruit.jobType') }}: {{recruit.jobtype === 0 ?  $t('recruit.partTime') : $t('recruit.fullTime') }}
                                 p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ recruit.lang || $t('recruit.notCompleted') }}
                                 p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
-                        p.recruit-show-title {{ $t('recruit.jobDescription') }}
+                        p.recruit-show-title {{ $t('recruit.jobInfo') }}
                             p.recruit-edit-content.ql-editor(v-html='recruit.jobinfo || $t("recruit.notCompleted")')
 
                         p.recruit-show-title {{ $t('recruit.jobRequire') }}

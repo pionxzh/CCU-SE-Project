@@ -52,7 +52,7 @@
         "partTime": "兼職",
         "fullTime": "全職",
         "requireLanguage": "語言需求",
-        "jobinfo": "工作內容",
+        "jobInfo": "工作內容",
         "jobRequire": "條件需求",
         "benefits": "公司福利",
         "notCompleted": "尚未填寫",
@@ -98,7 +98,14 @@
     },
     "user": {
         "title": "會員中心",
-        "personalInformation": "基本資料"
+        "personalInformation": "基本資料",
+        "editPersonal": "個人資料修改",
+        "studentID": "學生證號碼",
+        "companyName": "公司名稱",
+        "companyID": "公司統編",
+        "hrEmail": "人資部Email",
+        "hrPhone": "人資部電話",
+        "hrPhoneHint": "※我們將會透過這個號碼與您聯繫確認廠商身分"
     },
     "alert": {
         "saveSuccess": "保存成功",

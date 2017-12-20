@@ -5,28 +5,29 @@
                 v-flex(xs0)
                 v-flex(xs10 lg6)
                     section
-                        p.page-title 個人資料修改
+                        p.page-title {{ $t('user.editPersonal')}}
                         
                         v-flex(xs12 md6)
-                            p.recruit-edit-title 基本資訊
+                            p.recruit-edit-title {{ $t('user.personalInformation')}}
                                 v-btn.right(dark color='green' @click='save' :loading="loading" :disabled="loading") {{ $t('common.save')}}
                         .recruit-edit-field(v-if='$root.user.userType === 1')
                             v-flex(xs12 md6)
-                                v-text-field(type='text' label='姓氏' v-model.trim='user.lastname')
-                                v-text-field(type='text' label='名稱' v-model.trim='user.firstname')
-                                v-text-field(type='text' label='學號' v-model.trim='user.studentID')
+                                v-text-field(type='text' :label='$t("resume.lastName")' v-model.trim='user.lastname')
+                                v-text-field(type='text' :label='$t("resume.firstName")' v-model.trim='user.firstname')
+                                v-text-field(type='text' :label='$t("user.studentID")' v-model.trim='user.studentID')
                                 v-radio-group(v-model="user.gender" row)
-                                    v-radio(label="男" value=1)
-                                    v-radio(label="女" value=2)
-                                    v-radio(label="第三性" value=3)
-                                v-text-field(type='text' label='手機' v-model.trim='user.phone')
+                                    v-radio(:label='$t("gender.male")' value=1)
+                                    v-radio(:label='$t("gender.female")' value=2)
+                                    v-radio(:label='$t("gender.other")' value=3)
+                                v-text-field(type='text' :label='$t("resume.phone")' v-model.trim='user.phone')
 
                         .recruit-edit-field(v-if='$root.user.userType === 2')
                             v-flex(xs12 md6)
-                                v-text-field(type='text' label='公司名稱' v-model.trim='user.name')
-                                v-text-field(type='text' label='公司統編' v-model.trim='user.EIN')
-                                v-text-field(type='text' label='人資部Email' v-model.trim='user.email')
-                                v-text-field(type='text' label='人資部電話' v-model.trim='user.phone')
+                                v-text-field(type='text' :label='$t("user.companyName")' v-model.trim='user.name')
+                                v-text-field(type='text' :label='$t("user.companyID")' v-model.trim='user.EIN')
+                                v-text-field(type='text' :label='$t("user.hrEmail")' v-model.trim='user.email')
+                                v-text-field(type='text' :label='$t("user.hrPhone")' v-model.trim='user.phone')
+                                p.red--text {{ $t('user.hrPhoneHint')}}
                             
                 v-flex(xs0)
 
@@ -88,11 +89,7 @@ export default {
             axios.post(`/api/user/personal`, tmp)
                 .then(response => {
                     this.loading = false
-                    let msg = response.data.stat ? '保存成功!' : '保存失敗，請再試一次'
-                    if (response.data.is_complete != null) {
-                        this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = '所有資訊已填寫完整! 徵才訊息將很快公開'
-                    }
+                    let msg = response.data.stat ? this.$t('alert.saveSuccess') : this.$t('alert.saveFail')
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))

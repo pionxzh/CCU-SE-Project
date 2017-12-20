@@ -1,17 +1,17 @@
 <template lang='pug'>
     v-content
         v-container(fluid fill-height)
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs0='')
-                    v-flex(xs6='')
+            v-layout(row justify-space-between)
+                    v-flex(xs0)
+                    v-flex(xs10 lg6)
                         section
                             .page-title {{ $t('recruit.allRecruit') }}
                                 v-btn.right(color='primary' @click='askNewRecruit' :loading='loading' :disabled='loading') {{ $t('recruit.postJob') }}
                             v-card(v-if='items')
-                                v-list(two-line='')
+                                v-list(two-line)
                                     template(v-for='(item, index) in items')
                                         router-link.no-decoration(:to="{path: 'recruit/edit/' + item.id}")
-                                            v-list-tile(avatar='', ripple='', :key='item.title')
+                                            v-list-tile(avatar, ripple, :key='item.title')
                                                 v-list-tile-content
                                                     v-list-tile-title {{ item.title || $t('recruit.notCompleted') }}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || $t('recruit.notCompleted') }}
@@ -23,12 +23,12 @@
                                                                 v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
                                                             span {{ $t('recruit.match') }} / {{ $t('recruit.manageRecord') }}
                                                     v-tooltip(top)
-                                                        v-btn(flat icon dark color='red' slot='activator' @click='deleteRecruit(item.id)')
+                                                        v-btn(flat icon dark color='red' slot='activator' @click.stop='deleteRecruit(item.id)')
                                                             v-icon(color='red') delete
                                                         span {{ $t('common.delete') }}
 
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
-                    v-flex(xs0='')
+                    v-flex(xs0)
 
 </template>
 

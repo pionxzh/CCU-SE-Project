@@ -1,25 +1,25 @@
 <template lang='pug'>
     v-content
         v-container(fluid fill-height)
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs0='')
-                    v-flex(xs6='')
+            v-layout(row justify-space-between)
+                    v-flex.hidden-sm-and-down(xs0)
+                    v-flex(xs10 lg6)
                         section
                             .page-title {{ $t('recruit.match') }}
                             v-btn(color='yellow' @click='getMatchResult' v-if='showMatchBtn')
                                 v-icon done
                                 | {{ $t('recruit.showMatch') }}
                             v-card(v-if='matches')
-                                v-list(two-line='')
+                                v-list(two-line)
                                     template(v-for='(item, index) in matches')
                                         router-link.no-decoration(:to="{path: '/resume/' + item.uid + '?rid=' + $route.params.id}")
-                                            v-list-tile(avatar='', ripple='', :key='item.title')
+                                            v-list-tile(avatar ripple, :key='item.title')
                                                 v-list-tile-content
                                                     v-list-tile-title {{ item.lastName }}** · {{ genderList[item.gender] }} · {{item.nation}}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 {{ item.birth }}{{ $t('recruit.yearsOld') }}
                                                     v-list-tile-sub-title  {{ item.background }}
 
-                                            v-divider(v-if='index + 1 < matches.length', :key='item.id')
+                                            v-divider(v-if='index + 1 < matches.length' :key='item.id')
                             
                             .page-title 徵才記錄管理
                             v-data-table.elevation-1(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
@@ -34,7 +34,7 @@
                                         router-link.no-decoration(:to="{path: '/resume/' + props.item.uid}")
                                             v-btn(dark color='primary') {{ $t('common.see') }}
                             
-                    v-flex(xs0='')
+                    v-flex(xs0)
 
 </template>
 
@@ -109,7 +109,7 @@ export default {
                     console.log('Match Result', response.data)
                     if (response.data.stat) {
                         this.showMatchBtn = false
-                        this.matches = response.data.data
+                        if (response.data.data.length) this.matches = response.data.data
                     }
                 })
                 .catch(e => this.errHandler(e))

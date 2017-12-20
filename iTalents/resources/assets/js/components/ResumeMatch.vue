@@ -1,49 +1,45 @@
 <template lang='pug'>
     v-content
         v-container(fluid fill-height)
-            v-layout(row='' justify-space-between='')
-                    v-flex(xs0='')
-                    v-flex(xs6='')
-                        section
-                            .page-title {{ $t('resume.match') }}
-                            v-btn(color='yellow' @click='getMatchResult' v-if='showMatchBtn')
-                                v-icon done
-                                | {{ $t('resume.showMatch') }}
-                            v-card(v-if='matches')
-                                v-list(two-line='')
-                                    template(v-for='(item, index) in matches')
-                                        router-link.no-decoration(:to="{path: 'recruit/' + item.rid}")
-                                            v-list-tile(avatar='', ripple='', :key='item.title')
-                                                v-list-tile-content
-                                                    v-list-tile-title {{ item.title || $t("common.notFill") }}
-                                                    v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || $t("common.notFill") }}
-                                                    v-list-tile-sub-title {{ $t('resume.pay') }}: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
+            v-layout(justify-center)
+                section
+                    .page-title {{ $t('resume.match') }}
+                    v-btn(color='yellow' @click='getMatchResult' v-if='showMatchBtn')
+                        v-icon done
+                        | {{ $t('resume.showMatch') }}
+                    v-card(v-if='matches')
+                        v-list(two-line='')
+                            template(v-for='(item, index) in matches')
+                                router-link.no-decoration(:to="{path: 'recruit/' + item.rid}")
+                                    v-list-tile(avatar='', ripple='', :key='item.title')
+                                        v-list-tile-content
+                                            v-list-tile-title {{ item.title || $t("common.notFill") }}
+                                            v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || $t("common.notFill") }}
+                                            v-list-tile-sub-title {{ $t('resume.pay') }}: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
 
-                                            v-divider(v-if='index + 1 < matches.length', :key='item.id')
-                            .page-title {{ $t('resume.manageRecord') }}
-                            v-data-table.elevation-1(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
-                                template(slot="items" slot-scope="props")
-                                    td.text-xs-left {{ props.item.title }}
-                                    td.text-xs-left {{ props.item.jobname }}
-                                    td.text-xs-left(v-html='props.item.dpay + "<br>&nbsp;~&nbsp;<br>" +  props.item.upay')
-                                    td.text-xs-left.green--text {{ props.item.stat }}
-                                    td.text-xs-left.red--text.text--darken-4 {{ props.item.updated_at }}
-                                    td.text-xs-left
-                                        router-link.no-decoration(:to="{path: '/recruit/' + props.item.rid}")
-                                            v-tooltip(top)
-                                                v-btn(flat icon color='primary' slot='activator')
-                                                    v-icon visibility
-                                                span {{ $t('common.see') }}
-                                        v-tooltip(top)
-                                            v-btn(icon dark color='green' @click='acceptInvite(props.index, props.item.rid)' v-if='props.item.gotInvite' slot='activator')
-                                                v-icon done
-                                            span {{ $t('resume.acceptInvite') }}
-                                        v-tooltip(top)
-                                            v-btn(icon dark color='red' @click='refuseInvite(props.index, props.item.rid)' v-if='props.item.gotInvite' slot='activator')
-                                                v-icon clear
-                                            span {{ $t('resume.refuseInvite') }}
-                    v-flex(xs0='')
-        p-footer
+                                    v-divider(v-if='index + 1 < matches.length', :key='item.id')
+                    .page-title {{ $t('resume.manageRecord') }}
+                    v-data-table.elevation-1(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
+                        template(slot="items" slot-scope="props")
+                            td.text-xs-left {{ props.item.title }}
+                            td.text-xs-left {{ props.item.jobname }}
+                            td.text-xs-left(v-html='props.item.dpay + "<br>&nbsp;~&nbsp;<br>" +  props.item.upay')
+                            td.text-xs-left.green--text {{ props.item.stat }}
+                            td.text-xs-left.red--text.text--darken-4 {{ props.item.updated_at }}
+                            td.text-xs-left
+                                router-link.no-decoration(:to="{path: '/recruit/' + props.item.rid}")
+                                    v-tooltip(top)
+                                        v-btn(flat icon color='primary' slot='activator')
+                                            v-icon visibility
+                                        span {{ $t('common.see') }}
+                                v-tooltip(top)
+                                    v-btn(icon dark color='green' @click='acceptInvite(props.index, props.item.rid)' v-if='props.item.gotInvite' slot='activator')
+                                        v-icon done
+                                    span {{ $t('resume.acceptInvite') }}
+                                v-tooltip(top)
+                                    v-btn(icon dark color='red' @click='refuseInvite(props.index, props.item.rid)' v-if='props.item.gotInvite' slot='activator')
+                                        v-icon clear
+                                    span {{ $t('resume.refuseInvite') }}
 
 </template>
 

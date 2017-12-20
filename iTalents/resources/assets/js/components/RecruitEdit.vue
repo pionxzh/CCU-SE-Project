@@ -2,13 +2,13 @@
     v-content
         v-container(fluid fill-height)
             v-layout(row justify-space-between)
-                    v-flex(xs0)
+                    v-flex.hidden-sm-and-down(xs0)
                     v-flex(xs10 lg6)
                         section.mb-5
                             v-breadcrumbs(divider="/")
-                                v-breadcrumbs-item(v-for="item in footprint" :key="item.text" :disabled="item.disabled") {{ item.text }}
+                                v-breadcrumbs-item(v-for="item in footprint" :key="item.text" :disabled="item.disabled")
+                                    router-link.no-decoration(:to="{name: item.link }") {{ item.text }}
                             p.page-title {{ $t('recruit.JobOpening') }} ({{ $t('recruit.completeness') }} {{ recruit.is_complete ? 'O' : 'X' }})
-                                v-btn.right(color='primary' @click='$router.push({name: "Recruit"})') {{ $t('common.back')}}
 
                             p.recruit-edit-title {{ $t('recruit.JobOpening') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.field = true' v-if='!edit.field')
@@ -26,9 +26,9 @@
                                     p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
                             .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
-                                    v-text-field(type='text' label='$t("recruit.jobTitle")' v-model.trim='recruit.title')
-                                    v-select(v-bind:items="jobList" v-model='recruit.jobname' :label='$t("recruit.jobName")' single-line bottom)
-                                    v-text-field(type='text' label='$t("recruit.requireLanguage")' v-model.trim='recruit.lang')
+                                    v-text-field(type='text' :label='$t("recruit.jobTitle")' v-model.trim='recruit.title')
+                                    v-select(v-bind:items="jobList" :label='$t("recruit.jobName")' v-model='recruit.jobname' single-line bottom)
+                                    v-text-field(type='text' :label='$t("recruit.requireLanguage")' v-model.trim='recruit.lang')
                                     v-layout(wrap)
                                         v-flex(xs5)
                                             v-text-field(type='number' :label='$t("recruit.dpay")' v-model.trim='recruit.dpay')
@@ -36,7 +36,7 @@
                                         v-flex(xs5)
                                             v-text-field(type='number' :label='$t("recruit.upay")' v-model.trim='recruit.upay')
 
-                            p.recruit-edit-title {{ $t('recruit.jobinfo') }}
+                            p.recruit-edit-title {{ $t('recruit.jobInfo') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobinfo = false' v-if='edit.jobinfo')
