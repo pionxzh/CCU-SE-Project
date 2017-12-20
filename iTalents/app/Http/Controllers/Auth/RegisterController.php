@@ -213,6 +213,8 @@ class RegisterController extends Controller
 
                     $thisUser = Employer::where('uid', '=', $thisUser ->id) ->first();
                     $thisUser ->is_active = true;
+                    // 暫時先這樣, 之後有做admin頁面再改回來
+                    $thisUser ->is_verify = true;
                     $thisUser ->save();
                     break;
             }
