@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(t,e){ true?module.exports=e(__webpack_require__(68)):"function"==typeof define&&define.amd?define(["quill"],e):"object"==typeof exports?exports.VueQuillEditor=e(require("quill")):t.VueQuillEditor=e(t.quill)}(this,function(t){return function(t){function e(i){if(n[i])return n[i].exports;var l=n[i]={i:i,l:!1,exports:{}};return t[i].call(l.exports,l,l.exports,e),l.l=!0,l.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,i){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:i})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=2)}([function(e,n){e.exports=t},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=n(4),l=n.n(i),o=n(6),r=n(5),u=r(l.a,o.a,!1,null,null,null);e.default=u.exports},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.install=e.quillEditor=e.Quill=void 0;var l=n(0),o=i(l),r=n(1),u=i(r),s=window.Quill||o.default,a=function(t,e){e&&(u.default.props.globalOptions.default=function(){return e}),t.component(u.default.name,u.default)},c={Quill:s,quillEditor:u.default,install:a};e.default=c,e.Quill=s,e.quillEditor=u.default,e.install=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={theme:"snow",boundary:document.body,modules:{toolbar:[["bold","italic","underline","strike"],["blockquote","code-block"],[{header:1},{header:2}],[{list:"ordered"},{list:"bullet"}],[{script:"sub"},{script:"super"}],[{indent:"-1"},{indent:"+1"}],[{direction:"rtl"}],[{size:["small",!1,"large","huge"]}],[{header:[1,2,3,4,5,6,!1]}],[{color:[]},{background:[]}],[{font:[]}],[{align:[]}],["clean"],["link","image","video"]]},placeholder:"Insert text here ...",readOnly:!1}},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var l=n(0),o=i(l),r=n(3),u=i(r),s=window.Quill||o.default;"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(t,e){if(null==t)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(t),i=1;i<arguments.length;i++){var l=arguments[i];if(null!=l)for(var o in l)Object.prototype.hasOwnProperty.call(l,o)&&(n[o]=l[o])}return n},writable:!0,configurable:!0}),e.default={name:"quill-editor",data:function(){return{_options:{},_content:"",defaultOptions:u.default}},props:{content:String,value:String,disabled:Boolean,options:{type:Object,required:!1,default:function(){return{}}},globalOptions:{type:Object,required:!1,default:function(){return{}}}},mounted:function(){this.initialize()},beforeDestroy:function(){this.quill=null,delete this.quill},methods:{initialize:function(){var t=this;this.$el&&(this._options=Object.assign({},this.defaultOptions,this.globalOptions,this.options),this.quill=new s(this.$refs.editor,this._options),(this.value||this.content)&&this.quill.pasteHTML(this.value||this.content),this.disabled&&this.quill.enable(!1),this.quill.on("selection-change",function(e){e?t.$emit("focus",t.quill):t.$emit("blur",t.quill)}),this.quill.on("text-change",function(e,n,i){var l=t.$refs.editor.children[0].innerHTML,o=t.quill,r=t.quill.getText();"<p><br></p>"===l&&(l=""),t._content=l,t.$emit("input",t._content),t.$emit("change",{html:l,text:r,quill:o})}),this.$emit("ready",this.quill))}},watch:{content:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},value:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},disabled:function(t,e){this.quill&&this.quill.enable(!t)}}}},function(t,e){t.exports=function(t,e,n,i,l,o){var r,u=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(r=t,u=t.default);var a="function"==typeof u?u.options:u;e&&(a.render=e.render,a.staticRenderFns=e.staticRenderFns,a._compiled=!0),n&&(a.functional=!0),l&&(a._scopeId=l);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),i&&i.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},a._ssrRegister=c):i&&(c=i),c){var d=a.functional,f=d?a.render:a.beforeCreate;d?(a._injectStyles=c,a.render=function(t,e){return c.call(e),f(t,e)}):a.beforeCreate=f?[].concat(f,c):[c]}return{esModule:r,exports:u,options:a}}},function(t,e,n){"use strict";var i=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"quill-editor"},[t._t("toolbar"),t._v(" "),n("div",{ref:"editor"})],2)},l=[],o={render:i,staticRenderFns:l};e.a=o}])});
+!function(t,e){ true?module.exports=e(__webpack_require__(69)):"function"==typeof define&&define.amd?define(["quill"],e):"object"==typeof exports?exports.VueQuillEditor=e(require("quill")):t.VueQuillEditor=e(t.quill)}(this,function(t){return function(t){function e(i){if(n[i])return n[i].exports;var l=n[i]={i:i,l:!1,exports:{}};return t[i].call(l.exports,l,l.exports,e),l.l=!0,l.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,i){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:i})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=2)}([function(e,n){e.exports=t},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=n(4),l=n.n(i),o=n(6),r=n(5),u=r(l.a,o.a,!1,null,null,null);e.default=u.exports},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.install=e.quillEditor=e.Quill=void 0;var l=n(0),o=i(l),r=n(1),u=i(r),s=window.Quill||o.default,a=function(t,e){e&&(u.default.props.globalOptions.default=function(){return e}),t.component(u.default.name,u.default)},c={Quill:s,quillEditor:u.default,install:a};e.default=c,e.Quill=s,e.quillEditor=u.default,e.install=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={theme:"snow",boundary:document.body,modules:{toolbar:[["bold","italic","underline","strike"],["blockquote","code-block"],[{header:1},{header:2}],[{list:"ordered"},{list:"bullet"}],[{script:"sub"},{script:"super"}],[{indent:"-1"},{indent:"+1"}],[{direction:"rtl"}],[{size:["small",!1,"large","huge"]}],[{header:[1,2,3,4,5,6,!1]}],[{color:[]},{background:[]}],[{font:[]}],[{align:[]}],["clean"],["link","image","video"]]},placeholder:"Insert text here ...",readOnly:!1}},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var l=n(0),o=i(l),r=n(3),u=i(r),s=window.Quill||o.default;"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(t,e){if(null==t)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(t),i=1;i<arguments.length;i++){var l=arguments[i];if(null!=l)for(var o in l)Object.prototype.hasOwnProperty.call(l,o)&&(n[o]=l[o])}return n},writable:!0,configurable:!0}),e.default={name:"quill-editor",data:function(){return{_options:{},_content:"",defaultOptions:u.default}},props:{content:String,value:String,disabled:Boolean,options:{type:Object,required:!1,default:function(){return{}}},globalOptions:{type:Object,required:!1,default:function(){return{}}}},mounted:function(){this.initialize()},beforeDestroy:function(){this.quill=null,delete this.quill},methods:{initialize:function(){var t=this;this.$el&&(this._options=Object.assign({},this.defaultOptions,this.globalOptions,this.options),this.quill=new s(this.$refs.editor,this._options),(this.value||this.content)&&this.quill.pasteHTML(this.value||this.content),this.disabled&&this.quill.enable(!1),this.quill.on("selection-change",function(e){e?t.$emit("focus",t.quill):t.$emit("blur",t.quill)}),this.quill.on("text-change",function(e,n,i){var l=t.$refs.editor.children[0].innerHTML,o=t.quill,r=t.quill.getText();"<p><br></p>"===l&&(l=""),t._content=l,t.$emit("input",t._content),t.$emit("change",{html:l,text:r,quill:o})}),this.$emit("ready",this.quill))}},watch:{content:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},value:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},disabled:function(t,e){this.quill&&this.quill.enable(!t)}}}},function(t,e){t.exports=function(t,e,n,i,l,o){var r,u=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(r=t,u=t.default);var a="function"==typeof u?u.options:u;e&&(a.render=e.render,a.staticRenderFns=e.staticRenderFns,a._compiled=!0),n&&(a.functional=!0),l&&(a._scopeId=l);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),i&&i.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},a._ssrRegister=c):i&&(c=i),c){var d=a.functional,f=d?a.render:a.beforeCreate;d?(a._injectStyles=c,a.render=function(t,e){return c.call(e),f(t,e)}):a.beforeCreate=f?[].concat(f,c):[c]}return{esModule:r,exports:u,options:a}}},function(t,e,n){"use strict";var i=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"quill-editor"},[t._t("toolbar"),t._v(" "),n("div",{ref:"editor"})],2)},l=[],o={render:i,staticRenderFns:l};e.a=o}])});
 
 /***/ }),
 /* 12 */
@@ -1098,21 +1098,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_i18n_directives__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_i18n_directives___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_i18n_directives__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__App_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Nav_vue__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Footer_vue__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_User_vue__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Main_vue__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Login_vue__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Register_vue__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_ResumeShow_vue__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_ResumeEdit_vue__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_ResumeHistory_vue__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_Recruit_vue__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_RecruitShow_vue__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_RecruitEdit_vue__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_RecruitHistory_vue__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_stdMatch_vue__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_comMatch_vue__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Nav_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Footer_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_User_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Main_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Login_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Register_vue__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_ResumeShow_vue__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_ResumeEdit_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_ResumeMatch_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_Recruit_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_RecruitShow_vue__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_RecruitEdit_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_RecruitMatch_vue__ = __webpack_require__(87);
 
 
 
@@ -1149,8 +1147,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_3_vue_i18n__["a" /* default */])
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_6_vue_i18n_directives___default.a)
 
-let english = __webpack_require__(95)
-let zh = __webpack_require__(96)
+let english = __webpack_require__(90)
+let zh = __webpack_require__(91)
 
 const i18n = new __WEBPACK_IMPORTED_MODULE_3_vue_i18n__["a" /* default */]({
     locale: 'zh',
@@ -1187,13 +1185,9 @@ const router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
         path: '/resume/edit',
         component: __WEBPACK_IMPORTED_MODULE_15__components_ResumeEdit_vue__["a" /* default */]
     }, {
-        name: 'StdMatch',
+        name: 'ResumeMatch',
         path: '/resume/match',
-        component: __WEBPACK_IMPORTED_MODULE_21__components_stdMatch_vue__["a" /* default */]
-    }, {
-        name: 'ResumeHistory',
-        path: '/resume/history',
-        component: __WEBPACK_IMPORTED_MODULE_16__components_ResumeHistory_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_16__components_ResumeMatch_vue__["a" /* default */]
     }, {
         name: 'ResumeShow',
         path: '/resume',
@@ -1210,13 +1204,9 @@ const router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
         path: '/recruit/:id',
         component: __WEBPACK_IMPORTED_MODULE_18__components_RecruitShow_vue__["a" /* default */]
     }, {
-        name: 'ComMatch',
+        name: 'RecruitMatch',
         path: '/recruit/match/:id',
-        component: __WEBPACK_IMPORTED_MODULE_22__components_comMatch_vue__["a" /* default */]
-    }, {
-        name: 'RecruitHistory',
-        path: '/recruit/history/:id',
-        component: __WEBPACK_IMPORTED_MODULE_20__components_RecruitHistory_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_20__components_RecruitMatch_vue__["a" /* default */]
     }, {
         name: 'RecruitEdit',
         path: '/recruit/edit/:id',
@@ -1229,7 +1219,7 @@ const router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
 
 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/user')
     .then(response => {
-        console.log(response.data)
+        console.log('User: ', response.data)
         __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].prototype.user = {username: ''}
         if (response.data.stat) __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].prototype.user = response.data
 
@@ -1241,6 +1231,32 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/user')
         })
     })
     .catch(err => console.log(err))
+
+/*
+ *         ┌─┐       ┌─┐
+ *      ┌──┘ ┴───────┘ ┴──┐
+ *      │                 │
+ *      │       ───       │
+ *      │  ─┬┘       └┬─  │
+ *      │                 │
+ *      │       ─┴─       │
+ *      │                 │
+ *      └───┐         ┌───┘
+ *          │         │
+ *          │         │
+ *          │         │
+ *          │         └──────────────┐
+ *          │                        │
+ *          │                        ├─┐
+ *          │                        ┌─┘
+ *          │                        │
+ *          └─┐  ┐  ┌───────┬──┐  ┌──┘
+ *            │ ─┤ ─┤       │ ─┤ ─┤
+ *            └──┴──┘       └──┴──┘
+ *                神兽保佑
+ *                程式码无BUG!
+ *
+ */
 
 
 /***/ }),
@@ -32215,7 +32231,8 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_App_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_App_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_App_vue__ = __webpack_require__(46);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -32223,7 +32240,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* template functional */
@@ -32235,8 +32252,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_App_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_App_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -32299,7 +32316,7 @@ exports = module.exports = __webpack_require__(42)(undefined);
 
 
 // module
-exports.push([module.i, "\n.black {\n  background-color: #000 !important;\n  border-color: #000 !important;\n}\n.black--text {\n  color: #000 !important;\n}\n.black--text input,\n.black--text textarea {\n  caret-color: #000 !important;\n}\n.black--after:after {\n  background: #000 !important;\n}\n.white {\n  background-color: #fff !important;\n  border-color: #fff !important;\n}\n.white--text {\n  color: #fff !important;\n}\n.white--text input,\n.white--text textarea {\n  caret-color: #fff !important;\n}\n.white--after:after {\n  background: #fff !important;\n}\n.transparent {\n  background-color: transparent !important;\n  border-color: transparent !important;\n}\n.transparent--text {\n  color: transparent !important;\n}\n.transparent--text input,\n.transparent--text textarea {\n  caret-color: transparent !important;\n}\n.transparent--after:after {\n  background: transparent !important;\n}\n.red {\n  background-color: #f44336 !important;\n  border-color: #f44336 !important;\n}\n.red--text {\n  color: #f44336 !important;\n}\n.red--text input,\n.red--text textarea {\n  caret-color: #f44336 !important;\n}\n.red--after:after {\n  background: #f44336 !important;\n}\n.red.lighten-5 {\n  background-color: #ffebee !important;\n  border-color: #ffebee !important;\n}\n.red.lighten-5--after:after {\n  background-color: #ffebee !important;\n}\n.red--text.text--lighten-5 {\n  color: #ffebee !important;\n}\n.red--text.text--lighten-5 input,\n.red--text.text--lighten-5 textarea {\n  caret-color: #ffebee !important;\n}\n.red.lighten-4 {\n  background-color: #ffcdd2 !important;\n  border-color: #ffcdd2 !important;\n}\n.red.lighten-4--after:after {\n  background-color: #ffcdd2 !important;\n}\n.red--text.text--lighten-4 {\n  color: #ffcdd2 !important;\n}\n.red--text.text--lighten-4 input,\n.red--text.text--lighten-4 textarea {\n  caret-color: #ffcdd2 !important;\n}\n.red.lighten-3 {\n  background-color: #ef9a9a !important;\n  border-color: #ef9a9a !important;\n}\n.red.lighten-3--after:after {\n  background-color: #ef9a9a !important;\n}\n.red--text.text--lighten-3 {\n  color: #ef9a9a !important;\n}\n.red--text.text--lighten-3 input,\n.red--text.text--lighten-3 textarea {\n  caret-color: #ef9a9a !important;\n}\n.red.lighten-2 {\n  background-color: #e57373 !important;\n  border-color: #e57373 !important;\n}\n.red.lighten-2--after:after {\n  background-color: #e57373 !important;\n}\n.red--text.text--lighten-2 {\n  color: #e57373 !important;\n}\n.red--text.text--lighten-2 input,\n.red--text.text--lighten-2 textarea {\n  caret-color: #e57373 !important;\n}\n.red.lighten-1 {\n  background-color: #ef5350 !important;\n  border-color: #ef5350 !important;\n}\n.red.lighten-1--after:after {\n  background-color: #ef5350 !important;\n}\n.red--text.text--lighten-1 {\n  color: #ef5350 !important;\n}\n.red--text.text--lighten-1 input,\n.red--text.text--lighten-1 textarea {\n  caret-color: #ef5350 !important;\n}\n.red.darken-1 {\n  background-color: #e53935 !important;\n  border-color: #e53935 !important;\n}\n.red.darken-1--after:after {\n  background-color: #e53935 !important;\n}\n.red--text.text--darken-1 {\n  color: #e53935 !important;\n}\n.red--text.text--darken-1 input,\n.red--text.text--darken-1 textarea {\n  caret-color: #e53935 !important;\n}\n.red.darken-2 {\n  background-color: #d32f2f !important;\n  border-color: #d32f2f !important;\n}\n.red.darken-2--after:after {\n  background-color: #d32f2f !important;\n}\n.red--text.text--darken-2 {\n  color: #d32f2f !important;\n}\n.red--text.text--darken-2 input,\n.red--text.text--darken-2 textarea {\n  caret-color: #d32f2f !important;\n}\n.red.darken-3 {\n  background-color: #c62828 !important;\n  border-color: #c62828 !important;\n}\n.red.darken-3--after:after {\n  background-color: #c62828 !important;\n}\n.red--text.text--darken-3 {\n  color: #c62828 !important;\n}\n.red--text.text--darken-3 input,\n.red--text.text--darken-3 textarea {\n  caret-color: #c62828 !important;\n}\n.red.darken-4 {\n  background-color: #b71c1c !important;\n  border-color: #b71c1c !important;\n}\n.red.darken-4--after:after {\n  background-color: #b71c1c !important;\n}\n.red--text.text--darken-4 {\n  color: #b71c1c !important;\n}\n.red--text.text--darken-4 input,\n.red--text.text--darken-4 textarea {\n  caret-color: #b71c1c !important;\n}\n.red.accent-1 {\n  background-color: #ff8a80 !important;\n  border-color: #ff8a80 !important;\n}\n.red.accent-1--after:after {\n  background-color: #ff8a80 !important;\n}\n.red--text.text--accent-1 {\n  color: #ff8a80 !important;\n}\n.red--text.text--accent-1 input,\n.red--text.text--accent-1 textarea {\n  caret-color: #ff8a80 !important;\n}\n.red.accent-2 {\n  background-color: #ff5252 !important;\n  border-color: #ff5252 !important;\n}\n.red.accent-2--after:after {\n  background-color: #ff5252 !important;\n}\n.red--text.text--accent-2 {\n  color: #ff5252 !important;\n}\n.red--text.text--accent-2 input,\n.red--text.text--accent-2 textarea {\n  caret-color: #ff5252 !important;\n}\n.red.accent-3 {\n  background-color: #ff1744 !important;\n  border-color: #ff1744 !important;\n}\n.red.accent-3--after:after {\n  background-color: #ff1744 !important;\n}\n.red--text.text--accent-3 {\n  color: #ff1744 !important;\n}\n.red--text.text--accent-3 input,\n.red--text.text--accent-3 textarea {\n  caret-color: #ff1744 !important;\n}\n.red.accent-4 {\n  background-color: #d50000 !important;\n  border-color: #d50000 !important;\n}\n.red.accent-4--after:after {\n  background-color: #d50000 !important;\n}\n.red--text.text--accent-4 {\n  color: #d50000 !important;\n}\n.red--text.text--accent-4 input,\n.red--text.text--accent-4 textarea {\n  caret-color: #d50000 !important;\n}\n.pink {\n  background-color: #e91e63 !important;\n  border-color: #e91e63 !important;\n}\n.pink--text {\n  color: #e91e63 !important;\n}\n.pink--text input,\n.pink--text textarea {\n  caret-color: #e91e63 !important;\n}\n.pink--after:after {\n  background: #e91e63 !important;\n}\n.pink.lighten-5 {\n  background-color: #fce4ec !important;\n  border-color: #fce4ec !important;\n}\n.pink.lighten-5--after:after {\n  background-color: #fce4ec !important;\n}\n.pink--text.text--lighten-5 {\n  color: #fce4ec !important;\n}\n.pink--text.text--lighten-5 input,\n.pink--text.text--lighten-5 textarea {\n  caret-color: #fce4ec !important;\n}\n.pink.lighten-4 {\n  background-color: #f8bbd0 !important;\n  border-color: #f8bbd0 !important;\n}\n.pink.lighten-4--after:after {\n  background-color: #f8bbd0 !important;\n}\n.pink--text.text--lighten-4 {\n  color: #f8bbd0 !important;\n}\n.pink--text.text--lighten-4 input,\n.pink--text.text--lighten-4 textarea {\n  caret-color: #f8bbd0 !important;\n}\n.pink.lighten-3 {\n  background-color: #f48fb1 !important;\n  border-color: #f48fb1 !important;\n}\n.pink.lighten-3--after:after {\n  background-color: #f48fb1 !important;\n}\n.pink--text.text--lighten-3 {\n  color: #f48fb1 !important;\n}\n.pink--text.text--lighten-3 input,\n.pink--text.text--lighten-3 textarea {\n  caret-color: #f48fb1 !important;\n}\n.pink.lighten-2 {\n  background-color: #f06292 !important;\n  border-color: #f06292 !important;\n}\n.pink.lighten-2--after:after {\n  background-color: #f06292 !important;\n}\n.pink--text.text--lighten-2 {\n  color: #f06292 !important;\n}\n.pink--text.text--lighten-2 input,\n.pink--text.text--lighten-2 textarea {\n  caret-color: #f06292 !important;\n}\n.pink.lighten-1 {\n  background-color: #ec407a !important;\n  border-color: #ec407a !important;\n}\n.pink.lighten-1--after:after {\n  background-color: #ec407a !important;\n}\n.pink--text.text--lighten-1 {\n  color: #ec407a !important;\n}\n.pink--text.text--lighten-1 input,\n.pink--text.text--lighten-1 textarea {\n  caret-color: #ec407a !important;\n}\n.pink.darken-1 {\n  background-color: #d81b60 !important;\n  border-color: #d81b60 !important;\n}\n.pink.darken-1--after:after {\n  background-color: #d81b60 !important;\n}\n.pink--text.text--darken-1 {\n  color: #d81b60 !important;\n}\n.pink--text.text--darken-1 input,\n.pink--text.text--darken-1 textarea {\n  caret-color: #d81b60 !important;\n}\n.pink.darken-2 {\n  background-color: #c2185b !important;\n  border-color: #c2185b !important;\n}\n.pink.darken-2--after:after {\n  background-color: #c2185b !important;\n}\n.pink--text.text--darken-2 {\n  color: #c2185b !important;\n}\n.pink--text.text--darken-2 input,\n.pink--text.text--darken-2 textarea {\n  caret-color: #c2185b !important;\n}\n.pink.darken-3 {\n  background-color: #ad1457 !important;\n  border-color: #ad1457 !important;\n}\n.pink.darken-3--after:after {\n  background-color: #ad1457 !important;\n}\n.pink--text.text--darken-3 {\n  color: #ad1457 !important;\n}\n.pink--text.text--darken-3 input,\n.pink--text.text--darken-3 textarea {\n  caret-color: #ad1457 !important;\n}\n.pink.darken-4 {\n  background-color: #880e4f !important;\n  border-color: #880e4f !important;\n}\n.pink.darken-4--after:after {\n  background-color: #880e4f !important;\n}\n.pink--text.text--darken-4 {\n  color: #880e4f !important;\n}\n.pink--text.text--darken-4 input,\n.pink--text.text--darken-4 textarea {\n  caret-color: #880e4f !important;\n}\n.pink.accent-1 {\n  background-color: #ff80ab !important;\n  border-color: #ff80ab !important;\n}\n.pink.accent-1--after:after {\n  background-color: #ff80ab !important;\n}\n.pink--text.text--accent-1 {\n  color: #ff80ab !important;\n}\n.pink--text.text--accent-1 input,\n.pink--text.text--accent-1 textarea {\n  caret-color: #ff80ab !important;\n}\n.pink.accent-2 {\n  background-color: #ff4081 !important;\n  border-color: #ff4081 !important;\n}\n.pink.accent-2--after:after {\n  background-color: #ff4081 !important;\n}\n.pink--text.text--accent-2 {\n  color: #ff4081 !important;\n}\n.pink--text.text--accent-2 input,\n.pink--text.text--accent-2 textarea {\n  caret-color: #ff4081 !important;\n}\n.pink.accent-3 {\n  background-color: #f50057 !important;\n  border-color: #f50057 !important;\n}\n.pink.accent-3--after:after {\n  background-color: #f50057 !important;\n}\n.pink--text.text--accent-3 {\n  color: #f50057 !important;\n}\n.pink--text.text--accent-3 input,\n.pink--text.text--accent-3 textarea {\n  caret-color: #f50057 !important;\n}\n.pink.accent-4 {\n  background-color: #c51162 !important;\n  border-color: #c51162 !important;\n}\n.pink.accent-4--after:after {\n  background-color: #c51162 !important;\n}\n.pink--text.text--accent-4 {\n  color: #c51162 !important;\n}\n.pink--text.text--accent-4 input,\n.pink--text.text--accent-4 textarea {\n  caret-color: #c51162 !important;\n}\n.purple {\n  background-color: #9c27b0 !important;\n  border-color: #9c27b0 !important;\n}\n.purple--text {\n  color: #9c27b0 !important;\n}\n.purple--text input,\n.purple--text textarea {\n  caret-color: #9c27b0 !important;\n}\n.purple--after:after {\n  background: #9c27b0 !important;\n}\n.purple.lighten-5 {\n  background-color: #f3e5f5 !important;\n  border-color: #f3e5f5 !important;\n}\n.purple.lighten-5--after:after {\n  background-color: #f3e5f5 !important;\n}\n.purple--text.text--lighten-5 {\n  color: #f3e5f5 !important;\n}\n.purple--text.text--lighten-5 input,\n.purple--text.text--lighten-5 textarea {\n  caret-color: #f3e5f5 !important;\n}\n.purple.lighten-4 {\n  background-color: #e1bee7 !important;\n  border-color: #e1bee7 !important;\n}\n.purple.lighten-4--after:after {\n  background-color: #e1bee7 !important;\n}\n.purple--text.text--lighten-4 {\n  color: #e1bee7 !important;\n}\n.purple--text.text--lighten-4 input,\n.purple--text.text--lighten-4 textarea {\n  caret-color: #e1bee7 !important;\n}\n.purple.lighten-3 {\n  background-color: #ce93d8 !important;\n  border-color: #ce93d8 !important;\n}\n.purple.lighten-3--after:after {\n  background-color: #ce93d8 !important;\n}\n.purple--text.text--lighten-3 {\n  color: #ce93d8 !important;\n}\n.purple--text.text--lighten-3 input,\n.purple--text.text--lighten-3 textarea {\n  caret-color: #ce93d8 !important;\n}\n.purple.lighten-2 {\n  background-color: #ba68c8 !important;\n  border-color: #ba68c8 !important;\n}\n.purple.lighten-2--after:after {\n  background-color: #ba68c8 !important;\n}\n.purple--text.text--lighten-2 {\n  color: #ba68c8 !important;\n}\n.purple--text.text--lighten-2 input,\n.purple--text.text--lighten-2 textarea {\n  caret-color: #ba68c8 !important;\n}\n.purple.lighten-1 {\n  background-color: #ab47bc !important;\n  border-color: #ab47bc !important;\n}\n.purple.lighten-1--after:after {\n  background-color: #ab47bc !important;\n}\n.purple--text.text--lighten-1 {\n  color: #ab47bc !important;\n}\n.purple--text.text--lighten-1 input,\n.purple--text.text--lighten-1 textarea {\n  caret-color: #ab47bc !important;\n}\n.purple.darken-1 {\n  background-color: #8e24aa !important;\n  border-color: #8e24aa !important;\n}\n.purple.darken-1--after:after {\n  background-color: #8e24aa !important;\n}\n.purple--text.text--darken-1 {\n  color: #8e24aa !important;\n}\n.purple--text.text--darken-1 input,\n.purple--text.text--darken-1 textarea {\n  caret-color: #8e24aa !important;\n}\n.purple.darken-2 {\n  background-color: #7b1fa2 !important;\n  border-color: #7b1fa2 !important;\n}\n.purple.darken-2--after:after {\n  background-color: #7b1fa2 !important;\n}\n.purple--text.text--darken-2 {\n  color: #7b1fa2 !important;\n}\n.purple--text.text--darken-2 input,\n.purple--text.text--darken-2 textarea {\n  caret-color: #7b1fa2 !important;\n}\n.purple.darken-3 {\n  background-color: #6a1b9a !important;\n  border-color: #6a1b9a !important;\n}\n.purple.darken-3--after:after {\n  background-color: #6a1b9a !important;\n}\n.purple--text.text--darken-3 {\n  color: #6a1b9a !important;\n}\n.purple--text.text--darken-3 input,\n.purple--text.text--darken-3 textarea {\n  caret-color: #6a1b9a !important;\n}\n.purple.darken-4 {\n  background-color: #4a148c !important;\n  border-color: #4a148c !important;\n}\n.purple.darken-4--after:after {\n  background-color: #4a148c !important;\n}\n.purple--text.text--darken-4 {\n  color: #4a148c !important;\n}\n.purple--text.text--darken-4 input,\n.purple--text.text--darken-4 textarea {\n  caret-color: #4a148c !important;\n}\n.purple.accent-1 {\n  background-color: #ea80fc !important;\n  border-color: #ea80fc !important;\n}\n.purple.accent-1--after:after {\n  background-color: #ea80fc !important;\n}\n.purple--text.text--accent-1 {\n  color: #ea80fc !important;\n}\n.purple--text.text--accent-1 input,\n.purple--text.text--accent-1 textarea {\n  caret-color: #ea80fc !important;\n}\n.purple.accent-2 {\n  background-color: #e040fb !important;\n  border-color: #e040fb !important;\n}\n.purple.accent-2--after:after {\n  background-color: #e040fb !important;\n}\n.purple--text.text--accent-2 {\n  color: #e040fb !important;\n}\n.purple--text.text--accent-2 input,\n.purple--text.text--accent-2 textarea {\n  caret-color: #e040fb !important;\n}\n.purple.accent-3 {\n  background-color: #d500f9 !important;\n  border-color: #d500f9 !important;\n}\n.purple.accent-3--after:after {\n  background-color: #d500f9 !important;\n}\n.purple--text.text--accent-3 {\n  color: #d500f9 !important;\n}\n.purple--text.text--accent-3 input,\n.purple--text.text--accent-3 textarea {\n  caret-color: #d500f9 !important;\n}\n.purple.accent-4 {\n  background-color: #a0f !important;\n  border-color: #a0f !important;\n}\n.purple.accent-4--after:after {\n  background-color: #a0f !important;\n}\n.purple--text.text--accent-4 {\n  color: #a0f !important;\n}\n.purple--text.text--accent-4 input,\n.purple--text.text--accent-4 textarea {\n  caret-color: #a0f !important;\n}\n.deep-purple {\n  background-color: #673ab7 !important;\n  border-color: #673ab7 !important;\n}\n.deep-purple--text {\n  color: #673ab7 !important;\n}\n.deep-purple--text input,\n.deep-purple--text textarea {\n  caret-color: #673ab7 !important;\n}\n.deep-purple--after:after {\n  background: #673ab7 !important;\n}\n.deep-purple.lighten-5 {\n  background-color: #ede7f6 !important;\n  border-color: #ede7f6 !important;\n}\n.deep-purple.lighten-5--after:after {\n  background-color: #ede7f6 !important;\n}\n.deep-purple--text.text--lighten-5 {\n  color: #ede7f6 !important;\n}\n.deep-purple--text.text--lighten-5 input,\n.deep-purple--text.text--lighten-5 textarea {\n  caret-color: #ede7f6 !important;\n}\n.deep-purple.lighten-4 {\n  background-color: #d1c4e9 !important;\n  border-color: #d1c4e9 !important;\n}\n.deep-purple.lighten-4--after:after {\n  background-color: #d1c4e9 !important;\n}\n.deep-purple--text.text--lighten-4 {\n  color: #d1c4e9 !important;\n}\n.deep-purple--text.text--lighten-4 input,\n.deep-purple--text.text--lighten-4 textarea {\n  caret-color: #d1c4e9 !important;\n}\n.deep-purple.lighten-3 {\n  background-color: #b39ddb !important;\n  border-color: #b39ddb !important;\n}\n.deep-purple.lighten-3--after:after {\n  background-color: #b39ddb !important;\n}\n.deep-purple--text.text--lighten-3 {\n  color: #b39ddb !important;\n}\n.deep-purple--text.text--lighten-3 input,\n.deep-purple--text.text--lighten-3 textarea {\n  caret-color: #b39ddb !important;\n}\n.deep-purple.lighten-2 {\n  background-color: #9575cd !important;\n  border-color: #9575cd !important;\n}\n.deep-purple.lighten-2--after:after {\n  background-color: #9575cd !important;\n}\n.deep-purple--text.text--lighten-2 {\n  color: #9575cd !important;\n}\n.deep-purple--text.text--lighten-2 input,\n.deep-purple--text.text--lighten-2 textarea {\n  caret-color: #9575cd !important;\n}\n.deep-purple.lighten-1 {\n  background-color: #7e57c2 !important;\n  border-color: #7e57c2 !important;\n}\n.deep-purple.lighten-1--after:after {\n  background-color: #7e57c2 !important;\n}\n.deep-purple--text.text--lighten-1 {\n  color: #7e57c2 !important;\n}\n.deep-purple--text.text--lighten-1 input,\n.deep-purple--text.text--lighten-1 textarea {\n  caret-color: #7e57c2 !important;\n}\n.deep-purple.darken-1 {\n  background-color: #5e35b1 !important;\n  border-color: #5e35b1 !important;\n}\n.deep-purple.darken-1--after:after {\n  background-color: #5e35b1 !important;\n}\n.deep-purple--text.text--darken-1 {\n  color: #5e35b1 !important;\n}\n.deep-purple--text.text--darken-1 input,\n.deep-purple--text.text--darken-1 textarea {\n  caret-color: #5e35b1 !important;\n}\n.deep-purple.darken-2 {\n  background-color: #512da8 !important;\n  border-color: #512da8 !important;\n}\n.deep-purple.darken-2--after:after {\n  background-color: #512da8 !important;\n}\n.deep-purple--text.text--darken-2 {\n  color: #512da8 !important;\n}\n.deep-purple--text.text--darken-2 input,\n.deep-purple--text.text--darken-2 textarea {\n  caret-color: #512da8 !important;\n}\n.deep-purple.darken-3 {\n  background-color: #4527a0 !important;\n  border-color: #4527a0 !important;\n}\n.deep-purple.darken-3--after:after {\n  background-color: #4527a0 !important;\n}\n.deep-purple--text.text--darken-3 {\n  color: #4527a0 !important;\n}\n.deep-purple--text.text--darken-3 input,\n.deep-purple--text.text--darken-3 textarea {\n  caret-color: #4527a0 !important;\n}\n.deep-purple.darken-4 {\n  background-color: #311b92 !important;\n  border-color: #311b92 !important;\n}\n.deep-purple.darken-4--after:after {\n  background-color: #311b92 !important;\n}\n.deep-purple--text.text--darken-4 {\n  color: #311b92 !important;\n}\n.deep-purple--text.text--darken-4 input,\n.deep-purple--text.text--darken-4 textarea {\n  caret-color: #311b92 !important;\n}\n.deep-purple.accent-1 {\n  background-color: #b388ff !important;\n  border-color: #b388ff !important;\n}\n.deep-purple.accent-1--after:after {\n  background-color: #b388ff !important;\n}\n.deep-purple--text.text--accent-1 {\n  color: #b388ff !important;\n}\n.deep-purple--text.text--accent-1 input,\n.deep-purple--text.text--accent-1 textarea {\n  caret-color: #b388ff !important;\n}\n.deep-purple.accent-2 {\n  background-color: #7c4dff !important;\n  border-color: #7c4dff !important;\n}\n.deep-purple.accent-2--after:after {\n  background-color: #7c4dff !important;\n}\n.deep-purple--text.text--accent-2 {\n  color: #7c4dff !important;\n}\n.deep-purple--text.text--accent-2 input,\n.deep-purple--text.text--accent-2 textarea {\n  caret-color: #7c4dff !important;\n}\n.deep-purple.accent-3 {\n  background-color: #651fff !important;\n  border-color: #651fff !important;\n}\n.deep-purple.accent-3--after:after {\n  background-color: #651fff !important;\n}\n.deep-purple--text.text--accent-3 {\n  color: #651fff !important;\n}\n.deep-purple--text.text--accent-3 input,\n.deep-purple--text.text--accent-3 textarea {\n  caret-color: #651fff !important;\n}\n.deep-purple.accent-4 {\n  background-color: #6200ea !important;\n  border-color: #6200ea !important;\n}\n.deep-purple.accent-4--after:after {\n  background-color: #6200ea !important;\n}\n.deep-purple--text.text--accent-4 {\n  color: #6200ea !important;\n}\n.deep-purple--text.text--accent-4 input,\n.deep-purple--text.text--accent-4 textarea {\n  caret-color: #6200ea !important;\n}\n.indigo {\n  background-color: #3f51b5 !important;\n  border-color: #3f51b5 !important;\n}\n.indigo--text {\n  color: #3f51b5 !important;\n}\n.indigo--text input,\n.indigo--text textarea {\n  caret-color: #3f51b5 !important;\n}\n.indigo--after:after {\n  background: #3f51b5 !important;\n}\n.indigo.lighten-5 {\n  background-color: #e8eaf6 !important;\n  border-color: #e8eaf6 !important;\n}\n.indigo.lighten-5--after:after {\n  background-color: #e8eaf6 !important;\n}\n.indigo--text.text--lighten-5 {\n  color: #e8eaf6 !important;\n}\n.indigo--text.text--lighten-5 input,\n.indigo--text.text--lighten-5 textarea {\n  caret-color: #e8eaf6 !important;\n}\n.indigo.lighten-4 {\n  background-color: #c5cae9 !important;\n  border-color: #c5cae9 !important;\n}\n.indigo.lighten-4--after:after {\n  background-color: #c5cae9 !important;\n}\n.indigo--text.text--lighten-4 {\n  color: #c5cae9 !important;\n}\n.indigo--text.text--lighten-4 input,\n.indigo--text.text--lighten-4 textarea {\n  caret-color: #c5cae9 !important;\n}\n.indigo.lighten-3 {\n  background-color: #9fa8da !important;\n  border-color: #9fa8da !important;\n}\n.indigo.lighten-3--after:after {\n  background-color: #9fa8da !important;\n}\n.indigo--text.text--lighten-3 {\n  color: #9fa8da !important;\n}\n.indigo--text.text--lighten-3 input,\n.indigo--text.text--lighten-3 textarea {\n  caret-color: #9fa8da !important;\n}\n.indigo.lighten-2 {\n  background-color: #7986cb !important;\n  border-color: #7986cb !important;\n}\n.indigo.lighten-2--after:after {\n  background-color: #7986cb !important;\n}\n.indigo--text.text--lighten-2 {\n  color: #7986cb !important;\n}\n.indigo--text.text--lighten-2 input,\n.indigo--text.text--lighten-2 textarea {\n  caret-color: #7986cb !important;\n}\n.indigo.lighten-1 {\n  background-color: #5c6bc0 !important;\n  border-color: #5c6bc0 !important;\n}\n.indigo.lighten-1--after:after {\n  background-color: #5c6bc0 !important;\n}\n.indigo--text.text--lighten-1 {\n  color: #5c6bc0 !important;\n}\n.indigo--text.text--lighten-1 input,\n.indigo--text.text--lighten-1 textarea {\n  caret-color: #5c6bc0 !important;\n}\n.indigo.darken-1 {\n  background-color: #3949ab !important;\n  border-color: #3949ab !important;\n}\n.indigo.darken-1--after:after {\n  background-color: #3949ab !important;\n}\n.indigo--text.text--darken-1 {\n  color: #3949ab !important;\n}\n.indigo--text.text--darken-1 input,\n.indigo--text.text--darken-1 textarea {\n  caret-color: #3949ab !important;\n}\n.indigo.darken-2 {\n  background-color: #303f9f !important;\n  border-color: #303f9f !important;\n}\n.indigo.darken-2--after:after {\n  background-color: #303f9f !important;\n}\n.indigo--text.text--darken-2 {\n  color: #303f9f !important;\n}\n.indigo--text.text--darken-2 input,\n.indigo--text.text--darken-2 textarea {\n  caret-color: #303f9f !important;\n}\n.indigo.darken-3 {\n  background-color: #283593 !important;\n  border-color: #283593 !important;\n}\n.indigo.darken-3--after:after {\n  background-color: #283593 !important;\n}\n.indigo--text.text--darken-3 {\n  color: #283593 !important;\n}\n.indigo--text.text--darken-3 input,\n.indigo--text.text--darken-3 textarea {\n  caret-color: #283593 !important;\n}\n.indigo.darken-4 {\n  background-color: #1a237e !important;\n  border-color: #1a237e !important;\n}\n.indigo.darken-4--after:after {\n  background-color: #1a237e !important;\n}\n.indigo--text.text--darken-4 {\n  color: #1a237e !important;\n}\n.indigo--text.text--darken-4 input,\n.indigo--text.text--darken-4 textarea {\n  caret-color: #1a237e !important;\n}\n.indigo.accent-1 {\n  background-color: #8c9eff !important;\n  border-color: #8c9eff !important;\n}\n.indigo.accent-1--after:after {\n  background-color: #8c9eff !important;\n}\n.indigo--text.text--accent-1 {\n  color: #8c9eff !important;\n}\n.indigo--text.text--accent-1 input,\n.indigo--text.text--accent-1 textarea {\n  caret-color: #8c9eff !important;\n}\n.indigo.accent-2 {\n  background-color: #536dfe !important;\n  border-color: #536dfe !important;\n}\n.indigo.accent-2--after:after {\n  background-color: #536dfe !important;\n}\n.indigo--text.text--accent-2 {\n  color: #536dfe !important;\n}\n.indigo--text.text--accent-2 input,\n.indigo--text.text--accent-2 textarea {\n  caret-color: #536dfe !important;\n}\n.indigo.accent-3 {\n  background-color: #3d5afe !important;\n  border-color: #3d5afe !important;\n}\n.indigo.accent-3--after:after {\n  background-color: #3d5afe !important;\n}\n.indigo--text.text--accent-3 {\n  color: #3d5afe !important;\n}\n.indigo--text.text--accent-3 input,\n.indigo--text.text--accent-3 textarea {\n  caret-color: #3d5afe !important;\n}\n.indigo.accent-4 {\n  background-color: #304ffe !important;\n  border-color: #304ffe !important;\n}\n.indigo.accent-4--after:after {\n  background-color: #304ffe !important;\n}\n.indigo--text.text--accent-4 {\n  color: #304ffe !important;\n}\n.indigo--text.text--accent-4 input,\n.indigo--text.text--accent-4 textarea {\n  caret-color: #304ffe !important;\n}\n.blue {\n  background-color: #2196f3 !important;\n  border-color: #2196f3 !important;\n}\n.blue--text {\n  color: #2196f3 !important;\n}\n.blue--text input,\n.blue--text textarea {\n  caret-color: #2196f3 !important;\n}\n.blue--after:after {\n  background: #2196f3 !important;\n}\n.blue.lighten-5 {\n  background-color: #e3f2fd !important;\n  border-color: #e3f2fd !important;\n}\n.blue.lighten-5--after:after {\n  background-color: #e3f2fd !important;\n}\n.blue--text.text--lighten-5 {\n  color: #e3f2fd !important;\n}\n.blue--text.text--lighten-5 input,\n.blue--text.text--lighten-5 textarea {\n  caret-color: #e3f2fd !important;\n}\n.blue.lighten-4 {\n  background-color: #bbdefb !important;\n  border-color: #bbdefb !important;\n}\n.blue.lighten-4--after:after {\n  background-color: #bbdefb !important;\n}\n.blue--text.text--lighten-4 {\n  color: #bbdefb !important;\n}\n.blue--text.text--lighten-4 input,\n.blue--text.text--lighten-4 textarea {\n  caret-color: #bbdefb !important;\n}\n.blue.lighten-3 {\n  background-color: #90caf9 !important;\n  border-color: #90caf9 !important;\n}\n.blue.lighten-3--after:after {\n  background-color: #90caf9 !important;\n}\n.blue--text.text--lighten-3 {\n  color: #90caf9 !important;\n}\n.blue--text.text--lighten-3 input,\n.blue--text.text--lighten-3 textarea {\n  caret-color: #90caf9 !important;\n}\n.blue.lighten-2 {\n  background-color: #64b5f6 !important;\n  border-color: #64b5f6 !important;\n}\n.blue.lighten-2--after:after {\n  background-color: #64b5f6 !important;\n}\n.blue--text.text--lighten-2 {\n  color: #64b5f6 !important;\n}\n.blue--text.text--lighten-2 input,\n.blue--text.text--lighten-2 textarea {\n  caret-color: #64b5f6 !important;\n}\n.blue.lighten-1 {\n  background-color: #42a5f5 !important;\n  border-color: #42a5f5 !important;\n}\n.blue.lighten-1--after:after {\n  background-color: #42a5f5 !important;\n}\n.blue--text.text--lighten-1 {\n  color: #42a5f5 !important;\n}\n.blue--text.text--lighten-1 input,\n.blue--text.text--lighten-1 textarea {\n  caret-color: #42a5f5 !important;\n}\n.blue.darken-1 {\n  background-color: #1e88e5 !important;\n  border-color: #1e88e5 !important;\n}\n.blue.darken-1--after:after {\n  background-color: #1e88e5 !important;\n}\n.blue--text.text--darken-1 {\n  color: #1e88e5 !important;\n}\n.blue--text.text--darken-1 input,\n.blue--text.text--darken-1 textarea {\n  caret-color: #1e88e5 !important;\n}\n.blue.darken-2 {\n  background-color: #1976d2 !important;\n  border-color: #1976d2 !important;\n}\n.blue.darken-2--after:after {\n  background-color: #1976d2 !important;\n}\n.blue--text.text--darken-2 {\n  color: #1976d2 !important;\n}\n.blue--text.text--darken-2 input,\n.blue--text.text--darken-2 textarea {\n  caret-color: #1976d2 !important;\n}\n.blue.darken-3 {\n  background-color: #1565c0 !important;\n  border-color: #1565c0 !important;\n}\n.blue.darken-3--after:after {\n  background-color: #1565c0 !important;\n}\n.blue--text.text--darken-3 {\n  color: #1565c0 !important;\n}\n.blue--text.text--darken-3 input,\n.blue--text.text--darken-3 textarea {\n  caret-color: #1565c0 !important;\n}\n.blue.darken-4 {\n  background-color: #0d47a1 !important;\n  border-color: #0d47a1 !important;\n}\n.blue.darken-4--after:after {\n  background-color: #0d47a1 !important;\n}\n.blue--text.text--darken-4 {\n  color: #0d47a1 !important;\n}\n.blue--text.text--darken-4 input,\n.blue--text.text--darken-4 textarea {\n  caret-color: #0d47a1 !important;\n}\n.blue.accent-1 {\n  background-color: #82b1ff !important;\n  border-color: #82b1ff !important;\n}\n.blue.accent-1--after:after {\n  background-color: #82b1ff !important;\n}\n.blue--text.text--accent-1 {\n  color: #82b1ff !important;\n}\n.blue--text.text--accent-1 input,\n.blue--text.text--accent-1 textarea {\n  caret-color: #82b1ff !important;\n}\n.blue.accent-2 {\n  background-color: #448aff !important;\n  border-color: #448aff !important;\n}\n.blue.accent-2--after:after {\n  background-color: #448aff !important;\n}\n.blue--text.text--accent-2 {\n  color: #448aff !important;\n}\n.blue--text.text--accent-2 input,\n.blue--text.text--accent-2 textarea {\n  caret-color: #448aff !important;\n}\n.blue.accent-3 {\n  background-color: #2979ff !important;\n  border-color: #2979ff !important;\n}\n.blue.accent-3--after:after {\n  background-color: #2979ff !important;\n}\n.blue--text.text--accent-3 {\n  color: #2979ff !important;\n}\n.blue--text.text--accent-3 input,\n.blue--text.text--accent-3 textarea {\n  caret-color: #2979ff !important;\n}\n.blue.accent-4 {\n  background-color: #2962ff !important;\n  border-color: #2962ff !important;\n}\n.blue.accent-4--after:after {\n  background-color: #2962ff !important;\n}\n.blue--text.text--accent-4 {\n  color: #2962ff !important;\n}\n.blue--text.text--accent-4 input,\n.blue--text.text--accent-4 textarea {\n  caret-color: #2962ff !important;\n}\n.light-blue {\n  background-color: #03a9f4 !important;\n  border-color: #03a9f4 !important;\n}\n.light-blue--text {\n  color: #03a9f4 !important;\n}\n.light-blue--text input,\n.light-blue--text textarea {\n  caret-color: #03a9f4 !important;\n}\n.light-blue--after:after {\n  background: #03a9f4 !important;\n}\n.light-blue.lighten-5 {\n  background-color: #e1f5fe !important;\n  border-color: #e1f5fe !important;\n}\n.light-blue.lighten-5--after:after {\n  background-color: #e1f5fe !important;\n}\n.light-blue--text.text--lighten-5 {\n  color: #e1f5fe !important;\n}\n.light-blue--text.text--lighten-5 input,\n.light-blue--text.text--lighten-5 textarea {\n  caret-color: #e1f5fe !important;\n}\n.light-blue.lighten-4 {\n  background-color: #b3e5fc !important;\n  border-color: #b3e5fc !important;\n}\n.light-blue.lighten-4--after:after {\n  background-color: #b3e5fc !important;\n}\n.light-blue--text.text--lighten-4 {\n  color: #b3e5fc !important;\n}\n.light-blue--text.text--lighten-4 input,\n.light-blue--text.text--lighten-4 textarea {\n  caret-color: #b3e5fc !important;\n}\n.light-blue.lighten-3 {\n  background-color: #81d4fa !important;\n  border-color: #81d4fa !important;\n}\n.light-blue.lighten-3--after:after {\n  background-color: #81d4fa !important;\n}\n.light-blue--text.text--lighten-3 {\n  color: #81d4fa !important;\n}\n.light-blue--text.text--lighten-3 input,\n.light-blue--text.text--lighten-3 textarea {\n  caret-color: #81d4fa !important;\n}\n.light-blue.lighten-2 {\n  background-color: #4fc3f7 !important;\n  border-color: #4fc3f7 !important;\n}\n.light-blue.lighten-2--after:after {\n  background-color: #4fc3f7 !important;\n}\n.light-blue--text.text--lighten-2 {\n  color: #4fc3f7 !important;\n}\n.light-blue--text.text--lighten-2 input,\n.light-blue--text.text--lighten-2 textarea {\n  caret-color: #4fc3f7 !important;\n}\n.light-blue.lighten-1 {\n  background-color: #29b6f6 !important;\n  border-color: #29b6f6 !important;\n}\n.light-blue.lighten-1--after:after {\n  background-color: #29b6f6 !important;\n}\n.light-blue--text.text--lighten-1 {\n  color: #29b6f6 !important;\n}\n.light-blue--text.text--lighten-1 input,\n.light-blue--text.text--lighten-1 textarea {\n  caret-color: #29b6f6 !important;\n}\n.light-blue.darken-1 {\n  background-color: #039be5 !important;\n  border-color: #039be5 !important;\n}\n.light-blue.darken-1--after:after {\n  background-color: #039be5 !important;\n}\n.light-blue--text.text--darken-1 {\n  color: #039be5 !important;\n}\n.light-blue--text.text--darken-1 input,\n.light-blue--text.text--darken-1 textarea {\n  caret-color: #039be5 !important;\n}\n.light-blue.darken-2 {\n  background-color: #0288d1 !important;\n  border-color: #0288d1 !important;\n}\n.light-blue.darken-2--after:after {\n  background-color: #0288d1 !important;\n}\n.light-blue--text.text--darken-2 {\n  color: #0288d1 !important;\n}\n.light-blue--text.text--darken-2 input,\n.light-blue--text.text--darken-2 textarea {\n  caret-color: #0288d1 !important;\n}\n.light-blue.darken-3 {\n  background-color: #0277bd !important;\n  border-color: #0277bd !important;\n}\n.light-blue.darken-3--after:after {\n  background-color: #0277bd !important;\n}\n.light-blue--text.text--darken-3 {\n  color: #0277bd !important;\n}\n.light-blue--text.text--darken-3 input,\n.light-blue--text.text--darken-3 textarea {\n  caret-color: #0277bd !important;\n}\n.light-blue.darken-4 {\n  background-color: #01579b !important;\n  border-color: #01579b !important;\n}\n.light-blue.darken-4--after:after {\n  background-color: #01579b !important;\n}\n.light-blue--text.text--darken-4 {\n  color: #01579b !important;\n}\n.light-blue--text.text--darken-4 input,\n.light-blue--text.text--darken-4 textarea {\n  caret-color: #01579b !important;\n}\n.light-blue.accent-1 {\n  background-color: #80d8ff !important;\n  border-color: #80d8ff !important;\n}\n.light-blue.accent-1--after:after {\n  background-color: #80d8ff !important;\n}\n.light-blue--text.text--accent-1 {\n  color: #80d8ff !important;\n}\n.light-blue--text.text--accent-1 input,\n.light-blue--text.text--accent-1 textarea {\n  caret-color: #80d8ff !important;\n}\n.light-blue.accent-2 {\n  background-color: #40c4ff !important;\n  border-color: #40c4ff !important;\n}\n.light-blue.accent-2--after:after {\n  background-color: #40c4ff !important;\n}\n.light-blue--text.text--accent-2 {\n  color: #40c4ff !important;\n}\n.light-blue--text.text--accent-2 input,\n.light-blue--text.text--accent-2 textarea {\n  caret-color: #40c4ff !important;\n}\n.light-blue.accent-3 {\n  background-color: #00b0ff !important;\n  border-color: #00b0ff !important;\n}\n.light-blue.accent-3--after:after {\n  background-color: #00b0ff !important;\n}\n.light-blue--text.text--accent-3 {\n  color: #00b0ff !important;\n}\n.light-blue--text.text--accent-3 input,\n.light-blue--text.text--accent-3 textarea {\n  caret-color: #00b0ff !important;\n}\n.light-blue.accent-4 {\n  background-color: #0091ea !important;\n  border-color: #0091ea !important;\n}\n.light-blue.accent-4--after:after {\n  background-color: #0091ea !important;\n}\n.light-blue--text.text--accent-4 {\n  color: #0091ea !important;\n}\n.light-blue--text.text--accent-4 input,\n.light-blue--text.text--accent-4 textarea {\n  caret-color: #0091ea !important;\n}\n.cyan {\n  background-color: #00bcd4 !important;\n  border-color: #00bcd4 !important;\n}\n.cyan--text {\n  color: #00bcd4 !important;\n}\n.cyan--text input,\n.cyan--text textarea {\n  caret-color: #00bcd4 !important;\n}\n.cyan--after:after {\n  background: #00bcd4 !important;\n}\n.cyan.lighten-5 {\n  background-color: #e0f7fa !important;\n  border-color: #e0f7fa !important;\n}\n.cyan.lighten-5--after:after {\n  background-color: #e0f7fa !important;\n}\n.cyan--text.text--lighten-5 {\n  color: #e0f7fa !important;\n}\n.cyan--text.text--lighten-5 input,\n.cyan--text.text--lighten-5 textarea {\n  caret-color: #e0f7fa !important;\n}\n.cyan.lighten-4 {\n  background-color: #b2ebf2 !important;\n  border-color: #b2ebf2 !important;\n}\n.cyan.lighten-4--after:after {\n  background-color: #b2ebf2 !important;\n}\n.cyan--text.text--lighten-4 {\n  color: #b2ebf2 !important;\n}\n.cyan--text.text--lighten-4 input,\n.cyan--text.text--lighten-4 textarea {\n  caret-color: #b2ebf2 !important;\n}\n.cyan.lighten-3 {\n  background-color: #80deea !important;\n  border-color: #80deea !important;\n}\n.cyan.lighten-3--after:after {\n  background-color: #80deea !important;\n}\n.cyan--text.text--lighten-3 {\n  color: #80deea !important;\n}\n.cyan--text.text--lighten-3 input,\n.cyan--text.text--lighten-3 textarea {\n  caret-color: #80deea !important;\n}\n.cyan.lighten-2 {\n  background-color: #4dd0e1 !important;\n  border-color: #4dd0e1 !important;\n}\n.cyan.lighten-2--after:after {\n  background-color: #4dd0e1 !important;\n}\n.cyan--text.text--lighten-2 {\n  color: #4dd0e1 !important;\n}\n.cyan--text.text--lighten-2 input,\n.cyan--text.text--lighten-2 textarea {\n  caret-color: #4dd0e1 !important;\n}\n.cyan.lighten-1 {\n  background-color: #26c6da !important;\n  border-color: #26c6da !important;\n}\n.cyan.lighten-1--after:after {\n  background-color: #26c6da !important;\n}\n.cyan--text.text--lighten-1 {\n  color: #26c6da !important;\n}\n.cyan--text.text--lighten-1 input,\n.cyan--text.text--lighten-1 textarea {\n  caret-color: #26c6da !important;\n}\n.cyan.darken-1 {\n  background-color: #00acc1 !important;\n  border-color: #00acc1 !important;\n}\n.cyan.darken-1--after:after {\n  background-color: #00acc1 !important;\n}\n.cyan--text.text--darken-1 {\n  color: #00acc1 !important;\n}\n.cyan--text.text--darken-1 input,\n.cyan--text.text--darken-1 textarea {\n  caret-color: #00acc1 !important;\n}\n.cyan.darken-2 {\n  background-color: #0097a7 !important;\n  border-color: #0097a7 !important;\n}\n.cyan.darken-2--after:after {\n  background-color: #0097a7 !important;\n}\n.cyan--text.text--darken-2 {\n  color: #0097a7 !important;\n}\n.cyan--text.text--darken-2 input,\n.cyan--text.text--darken-2 textarea {\n  caret-color: #0097a7 !important;\n}\n.cyan.darken-3 {\n  background-color: #00838f !important;\n  border-color: #00838f !important;\n}\n.cyan.darken-3--after:after {\n  background-color: #00838f !important;\n}\n.cyan--text.text--darken-3 {\n  color: #00838f !important;\n}\n.cyan--text.text--darken-3 input,\n.cyan--text.text--darken-3 textarea {\n  caret-color: #00838f !important;\n}\n.cyan.darken-4 {\n  background-color: #006064 !important;\n  border-color: #006064 !important;\n}\n.cyan.darken-4--after:after {\n  background-color: #006064 !important;\n}\n.cyan--text.text--darken-4 {\n  color: #006064 !important;\n}\n.cyan--text.text--darken-4 input,\n.cyan--text.text--darken-4 textarea {\n  caret-color: #006064 !important;\n}\n.cyan.accent-1 {\n  background-color: #84ffff !important;\n  border-color: #84ffff !important;\n}\n.cyan.accent-1--after:after {\n  background-color: #84ffff !important;\n}\n.cyan--text.text--accent-1 {\n  color: #84ffff !important;\n}\n.cyan--text.text--accent-1 input,\n.cyan--text.text--accent-1 textarea {\n  caret-color: #84ffff !important;\n}\n.cyan.accent-2 {\n  background-color: #18ffff !important;\n  border-color: #18ffff !important;\n}\n.cyan.accent-2--after:after {\n  background-color: #18ffff !important;\n}\n.cyan--text.text--accent-2 {\n  color: #18ffff !important;\n}\n.cyan--text.text--accent-2 input,\n.cyan--text.text--accent-2 textarea {\n  caret-color: #18ffff !important;\n}\n.cyan.accent-3 {\n  background-color: #00e5ff !important;\n  border-color: #00e5ff !important;\n}\n.cyan.accent-3--after:after {\n  background-color: #00e5ff !important;\n}\n.cyan--text.text--accent-3 {\n  color: #00e5ff !important;\n}\n.cyan--text.text--accent-3 input,\n.cyan--text.text--accent-3 textarea {\n  caret-color: #00e5ff !important;\n}\n.cyan.accent-4 {\n  background-color: #00b8d4 !important;\n  border-color: #00b8d4 !important;\n}\n.cyan.accent-4--after:after {\n  background-color: #00b8d4 !important;\n}\n.cyan--text.text--accent-4 {\n  color: #00b8d4 !important;\n}\n.cyan--text.text--accent-4 input,\n.cyan--text.text--accent-4 textarea {\n  caret-color: #00b8d4 !important;\n}\n.teal {\n  background-color: #009688 !important;\n  border-color: #009688 !important;\n}\n.teal--text {\n  color: #009688 !important;\n}\n.teal--text input,\n.teal--text textarea {\n  caret-color: #009688 !important;\n}\n.teal--after:after {\n  background: #009688 !important;\n}\n.teal.lighten-5 {\n  background-color: #e0f2f1 !important;\n  border-color: #e0f2f1 !important;\n}\n.teal.lighten-5--after:after {\n  background-color: #e0f2f1 !important;\n}\n.teal--text.text--lighten-5 {\n  color: #e0f2f1 !important;\n}\n.teal--text.text--lighten-5 input,\n.teal--text.text--lighten-5 textarea {\n  caret-color: #e0f2f1 !important;\n}\n.teal.lighten-4 {\n  background-color: #b2dfdb !important;\n  border-color: #b2dfdb !important;\n}\n.teal.lighten-4--after:after {\n  background-color: #b2dfdb !important;\n}\n.teal--text.text--lighten-4 {\n  color: #b2dfdb !important;\n}\n.teal--text.text--lighten-4 input,\n.teal--text.text--lighten-4 textarea {\n  caret-color: #b2dfdb !important;\n}\n.teal.lighten-3 {\n  background-color: #80cbc4 !important;\n  border-color: #80cbc4 !important;\n}\n.teal.lighten-3--after:after {\n  background-color: #80cbc4 !important;\n}\n.teal--text.text--lighten-3 {\n  color: #80cbc4 !important;\n}\n.teal--text.text--lighten-3 input,\n.teal--text.text--lighten-3 textarea {\n  caret-color: #80cbc4 !important;\n}\n.teal.lighten-2 {\n  background-color: #4db6ac !important;\n  border-color: #4db6ac !important;\n}\n.teal.lighten-2--after:after {\n  background-color: #4db6ac !important;\n}\n.teal--text.text--lighten-2 {\n  color: #4db6ac !important;\n}\n.teal--text.text--lighten-2 input,\n.teal--text.text--lighten-2 textarea {\n  caret-color: #4db6ac !important;\n}\n.teal.lighten-1 {\n  background-color: #26a69a !important;\n  border-color: #26a69a !important;\n}\n.teal.lighten-1--after:after {\n  background-color: #26a69a !important;\n}\n.teal--text.text--lighten-1 {\n  color: #26a69a !important;\n}\n.teal--text.text--lighten-1 input,\n.teal--text.text--lighten-1 textarea {\n  caret-color: #26a69a !important;\n}\n.teal.darken-1 {\n  background-color: #00897b !important;\n  border-color: #00897b !important;\n}\n.teal.darken-1--after:after {\n  background-color: #00897b !important;\n}\n.teal--text.text--darken-1 {\n  color: #00897b !important;\n}\n.teal--text.text--darken-1 input,\n.teal--text.text--darken-1 textarea {\n  caret-color: #00897b !important;\n}\n.teal.darken-2 {\n  background-color: #00796b !important;\n  border-color: #00796b !important;\n}\n.teal.darken-2--after:after {\n  background-color: #00796b !important;\n}\n.teal--text.text--darken-2 {\n  color: #00796b !important;\n}\n.teal--text.text--darken-2 input,\n.teal--text.text--darken-2 textarea {\n  caret-color: #00796b !important;\n}\n.teal.darken-3 {\n  background-color: #00695c !important;\n  border-color: #00695c !important;\n}\n.teal.darken-3--after:after {\n  background-color: #00695c !important;\n}\n.teal--text.text--darken-3 {\n  color: #00695c !important;\n}\n.teal--text.text--darken-3 input,\n.teal--text.text--darken-3 textarea {\n  caret-color: #00695c !important;\n}\n.teal.darken-4 {\n  background-color: #004d40 !important;\n  border-color: #004d40 !important;\n}\n.teal.darken-4--after:after {\n  background-color: #004d40 !important;\n}\n.teal--text.text--darken-4 {\n  color: #004d40 !important;\n}\n.teal--text.text--darken-4 input,\n.teal--text.text--darken-4 textarea {\n  caret-color: #004d40 !important;\n}\n.teal.accent-1 {\n  background-color: #a7ffeb !important;\n  border-color: #a7ffeb !important;\n}\n.teal.accent-1--after:after {\n  background-color: #a7ffeb !important;\n}\n.teal--text.text--accent-1 {\n  color: #a7ffeb !important;\n}\n.teal--text.text--accent-1 input,\n.teal--text.text--accent-1 textarea {\n  caret-color: #a7ffeb !important;\n}\n.teal.accent-2 {\n  background-color: #64ffda !important;\n  border-color: #64ffda !important;\n}\n.teal.accent-2--after:after {\n  background-color: #64ffda !important;\n}\n.teal--text.text--accent-2 {\n  color: #64ffda !important;\n}\n.teal--text.text--accent-2 input,\n.teal--text.text--accent-2 textarea {\n  caret-color: #64ffda !important;\n}\n.teal.accent-3 {\n  background-color: #1de9b6 !important;\n  border-color: #1de9b6 !important;\n}\n.teal.accent-3--after:after {\n  background-color: #1de9b6 !important;\n}\n.teal--text.text--accent-3 {\n  color: #1de9b6 !important;\n}\n.teal--text.text--accent-3 input,\n.teal--text.text--accent-3 textarea {\n  caret-color: #1de9b6 !important;\n}\n.teal.accent-4 {\n  background-color: #00bfa5 !important;\n  border-color: #00bfa5 !important;\n}\n.teal.accent-4--after:after {\n  background-color: #00bfa5 !important;\n}\n.teal--text.text--accent-4 {\n  color: #00bfa5 !important;\n}\n.teal--text.text--accent-4 input,\n.teal--text.text--accent-4 textarea {\n  caret-color: #00bfa5 !important;\n}\n.green {\n  background-color: #4caf50 !important;\n  border-color: #4caf50 !important;\n}\n.green--text {\n  color: #4caf50 !important;\n}\n.green--text input,\n.green--text textarea {\n  caret-color: #4caf50 !important;\n}\n.green--after:after {\n  background: #4caf50 !important;\n}\n.green.lighten-5 {\n  background-color: #e8f5e9 !important;\n  border-color: #e8f5e9 !important;\n}\n.green.lighten-5--after:after {\n  background-color: #e8f5e9 !important;\n}\n.green--text.text--lighten-5 {\n  color: #e8f5e9 !important;\n}\n.green--text.text--lighten-5 input,\n.green--text.text--lighten-5 textarea {\n  caret-color: #e8f5e9 !important;\n}\n.green.lighten-4 {\n  background-color: #c8e6c9 !important;\n  border-color: #c8e6c9 !important;\n}\n.green.lighten-4--after:after {\n  background-color: #c8e6c9 !important;\n}\n.green--text.text--lighten-4 {\n  color: #c8e6c9 !important;\n}\n.green--text.text--lighten-4 input,\n.green--text.text--lighten-4 textarea {\n  caret-color: #c8e6c9 !important;\n}\n.green.lighten-3 {\n  background-color: #a5d6a7 !important;\n  border-color: #a5d6a7 !important;\n}\n.green.lighten-3--after:after {\n  background-color: #a5d6a7 !important;\n}\n.green--text.text--lighten-3 {\n  color: #a5d6a7 !important;\n}\n.green--text.text--lighten-3 input,\n.green--text.text--lighten-3 textarea {\n  caret-color: #a5d6a7 !important;\n}\n.green.lighten-2 {\n  background-color: #81c784 !important;\n  border-color: #81c784 !important;\n}\n.green.lighten-2--after:after {\n  background-color: #81c784 !important;\n}\n.green--text.text--lighten-2 {\n  color: #81c784 !important;\n}\n.green--text.text--lighten-2 input,\n.green--text.text--lighten-2 textarea {\n  caret-color: #81c784 !important;\n}\n.green.lighten-1 {\n  background-color: #66bb6a !important;\n  border-color: #66bb6a !important;\n}\n.green.lighten-1--after:after {\n  background-color: #66bb6a !important;\n}\n.green--text.text--lighten-1 {\n  color: #66bb6a !important;\n}\n.green--text.text--lighten-1 input,\n.green--text.text--lighten-1 textarea {\n  caret-color: #66bb6a !important;\n}\n.green.darken-1 {\n  background-color: #43a047 !important;\n  border-color: #43a047 !important;\n}\n.green.darken-1--after:after {\n  background-color: #43a047 !important;\n}\n.green--text.text--darken-1 {\n  color: #43a047 !important;\n}\n.green--text.text--darken-1 input,\n.green--text.text--darken-1 textarea {\n  caret-color: #43a047 !important;\n}\n.green.darken-2 {\n  background-color: #388e3c !important;\n  border-color: #388e3c !important;\n}\n.green.darken-2--after:after {\n  background-color: #388e3c !important;\n}\n.green--text.text--darken-2 {\n  color: #388e3c !important;\n}\n.green--text.text--darken-2 input,\n.green--text.text--darken-2 textarea {\n  caret-color: #388e3c !important;\n}\n.green.darken-3 {\n  background-color: #2e7d32 !important;\n  border-color: #2e7d32 !important;\n}\n.green.darken-3--after:after {\n  background-color: #2e7d32 !important;\n}\n.green--text.text--darken-3 {\n  color: #2e7d32 !important;\n}\n.green--text.text--darken-3 input,\n.green--text.text--darken-3 textarea {\n  caret-color: #2e7d32 !important;\n}\n.green.darken-4 {\n  background-color: #1b5e20 !important;\n  border-color: #1b5e20 !important;\n}\n.green.darken-4--after:after {\n  background-color: #1b5e20 !important;\n}\n.green--text.text--darken-4 {\n  color: #1b5e20 !important;\n}\n.green--text.text--darken-4 input,\n.green--text.text--darken-4 textarea {\n  caret-color: #1b5e20 !important;\n}\n.green.accent-1 {\n  background-color: #b9f6ca !important;\n  border-color: #b9f6ca !important;\n}\n.green.accent-1--after:after {\n  background-color: #b9f6ca !important;\n}\n.green--text.text--accent-1 {\n  color: #b9f6ca !important;\n}\n.green--text.text--accent-1 input,\n.green--text.text--accent-1 textarea {\n  caret-color: #b9f6ca !important;\n}\n.green.accent-2 {\n  background-color: #69f0ae !important;\n  border-color: #69f0ae !important;\n}\n.green.accent-2--after:after {\n  background-color: #69f0ae !important;\n}\n.green--text.text--accent-2 {\n  color: #69f0ae !important;\n}\n.green--text.text--accent-2 input,\n.green--text.text--accent-2 textarea {\n  caret-color: #69f0ae !important;\n}\n.green.accent-3 {\n  background-color: #00e676 !important;\n  border-color: #00e676 !important;\n}\n.green.accent-3--after:after {\n  background-color: #00e676 !important;\n}\n.green--text.text--accent-3 {\n  color: #00e676 !important;\n}\n.green--text.text--accent-3 input,\n.green--text.text--accent-3 textarea {\n  caret-color: #00e676 !important;\n}\n.green.accent-4 {\n  background-color: #00c853 !important;\n  border-color: #00c853 !important;\n}\n.green.accent-4--after:after {\n  background-color: #00c853 !important;\n}\n.green--text.text--accent-4 {\n  color: #00c853 !important;\n}\n.green--text.text--accent-4 input,\n.green--text.text--accent-4 textarea {\n  caret-color: #00c853 !important;\n}\n.light-green {\n  background-color: #8bc34a !important;\n  border-color: #8bc34a !important;\n}\n.light-green--text {\n  color: #8bc34a !important;\n}\n.light-green--text input,\n.light-green--text textarea {\n  caret-color: #8bc34a !important;\n}\n.light-green--after:after {\n  background: #8bc34a !important;\n}\n.light-green.lighten-5 {\n  background-color: #f1f8e9 !important;\n  border-color: #f1f8e9 !important;\n}\n.light-green.lighten-5--after:after {\n  background-color: #f1f8e9 !important;\n}\n.light-green--text.text--lighten-5 {\n  color: #f1f8e9 !important;\n}\n.light-green--text.text--lighten-5 input,\n.light-green--text.text--lighten-5 textarea {\n  caret-color: #f1f8e9 !important;\n}\n.light-green.lighten-4 {\n  background-color: #dcedc8 !important;\n  border-color: #dcedc8 !important;\n}\n.light-green.lighten-4--after:after {\n  background-color: #dcedc8 !important;\n}\n.light-green--text.text--lighten-4 {\n  color: #dcedc8 !important;\n}\n.light-green--text.text--lighten-4 input,\n.light-green--text.text--lighten-4 textarea {\n  caret-color: #dcedc8 !important;\n}\n.light-green.lighten-3 {\n  background-color: #c5e1a5 !important;\n  border-color: #c5e1a5 !important;\n}\n.light-green.lighten-3--after:after {\n  background-color: #c5e1a5 !important;\n}\n.light-green--text.text--lighten-3 {\n  color: #c5e1a5 !important;\n}\n.light-green--text.text--lighten-3 input,\n.light-green--text.text--lighten-3 textarea {\n  caret-color: #c5e1a5 !important;\n}\n.light-green.lighten-2 {\n  background-color: #aed581 !important;\n  border-color: #aed581 !important;\n}\n.light-green.lighten-2--after:after {\n  background-color: #aed581 !important;\n}\n.light-green--text.text--lighten-2 {\n  color: #aed581 !important;\n}\n.light-green--text.text--lighten-2 input,\n.light-green--text.text--lighten-2 textarea {\n  caret-color: #aed581 !important;\n}\n.light-green.lighten-1 {\n  background-color: #9ccc65 !important;\n  border-color: #9ccc65 !important;\n}\n.light-green.lighten-1--after:after {\n  background-color: #9ccc65 !important;\n}\n.light-green--text.text--lighten-1 {\n  color: #9ccc65 !important;\n}\n.light-green--text.text--lighten-1 input,\n.light-green--text.text--lighten-1 textarea {\n  caret-color: #9ccc65 !important;\n}\n.light-green.darken-1 {\n  background-color: #7cb342 !important;\n  border-color: #7cb342 !important;\n}\n.light-green.darken-1--after:after {\n  background-color: #7cb342 !important;\n}\n.light-green--text.text--darken-1 {\n  color: #7cb342 !important;\n}\n.light-green--text.text--darken-1 input,\n.light-green--text.text--darken-1 textarea {\n  caret-color: #7cb342 !important;\n}\n.light-green.darken-2 {\n  background-color: #689f38 !important;\n  border-color: #689f38 !important;\n}\n.light-green.darken-2--after:after {\n  background-color: #689f38 !important;\n}\n.light-green--text.text--darken-2 {\n  color: #689f38 !important;\n}\n.light-green--text.text--darken-2 input,\n.light-green--text.text--darken-2 textarea {\n  caret-color: #689f38 !important;\n}\n.light-green.darken-3 {\n  background-color: #558b2f !important;\n  border-color: #558b2f !important;\n}\n.light-green.darken-3--after:after {\n  background-color: #558b2f !important;\n}\n.light-green--text.text--darken-3 {\n  color: #558b2f !important;\n}\n.light-green--text.text--darken-3 input,\n.light-green--text.text--darken-3 textarea {\n  caret-color: #558b2f !important;\n}\n.light-green.darken-4 {\n  background-color: #33691e !important;\n  border-color: #33691e !important;\n}\n.light-green.darken-4--after:after {\n  background-color: #33691e !important;\n}\n.light-green--text.text--darken-4 {\n  color: #33691e !important;\n}\n.light-green--text.text--darken-4 input,\n.light-green--text.text--darken-4 textarea {\n  caret-color: #33691e !important;\n}\n.light-green.accent-1 {\n  background-color: #ccff90 !important;\n  border-color: #ccff90 !important;\n}\n.light-green.accent-1--after:after {\n  background-color: #ccff90 !important;\n}\n.light-green--text.text--accent-1 {\n  color: #ccff90 !important;\n}\n.light-green--text.text--accent-1 input,\n.light-green--text.text--accent-1 textarea {\n  caret-color: #ccff90 !important;\n}\n.light-green.accent-2 {\n  background-color: #b2ff59 !important;\n  border-color: #b2ff59 !important;\n}\n.light-green.accent-2--after:after {\n  background-color: #b2ff59 !important;\n}\n.light-green--text.text--accent-2 {\n  color: #b2ff59 !important;\n}\n.light-green--text.text--accent-2 input,\n.light-green--text.text--accent-2 textarea {\n  caret-color: #b2ff59 !important;\n}\n.light-green.accent-3 {\n  background-color: #76ff03 !important;\n  border-color: #76ff03 !important;\n}\n.light-green.accent-3--after:after {\n  background-color: #76ff03 !important;\n}\n.light-green--text.text--accent-3 {\n  color: #76ff03 !important;\n}\n.light-green--text.text--accent-3 input,\n.light-green--text.text--accent-3 textarea {\n  caret-color: #76ff03 !important;\n}\n.light-green.accent-4 {\n  background-color: #64dd17 !important;\n  border-color: #64dd17 !important;\n}\n.light-green.accent-4--after:after {\n  background-color: #64dd17 !important;\n}\n.light-green--text.text--accent-4 {\n  color: #64dd17 !important;\n}\n.light-green--text.text--accent-4 input,\n.light-green--text.text--accent-4 textarea {\n  caret-color: #64dd17 !important;\n}\n.lime {\n  background-color: #cddc39 !important;\n  border-color: #cddc39 !important;\n}\n.lime--text {\n  color: #cddc39 !important;\n}\n.lime--text input,\n.lime--text textarea {\n  caret-color: #cddc39 !important;\n}\n.lime--after:after {\n  background: #cddc39 !important;\n}\n.lime.lighten-5 {\n  background-color: #f9fbe7 !important;\n  border-color: #f9fbe7 !important;\n}\n.lime.lighten-5--after:after {\n  background-color: #f9fbe7 !important;\n}\n.lime--text.text--lighten-5 {\n  color: #f9fbe7 !important;\n}\n.lime--text.text--lighten-5 input,\n.lime--text.text--lighten-5 textarea {\n  caret-color: #f9fbe7 !important;\n}\n.lime.lighten-4 {\n  background-color: #f0f4c3 !important;\n  border-color: #f0f4c3 !important;\n}\n.lime.lighten-4--after:after {\n  background-color: #f0f4c3 !important;\n}\n.lime--text.text--lighten-4 {\n  color: #f0f4c3 !important;\n}\n.lime--text.text--lighten-4 input,\n.lime--text.text--lighten-4 textarea {\n  caret-color: #f0f4c3 !important;\n}\n.lime.lighten-3 {\n  background-color: #e6ee9c !important;\n  border-color: #e6ee9c !important;\n}\n.lime.lighten-3--after:after {\n  background-color: #e6ee9c !important;\n}\n.lime--text.text--lighten-3 {\n  color: #e6ee9c !important;\n}\n.lime--text.text--lighten-3 input,\n.lime--text.text--lighten-3 textarea {\n  caret-color: #e6ee9c !important;\n}\n.lime.lighten-2 {\n  background-color: #dce775 !important;\n  border-color: #dce775 !important;\n}\n.lime.lighten-2--after:after {\n  background-color: #dce775 !important;\n}\n.lime--text.text--lighten-2 {\n  color: #dce775 !important;\n}\n.lime--text.text--lighten-2 input,\n.lime--text.text--lighten-2 textarea {\n  caret-color: #dce775 !important;\n}\n.lime.lighten-1 {\n  background-color: #d4e157 !important;\n  border-color: #d4e157 !important;\n}\n.lime.lighten-1--after:after {\n  background-color: #d4e157 !important;\n}\n.lime--text.text--lighten-1 {\n  color: #d4e157 !important;\n}\n.lime--text.text--lighten-1 input,\n.lime--text.text--lighten-1 textarea {\n  caret-color: #d4e157 !important;\n}\n.lime.darken-1 {\n  background-color: #c0ca33 !important;\n  border-color: #c0ca33 !important;\n}\n.lime.darken-1--after:after {\n  background-color: #c0ca33 !important;\n}\n.lime--text.text--darken-1 {\n  color: #c0ca33 !important;\n}\n.lime--text.text--darken-1 input,\n.lime--text.text--darken-1 textarea {\n  caret-color: #c0ca33 !important;\n}\n.lime.darken-2 {\n  background-color: #afb42b !important;\n  border-color: #afb42b !important;\n}\n.lime.darken-2--after:after {\n  background-color: #afb42b !important;\n}\n.lime--text.text--darken-2 {\n  color: #afb42b !important;\n}\n.lime--text.text--darken-2 input,\n.lime--text.text--darken-2 textarea {\n  caret-color: #afb42b !important;\n}\n.lime.darken-3 {\n  background-color: #9e9d24 !important;\n  border-color: #9e9d24 !important;\n}\n.lime.darken-3--after:after {\n  background-color: #9e9d24 !important;\n}\n.lime--text.text--darken-3 {\n  color: #9e9d24 !important;\n}\n.lime--text.text--darken-3 input,\n.lime--text.text--darken-3 textarea {\n  caret-color: #9e9d24 !important;\n}\n.lime.darken-4 {\n  background-color: #827717 !important;\n  border-color: #827717 !important;\n}\n.lime.darken-4--after:after {\n  background-color: #827717 !important;\n}\n.lime--text.text--darken-4 {\n  color: #827717 !important;\n}\n.lime--text.text--darken-4 input,\n.lime--text.text--darken-4 textarea {\n  caret-color: #827717 !important;\n}\n.lime.accent-1 {\n  background-color: #f4ff81 !important;\n  border-color: #f4ff81 !important;\n}\n.lime.accent-1--after:after {\n  background-color: #f4ff81 !important;\n}\n.lime--text.text--accent-1 {\n  color: #f4ff81 !important;\n}\n.lime--text.text--accent-1 input,\n.lime--text.text--accent-1 textarea {\n  caret-color: #f4ff81 !important;\n}\n.lime.accent-2 {\n  background-color: #eeff41 !important;\n  border-color: #eeff41 !important;\n}\n.lime.accent-2--after:after {\n  background-color: #eeff41 !important;\n}\n.lime--text.text--accent-2 {\n  color: #eeff41 !important;\n}\n.lime--text.text--accent-2 input,\n.lime--text.text--accent-2 textarea {\n  caret-color: #eeff41 !important;\n}\n.lime.accent-3 {\n  background-color: #c6ff00 !important;\n  border-color: #c6ff00 !important;\n}\n.lime.accent-3--after:after {\n  background-color: #c6ff00 !important;\n}\n.lime--text.text--accent-3 {\n  color: #c6ff00 !important;\n}\n.lime--text.text--accent-3 input,\n.lime--text.text--accent-3 textarea {\n  caret-color: #c6ff00 !important;\n}\n.lime.accent-4 {\n  background-color: #aeea00 !important;\n  border-color: #aeea00 !important;\n}\n.lime.accent-4--after:after {\n  background-color: #aeea00 !important;\n}\n.lime--text.text--accent-4 {\n  color: #aeea00 !important;\n}\n.lime--text.text--accent-4 input,\n.lime--text.text--accent-4 textarea {\n  caret-color: #aeea00 !important;\n}\n.yellow {\n  background-color: #ffeb3b !important;\n  border-color: #ffeb3b !important;\n}\n.yellow--text {\n  color: #ffeb3b !important;\n}\n.yellow--text input,\n.yellow--text textarea {\n  caret-color: #ffeb3b !important;\n}\n.yellow--after:after {\n  background: #ffeb3b !important;\n}\n.yellow.lighten-5 {\n  background-color: #fffde7 !important;\n  border-color: #fffde7 !important;\n}\n.yellow.lighten-5--after:after {\n  background-color: #fffde7 !important;\n}\n.yellow--text.text--lighten-5 {\n  color: #fffde7 !important;\n}\n.yellow--text.text--lighten-5 input,\n.yellow--text.text--lighten-5 textarea {\n  caret-color: #fffde7 !important;\n}\n.yellow.lighten-4 {\n  background-color: #fff9c4 !important;\n  border-color: #fff9c4 !important;\n}\n.yellow.lighten-4--after:after {\n  background-color: #fff9c4 !important;\n}\n.yellow--text.text--lighten-4 {\n  color: #fff9c4 !important;\n}\n.yellow--text.text--lighten-4 input,\n.yellow--text.text--lighten-4 textarea {\n  caret-color: #fff9c4 !important;\n}\n.yellow.lighten-3 {\n  background-color: #fff59d !important;\n  border-color: #fff59d !important;\n}\n.yellow.lighten-3--after:after {\n  background-color: #fff59d !important;\n}\n.yellow--text.text--lighten-3 {\n  color: #fff59d !important;\n}\n.yellow--text.text--lighten-3 input,\n.yellow--text.text--lighten-3 textarea {\n  caret-color: #fff59d !important;\n}\n.yellow.lighten-2 {\n  background-color: #fff176 !important;\n  border-color: #fff176 !important;\n}\n.yellow.lighten-2--after:after {\n  background-color: #fff176 !important;\n}\n.yellow--text.text--lighten-2 {\n  color: #fff176 !important;\n}\n.yellow--text.text--lighten-2 input,\n.yellow--text.text--lighten-2 textarea {\n  caret-color: #fff176 !important;\n}\n.yellow.lighten-1 {\n  background-color: #ffee58 !important;\n  border-color: #ffee58 !important;\n}\n.yellow.lighten-1--after:after {\n  background-color: #ffee58 !important;\n}\n.yellow--text.text--lighten-1 {\n  color: #ffee58 !important;\n}\n.yellow--text.text--lighten-1 input,\n.yellow--text.text--lighten-1 textarea {\n  caret-color: #ffee58 !important;\n}\n.yellow.darken-1 {\n  background-color: #fdd835 !important;\n  border-color: #fdd835 !important;\n}\n.yellow.darken-1--after:after {\n  background-color: #fdd835 !important;\n}\n.yellow--text.text--darken-1 {\n  color: #fdd835 !important;\n}\n.yellow--text.text--darken-1 input,\n.yellow--text.text--darken-1 textarea {\n  caret-color: #fdd835 !important;\n}\n.yellow.darken-2 {\n  background-color: #fbc02d !important;\n  border-color: #fbc02d !important;\n}\n.yellow.darken-2--after:after {\n  background-color: #fbc02d !important;\n}\n.yellow--text.text--darken-2 {\n  color: #fbc02d !important;\n}\n.yellow--text.text--darken-2 input,\n.yellow--text.text--darken-2 textarea {\n  caret-color: #fbc02d !important;\n}\n.yellow.darken-3 {\n  background-color: #f9a825 !important;\n  border-color: #f9a825 !important;\n}\n.yellow.darken-3--after:after {\n  background-color: #f9a825 !important;\n}\n.yellow--text.text--darken-3 {\n  color: #f9a825 !important;\n}\n.yellow--text.text--darken-3 input,\n.yellow--text.text--darken-3 textarea {\n  caret-color: #f9a825 !important;\n}\n.yellow.darken-4 {\n  background-color: #f57f17 !important;\n  border-color: #f57f17 !important;\n}\n.yellow.darken-4--after:after {\n  background-color: #f57f17 !important;\n}\n.yellow--text.text--darken-4 {\n  color: #f57f17 !important;\n}\n.yellow--text.text--darken-4 input,\n.yellow--text.text--darken-4 textarea {\n  caret-color: #f57f17 !important;\n}\n.yellow.accent-1 {\n  background-color: #ffff8d !important;\n  border-color: #ffff8d !important;\n}\n.yellow.accent-1--after:after {\n  background-color: #ffff8d !important;\n}\n.yellow--text.text--accent-1 {\n  color: #ffff8d !important;\n}\n.yellow--text.text--accent-1 input,\n.yellow--text.text--accent-1 textarea {\n  caret-color: #ffff8d !important;\n}\n.yellow.accent-2 {\n  background-color: #ff0 !important;\n  border-color: #ff0 !important;\n}\n.yellow.accent-2--after:after {\n  background-color: #ff0 !important;\n}\n.yellow--text.text--accent-2 {\n  color: #ff0 !important;\n}\n.yellow--text.text--accent-2 input,\n.yellow--text.text--accent-2 textarea {\n  caret-color: #ff0 !important;\n}\n.yellow.accent-3 {\n  background-color: #ffea00 !important;\n  border-color: #ffea00 !important;\n}\n.yellow.accent-3--after:after {\n  background-color: #ffea00 !important;\n}\n.yellow--text.text--accent-3 {\n  color: #ffea00 !important;\n}\n.yellow--text.text--accent-3 input,\n.yellow--text.text--accent-3 textarea {\n  caret-color: #ffea00 !important;\n}\n.yellow.accent-4 {\n  background-color: #ffd600 !important;\n  border-color: #ffd600 !important;\n}\n.yellow.accent-4--after:after {\n  background-color: #ffd600 !important;\n}\n.yellow--text.text--accent-4 {\n  color: #ffd600 !important;\n}\n.yellow--text.text--accent-4 input,\n.yellow--text.text--accent-4 textarea {\n  caret-color: #ffd600 !important;\n}\n.amber {\n  background-color: #ffc107 !important;\n  border-color: #ffc107 !important;\n}\n.amber--text {\n  color: #ffc107 !important;\n}\n.amber--text input,\n.amber--text textarea {\n  caret-color: #ffc107 !important;\n}\n.amber--after:after {\n  background: #ffc107 !important;\n}\n.amber.lighten-5 {\n  background-color: #fff8e1 !important;\n  border-color: #fff8e1 !important;\n}\n.amber.lighten-5--after:after {\n  background-color: #fff8e1 !important;\n}\n.amber--text.text--lighten-5 {\n  color: #fff8e1 !important;\n}\n.amber--text.text--lighten-5 input,\n.amber--text.text--lighten-5 textarea {\n  caret-color: #fff8e1 !important;\n}\n.amber.lighten-4 {\n  background-color: #ffecb3 !important;\n  border-color: #ffecb3 !important;\n}\n.amber.lighten-4--after:after {\n  background-color: #ffecb3 !important;\n}\n.amber--text.text--lighten-4 {\n  color: #ffecb3 !important;\n}\n.amber--text.text--lighten-4 input,\n.amber--text.text--lighten-4 textarea {\n  caret-color: #ffecb3 !important;\n}\n.amber.lighten-3 {\n  background-color: #ffe082 !important;\n  border-color: #ffe082 !important;\n}\n.amber.lighten-3--after:after {\n  background-color: #ffe082 !important;\n}\n.amber--text.text--lighten-3 {\n  color: #ffe082 !important;\n}\n.amber--text.text--lighten-3 input,\n.amber--text.text--lighten-3 textarea {\n  caret-color: #ffe082 !important;\n}\n.amber.lighten-2 {\n  background-color: #ffd54f !important;\n  border-color: #ffd54f !important;\n}\n.amber.lighten-2--after:after {\n  background-color: #ffd54f !important;\n}\n.amber--text.text--lighten-2 {\n  color: #ffd54f !important;\n}\n.amber--text.text--lighten-2 input,\n.amber--text.text--lighten-2 textarea {\n  caret-color: #ffd54f !important;\n}\n.amber.lighten-1 {\n  background-color: #ffca28 !important;\n  border-color: #ffca28 !important;\n}\n.amber.lighten-1--after:after {\n  background-color: #ffca28 !important;\n}\n.amber--text.text--lighten-1 {\n  color: #ffca28 !important;\n}\n.amber--text.text--lighten-1 input,\n.amber--text.text--lighten-1 textarea {\n  caret-color: #ffca28 !important;\n}\n.amber.darken-1 {\n  background-color: #ffb300 !important;\n  border-color: #ffb300 !important;\n}\n.amber.darken-1--after:after {\n  background-color: #ffb300 !important;\n}\n.amber--text.text--darken-1 {\n  color: #ffb300 !important;\n}\n.amber--text.text--darken-1 input,\n.amber--text.text--darken-1 textarea {\n  caret-color: #ffb300 !important;\n}\n.amber.darken-2 {\n  background-color: #ffa000 !important;\n  border-color: #ffa000 !important;\n}\n.amber.darken-2--after:after {\n  background-color: #ffa000 !important;\n}\n.amber--text.text--darken-2 {\n  color: #ffa000 !important;\n}\n.amber--text.text--darken-2 input,\n.amber--text.text--darken-2 textarea {\n  caret-color: #ffa000 !important;\n}\n.amber.darken-3 {\n  background-color: #ff8f00 !important;\n  border-color: #ff8f00 !important;\n}\n.amber.darken-3--after:after {\n  background-color: #ff8f00 !important;\n}\n.amber--text.text--darken-3 {\n  color: #ff8f00 !important;\n}\n.amber--text.text--darken-3 input,\n.amber--text.text--darken-3 textarea {\n  caret-color: #ff8f00 !important;\n}\n.amber.darken-4 {\n  background-color: #ff6f00 !important;\n  border-color: #ff6f00 !important;\n}\n.amber.darken-4--after:after {\n  background-color: #ff6f00 !important;\n}\n.amber--text.text--darken-4 {\n  color: #ff6f00 !important;\n}\n.amber--text.text--darken-4 input,\n.amber--text.text--darken-4 textarea {\n  caret-color: #ff6f00 !important;\n}\n.amber.accent-1 {\n  background-color: #ffe57f !important;\n  border-color: #ffe57f !important;\n}\n.amber.accent-1--after:after {\n  background-color: #ffe57f !important;\n}\n.amber--text.text--accent-1 {\n  color: #ffe57f !important;\n}\n.amber--text.text--accent-1 input,\n.amber--text.text--accent-1 textarea {\n  caret-color: #ffe57f !important;\n}\n.amber.accent-2 {\n  background-color: #ffd740 !important;\n  border-color: #ffd740 !important;\n}\n.amber.accent-2--after:after {\n  background-color: #ffd740 !important;\n}\n.amber--text.text--accent-2 {\n  color: #ffd740 !important;\n}\n.amber--text.text--accent-2 input,\n.amber--text.text--accent-2 textarea {\n  caret-color: #ffd740 !important;\n}\n.amber.accent-3 {\n  background-color: #ffc400 !important;\n  border-color: #ffc400 !important;\n}\n.amber.accent-3--after:after {\n  background-color: #ffc400 !important;\n}\n.amber--text.text--accent-3 {\n  color: #ffc400 !important;\n}\n.amber--text.text--accent-3 input,\n.amber--text.text--accent-3 textarea {\n  caret-color: #ffc400 !important;\n}\n.amber.accent-4 {\n  background-color: #ffab00 !important;\n  border-color: #ffab00 !important;\n}\n.amber.accent-4--after:after {\n  background-color: #ffab00 !important;\n}\n.amber--text.text--accent-4 {\n  color: #ffab00 !important;\n}\n.amber--text.text--accent-4 input,\n.amber--text.text--accent-4 textarea {\n  caret-color: #ffab00 !important;\n}\n.orange {\n  background-color: #ff9800 !important;\n  border-color: #ff9800 !important;\n}\n.orange--text {\n  color: #ff9800 !important;\n}\n.orange--text input,\n.orange--text textarea {\n  caret-color: #ff9800 !important;\n}\n.orange--after:after {\n  background: #ff9800 !important;\n}\n.orange.lighten-5 {\n  background-color: #fff3e0 !important;\n  border-color: #fff3e0 !important;\n}\n.orange.lighten-5--after:after {\n  background-color: #fff3e0 !important;\n}\n.orange--text.text--lighten-5 {\n  color: #fff3e0 !important;\n}\n.orange--text.text--lighten-5 input,\n.orange--text.text--lighten-5 textarea {\n  caret-color: #fff3e0 !important;\n}\n.orange.lighten-4 {\n  background-color: #ffe0b2 !important;\n  border-color: #ffe0b2 !important;\n}\n.orange.lighten-4--after:after {\n  background-color: #ffe0b2 !important;\n}\n.orange--text.text--lighten-4 {\n  color: #ffe0b2 !important;\n}\n.orange--text.text--lighten-4 input,\n.orange--text.text--lighten-4 textarea {\n  caret-color: #ffe0b2 !important;\n}\n.orange.lighten-3 {\n  background-color: #ffcc80 !important;\n  border-color: #ffcc80 !important;\n}\n.orange.lighten-3--after:after {\n  background-color: #ffcc80 !important;\n}\n.orange--text.text--lighten-3 {\n  color: #ffcc80 !important;\n}\n.orange--text.text--lighten-3 input,\n.orange--text.text--lighten-3 textarea {\n  caret-color: #ffcc80 !important;\n}\n.orange.lighten-2 {\n  background-color: #ffb74d !important;\n  border-color: #ffb74d !important;\n}\n.orange.lighten-2--after:after {\n  background-color: #ffb74d !important;\n}\n.orange--text.text--lighten-2 {\n  color: #ffb74d !important;\n}\n.orange--text.text--lighten-2 input,\n.orange--text.text--lighten-2 textarea {\n  caret-color: #ffb74d !important;\n}\n.orange.lighten-1 {\n  background-color: #ffa726 !important;\n  border-color: #ffa726 !important;\n}\n.orange.lighten-1--after:after {\n  background-color: #ffa726 !important;\n}\n.orange--text.text--lighten-1 {\n  color: #ffa726 !important;\n}\n.orange--text.text--lighten-1 input,\n.orange--text.text--lighten-1 textarea {\n  caret-color: #ffa726 !important;\n}\n.orange.darken-1 {\n  background-color: #fb8c00 !important;\n  border-color: #fb8c00 !important;\n}\n.orange.darken-1--after:after {\n  background-color: #fb8c00 !important;\n}\n.orange--text.text--darken-1 {\n  color: #fb8c00 !important;\n}\n.orange--text.text--darken-1 input,\n.orange--text.text--darken-1 textarea {\n  caret-color: #fb8c00 !important;\n}\n.orange.darken-2 {\n  background-color: #f57c00 !important;\n  border-color: #f57c00 !important;\n}\n.orange.darken-2--after:after {\n  background-color: #f57c00 !important;\n}\n.orange--text.text--darken-2 {\n  color: #f57c00 !important;\n}\n.orange--text.text--darken-2 input,\n.orange--text.text--darken-2 textarea {\n  caret-color: #f57c00 !important;\n}\n.orange.darken-3 {\n  background-color: #ef6c00 !important;\n  border-color: #ef6c00 !important;\n}\n.orange.darken-3--after:after {\n  background-color: #ef6c00 !important;\n}\n.orange--text.text--darken-3 {\n  color: #ef6c00 !important;\n}\n.orange--text.text--darken-3 input,\n.orange--text.text--darken-3 textarea {\n  caret-color: #ef6c00 !important;\n}\n.orange.darken-4 {\n  background-color: #e65100 !important;\n  border-color: #e65100 !important;\n}\n.orange.darken-4--after:after {\n  background-color: #e65100 !important;\n}\n.orange--text.text--darken-4 {\n  color: #e65100 !important;\n}\n.orange--text.text--darken-4 input,\n.orange--text.text--darken-4 textarea {\n  caret-color: #e65100 !important;\n}\n.orange.accent-1 {\n  background-color: #ffd180 !important;\n  border-color: #ffd180 !important;\n}\n.orange.accent-1--after:after {\n  background-color: #ffd180 !important;\n}\n.orange--text.text--accent-1 {\n  color: #ffd180 !important;\n}\n.orange--text.text--accent-1 input,\n.orange--text.text--accent-1 textarea {\n  caret-color: #ffd180 !important;\n}\n.orange.accent-2 {\n  background-color: #ffab40 !important;\n  border-color: #ffab40 !important;\n}\n.orange.accent-2--after:after {\n  background-color: #ffab40 !important;\n}\n.orange--text.text--accent-2 {\n  color: #ffab40 !important;\n}\n.orange--text.text--accent-2 input,\n.orange--text.text--accent-2 textarea {\n  caret-color: #ffab40 !important;\n}\n.orange.accent-3 {\n  background-color: #ff9100 !important;\n  border-color: #ff9100 !important;\n}\n.orange.accent-3--after:after {\n  background-color: #ff9100 !important;\n}\n.orange--text.text--accent-3 {\n  color: #ff9100 !important;\n}\n.orange--text.text--accent-3 input,\n.orange--text.text--accent-3 textarea {\n  caret-color: #ff9100 !important;\n}\n.orange.accent-4 {\n  background-color: #ff6d00 !important;\n  border-color: #ff6d00 !important;\n}\n.orange.accent-4--after:after {\n  background-color: #ff6d00 !important;\n}\n.orange--text.text--accent-4 {\n  color: #ff6d00 !important;\n}\n.orange--text.text--accent-4 input,\n.orange--text.text--accent-4 textarea {\n  caret-color: #ff6d00 !important;\n}\n.deep-orange {\n  background-color: #ff5722 !important;\n  border-color: #ff5722 !important;\n}\n.deep-orange--text {\n  color: #ff5722 !important;\n}\n.deep-orange--text input,\n.deep-orange--text textarea {\n  caret-color: #ff5722 !important;\n}\n.deep-orange--after:after {\n  background: #ff5722 !important;\n}\n.deep-orange.lighten-5 {\n  background-color: #fbe9e7 !important;\n  border-color: #fbe9e7 !important;\n}\n.deep-orange.lighten-5--after:after {\n  background-color: #fbe9e7 !important;\n}\n.deep-orange--text.text--lighten-5 {\n  color: #fbe9e7 !important;\n}\n.deep-orange--text.text--lighten-5 input,\n.deep-orange--text.text--lighten-5 textarea {\n  caret-color: #fbe9e7 !important;\n}\n.deep-orange.lighten-4 {\n  background-color: #ffccbc !important;\n  border-color: #ffccbc !important;\n}\n.deep-orange.lighten-4--after:after {\n  background-color: #ffccbc !important;\n}\n.deep-orange--text.text--lighten-4 {\n  color: #ffccbc !important;\n}\n.deep-orange--text.text--lighten-4 input,\n.deep-orange--text.text--lighten-4 textarea {\n  caret-color: #ffccbc !important;\n}\n.deep-orange.lighten-3 {\n  background-color: #ffab91 !important;\n  border-color: #ffab91 !important;\n}\n.deep-orange.lighten-3--after:after {\n  background-color: #ffab91 !important;\n}\n.deep-orange--text.text--lighten-3 {\n  color: #ffab91 !important;\n}\n.deep-orange--text.text--lighten-3 input,\n.deep-orange--text.text--lighten-3 textarea {\n  caret-color: #ffab91 !important;\n}\n.deep-orange.lighten-2 {\n  background-color: #ff8a65 !important;\n  border-color: #ff8a65 !important;\n}\n.deep-orange.lighten-2--after:after {\n  background-color: #ff8a65 !important;\n}\n.deep-orange--text.text--lighten-2 {\n  color: #ff8a65 !important;\n}\n.deep-orange--text.text--lighten-2 input,\n.deep-orange--text.text--lighten-2 textarea {\n  caret-color: #ff8a65 !important;\n}\n.deep-orange.lighten-1 {\n  background-color: #ff7043 !important;\n  border-color: #ff7043 !important;\n}\n.deep-orange.lighten-1--after:after {\n  background-color: #ff7043 !important;\n}\n.deep-orange--text.text--lighten-1 {\n  color: #ff7043 !important;\n}\n.deep-orange--text.text--lighten-1 input,\n.deep-orange--text.text--lighten-1 textarea {\n  caret-color: #ff7043 !important;\n}\n.deep-orange.darken-1 {\n  background-color: #f4511e !important;\n  border-color: #f4511e !important;\n}\n.deep-orange.darken-1--after:after {\n  background-color: #f4511e !important;\n}\n.deep-orange--text.text--darken-1 {\n  color: #f4511e !important;\n}\n.deep-orange--text.text--darken-1 input,\n.deep-orange--text.text--darken-1 textarea {\n  caret-color: #f4511e !important;\n}\n.deep-orange.darken-2 {\n  background-color: #e64a19 !important;\n  border-color: #e64a19 !important;\n}\n.deep-orange.darken-2--after:after {\n  background-color: #e64a19 !important;\n}\n.deep-orange--text.text--darken-2 {\n  color: #e64a19 !important;\n}\n.deep-orange--text.text--darken-2 input,\n.deep-orange--text.text--darken-2 textarea {\n  caret-color: #e64a19 !important;\n}\n.deep-orange.darken-3 {\n  background-color: #d84315 !important;\n  border-color: #d84315 !important;\n}\n.deep-orange.darken-3--after:after {\n  background-color: #d84315 !important;\n}\n.deep-orange--text.text--darken-3 {\n  color: #d84315 !important;\n}\n.deep-orange--text.text--darken-3 input,\n.deep-orange--text.text--darken-3 textarea {\n  caret-color: #d84315 !important;\n}\n.deep-orange.darken-4 {\n  background-color: #bf360c !important;\n  border-color: #bf360c !important;\n}\n.deep-orange.darken-4--after:after {\n  background-color: #bf360c !important;\n}\n.deep-orange--text.text--darken-4 {\n  color: #bf360c !important;\n}\n.deep-orange--text.text--darken-4 input,\n.deep-orange--text.text--darken-4 textarea {\n  caret-color: #bf360c !important;\n}\n.deep-orange.accent-1 {\n  background-color: #ff9e80 !important;\n  border-color: #ff9e80 !important;\n}\n.deep-orange.accent-1--after:after {\n  background-color: #ff9e80 !important;\n}\n.deep-orange--text.text--accent-1 {\n  color: #ff9e80 !important;\n}\n.deep-orange--text.text--accent-1 input,\n.deep-orange--text.text--accent-1 textarea {\n  caret-color: #ff9e80 !important;\n}\n.deep-orange.accent-2 {\n  background-color: #ff6e40 !important;\n  border-color: #ff6e40 !important;\n}\n.deep-orange.accent-2--after:after {\n  background-color: #ff6e40 !important;\n}\n.deep-orange--text.text--accent-2 {\n  color: #ff6e40 !important;\n}\n.deep-orange--text.text--accent-2 input,\n.deep-orange--text.text--accent-2 textarea {\n  caret-color: #ff6e40 !important;\n}\n.deep-orange.accent-3 {\n  background-color: #ff3d00 !important;\n  border-color: #ff3d00 !important;\n}\n.deep-orange.accent-3--after:after {\n  background-color: #ff3d00 !important;\n}\n.deep-orange--text.text--accent-3 {\n  color: #ff3d00 !important;\n}\n.deep-orange--text.text--accent-3 input,\n.deep-orange--text.text--accent-3 textarea {\n  caret-color: #ff3d00 !important;\n}\n.deep-orange.accent-4 {\n  background-color: #dd2c00 !important;\n  border-color: #dd2c00 !important;\n}\n.deep-orange.accent-4--after:after {\n  background-color: #dd2c00 !important;\n}\n.deep-orange--text.text--accent-4 {\n  color: #dd2c00 !important;\n}\n.deep-orange--text.text--accent-4 input,\n.deep-orange--text.text--accent-4 textarea {\n  caret-color: #dd2c00 !important;\n}\n.brown {\n  background-color: #795548 !important;\n  border-color: #795548 !important;\n}\n.brown--text {\n  color: #795548 !important;\n}\n.brown--text input,\n.brown--text textarea {\n  caret-color: #795548 !important;\n}\n.brown--after:after {\n  background: #795548 !important;\n}\n.brown.lighten-5 {\n  background-color: #efebe9 !important;\n  border-color: #efebe9 !important;\n}\n.brown.lighten-5--after:after {\n  background-color: #efebe9 !important;\n}\n.brown--text.text--lighten-5 {\n  color: #efebe9 !important;\n}\n.brown--text.text--lighten-5 input,\n.brown--text.text--lighten-5 textarea {\n  caret-color: #efebe9 !important;\n}\n.brown.lighten-4 {\n  background-color: #d7ccc8 !important;\n  border-color: #d7ccc8 !important;\n}\n.brown.lighten-4--after:after {\n  background-color: #d7ccc8 !important;\n}\n.brown--text.text--lighten-4 {\n  color: #d7ccc8 !important;\n}\n.brown--text.text--lighten-4 input,\n.brown--text.text--lighten-4 textarea {\n  caret-color: #d7ccc8 !important;\n}\n.brown.lighten-3 {\n  background-color: #bcaaa4 !important;\n  border-color: #bcaaa4 !important;\n}\n.brown.lighten-3--after:after {\n  background-color: #bcaaa4 !important;\n}\n.brown--text.text--lighten-3 {\n  color: #bcaaa4 !important;\n}\n.brown--text.text--lighten-3 input,\n.brown--text.text--lighten-3 textarea {\n  caret-color: #bcaaa4 !important;\n}\n.brown.lighten-2 {\n  background-color: #a1887f !important;\n  border-color: #a1887f !important;\n}\n.brown.lighten-2--after:after {\n  background-color: #a1887f !important;\n}\n.brown--text.text--lighten-2 {\n  color: #a1887f !important;\n}\n.brown--text.text--lighten-2 input,\n.brown--text.text--lighten-2 textarea {\n  caret-color: #a1887f !important;\n}\n.brown.lighten-1 {\n  background-color: #8d6e63 !important;\n  border-color: #8d6e63 !important;\n}\n.brown.lighten-1--after:after {\n  background-color: #8d6e63 !important;\n}\n.brown--text.text--lighten-1 {\n  color: #8d6e63 !important;\n}\n.brown--text.text--lighten-1 input,\n.brown--text.text--lighten-1 textarea {\n  caret-color: #8d6e63 !important;\n}\n.brown.darken-1 {\n  background-color: #6d4c41 !important;\n  border-color: #6d4c41 !important;\n}\n.brown.darken-1--after:after {\n  background-color: #6d4c41 !important;\n}\n.brown--text.text--darken-1 {\n  color: #6d4c41 !important;\n}\n.brown--text.text--darken-1 input,\n.brown--text.text--darken-1 textarea {\n  caret-color: #6d4c41 !important;\n}\n.brown.darken-2 {\n  background-color: #5d4037 !important;\n  border-color: #5d4037 !important;\n}\n.brown.darken-2--after:after {\n  background-color: #5d4037 !important;\n}\n.brown--text.text--darken-2 {\n  color: #5d4037 !important;\n}\n.brown--text.text--darken-2 input,\n.brown--text.text--darken-2 textarea {\n  caret-color: #5d4037 !important;\n}\n.brown.darken-3 {\n  background-color: #4e342e !important;\n  border-color: #4e342e !important;\n}\n.brown.darken-3--after:after {\n  background-color: #4e342e !important;\n}\n.brown--text.text--darken-3 {\n  color: #4e342e !important;\n}\n.brown--text.text--darken-3 input,\n.brown--text.text--darken-3 textarea {\n  caret-color: #4e342e !important;\n}\n.brown.darken-4 {\n  background-color: #3e2723 !important;\n  border-color: #3e2723 !important;\n}\n.brown.darken-4--after:after {\n  background-color: #3e2723 !important;\n}\n.brown--text.text--darken-4 {\n  color: #3e2723 !important;\n}\n.brown--text.text--darken-4 input,\n.brown--text.text--darken-4 textarea {\n  caret-color: #3e2723 !important;\n}\n.blue-grey {\n  background-color: #607d8b !important;\n  border-color: #607d8b !important;\n}\n.blue-grey--text {\n  color: #607d8b !important;\n}\n.blue-grey--text input,\n.blue-grey--text textarea {\n  caret-color: #607d8b !important;\n}\n.blue-grey--after:after {\n  background: #607d8b !important;\n}\n.blue-grey.lighten-5 {\n  background-color: #eceff1 !important;\n  border-color: #eceff1 !important;\n}\n.blue-grey.lighten-5--after:after {\n  background-color: #eceff1 !important;\n}\n.blue-grey--text.text--lighten-5 {\n  color: #eceff1 !important;\n}\n.blue-grey--text.text--lighten-5 input,\n.blue-grey--text.text--lighten-5 textarea {\n  caret-color: #eceff1 !important;\n}\n.blue-grey.lighten-4 {\n  background-color: #cfd8dc !important;\n  border-color: #cfd8dc !important;\n}\n.blue-grey.lighten-4--after:after {\n  background-color: #cfd8dc !important;\n}\n.blue-grey--text.text--lighten-4 {\n  color: #cfd8dc !important;\n}\n.blue-grey--text.text--lighten-4 input,\n.blue-grey--text.text--lighten-4 textarea {\n  caret-color: #cfd8dc !important;\n}\n.blue-grey.lighten-3 {\n  background-color: #b0bec5 !important;\n  border-color: #b0bec5 !important;\n}\n.blue-grey.lighten-3--after:after {\n  background-color: #b0bec5 !important;\n}\n.blue-grey--text.text--lighten-3 {\n  color: #b0bec5 !important;\n}\n.blue-grey--text.text--lighten-3 input,\n.blue-grey--text.text--lighten-3 textarea {\n  caret-color: #b0bec5 !important;\n}\n.blue-grey.lighten-2 {\n  background-color: #90a4ae !important;\n  border-color: #90a4ae !important;\n}\n.blue-grey.lighten-2--after:after {\n  background-color: #90a4ae !important;\n}\n.blue-grey--text.text--lighten-2 {\n  color: #90a4ae !important;\n}\n.blue-grey--text.text--lighten-2 input,\n.blue-grey--text.text--lighten-2 textarea {\n  caret-color: #90a4ae !important;\n}\n.blue-grey.lighten-1 {\n  background-color: #78909c !important;\n  border-color: #78909c !important;\n}\n.blue-grey.lighten-1--after:after {\n  background-color: #78909c !important;\n}\n.blue-grey--text.text--lighten-1 {\n  color: #78909c !important;\n}\n.blue-grey--text.text--lighten-1 input,\n.blue-grey--text.text--lighten-1 textarea {\n  caret-color: #78909c !important;\n}\n.blue-grey.darken-1 {\n  background-color: #546e7a !important;\n  border-color: #546e7a !important;\n}\n.blue-grey.darken-1--after:after {\n  background-color: #546e7a !important;\n}\n.blue-grey--text.text--darken-1 {\n  color: #546e7a !important;\n}\n.blue-grey--text.text--darken-1 input,\n.blue-grey--text.text--darken-1 textarea {\n  caret-color: #546e7a !important;\n}\n.blue-grey.darken-2 {\n  background-color: #455a64 !important;\n  border-color: #455a64 !important;\n}\n.blue-grey.darken-2--after:after {\n  background-color: #455a64 !important;\n}\n.blue-grey--text.text--darken-2 {\n  color: #455a64 !important;\n}\n.blue-grey--text.text--darken-2 input,\n.blue-grey--text.text--darken-2 textarea {\n  caret-color: #455a64 !important;\n}\n.blue-grey.darken-3 {\n  background-color: #37474f !important;\n  border-color: #37474f !important;\n}\n.blue-grey.darken-3--after:after {\n  background-color: #37474f !important;\n}\n.blue-grey--text.text--darken-3 {\n  color: #37474f !important;\n}\n.blue-grey--text.text--darken-3 input,\n.blue-grey--text.text--darken-3 textarea {\n  caret-color: #37474f !important;\n}\n.blue-grey.darken-4 {\n  background-color: #263238 !important;\n  border-color: #263238 !important;\n}\n.blue-grey.darken-4--after:after {\n  background-color: #263238 !important;\n}\n.blue-grey--text.text--darken-4 {\n  color: #263238 !important;\n}\n.blue-grey--text.text--darken-4 input,\n.blue-grey--text.text--darken-4 textarea {\n  caret-color: #263238 !important;\n}\n.grey {\n  background-color: #9e9e9e !important;\n  border-color: #9e9e9e !important;\n}\n.grey--text {\n  color: #9e9e9e !important;\n}\n.grey--text input,\n.grey--text textarea {\n  caret-color: #9e9e9e !important;\n}\n.grey--after:after {\n  background: #9e9e9e !important;\n}\n.grey.lighten-5 {\n  background-color: #fafafa !important;\n  border-color: #fafafa !important;\n}\n.grey.lighten-5--after:after {\n  background-color: #fafafa !important;\n}\n.grey--text.text--lighten-5 {\n  color: #fafafa !important;\n}\n.grey--text.text--lighten-5 input,\n.grey--text.text--lighten-5 textarea {\n  caret-color: #fafafa !important;\n}\n.grey.lighten-4 {\n  background-color: #f5f5f5 !important;\n  border-color: #f5f5f5 !important;\n}\n.grey.lighten-4--after:after {\n  background-color: #f5f5f5 !important;\n}\n.grey--text.text--lighten-4 {\n  color: #f5f5f5 !important;\n}\n.grey--text.text--lighten-4 input,\n.grey--text.text--lighten-4 textarea {\n  caret-color: #f5f5f5 !important;\n}\n.grey.lighten-3 {\n  background-color: #eee !important;\n  border-color: #eee !important;\n}\n.grey.lighten-3--after:after {\n  background-color: #eee !important;\n}\n.grey--text.text--lighten-3 {\n  color: #eee !important;\n}\n.grey--text.text--lighten-3 input,\n.grey--text.text--lighten-3 textarea {\n  caret-color: #eee !important;\n}\n.grey.lighten-2 {\n  background-color: #e0e0e0 !important;\n  border-color: #e0e0e0 !important;\n}\n.grey.lighten-2--after:after {\n  background-color: #e0e0e0 !important;\n}\n.grey--text.text--lighten-2 {\n  color: #e0e0e0 !important;\n}\n.grey--text.text--lighten-2 input,\n.grey--text.text--lighten-2 textarea {\n  caret-color: #e0e0e0 !important;\n}\n.grey.lighten-1 {\n  background-color: #bdbdbd !important;\n  border-color: #bdbdbd !important;\n}\n.grey.lighten-1--after:after {\n  background-color: #bdbdbd !important;\n}\n.grey--text.text--lighten-1 {\n  color: #bdbdbd !important;\n}\n.grey--text.text--lighten-1 input,\n.grey--text.text--lighten-1 textarea {\n  caret-color: #bdbdbd !important;\n}\n.grey.darken-1 {\n  background-color: #757575 !important;\n  border-color: #757575 !important;\n}\n.grey.darken-1--after:after {\n  background-color: #757575 !important;\n}\n.grey--text.text--darken-1 {\n  color: #757575 !important;\n}\n.grey--text.text--darken-1 input,\n.grey--text.text--darken-1 textarea {\n  caret-color: #757575 !important;\n}\n.grey.darken-2 {\n  background-color: #616161 !important;\n  border-color: #616161 !important;\n}\n.grey.darken-2--after:after {\n  background-color: #616161 !important;\n}\n.grey--text.text--darken-2 {\n  color: #616161 !important;\n}\n.grey--text.text--darken-2 input,\n.grey--text.text--darken-2 textarea {\n  caret-color: #616161 !important;\n}\n.grey.darken-3 {\n  background-color: #424242 !important;\n  border-color: #424242 !important;\n}\n.grey.darken-3--after:after {\n  background-color: #424242 !important;\n}\n.grey--text.text--darken-3 {\n  color: #424242 !important;\n}\n.grey--text.text--darken-3 input,\n.grey--text.text--darken-3 textarea {\n  caret-color: #424242 !important;\n}\n.grey.darken-4 {\n  background-color: #212121 !important;\n  border-color: #212121 !important;\n}\n.grey.darken-4--after:after {\n  background-color: #212121 !important;\n}\n.grey--text.text--darken-4 {\n  color: #212121 !important;\n}\n.grey--text.text--darken-4 input,\n.grey--text.text--darken-4 textarea {\n  caret-color: #212121 !important;\n}\n.shades.black {\n  background-color: #000 !important;\n  border-color: #000 !important;\n}\n.shades.black--after:after {\n  background-color: #000 !important;\n}\n.shades--text.text--black {\n  color: #000 !important;\n}\n.shades--text.text--black input,\n.shades--text.text--black textarea {\n  caret-color: #000 !important;\n}\n.shades.white {\n  background-color: #fff !important;\n  border-color: #fff !important;\n}\n.shades.white--after:after {\n  background-color: #fff !important;\n}\n.shades--text.text--white {\n  color: #fff !important;\n}\n.shades--text.text--white input,\n.shades--text.text--white textarea {\n  caret-color: #fff !important;\n}\n.shades.transparent {\n  background-color: transparent !important;\n  border-color: transparent !important;\n}\n.shades.transparent--after:after {\n  background-color: transparent !important;\n}\n.shades--text.text--transparent {\n  color: transparent !important;\n}\n.shades--text.text--transparent input,\n.shades--text.text--transparent textarea {\n  caret-color: transparent !important;\n}\nhtml {\n  box-sizing: border-box;\n  overflow-y: scroll; /* All browsers without overlaying scrollbars */\n  -webkit-text-size-adjust: 100%; /* iOS 8+ */\n}\n*,\n::before,\n::after {\n  box-sizing: inherit;\n}\n::before,\n::after {\n  text-decoration: inherit; /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */\n  vertical-align: inherit;\n}\n* {\n  background-repeat: no-repeat; /* Set `background-repeat: no-repeat` to all elements */\n  padding: 0; /* Reset `padding` and `margin` of all elements */\n  margin: 0;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\nhr {\n  overflow: visible; /* Show the overflow in Edge and IE */\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\nsummary {\n  display: list-item; /* Add the correct display in all browsers */\n}\nsmall {\n  font-size: 80%; /* Set font-size to 80% in `small` elements */\n}\n[hidden],\ntemplate {\n  display: none; /* Add the correct display in IE */\n}\nabbr[title] {\n  border-bottom: 1px dotted; /* Add a bordered underline effect in all browsers */\n  text-decoration: none; /* Remove text decoration in Firefox 40+ */\n}\na {\n  background-color: transparent; /* Remove the gray background on active links in IE 10 */\n  -webkit-text-decoration-skip: objects; /* Remove gaps in links underline in iOS 8+ and Safari 8+ */\n}\na:active,\na:hover {\n  outline-width: 0; /* Remove the outline when hovering in all browsers */\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace; /* Specify the font family of code elements */\n}\nb,\nstrong {\n  font-weight: bolder; /* Correct style set to `bold` in Edge 12+, Safari 6.2+, and Chrome 18+ */\n}\ndfn {\n  font-style: italic; /* Address styling not present in Safari and Chrome */\n}\nmark {\n  background-color: #ff0;\n  color: #000;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\ninput {\n  border-radius: 0;\n}\nbutton,\n[type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"],\n[role=\"button\"] {\n  cursor: pointer;\n}\n[disabled] {\n  cursor: default;\n}\n[type=\"number\"] {\n  width: auto; /* Firefox 36+ */\n}\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* Safari 8+ */\n}\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; /* Safari 8 */\n}\ntextarea {\n  overflow: auto; /* Internet Explorer 11+ */\n  resize: vertical; /* Specify textarea resizability */\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit; /* Specify font inheritance of form elements */\n}\noptgroup {\n  font-weight: bold; /* Restore the font weight unset by the previous rule. */\n}\nbutton {\n  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */\n}\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: 0;\n  padding: 0;\n}\nbutton:-moz-focusring,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  outline: 0;\n  border: 0;\n}\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */\n}\nbutton,\nselect {\n  text-transform: none; /* Firefox 40+, Internet Explorer 11- */\n}\nbutton,\ninput,\nselect,\ntextarea {\n  background-color: transparent;\n  border-style: none;\n  color: inherit;\n}\nselect {\n  -moz-appearance: none; /* Firefox 36+ */\n  -webkit-appearance: none; /* Chrome 41+ */\n}\nselect::-ms-expand {\n  display: none; /* Internet Explorer 11+ */\n}\nselect::-ms-value {\n  color: currentColor; /* Internet Explorer 11+ */\n}\nlegend {\n  border: 0; /* Correct `color` not being inherited in IE 8/9/10/11 */\n  color: inherit; /* Correct the color inheritance from `fieldset` elements in IE */\n  display: table; /* Correct the text wrapping in Edge and IE */\n  max-width: 100%; /* Correct the text wrapping in Edge and IE */\n  white-space: normal; /* Correct the text wrapping in Edge and IE */\n}\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS and Safari */\n  font: inherit; /* Change font properties to `inherit` in Chrome and Safari */\n}\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */\n  outline-offset: -2px; /* Correct the outline style in Safari */\n}\nimg {\n  border-style: none; /* Remove border when inside `a` element in IE 8/9/10 */\n}\nprogress {\n  vertical-align: baseline;\n}\nsvg:not(:root) {\n  overflow: hidden; /* Internet Explorer 11- */\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; /* Internet Explorer 11+, Windows Phone 8.1+ */\n}\n@media screen {\n[hidden~=\"screen\"] {\n    display: inherit;\n}\n[hidden~=\"screen\"]:not(:active):not(:focus):not(:target) {\n    position: absolute !important;\n    clip: rect(0 0 0 0) !important;\n}\n}\n[aria-busy=\"true\"] {\n  cursor: progress;\n}\n[aria-controls] {\n  cursor: pointer;\n}\n[aria-disabled] {\n  cursor: default;\n}\n::-moz-selection {\n  background-color: #b3d4fc; /* Required when declaring ::selection */\n  color: #000;\n  text-shadow: none;\n}\n::selection {\n  background-color: #b3d4fc; /* Required when declaring ::selection */\n  color: #000;\n  text-shadow: none;\n}\n.bottom-sheet-transition-enter {\n  transform: translateY(100%);\n}\n.bottom-sheet-transition-leave-to {\n  transform: translateY(100%);\n}\n.carousel-transition-enter {\n  transform: translate(100%, 0);\n}\n.carousel-transition-leave,\n.carousel-transition-leave-to {\n  position: absolute;\n  top: 0;\n  transform: translate(-100%, 0);\n}\n.carousel-reverse-transition-enter {\n  transform: translate(-100%, 0);\n}\n.carousel-reverse-transition-leave,\n.carousel-reverse-transition-leave-to {\n  position: absolute;\n  top: 0;\n  transform: translate(100%, 0);\n}\n.dialog-transition-enter,\n.dialog-transition-leave-to {\n  transform: scale(0.5);\n  opacity: 0;\n}\n.dialog-transition-enter-to,\n.dialog-transition-leave {\n  opacity: 1;\n}\n.dialog-bottom-transition-enter,\n.dialog-bottom-transition-leave-to {\n  transform: translateY(100%);\n}\n.tab-transition-enter {\n  transform: translate(100%, 0);\n}\n.tab-transition-enter-to {\n  transform: translate(0, 0);\n}\n.tab-transition-leave,\n.tab-transition-leave-active {\n  position: absolute;\n  top: 0;\n}\n.tab-transition-leave-to {\n  position: absolute;\n  transform: translate(-100%, 0);\n}\n.tab-reverse-transition-enter {\n  transform: translate(-100%, 0);\n}\n.tab-reverse-transition-leave,\n.tab-reverse-transition-leave-to {\n  top: 0;\n  position: absolute;\n  transform: translate(100%, 0);\n}\n.scale-transition-enter-active,\n.scale-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.scale-transition-enter,\n.scale-transition-leave,\n.scale-transition-leave-to {\n  opacity: 0;\n  transform: scale(0);\n}\n.slide-y-transition-enter-active,\n.slide-y-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-y-transition-enter,\n.slide-y-transition-leave-to {\n  opacity: 0;\n  transform: translateY(-15px);\n}\n.slide-y-reverse-transition-enter-active,\n.slide-y-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-y-reverse-transition-enter,\n.slide-y-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translateY(15px);\n}\n.slide-x-transition-enter-active,\n.slide-x-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-x-transition-enter,\n.slide-x-transition-leave-to {\n  opacity: 0;\n  transform: translateX(-15px);\n}\n.slide-x-reverse-transition-enter-active,\n.slide-x-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-x-reverse-transition-enter,\n.slide-x-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translateX(15px);\n}\n.fade-transition-enter-active,\n.fade-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.fade-transition-enter,\n.fade-transition-leave-to {\n  opacity: 0;\n}\n.fab-transition-enter-active,\n.fab-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.fab-transition-enter,\n.fab-transition-leave-to {\n  transform: scale(0) rotate(-45deg);\n}\n.blockquote {\n  padding: 16px 0 16px 24px;\n  font-size: 18px;\n  font-weight: 300;\n}\ncode,\nkbd {\n  display: inline-block;\n  border-radius: 3px;\n  white-space: pre-wrap;\n  font-size: 85%;\n  font-weight: 900;\n}\ncode:after,\nkbd:after,\ncode:before,\nkbd:before {\n  content: \"\\A0\";\n  letter-spacing: -1px;\n}\ncode {\n  background-color: #f5f5f5;\n  color: #bd4147;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\nkbd {\n  background: #424242;\n  color: #fff;\n}\nhtml {\n  font-size: 14px;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-tap-highlight-color: rgba(0,0,0,0);\n  overflow-x: hidden;\n}\n.application {\n  font-family: 'Roboto', sans-serif;\n  line-height: 1.5;\n}\n::-ms-clear,\n::-ms-reveal {\n  display: none;\n}\n.browser-list {\n  padding-left: 24px;\n}\n.browser-list--unstyled {\n  list-style-type: none;\n}\n.display-4 {\n  font-size: 112px !important;\n  font-weight: 300;\n  line-height: 1 !important;\n  letter-spacing: -0.04em !important;\n}\n.display-3 {\n  font-size: 56px !important;\n  font-weight: 400;\n  line-height: 1.35 !important;\n  letter-spacing: -0.02em !important;\n}\n.display-2 {\n  font-size: 45px !important;\n  font-weight: 400;\n  line-height: 48px !important;\n  letter-spacing: normal !important;\n}\n.display-1 {\n  font-size: 34px !important;\n  font-weight: 400;\n  line-height: 40px !important;\n  letter-spacing: normal !important;\n}\n.headline {\n  font-size: 24px !important;\n  font-weight: 400;\n  line-height: 32px !important;\n  letter-spacing: normal !important;\n}\n.title {\n  font-size: 20px !important;\n  font-weight: 500;\n  line-height: 1 !important;\n  letter-spacing: 0.02em !important;\n}\n.subheading {\n  font-size: 16px !important;\n  font-weight: 400;\n}\n.body-2 {\n  font-size: 14px !important;\n  font-weight: 500;\n}\n.body-1 {\n  font-size: 14px !important;\n  font-weight: 400;\n}\n.caption {\n  font-size: 12px !important;\n  font-weight: 400;\n}\n.btn {\n  font-size: 14px;\n  font-weight: 500;\n}\np {\n  margin-bottom: 16px;\n}\n@-moz-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@-webkit-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@-o-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n.elevation-0 {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-1 {\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-2 {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-3 {\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-4 {\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-5 {\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-6 {\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-7 {\n  box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2), 0px 7px 10px 1px rgba(0,0,0,0.14), 0px 2px 16px 1px rgba(0,0,0,0.12) !important;\n}\n.elevation-8 {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12) !important;\n}\n.elevation-9 {\n  box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2), 0px 9px 12px 1px rgba(0,0,0,0.14), 0px 3px 16px 2px rgba(0,0,0,0.12) !important;\n}\n.elevation-10 {\n  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2), 0px 10px 14px 1px rgba(0,0,0,0.14), 0px 4px 18px 3px rgba(0,0,0,0.12) !important;\n}\n.elevation-11 {\n  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2), 0px 11px 15px 1px rgba(0,0,0,0.14), 0px 4px 20px 3px rgba(0,0,0,0.12) !important;\n}\n.elevation-12 {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-13 {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 13px 19px 2px rgba(0,0,0,0.14), 0px 5px 24px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-14 {\n  box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2), 0px 14px 21px 2px rgba(0,0,0,0.14), 0px 5px 26px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-15 {\n  box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2), 0px 15px 22px 2px rgba(0,0,0,0.14), 0px 6px 28px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-16 {\n  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-17 {\n  box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2), 0px 17px 26px 2px rgba(0,0,0,0.14), 0px 6px 32px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-18 {\n  box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2), 0px 18px 28px 2px rgba(0,0,0,0.14), 0px 7px 34px 6px rgba(0,0,0,0.12) !important;\n}\n.elevation-19 {\n  box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2), 0px 19px 29px 2px rgba(0,0,0,0.14), 0px 7px 36px 6px rgba(0,0,0,0.12) !important;\n}\n.elevation-20 {\n  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2), 0px 20px 31px 3px rgba(0,0,0,0.14), 0px 8px 38px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-21 {\n  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2), 0px 21px 33px 3px rgba(0,0,0,0.14), 0px 8px 40px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-22 {\n  box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2), 0px 22px 35px 3px rgba(0,0,0,0.14), 0px 8px 42px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-23 {\n  box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2), 0px 23px 36px 3px rgba(0,0,0,0.14), 0px 9px 44px 8px rgba(0,0,0,0.12) !important;\n}\n.elevation-24 {\n  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12) !important;\n}\n@media only screen and (max-width: 599px) {\n.hidden-xs-only {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 600px) and (max-width: 959px) {\n.hidden-sm-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 959px) {\n.hidden-sm-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 600px) {\n.hidden-sm-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 960px) and (max-width: 1263px) {\n.hidden-md-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 1263px) {\n.hidden-md-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 960px) {\n.hidden-md-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1264px) and (max-width: 1903px) {\n.hidden-lg-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 1903px) {\n.hidden-lg-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1264px) {\n.hidden-lg-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1904px) {\n.hidden-xl-only {\n    display: none !important;\n}\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.overflow-x-hidden {\n  overflow-x: hidden;\n}\n.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.right {\n  float: right !important;\n}\n.left {\n  float: left !important;\n}\n.mt-0 {\n  margin-top: 0 !important;\n}\n.mr-0 {\n  margin-right: 0 !important;\n}\n.mb-0 {\n  margin-bottom: 0 !important;\n}\n.ml-0 {\n  margin-left: 0 !important;\n}\n.mx-0 {\n  margin-left: 0 !important;\n  margin-right: 0 !important;\n}\n.my-0 {\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n}\n.ma-0 {\n  margin: 0 0 !important;\n}\n.pt-0 {\n  padding-top: 0 !important;\n}\n.pr-0 {\n  padding-right: 0 !important;\n}\n.pb-0 {\n  padding-bottom: 0 !important;\n}\n.pl-0 {\n  padding-left: 0 !important;\n}\n.px-0 {\n  padding-left: 0 !important;\n  padding-right: 0 !important;\n}\n.py-0 {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n.pa-0 {\n  padding: 0 0 !important;\n}\n.mt-1 {\n  margin-top: 4px !important;\n}\n.mr-1 {\n  margin-right: 4px !important;\n}\n.mb-1 {\n  margin-bottom: 4px !important;\n}\n.ml-1 {\n  margin-left: 4px !important;\n}\n.mx-1 {\n  margin-left: 4px !important;\n  margin-right: 4px !important;\n}\n.my-1 {\n  margin-top: 4px !important;\n  margin-bottom: 4px !important;\n}\n.ma-1 {\n  margin: 4px 4px !important;\n}\n.pt-1 {\n  padding-top: 4px !important;\n}\n.pr-1 {\n  padding-right: 4px !important;\n}\n.pb-1 {\n  padding-bottom: 4px !important;\n}\n.pl-1 {\n  padding-left: 4px !important;\n}\n.px-1 {\n  padding-left: 4px !important;\n  padding-right: 4px !important;\n}\n.py-1 {\n  padding-top: 4px !important;\n  padding-bottom: 4px !important;\n}\n.pa-1 {\n  padding: 4px 4px !important;\n}\n.mt-2 {\n  margin-top: 8px !important;\n}\n.mr-2 {\n  margin-right: 8px !important;\n}\n.mb-2 {\n  margin-bottom: 8px !important;\n}\n.ml-2 {\n  margin-left: 8px !important;\n}\n.mx-2 {\n  margin-left: 8px !important;\n  margin-right: 8px !important;\n}\n.my-2 {\n  margin-top: 8px !important;\n  margin-bottom: 8px !important;\n}\n.ma-2 {\n  margin: 8px 8px !important;\n}\n.pt-2 {\n  padding-top: 8px !important;\n}\n.pr-2 {\n  padding-right: 8px !important;\n}\n.pb-2 {\n  padding-bottom: 8px !important;\n}\n.pl-2 {\n  padding-left: 8px !important;\n}\n.px-2 {\n  padding-left: 8px !important;\n  padding-right: 8px !important;\n}\n.py-2 {\n  padding-top: 8px !important;\n  padding-bottom: 8px !important;\n}\n.pa-2 {\n  padding: 8px 8px !important;\n}\n.mt-3 {\n  margin-top: 16px !important;\n}\n.mr-3 {\n  margin-right: 16px !important;\n}\n.mb-3 {\n  margin-bottom: 16px !important;\n}\n.ml-3 {\n  margin-left: 16px !important;\n}\n.mx-3 {\n  margin-left: 16px !important;\n  margin-right: 16px !important;\n}\n.my-3 {\n  margin-top: 16px !important;\n  margin-bottom: 16px !important;\n}\n.ma-3 {\n  margin: 16px 16px !important;\n}\n.pt-3 {\n  padding-top: 16px !important;\n}\n.pr-3 {\n  padding-right: 16px !important;\n}\n.pb-3 {\n  padding-bottom: 16px !important;\n}\n.pl-3 {\n  padding-left: 16px !important;\n}\n.px-3 {\n  padding-left: 16px !important;\n  padding-right: 16px !important;\n}\n.py-3 {\n  padding-top: 16px !important;\n  padding-bottom: 16px !important;\n}\n.pa-3 {\n  padding: 16px 16px !important;\n}\n.mt-4 {\n  margin-top: 24px !important;\n}\n.mr-4 {\n  margin-right: 24px !important;\n}\n.mb-4 {\n  margin-bottom: 24px !important;\n}\n.ml-4 {\n  margin-left: 24px !important;\n}\n.mx-4 {\n  margin-left: 24px !important;\n  margin-right: 24px !important;\n}\n.my-4 {\n  margin-top: 24px !important;\n  margin-bottom: 24px !important;\n}\n.ma-4 {\n  margin: 24px 24px !important;\n}\n.pt-4 {\n  padding-top: 24px !important;\n}\n.pr-4 {\n  padding-right: 24px !important;\n}\n.pb-4 {\n  padding-bottom: 24px !important;\n}\n.pl-4 {\n  padding-left: 24px !important;\n}\n.px-4 {\n  padding-left: 24px !important;\n  padding-right: 24px !important;\n}\n.py-4 {\n  padding-top: 24px !important;\n  padding-bottom: 24px !important;\n}\n.pa-4 {\n  padding: 24px 24px !important;\n}\n.mt-5 {\n  margin-top: 48px !important;\n}\n.mr-5 {\n  margin-right: 48px !important;\n}\n.mb-5 {\n  margin-bottom: 48px !important;\n}\n.ml-5 {\n  margin-left: 48px !important;\n}\n.mx-5 {\n  margin-left: 48px !important;\n  margin-right: 48px !important;\n}\n.my-5 {\n  margin-top: 48px !important;\n  margin-bottom: 48px !important;\n}\n.ma-5 {\n  margin: 48px 48px !important;\n}\n.pt-5 {\n  padding-top: 48px !important;\n}\n.pr-5 {\n  padding-right: 48px !important;\n}\n.pb-5 {\n  padding-bottom: 48px !important;\n}\n.pl-5 {\n  padding-left: 48px !important;\n}\n.px-5 {\n  padding-left: 48px !important;\n  padding-right: 48px !important;\n}\n.py-5 {\n  padding-top: 48px !important;\n  padding-bottom: 48px !important;\n}\n.pa-5 {\n  padding: 48px 48px !important;\n}\n@media all and (min-width: 0) {\n.text-xs-left {\n    text-align: left !important;\n}\n.text-xs-center {\n    text-align: center !important;\n}\n.text-xs-right {\n    text-align: right !important;\n}\n.text-xs-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 600px) {\n.text-sm-left {\n    text-align: left !important;\n}\n.text-sm-center {\n    text-align: center !important;\n}\n.text-sm-right {\n    text-align: right !important;\n}\n.text-sm-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 960px) {\n.text-md-left {\n    text-align: left !important;\n}\n.text-md-center {\n    text-align: center !important;\n}\n.text-md-right {\n    text-align: right !important;\n}\n.text-md-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 1264px) {\n.text-lg-left {\n    text-align: left !important;\n}\n.text-lg-center {\n    text-align: center !important;\n}\n.text-lg-right {\n    text-align: right !important;\n}\n.text-lg-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 1904px) {\n.text-xl-left {\n    text-align: left !important;\n}\n.text-xl-center {\n    text-align: center !important;\n}\n.text-xl-right {\n    text-align: right !important;\n}\n.text-xl-justify {\n    text-align: justify !important;\n}\n}\n.tooltip {\n  position: relative;\n}\n.tooltip__content {\n  background: #616161;\n  border-radius: 2px;\n  color: #fff;\n  font-size: 12px;\n  display: inline-block;\n  padding: 5px 8px;\n  position: absolute;\n  text-transform: initial;\n  transition: 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: auto;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.tooltip__content[class*=\"-active\"] {\n  pointer-events: none;\n}\n@media only screen and (max-width: 959px) {\n.tooltip .tooltip__content {\n    padding: 10px 16px;\n}\n}\n.alert {\n  border-radius: 0;\n  border-width: 4px 0 0 0;\n  border-style: solid;\n  color: #fff;\n  display: flex;\n  font-size: 14px;\n  margin: 4px auto;\n  padding: 16px;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.alert .alert__icon.icon,\n.alert__dismissible .icon {\n  align-self: center;\n  color: rgba(0,0,0,0.3);\n  font-size: 24px;\n}\n.alert--outline .icon {\n  color: inherit !important;\n}\n.alert__icon {\n  margin-right: 16px;\n}\n.alert__dismissible {\n  align-self: flex-start;\n  margin-left: 16px;\n  margin-right: 0;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.alert__dismissible:hover {\n  color: rgba(26,26,26,0.3);\n}\n.alert--no-icon .alert__icon {\n  display: none;\n}\n.alert > div {\n  align-self: center;\n  flex: 1 1;\n}\n@media screen and (max-width: 600px) {\n.alert__icon {\n    display: none;\n}\n}\n.alert.alert {\n  border-color: rgba(0,0,0,0.12) !important;\n}\n.alert.alert--outline {\n  border: 1px solid currentColor !important;\n}\n.application {\n  display: flex;\n}\n.application--wrap {\n  flex: 1 1 auto;\n  backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  max-width: 100%;\n  position: relative;\n}\n.application--wrap > main:not(.content) {\n  flex: 1 0 auto;\n  display: flex;\n}\n.application.theme--light {\n  background: #fafafa;\n  color: rgba(0,0,0,0.87);\n}\n.application.theme--light a {\n  cursor: pointer;\n}\n.application.theme--dark {\n  background: #303030;\n  color: #fff;\n}\n.application.theme--dark a {\n  cursor: pointer;\n}\n.avatar {\n  align-items: center;\n  border-radius: 50%;\n  display: inline-flex;\n  justify-content: center;\n  text-align: center;\n  vertical-align: middle;\n}\n.avatar img,\n.avatar .icon {\n  border-radius: 50%;\n  height: inherit;\n  width: inherit;\n}\n.avatar--tile {\n  border-radius: 0;\n}\n.avatar--tile img,\n.avatar--tile .icon {\n  border-radius: 0;\n}\n.badge {\n  display: inline-block;\n  position: relative;\n}\n.badge__badge {\n  color: #fff;\n  display: flex;\n  position: absolute;\n  font-size: 14px;\n  top: -11px;\n  right: -22px;\n  border-radius: 50%;\n  height: 22px;\n  width: 22px;\n  justify-content: center;\n  align-items: center;\n  flex-direction: row;\n  flex-wrap: wrap;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.badge__badge .icon {\n  font-size: 14px;\n}\n.badge--overlap .badge__badge {\n  top: -8px;\n  right: -8px;\n}\n.badge--overlap.badge--left .badge__badge {\n  left: -8px;\n  right: initial;\n}\n.badge--overlap.badge--bottom .badge__badge {\n  bottom: -8px;\n  top: initial;\n}\n.badge--left .badge__badge {\n  left: -22px;\n}\n.badge--bottom .badge__badge {\n  bottom: -11px;\n  top: initial;\n}\n.bottom-nav {\n  bottom: 0;\n  box-shadow: 0 3px 14px 2px rgba(0,0,0,0.12);\n  display: flex;\n  height: 56px;\n  justify-content: center;\n  position: fixed;\n  transform: translate(0, 60px);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n  z-index: 4;\n}\n.bottom-nav--absolute {\n  position: absolute;\n}\n.bottom-nav--active {\n  transform: translate(0, 0);\n}\n.bottom-nav .btn {\n  background: transparent !important;\n  border-radius: 0;\n  box-shadow: none !important;\n  font-weight: 400;\n  height: 100%;\n  margin: 0;\n  max-width: 168px;\n  min-width: 80px;\n  padding: 0px;\n  text-transform: none;\n  opacity: 0.5;\n  width: 100%;\n}\n.bottom-nav .btn .btn__content {\n  height: 100%;\n  flex-direction: column-reverse;\n  height: 56px;\n  font-size: 12px;\n  transform: scale(1, 1) translate(0, 0);\n  white-space: nowrap;\n  will-change: font-size;\n}\n.bottom-nav .btn .btn__content i.icon {\n  color: inherit;\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.bottom-nav .btn--active {\n  opacity: 1;\n}\n.bottom-nav .btn--active .btn__content {\n  font-size: 14px;\n}\n.bottom-nav .btn--active .btn__content:before {\n  opacity: 0;\n}\n.bottom-nav .btn--active .btn__content .icon {\n  transform: none;\n}\n.bottom-nav .btn:not(.btn--active) {\n  filter: grayscale(100%);\n}\n.bottom-nav--shift .btn__content {\n  font-size: 14px;\n}\n.bottom-nav--shift .btn__content span {\n  height: 21px;\n}\n.bottom-nav--shift .btn {\n  transition: all 0.3s;\n  min-width: 56px;\n  max-width: 96px;\n}\n.bottom-nav--shift .btn--active {\n  min-width: 96px;\n  max-width: 168px;\n}\n.bottom-nav--shift .btn:not(.btn--active) .btn__content .icon {\n  transform: scale(1, 1) translate(0, 10px);\n}\n.bottom-nav--shift .btn:not(.btn--active) .btn__content span {\n  color: transparent;\n}\n.bottom-sheet.dialog {\n  align-self: flex-end;\n  border-radius: 0;\n  flex: 1 0 100%;\n  margin: 0;\n  min-width: 100%;\n  overflow: visible;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.bottom-sheet.dialog.bottom-sheet--inset {\n  max-width: 70%;\n  min-width: 0;\n}\n@media only screen and (max-width: 599px) {\n.bottom-sheet.dialog.bottom-sheet--inset {\n    max-width: none;\n}\n}\n.theme--light .breadcrumbs li.breadcrumbs__divider,\n.application .theme--light.breadcrumbs li.breadcrumbs__divider,\n.theme--light .breadcrumbs li:last-child .breadcrumbs__item,\n.application .theme--light.breadcrumbs li:last-child .breadcrumbs__item,\n.theme--light .breadcrumbs li .breadcrumbs__item--disabled,\n.application .theme--light.breadcrumbs li .breadcrumbs__item--disabled {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .breadcrumbs li.breadcrumbs__divider,\n.application .theme--dark.breadcrumbs li.breadcrumbs__divider,\n.theme--dark .breadcrumbs li:last-child .breadcrumbs__item,\n.application .theme--dark.breadcrumbs li:last-child .breadcrumbs__item,\n.theme--dark .breadcrumbs li .breadcrumbs__item--disabled,\n.application .theme--dark.breadcrumbs li .breadcrumbs__item--disabled {\n  color: rgba(255,255,255,0.5);\n}\n.breadcrumbs {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  flex: 0 1 auto;\n  list-style-type: none;\n  margin: 0;\n  padding: 18px 12px;\n}\n.breadcrumbs li {\n  align-items: center;\n  display: inline-flex;\n  font-size: 14px;\n}\n.breadcrumbs li .icon {\n  font-size: 16px;\n}\n.breadcrumbs li:last-child a {\n  cursor: default;\n  pointer-events: none;\n}\n.breadcrumbs li:nth-child(even) {\n  padding: 0 12px;\n}\n.breadcrumbs--large li {\n  font-size: 16px;\n}\n.breadcrumbs--large li .icon {\n  font-size: 16px;\n}\n.breadcrumbs__item {\n  align-items: center;\n  display: inline-flex;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.breadcrumbs__item--disabled {\n  pointer-events: none;\n}\n.theme--light .btn-toggle,\n.application .theme--light.btn-toggle {\n  background: #fff;\n}\n.theme--light .btn-toggle .btn,\n.application .theme--light.btn-toggle .btn {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]),\n.application .theme--light.btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]) {\n  border-right-color: rgba(0,0,0,0.26);\n}\n.theme--dark .btn-toggle,\n.application .theme--dark.btn-toggle {\n  background: #424242;\n}\n.theme--dark .btn-toggle .btn,\n.application .theme--dark.btn-toggle .btn {\n  color: #fff;\n}\n.theme--dark .btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]),\n.application .theme--dark.btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]) {\n  border-right-color: rgba(255,255,255,0.3);\n}\n.btn-toggle {\n  display: inline-flex;\n  border-radius: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  will-change: background, box-shadow;\n}\n.btn-toggle .btn {\n  justify-content: center;\n  min-width: auto;\n  width: auto;\n  padding: 0 8px;\n  margin: 0;\n  opacity: 0.4;\n  border-radius: 0;\n}\n.btn-toggle .btn:not(:last-child) {\n  border-right: 1px solid transparent;\n}\n.btn-toggle .btn:after {\n  display: none;\n}\n.btn-toggle .btn[data-selected] {\n  opacity: 1;\n}\n.btn-toggle .btn__content {\n  padding: 0;\n}\n.btn-toggle .btn span + .icon {\n  font-size: initial;\n  margin-left: 10px;\n}\n.btn-toggle .btn:first-child {\n  border-radius: 2px 0 0 2px;\n}\n.btn-toggle .btn:last-child {\n  border-radius: 0 2px 2px 0;\n}\n.btn-toggle--selected {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict;\n}\n.ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity;\n}\n.ripple__animation--enter {\n  transition: none;\n}\n.ripple__animation--visible {\n  opacity: 0.15;\n}\n.theme--light .btn,\n.application .theme--light.btn {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .btn.btn--disabled,\n.application .theme--light.btn.btn--disabled {\n  color: rgba(0,0,0,0.26) !important;\n}\n.theme--light .btn.btn--disabled .icon,\n.application .theme--light.btn.btn--disabled .icon {\n  color: rgba(0,0,0,0.26) !important;\n}\n.theme--light .btn.btn--disabled:not(.btn--icon):not(.btn--flat),\n.application .theme--light.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {\n  background-color: rgba(0,0,0,0.12) !important;\n}\n.theme--light .btn:not(.btn--icon):not(.btn--flat),\n.application .theme--light.btn:not(.btn--icon):not(.btn--flat) {\n  background-color: #f5f5f5;\n}\n.theme--dark .btn,\n.application .theme--dark.btn {\n  color: #fff;\n}\n.theme--dark .btn.btn--disabled,\n.application .theme--dark.btn.btn--disabled {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .btn.btn--disabled .icon,\n.application .theme--dark.btn.btn--disabled .icon {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .btn.btn--disabled:not(.btn--icon):not(.btn--flat),\n.application .theme--dark.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {\n  background-color: rgba(255,255,255,0.12) !important;\n}\n.theme--dark .btn:not(.btn--icon):not(.btn--flat),\n.application .theme--dark.btn:not(.btn--icon):not(.btn--flat) {\n  background-color: #212121;\n}\n.btn {\n  align-items: center;\n  border-radius: 2px;\n  display: inline-flex;\n  height: 36px;\n  flex: 0 1 auto;\n  font-size: 14px;\n  font-weight: 500;\n  justify-content: center;\n  margin: 6px 8px;\n  min-width: 88px;\n  outline: 0;\n  text-transform: uppercase;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;\n  position: relative;\n  vertical-align: middle;\n  user-select: none;\n}\n.btn__content:before {\n  border-radius: inherit;\n  color: inherit;\n  content: '';\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  opacity: 0.12;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.btn--active .btn__content:before,\n.btn:hover .btn__content:before,\n.btn:focus .btn__content:before {\n  background-color: currentColor;\n}\n.btn__content {\n  align-items: center;\n  border-radius: inherit;\n  color: inherit;\n  display: flex;\n  height: 100%;\n  flex: 1 0 auto;\n  justify-content: center;\n  margin: 0 auto;\n  padding: 0 16px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  white-space: nowrap;\n}\n.btn .btn__content .icon {\n  color: inherit;\n}\n.btn--flat {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n.btn:not(.btn--depressed) {\n  will-change: box-shadow;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.btn:not(.btn--depressed):active {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.btn--icon {\n  background: transparent;\n  box-shadow: none !important;\n  border-radius: 50%;\n  justify-content: center;\n  height: 36px;\n  width: 36px;\n  min-width: 0;\n}\n.btn--icon .btn__content {\n  padding: 0;\n}\n.btn--icon .btn__content:before {\n  border-radius: 50%;\n}\n.btn--icon.btn--small {\n  width: 28px;\n}\n.btn--icon.btn--small .btn__content {\n  height: 28px;\n}\n.btn--icon.btn--large {\n  width: 44px;\n}\n.btn--icon.btn--large .btn__content {\n  height: 44px;\n}\n.btn--floating {\n  border-radius: 50%;\n  min-width: 0;\n  height: 56px;\n  width: 56px;\n  padding: 0;\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);\n}\n.btn--floating.btn--fixed,\n.btn--floating.btn--absolute {\n  z-index: 4;\n}\n.btn--floating:active {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12);\n}\n.btn--floating .btn__content {\n  flex: 1 1 auto;\n  margin: 0;\n  padding: 0;\n}\n.btn--floating:after {\n  border-radius: 50%;\n}\n.btn--floating .btn__content :not(:only-child) {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.btn--floating .btn__content :not(:only-child):last-child {\n  opacity: 0;\n  position: absolute;\n  transform: rotate(-45deg);\n  left: calc(50% - 12px);\n  top: calc(50% - 12px);\n}\n.btn--floating.btn--active .btn__content :not(:only-child):first-child {\n  opacity: 0;\n  transform: rotate(45deg);\n  left: calc(50% - 12);\n  top: calc(50% - 12);\n}\n.btn--floating.btn--active .btn__content :not(:only-child):last-child {\n  opacity: 1;\n  transform: none;\n}\n.btn--floating .icon {\n  height: 24px;\n  width: 24px;\n}\n.btn--floating.btn--small {\n  height: 40px;\n  width: 40px;\n}\n.btn--floating.btn--small .icon {\n  font-size: 18px;\n  height: 18px;\n  width: 18px;\n}\n.btn--floating.btn--small.btn--floating .icon {\n  left: calc(50% - 9px);\n  top: calc(50% - 9px);\n}\n.btn--floating.btn--large {\n  height: 72px;\n  width: 72px;\n}\n.btn--floating.btn--large .icon {\n  font-size: 30px;\n  height: 30px;\n  width: 30px;\n}\n.btn--floating.btn--large.btn--floating .icon {\n  left: calc(50% - 15px);\n  top: calc(50% - 15px);\n}\n.btn--reverse .btn__content {\n  flex-direction: row-reverse;\n}\n.btn--reverse.btn--column .btn__content {\n  flex-direction: column-reverse;\n}\n.btn--fixed,\n.btn--absolute {\n  margin: 0;\n}\n.btn.btn--absolute {\n  position: absolute;\n}\n.btn.btn--fixed {\n  position: fixed;\n}\n.btn--top:not(.btn--absolute) {\n  top: 16px;\n}\n.btn--top.btn--absolute {\n  top: -28px;\n}\n.btn--top.btn--absolute.btn--small {\n  top: -20px;\n}\n.btn--top.btn--absolute.btn--large {\n  top: -36px;\n}\n.btn--bottom:not(.btn--absolute) {\n  bottom: 16px;\n}\n.btn--bottom.btn--absolute {\n  bottom: -28px;\n}\n.btn--bottom.btn--absolute.btn--small {\n  bottom: -20px;\n}\n.btn--bottom.btn--absolute.btn--large {\n  bottom: -36px;\n}\n.btn--left {\n  left: 16px;\n}\n.btn--right {\n  right: 16px;\n}\n.btn.btn--disabled {\n  box-shadow: none !important;\n  pointer-events: none;\n}\n.btn--small {\n  font-size: 13px;\n  height: 28px;\n}\n.btn--small .btn__content {\n  padding: 0 8px;\n}\n.btn--large {\n  font-size: 15px;\n  height: 44px;\n}\n.btn--large .btn__content {\n  padding: 0 32px;\n}\n.btn--loader {\n  pointer-events: none;\n}\n.btn--loader .btn__content {\n  opacity: 0;\n}\n.btn__loading {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.btn__loading .icon--left {\n  margin-right: 1rem;\n  line-height: inherit;\n}\n.btn__loading .icon--right {\n  margin-left: 1rem;\n  line-height: inherit;\n}\n.btn.btn--outline {\n  border: 1px solid currentColor;\n  background: transparent !important;\n  box-shadow: none;\n}\n.btn.btn--outline:hover {\n  box-shadow: none;\n}\n.btn--block {\n  display: flex;\n  flex: 1;\n  margin: 6px 0;\n  width: 100%;\n}\n.btn--round {\n  border-radius: 28px;\n}\n.btn--round:after {\n  border-radius: 28px;\n}\n.btn .icon--right {\n  margin-left: 16px;\n}\n.btn .icon--left {\n  margin-right: 16px;\n}\n.btn.primary,\n.btn.secondary,\n.btn.success,\n.btn.error,\n.btn.warning,\n.btn.info {\n  color: #fff;\n}\n.theme--light .card,\n.application .theme--light.card {\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .card,\n.application .theme--dark.card {\n  background-color: #424242;\n  color: #fff;\n}\n.card {\n  display: block;\n  border-radius: 2px;\n  min-width: 0;\n  position: relative;\n  text-decoration: none;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\n.card > *:first-child {\n  border-top-left-radius: inherit;\n  border-top-right-radius: inherit;\n}\n.card > *:last-child {\n  border-bottom-left-radius: inherit;\n  border-bottom-right-radius: inherit;\n}\n.card--raised {\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);\n}\n.card--tile {\n  border-radius: 0;\n}\n.card--flat {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.card--hover {\n  cursor: pointer;\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition-property: box-shadow;\n}\n.card--hover:hover {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.card__title {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  padding: 16px;\n}\n.card__title--primary {\n  padding-top: 24px;\n}\n.card__text {\n  padding: 16px;\n  width: 100%;\n}\n.card__media {\n  display: flex;\n  overflow: hidden;\n  position: relative;\n}\n.card__media img {\n  width: 100%;\n}\n.card__media__background {\n  border-radius: inherit;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.card__media__content {\n  display: flex;\n  flex: 1 1 auto;\n  position: relative;\n}\n.card__actions {\n  align-items: center;\n  display: flex;\n  padding: 8px 4px;\n}\n.card__actions > *,\n.card__actions .btn {\n  margin: 0 4px;\n}\n.carousel {\n  height: 500px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.carousel__item {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1 0 100%;\n  height: 100%;\n  width: 100%;\n  background-size: cover;\n  background-position: center center;\n  transition: 0.2s ease-out;\n}\n.carousel__left,\n.carousel__right {\n  position: absolute;\n  top: 50%;\n  z-index: 1;\n  transform: translateY(-50%);\n}\n.carousel__left .btn,\n.carousel__right .btn {\n  color: #fff;\n  margin: 0 !important;\n  height: auto;\n  width: auto;\n}\n.carousel__left .btn i,\n.carousel__right .btn i {\n  font-size: 48px;\n}\n.carousel__left .btn:hover,\n.carousel__right .btn:hover {\n  background: none;\n}\n.carousel__left {\n  left: 5px;\n}\n.carousel__right {\n  right: 5px;\n}\n.carousel__controls {\n  background: rgba(0,0,0,0.5);\n  align-items: center;\n  bottom: 0;\n  display: flex;\n  justify-content: center;\n  left: 0;\n  position: absolute;\n  height: 50px;\n  list-style-type: none;\n  width: 100%;\n  z-index: 1;\n}\n.carousel__controls__item {\n  color: #fff;\n  margin: 0 1rem !important;\n}\n.carousel__controls__item i {\n  opacity: 0.5;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.carousel__controls__item--active i {\n  opacity: 1;\n  vertical-align: middle;\n  font-size: 2rem !important;\n}\n.carousel__controls__item:hover {\n  background: none;\n}\n.carousel__controls__item:hover i {\n  opacity: 0.8;\n}\n.theme--light .chip,\n.application .theme--light.chip {\n  background: #e0e0e0;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .chip:not(.chip--outline) .chip__close,\n.application .theme--light.chip:not(.chip--outline) .chip__close {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .chip,\n.application .theme--dark.chip {\n  background: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .chip:not(.chip--outline) .chip__close,\n.application .theme--dark.chip:not(.chip--outline) .chip__close {\n  color: #fff;\n}\n.chip {\n  align-items: center;\n  border-radius: 28px;\n  border: 1px solid transparent;\n  display: inline-flex;\n  font-size: 13px;\n  margin: 4px;\n  outline: none;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  vertical-align: middle;\n}\n.chip .chip__content {\n  align-items: center;\n  border-radius: 28px;\n  cursor: default;\n  display: inline-flex;\n  height: 32px;\n  justify-content: space-between;\n  padding: 0 12px;\n  vertical-align: middle;\n  white-space: nowrap;\n  z-index: 1;\n}\n.chip--removable .chip__content {\n  padding: 0 4px 0 12px;\n}\n.chip .avatar {\n  height: 32px !important;\n  margin-left: -12px;\n  margin-right: 8px;\n  min-width: 32px;\n  width: 32px !important;\n}\n.chip .avatar img {\n  height: 100%;\n  width: 100%;\n}\n.chip:focus:not(.chip--disabled),\n.chip--active:not(.chip--disabled),\n.chip--selected:not(.chip--disabled) {\n  border-color: rgba(0,0,0,0.13);\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.chip:focus:not(.chip--disabled):after,\n.chip--active:not(.chip--disabled):after,\n.chip--selected:not(.chip--disabled):after {\n  background: currentColor;\n  border-radius: inherit;\n  content: '';\n  height: 100%;\n  position: absolute;\n  top: 0;\n  transition: inherit;\n  width: 100%;\n  pointer-events: none;\n  opacity: 0.13;\n}\n.chip--label {\n  border-radius: 2px;\n}\n.chip--label .chip__content {\n  border-radius: 2px;\n}\n.chip.chip--outline {\n  background: transparent !important;\n  border-color: currentColor;\n  color: #9e9e9e;\n}\n.chip--small {\n  height: 26px;\n}\n.chip--small .avatar {\n  height: 26px;\n  min-width: 26px;\n  width: 26px;\n}\n.chip--small .icon {\n  font-size: 20px;\n}\n.chip__close {\n  align-items: center;\n  color: inherit;\n  cursor: pointer;\n  display: flex;\n  font-size: 20px;\n  margin: 0 -1px 0 4px;\n  text-decoration: none;\n  transition: none !important;\n  user-select: none;\n}\n.chip__close > .icon {\n  color: inherit !important;\n}\n.chip__close:hover {\n  opacity: 0.8;\n}\n.chip--select-multi {\n  margin: 4px 4px 4px 0;\n}\n.chip .icon {\n  color: inherit;\n  transition: none;\n}\n.chip .icon--right {\n  margin-left: 12px;\n  margin-right: -8px;\n}\n.chip .icon--left {\n  margin-left: -8px;\n  margin-right: 12px;\n}\n.content {\n  flex: 1 1 auto;\n  max-width: 100%;\n  transition: 0.2s padding cubic-bezier(0.4, 0, 0.2, 1);\n  will-change: padding;\n}\n.content--wrap {\n  flex: 1 0 auto;\n  display: flex;\n  max-width: 100%;\n}\n.theme--light .datatable thead th.column.sortable i,\n.application .theme--light.datatable thead th.column.sortable i {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .datatable thead th.column.sortable:hover,\n.application .theme--light.datatable thead th.column.sortable:hover {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable thead th.column.sortable.active,\n.application .theme--light.datatable thead th.column.sortable.active {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable thead th.column.sortable.active i,\n.application .theme--light.datatable thead th.column.sortable.active i {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable .datatable__actions,\n.application .theme--light.datatable .datatable__actions {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .datatable .datatable__actions__select .input-group--select .input-group__selections__comma,\n.application .theme--light.datatable .datatable__actions__select .input-group--select .input-group__selections__comma {\n  color: rgba(0,0,0,0.54) !important;\n}\n.theme--light .datatable .datatable__actions__select .input-group--select .input-group__append-icon,\n.application .theme--light.datatable .datatable__actions__select .input-group--select .input-group__append-icon {\n  color: rgba(0,0,0,0.54) !important;\n}\n.theme--dark .datatable thead th.column.sortable i,\n.application .theme--dark.datatable thead th.column.sortable i {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .datatable thead th.column.sortable:hover,\n.application .theme--dark.datatable thead th.column.sortable:hover {\n  color: #fff;\n}\n.theme--dark .datatable thead th.column.sortable.active,\n.application .theme--dark.datatable thead th.column.sortable.active {\n  color: #fff;\n}\n.theme--dark .datatable thead th.column.sortable.active i,\n.application .theme--dark.datatable thead th.column.sortable.active i {\n  color: #fff;\n}\n.theme--dark .datatable .datatable__actions,\n.application .theme--dark.datatable .datatable__actions {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .datatable .datatable__actions__select .input-group--select .input-group__selections__comma,\n.application .theme--dark.datatable .datatable__actions__select .input-group--select .input-group__selections__comma {\n  color: rgba(255,255,255,0.7) !important;\n}\n.theme--dark .datatable .datatable__actions__select .input-group--select .input-group__append-icon,\n.application .theme--dark.datatable .datatable__actions__select .input-group--select .input-group__append-icon {\n  color: rgba(255,255,255,0.7) !important;\n}\n.datatable thead th.column.sortable {\n  cursor: pointer;\n}\n.datatable thead th.column.sortable i {\n  font-size: 16px;\n  vertical-align: sub;\n  display: inline-block;\n  opacity: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.datatable thead th.column.sortable:hover i {\n  opacity: 0.6;\n}\n.datatable thead th.column.sortable.active {\n  transform: none;\n}\n.datatable thead th.column.sortable.active i {\n  opacity: 1;\n}\n.datatable thead th.column.sortable.active.desc i {\n  transform: rotate(-180deg);\n}\n.datatable__actions {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  font-size: 12px;\n}\n.datatable__actions .btn {\n  color: inherit;\n}\n.datatable__actions .btn:last-of-type {\n  margin-left: 18px;\n}\n.datatable__actions__pagination {\n  text-align: center;\n  margin: 0 26px 0 32px;\n}\n.datatable__actions__select {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.datatable__actions__select .input-group--select {\n  margin: 13px 0 13px 34px;\n  padding: 0;\n  position: initial;\n}\n.datatable__actions__select .input-group--select .input-group__selections__comma {\n  font-size: 12px;\n}\n.datatable__progress {\n  height: auto !important;\n}\n.datatable__progress tr,\n.datatable__progress td,\n.datatable__progress th {\n  height: auto !important;\n}\n.datatable__progress th {\n  padding: 0 !important;\n}\n.datatable__progress th .progress-linear {\n  top: -2px;\n  margin: 0 0 -2px;\n}\n.datatable__expand-row {\n  border: none !important;\n}\n.datatable__expand-col {\n  padding: 0 !important;\n  height: 0px !important;\n}\n.datatable__expand-col--expanded {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.datatable__expand-content {\n  transition: height 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.datatable__expand-content > .card {\n  border-radius: 0;\n  box-shadow: none;\n}\n.theme--light .picker--date .picker--date__years li,\n.application .theme--light.picker--date .picker--date__years li {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .picker--date .picker--date__header-selector-date strong:not(:hover),\n.application .theme--light.picker--date .picker--date__header-selector-date strong:not(:hover) {\n  color: rgba(0,0,0,0.87) !important;\n}\n.theme--dark .picker--date .picker--date__years li,\n.application .theme--dark.picker--date .picker--date__years li {\n  color: #fff;\n}\n.theme--dark .picker--date .picker--date__header-selector-date strong:not(:hover),\n.application .theme--dark.picker--date .picker--date__header-selector-date strong:not(:hover) {\n  color: #fff !important;\n}\n.picker--date__table .btn.btn--active {\n  color: #fff;\n}\n.picker--date__years {\n  font-size: 16px;\n  font-weight: 400;\n  list-style-type: none;\n  max-height: 290px;\n  overflow: auto;\n  padding: 0;\n  text-align: center;\n}\n.picker--date__years li {\n  cursor: pointer;\n  padding: 8px 0;\n  transition: none;\n}\n.picker--date__years li.active {\n  font-size: 24px;\n  font-weight: 500;\n  padding: 10px 0;\n}\n.picker--date__years li:hover {\n  background: rgba(0,0,0,0.12);\n}\n.picker--date__title {\n  justify-content: space-between;\n  flex-direction: column;\n  flex-wrap: wrap;\n}\n.picker--date__title-year {\n  align-items: center;\n  display: inline-flex;\n  font-size: 14px;\n}\n.picker--date__title-date {\n  font-size: 34px;\n  text-align: left;\n}\n.picker--date__title-date > div {\n  position: relative;\n}\n.picker--date__title-year,\n.picker--date__title-date {\n  font-weight: 500;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.picker--date__title-year:not(.active),\n.picker--date__title-date:not(.active) {\n  cursor: pointer;\n}\n.picker--date__header {\n  padding: 4px 16px;\n}\n.picker--date__header-selector {\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n  position: relative;\n}\n.picker--date__header-selector .btn {\n  margin: 0;\n}\n.picker--date__header-selector .icon {\n  cursor: pointer;\n  user-select: none;\n}\n.picker--date__header-selector-date {\n  flex: 1;\n  text-align: center;\n  position: relative;\n  overflow: hidden;\n}\n.picker--date__header-selector-date strong {\n  cursor: pointer;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  display: block;\n  width: 100%;\n}\n.picker--date .btn {\n  z-index: auto;\n}\n.picker--date__table {\n  position: relative;\n}\n.picker--date table {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  top: 0;\n  table-layout: fixed;\n}\n.picker--date table th {\n  padding: 8px 0;\n  font-weight: 600;\n  font-size: 12px;\n}\n.picker--date table th,\n.picker--date table td {\n  text-align: center;\n  width: 45px;\n}\n.picker--date table .btn {\n  margin: 0;\n  height: 32px;\n  width: 32px;\n}\n.picker--month__table table {\n  width: 100%;\n}\n.picker--month__table table td {\n  width: 33.333333%;\n  height: 56px;\n  vertical-align: middle;\n}\n.dialog {\n  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);\n  border-radius: 2px;\n  margin: 24px;\n  overflow-y: auto;\n  pointer-events: auto;\n  transition: 0.3s ease-in-out;\n  width: 100%;\n}\n.dialog__content {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  pointer-events: none;\n  position: fixed;\n  top: 0;\n  transition: 0.3s ease-in-out;\n  width: 100%;\n  z-index: 6;\n  outline: none;\n}\n.dialog:not(.dialog--fullscreen) {\n  max-height: 90%;\n}\n.dialog__container {\n  display: inline-block;\n  vertical-align: middle;\n}\n.dialog--fullscreen {\n  margin: 0;\n  height: 100%;\n  position: fixed;\n  overflow-y: auto;\n  top: 0;\n  left: 0;\n}\n.dialog--fullscreen > .card {\n  min-height: 100%;\n  min-width: 100%;\n  margin: 0 !important;\n  padding: 0 !important;\n}\n.dialog--scrollable {\n  display: flex;\n}\n.dialog--scrollable > .card {\n  display: flex;\n  flex: 1 1 auto;\n  flex-direction: column;\n}\n.dialog--scrollable > .card > .card__title,\n.dialog--scrollable > .card > .card__actions {\n  flex: 1 0 auto;\n}\n.dialog--scrollable > .card > .card__text {\n  overflow-y: auto;\n  backface-visibility: hidden;\n}\n.theme--light .divider,\n.application .theme--light.divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--dark .divider,\n.application .theme--dark.divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.divider {\n  border: none;\n  display: block;\n  height: 1px;\n  min-height: 1px;\n  flex: 1;\n  width: 100%;\n}\n.divider--inset {\n  margin-left: 72px;\n  width: calc(100% - 72px);\n}\n.theme--light .expansion-panel .expansion-panel__container,\n.application .theme--light.expansion-panel .expansion-panel__container {\n  border-top: 1px solid rgba(0,0,0,0.12);\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .expansion-panel .expansion-panel__container .expansion-panel__header .icon,\n.application .theme--light.expansion-panel .expansion-panel__container .expansion-panel__header .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .expansion-panel--focusable .expansion-panel__container:focus,\n.application .theme--light.expansion-panel--focusable .expansion-panel__container:focus {\n  background-color: #eee;\n}\n.theme--dark .expansion-panel .expansion-panel__container,\n.application .theme--dark.expansion-panel .expansion-panel__container {\n  border-top: 1px solid rgba(255,255,255,0.12);\n  background-color: #424242;\n  color: #fff;\n}\n.theme--dark .expansion-panel .expansion-panel__container .expansion-panel__header .icon,\n.application .theme--dark.expansion-panel .expansion-panel__container .expansion-panel__header .icon {\n  color: #fff;\n}\n.theme--dark .expansion-panel--focusable .expansion-panel__container:focus,\n.application .theme--dark.expansion-panel--focusable .expansion-panel__container:focus {\n  background-color: rgba(0,0,0,0.7);\n}\n.expansion-panel {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style-type: none;\n  padding: 0;\n  text-align: left;\n  width: 100%;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel__container {\n  flex: 1 0 100%;\n  outline: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.expansion-panel__container:first-child {\n  border-top: none !important;\n}\n.expansion-panel__container .header__icon {\n  margin-left: auto;\n}\n.expansion-panel__container .header__icon .icon {\n  transition: none;\n}\n.expansion-panel__container--active > .expansion-panel__header .header__icon .icon {\n  transform: rotate(-180deg);\n}\n.expansion-panel__header {\n  display: flex;\n  cursor: pointer;\n  align-items: center;\n  position: relative;\n  padding: 12px 24px;\n}\n.expansion-panel__header > *:not(.header__icon) {\n  flex: 1 1 auto;\n}\n.expansion-panel__body {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.expansion-panel__body .card {\n  border-radius: 0;\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout,\n.expansion-panel--inset {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout .expansion-panel__container--active,\n.expansion-panel--inset .expansion-panel__container--active {\n  margin: 16px;\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout .expansion-panel__container,\n.expansion-panel--inset .expansion-panel__container {\n  max-width: 95%;\n}\n.expansion-panel--popout .expansion-panel__container--active {\n  max-width: 100%;\n}\n.expansion-panel--inset .expansion-panel__container--active {\n  max-width: 85%;\n}\n.theme--light .footer,\n.application .theme--light.footer {\n  background: #f5f5f5;\n}\n.theme--dark .footer,\n.application .theme--dark.footer {\n  background: #212121;\n}\n.footer {\n  align-items: center;\n  display: flex;\n  flex: 0 1 auto !important;\n  min-height: 36px;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.footer--absolute,\n.footer--fixed {\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  z-index: 3;\n}\n.footer--absolute {\n  position: absolute;\n}\n.footer--fixed {\n  position: fixed;\n}\n.footer > *:first-child {\n  margin-left: 8px;\n}\n.footer > *:last-child {\n  margin-right: 8px;\n}\n@media only screen and (max-width: 599px) {\n.footer > *:first-child {\n    margin-left: 16px;\n}\n.footer > *:last-child {\n    margin-right: 16px;\n}\n}\n.container {\n  flex: 1 1 100%;\n  margin: auto;\n  padding: 16px;\n  width: 100%;\n}\n@media only screen and (min-width: 960px) {\n.container {\n    max-width: 900px;\n}\n}\n@media only screen and (min-width: 1264px) {\n.container {\n    max-width: 1185px;\n}\n}\n@media only screen and (min-width: 1904px) {\n.container {\n    max-width: 1785px;\n}\n}\n@media only screen and (max-width: 599px) {\n.container {\n    padding: 24px;\n}\n}\n.container.fluid {\n  max-width: 100%;\n}\n.container.fill-height {\n  align-items: center;\n  display: flex;\n}\n.container.fill-height .layout {\n  height: 100%;\n  flex: 1 1 auto;\n}\n.container.grid-list-xs {\n  padding: 2px;\n}\n.container.grid-list-xs .layout .flex {\n  padding: 1px;\n}\n.container.grid-list-xs .layout:only-child {\n  margin: -1px;\n}\n.container.grid-list-xs .layout:not(:only-child) {\n  margin: auto -1px;\n}\n.container.grid-list-xs *:not(:only-child) .layout:first-child {\n  margin-top: -1px;\n}\n.container.grid-list-xs *:not(:only-child) .layout:last-child {\n  margin-bottom: -1px;\n}\n.container.grid-list-sm {\n  padding: 4px;\n}\n.container.grid-list-sm .layout .flex {\n  padding: 2px;\n}\n.container.grid-list-sm .layout:only-child {\n  margin: -2px;\n}\n.container.grid-list-sm .layout:not(:only-child) {\n  margin: auto -2px;\n}\n.container.grid-list-sm *:not(:only-child) .layout:first-child {\n  margin-top: -2px;\n}\n.container.grid-list-sm *:not(:only-child) .layout:last-child {\n  margin-bottom: -2px;\n}\n.container.grid-list-md {\n  padding: 8px;\n}\n.container.grid-list-md .layout .flex {\n  padding: 4px;\n}\n.container.grid-list-md .layout:only-child {\n  margin: -4px;\n}\n.container.grid-list-md .layout:not(:only-child) {\n  margin: auto -4px;\n}\n.container.grid-list-md *:not(:only-child) .layout:first-child {\n  margin-top: -4px;\n}\n.container.grid-list-md *:not(:only-child) .layout:last-child {\n  margin-bottom: -4px;\n}\n.container.grid-list-lg {\n  padding: 16px;\n}\n.container.grid-list-lg .layout .flex {\n  padding: 8px;\n}\n.container.grid-list-lg .layout:only-child {\n  margin: -8px;\n}\n.container.grid-list-lg .layout:not(:only-child) {\n  margin: auto -8px;\n}\n.container.grid-list-lg *:not(:only-child) .layout:first-child {\n  margin-top: -8px;\n}\n.container.grid-list-lg *:not(:only-child) .layout:last-child {\n  margin-bottom: -8px;\n}\n.container.grid-list-xl {\n  padding: 24px;\n}\n.container.grid-list-xl .layout .flex {\n  padding: 12px;\n}\n.container.grid-list-xl .layout:only-child {\n  margin: -12px;\n}\n.container.grid-list-xl .layout:not(:only-child) {\n  margin: auto -12px;\n}\n.container.grid-list-xl *:not(:only-child) .layout:first-child {\n  margin-top: -12px;\n}\n.container.grid-list-xl *:not(:only-child) .layout:last-child {\n  margin-bottom: -12px;\n}\n.layout {\n  display: flex;\n  flex: 1 1 auto;\n  flex-wrap: nowrap;\n}\n.layout.row {\n  flex-direction: row;\n}\n.layout.row.reverse {\n  flex-direction: row-reverse;\n}\n.layout.column {\n  flex-direction: column;\n}\n.layout.column.reverse {\n  flex-direction: column-reverse;\n}\n.layout.wrap {\n  flex-wrap: wrap;\n}\n@media all and (min-width: 0) {\n.flex.xs1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-xs1 {\n    order: 1;\n}\n.flex.xs2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-xs2 {\n    order: 2;\n}\n.flex.xs3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-xs3 {\n    order: 3;\n}\n.flex.xs4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-xs4 {\n    order: 4;\n}\n.flex.xs5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-xs5 {\n    order: 5;\n}\n.flex.xs6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-xs6 {\n    order: 6;\n}\n.flex.xs7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-xs7 {\n    order: 7;\n}\n.flex.xs8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-xs8 {\n    order: 8;\n}\n.flex.xs9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-xs9 {\n    order: 9;\n}\n.flex.xs10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-xs10 {\n    order: 10;\n}\n.flex.xs11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-xs11 {\n    order: 11;\n}\n.flex.xs12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-xs12 {\n    order: 12;\n}\n.flex.offset-xs0 {\n    margin-left: 0%;\n}\n.flex.offset-xs1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-xs2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-xs3 {\n    margin-left: 25%;\n}\n.flex.offset-xs4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-xs5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-xs6 {\n    margin-left: 50%;\n}\n.flex.offset-xs7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-xs8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-xs9 {\n    margin-left: 75%;\n}\n.flex.offset-xs10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-xs11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-xs12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 600px) {\n.flex.sm1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-sm1 {\n    order: 1;\n}\n.flex.sm2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-sm2 {\n    order: 2;\n}\n.flex.sm3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-sm3 {\n    order: 3;\n}\n.flex.sm4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-sm4 {\n    order: 4;\n}\n.flex.sm5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-sm5 {\n    order: 5;\n}\n.flex.sm6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-sm6 {\n    order: 6;\n}\n.flex.sm7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-sm7 {\n    order: 7;\n}\n.flex.sm8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-sm8 {\n    order: 8;\n}\n.flex.sm9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-sm9 {\n    order: 9;\n}\n.flex.sm10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-sm10 {\n    order: 10;\n}\n.flex.sm11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-sm11 {\n    order: 11;\n}\n.flex.sm12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-sm12 {\n    order: 12;\n}\n.flex.offset-sm0 {\n    margin-left: 0%;\n}\n.flex.offset-sm1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-sm2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-sm3 {\n    margin-left: 25%;\n}\n.flex.offset-sm4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-sm5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-sm6 {\n    margin-left: 50%;\n}\n.flex.offset-sm7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-sm8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-sm9 {\n    margin-left: 75%;\n}\n.flex.offset-sm10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-sm11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-sm12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 960px) {\n.flex.md1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-md1 {\n    order: 1;\n}\n.flex.md2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-md2 {\n    order: 2;\n}\n.flex.md3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-md3 {\n    order: 3;\n}\n.flex.md4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-md4 {\n    order: 4;\n}\n.flex.md5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-md5 {\n    order: 5;\n}\n.flex.md6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-md6 {\n    order: 6;\n}\n.flex.md7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-md7 {\n    order: 7;\n}\n.flex.md8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-md8 {\n    order: 8;\n}\n.flex.md9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-md9 {\n    order: 9;\n}\n.flex.md10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-md10 {\n    order: 10;\n}\n.flex.md11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-md11 {\n    order: 11;\n}\n.flex.md12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-md12 {\n    order: 12;\n}\n.flex.offset-md0 {\n    margin-left: 0%;\n}\n.flex.offset-md1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-md2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-md3 {\n    margin-left: 25%;\n}\n.flex.offset-md4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-md5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-md6 {\n    margin-left: 50%;\n}\n.flex.offset-md7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-md8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-md9 {\n    margin-left: 75%;\n}\n.flex.offset-md10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-md11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-md12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 1264px) {\n.flex.lg1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-lg1 {\n    order: 1;\n}\n.flex.lg2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-lg2 {\n    order: 2;\n}\n.flex.lg3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-lg3 {\n    order: 3;\n}\n.flex.lg4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-lg4 {\n    order: 4;\n}\n.flex.lg5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-lg5 {\n    order: 5;\n}\n.flex.lg6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-lg6 {\n    order: 6;\n}\n.flex.lg7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-lg7 {\n    order: 7;\n}\n.flex.lg8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-lg8 {\n    order: 8;\n}\n.flex.lg9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-lg9 {\n    order: 9;\n}\n.flex.lg10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-lg10 {\n    order: 10;\n}\n.flex.lg11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-lg11 {\n    order: 11;\n}\n.flex.lg12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-lg12 {\n    order: 12;\n}\n.flex.offset-lg0 {\n    margin-left: 0%;\n}\n.flex.offset-lg1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-lg2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-lg3 {\n    margin-left: 25%;\n}\n.flex.offset-lg4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-lg5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-lg6 {\n    margin-left: 50%;\n}\n.flex.offset-lg7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-lg8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-lg9 {\n    margin-left: 75%;\n}\n.flex.offset-lg10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-lg11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-lg12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 1904px) {\n.flex.xl1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-xl1 {\n    order: 1;\n}\n.flex.xl2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-xl2 {\n    order: 2;\n}\n.flex.xl3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-xl3 {\n    order: 3;\n}\n.flex.xl4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-xl4 {\n    order: 4;\n}\n.flex.xl5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-xl5 {\n    order: 5;\n}\n.flex.xl6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-xl6 {\n    order: 6;\n}\n.flex.xl7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-xl7 {\n    order: 7;\n}\n.flex.xl8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-xl8 {\n    order: 8;\n}\n.flex.xl9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-xl9 {\n    order: 9;\n}\n.flex.xl10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-xl10 {\n    order: 10;\n}\n.flex.xl11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-xl11 {\n    order: 11;\n}\n.flex.xl12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-xl12 {\n    order: 12;\n}\n.flex.offset-xl0 {\n    margin-left: 0%;\n}\n.flex.offset-xl1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-xl2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-xl3 {\n    margin-left: 25%;\n}\n.flex.offset-xl4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-xl5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-xl6 {\n    margin-left: 50%;\n}\n.flex.offset-xl7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-xl8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-xl9 {\n    margin-left: 75%;\n}\n.flex.offset-xl10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-xl11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-xl12 {\n    margin-left: 100%;\n}\n}\n.flex,\n.child-flex > * {\n  flex: 1 1 auto;\n}\n.align-start {\n  align-items: flex-start;\n}\n.align-end {\n  align-items: flex-end;\n}\n.align-center {\n  align-items: center;\n}\n.align-baseline {\n  align-items: baseline;\n}\n.align-content-start {\n  align-content: flex-start;\n}\n.align-content-end {\n  align-content: flex-end;\n}\n.align-content-center {\n  align-content: center;\n}\n.align-content-space-between {\n  align-content: space-between;\n}\n.align-content-space-around {\n  align-content: space-around;\n}\n.justify-start {\n  justify-content: flex-start;\n}\n.justify-end {\n  justify-content: flex-end;\n}\n.justify-center {\n  justify-content: center;\n}\n.justify-space-around {\n  justify-content: space-around;\n}\n.justify-space-between {\n  justify-content: space-between;\n}\n.spacer {\n  flex-grow: 1 !important;\n}\n.scroll-y {\n  overflow-y: auto;\n}\n.fill-height {\n  height: 100%;\n}\n.hide-overflow {\n  overflow: hidden !important;\n}\n.show-overflow {\n  overflow: visible !important;\n}\n.no-wrap {\n  white-space: nowrap;\n}\n.ellipsis {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.d-flex {\n  display: flex;\n}\n.d-inline-flex {\n  display: inline-flex;\n}\n.d-flex > *,\n.d-inline-flex > * {\n  flex: 1 1 auto;\n}\n.d-block {\n  display: block;\n}\n.d-inline-block {\n  display: inline-block;\n}\n.theme--light .icon,\n.application .theme--light.icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .icon.icon--disabled:not(.input-group__append-icon),\n.application .theme--light.icon.icon--disabled:not(.input-group__append-icon) {\n  color: rgba(0,0,0,0.38) !important;\n}\n.theme--dark .icon,\n.application .theme--dark.icon {\n  color: #fff;\n}\n.theme--dark .icon.icon--disabled:not(.input-group__append-icon),\n.application .theme--dark.icon.icon--disabled:not(.input-group__append-icon) {\n  color: rgba(255,255,255,0.5) !important;\n}\n.icon {\n  align-items: center;\n  display: inline-flex;\n  font-size: 24px;\n  justify-content: center;\n  line-height: 1;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  vertical-align: middle;\n}\n.icon.icon--large {\n  font-size: 2.5rem;\n}\n.icon.icon--medium {\n  font-size: 2rem;\n}\n.icon.icon--x-large {\n  font-size: 3rem;\n}\n.icon.icon--disabled {\n  cursor: default;\n}\n.theme--light .input-group input,\n.application .theme--light.input-group input,\n.theme--light .input-group textarea,\n.application .theme--light.input-group textarea {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group input:disabled,\n.application .theme--light.input-group input:disabled,\n.theme--light .input-group textarea:disabled,\n.application .theme--light.input-group textarea:disabled {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group:not(.input-group--error) .input-group__messages,\n.application .theme--light.input-group:not(.input-group--error) .input-group__messages {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--light.input-group.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border: 2px solid rgba(0,0,0,0.54);\n}\n.theme--light .input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active),\n.application .theme--light.input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group:not(.input-group--error) label,\n.application .theme--light.input-group:not(.input-group--error) label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group:not(.input-group--error).input-group--disabled label,\n.application .theme--light.input-group:not(.input-group--error).input-group--disabled label,\n.theme--light .input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma,\n.application .theme--light.input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group:not(.input-group--error) .input-group__details:before,\n.application .theme--light.input-group:not(.input-group--error) .input-group__details:before {\n  background-color: rgba(0,0,0,0.42);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover),\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover) {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before,\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before {\n  background-color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border-color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group.input-group--overflow .input-group__input:before,\n.application .theme--light.input-group.input-group--overflow .input-group__input:before,\n.theme--light .input-group.input-group--segmented .input-group__input:before,\n.application .theme--light.input-group.input-group--segmented .input-group__input:before,\n.theme--light .input-group.input-group--editable .input-group__input:before,\n.application .theme--light.input-group.input-group--editable .input-group__input:before,\n.theme--light .input-group.input-group--overflow .input-group__details:before,\n.application .theme--light.input-group.input-group--overflow .input-group__details:before,\n.theme--light .input-group.input-group--segmented .input-group__details:before,\n.application .theme--light.input-group.input-group--segmented .input-group__details:before,\n.theme--light .input-group.input-group--editable .input-group__details:before,\n.application .theme--light.input-group.input-group--editable .input-group__details:before {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.application .theme--light.input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.theme--light .input-group.input-group--disabled .input-group__input .input-group__prepend-icon,\n.application .theme--light.input-group.input-group--disabled .input-group__input .input-group__prepend-icon {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group.input-group--disabled .input-group__details:before,\n.application .theme--light.input-group.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-image: linear-gradient(to right, rgba(0,0,0,0.38) 0, rgba(0,0,0,0.38) 33%, transparent 0);\n}\n.theme--light .input-group .input-group--text-field__prefix,\n.application .theme--light.input-group .input-group--text-field__prefix,\n.theme--light .input-group .input-group--text-field__suffix,\n.application .theme--light.input-group .input-group--text-field__suffix {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group .input-group--text-field.input-group--disabled__prefix,\n.application .theme--light.input-group .input-group--text-field.input-group--disabled__prefix,\n.theme--light .input-group .input-group--text-field.input-group--disabled__suffix,\n.application .theme--light.input-group .input-group--text-field.input-group--disabled__suffix {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .input-group input,\n.application .theme--dark.input-group input,\n.theme--dark .input-group textarea,\n.application .theme--dark.input-group textarea {\n  color: #fff;\n}\n.theme--dark .input-group input:disabled,\n.application .theme--dark.input-group input:disabled,\n.theme--dark .input-group textarea:disabled,\n.application .theme--dark.input-group textarea:disabled {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group:not(.input-group--error) .input-group__messages,\n.application .theme--dark.input-group:not(.input-group--error) .input-group__messages {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--dark.input-group.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border: 2px solid rgba(255,255,255,0.7);\n}\n.theme--dark .input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active),\n.application .theme--dark.input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active) {\n  color: #fff;\n}\n.theme--dark .input-group:not(.input-group--error) label,\n.application .theme--dark.input-group:not(.input-group--error) label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error).input-group--disabled label,\n.application .theme--dark.input-group:not(.input-group--error).input-group--disabled label,\n.theme--dark .input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma,\n.application .theme--dark.input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group:not(.input-group--error) .input-group__details:before,\n.application .theme--dark.input-group:not(.input-group--error) .input-group__details:before {\n  background-color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover),\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover) {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before,\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before {\n  background-color: #fff;\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border-color: #fff;\n}\n.theme--dark .input-group.input-group--overflow .input-group__input:before,\n.application .theme--dark.input-group.input-group--overflow .input-group__input:before,\n.theme--dark .input-group.input-group--segmented .input-group__input:before,\n.application .theme--dark.input-group.input-group--segmented .input-group__input:before,\n.theme--dark .input-group.input-group--editable .input-group__input:before,\n.application .theme--dark.input-group.input-group--editable .input-group__input:before,\n.theme--dark .input-group.input-group--overflow .input-group__details:before,\n.application .theme--dark.input-group.input-group--overflow .input-group__details:before,\n.theme--dark .input-group.input-group--segmented .input-group__details:before,\n.application .theme--dark.input-group.input-group--segmented .input-group__details:before,\n.theme--dark .input-group.input-group--editable .input-group__details:before,\n.application .theme--dark.input-group.input-group--editable .input-group__details:before {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.application .theme--dark.input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.theme--dark .input-group.input-group--disabled .input-group__input .input-group__prepend-icon,\n.application .theme--dark.input-group.input-group--disabled .input-group__input .input-group__prepend-icon {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group.input-group--disabled .input-group__details:before,\n.application .theme--dark.input-group.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-image: linear-gradient(to right, rgba(255,255,255,0.5) 0, rgba(255,255,255,0.5) 33%, transparent 0);\n}\n.theme--dark .input-group .input-group--text-field__prefix,\n.application .theme--dark.input-group .input-group--text-field__prefix,\n.theme--dark .input-group .input-group--text-field__suffix,\n.application .theme--dark.input-group .input-group--text-field__suffix {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group .input-group--text-field.input-group--disabled__prefix,\n.application .theme--dark.input-group .input-group--text-field.input-group--disabled__prefix,\n.theme--dark .input-group .input-group--text-field.input-group--disabled__suffix,\n.application .theme--dark.input-group .input-group--text-field.input-group--disabled__suffix {\n  color: rgba(255,255,255,0.5);\n}\n.input-group {\n  display: flex;\n  flex: 1 1;\n  flex-wrap: wrap;\n  min-width: 24px;\n  padding: 18px 0 0;\n  position: relative;\n  width: 100%;\n  outline: none;\n  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group label {\n  display: inline-block;\n  font-size: 16px;\n  line-height: 30px;\n  height: 30px;\n  max-width: 90%;\n  min-width: 0;\n  overflow: hidden;\n  pointer-events: none;\n  text-align: left;\n  text-overflow: ellipsis;\n  transform-origin: top left;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  white-space: nowrap;\n  width: 100%;\n  z-index: 0;\n}\n.input-group__input {\n  display: flex;\n  flex: 1 0 100%;\n  min-width: 0;\n  min-height: 30px;\n}\n.input-group__icon-cb {\n  cursor: pointer;\n}\n.input-group.input-group--focused .input-group__append-icon,\n.input-group.input-group--error .input-group__append-icon,\n.input-group.input-group--focused .input-group__prepend-icon,\n.input-group.input-group--error .input-group__prepend-icon {\n  color: inherit;\n}\n.input-group.input-group--append-icon label,\n.input-group.input-group--selection-controls label {\n  max-width: 75%;\n}\n.input-group.input-group--prepend-icon label {\n  max-width: 75%;\n}\n.input-group.input-group--append-icon.input-group--prepend-icon label {\n  max-width: 65%;\n}\n.input-group .input-group__append-icon {\n  padding: 0 6px;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.input-group .input-group__append-icon,\n.input-group .input-group__prepend-icon {\n  align-self: center;\n  user-select: none;\n}\n.input-group.input-group--single-line.input-group--dirty label,\n.input-group.input-group--solo.input-group--dirty label {\n  display: none;\n}\n.input-group.input-group--solo {\n  background: #fff;\n  min-height: 46px;\n  border-radius: 2px;\n  padding: 0;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.input-group.input-group--solo label {\n  top: 8px;\n  padding-left: 16px;\n  transform: none !important;\n}\n.input-group.input-group--solo .input-group__input {\n  align-items: center;\n  padding: 8px 16px;\n}\n.input-group.input-group--solo .input-group__details {\n  display: none;\n}\n.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-position: bottom;\n  background-size: 3px 1px;\n  background-repeat: repeat-x;\n}\n.input-group.input-group--text-field:not(.input-group--single-line):not(.input-group--error).input-group--focused label {\n  color: inherit;\n}\n.input-group.input-group--text-field:not(.input-group--single-line):not(.input-group--error).input-group--focused .input-group__input {\n  border-color: inherit;\n}\n.input-group.input-group--text-field.input-group--focused:not(.input-group--disabled) .input-group__details:after {\n  transform: scaleX(1);\n}\n.input-group--required label:after {\n  content: '*';\n}\n.input-group.input-group--error label {\n  animation: shake 0.6s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--error .input-group__messages {\n  color: inherit;\n}\n.input-group.input-group--error .input-group__details:before {\n  background-color: currentColor;\n}\n.input-group .slide-y-transition-leave,\n.input-group .slide-y-transition-leave-to {\n  position: absolute;\n}\n.input-group__details {\n  color: inherit;\n  display: flex;\n  padding-top: 4px;\n  flex: 1 0 100%;\n  font-size: 12px;\n  min-height: 26px;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.input-group__details:after,\n.input-group__details:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.input-group__details:after {\n  background-color: currentColor;\n  color: inherit;\n  top: 0;\n  height: 2px;\n  transform: scaleX(0);\n  transform-origin: center center 0;\n  width: 100%;\n  z-index: 1;\n}\n.input-group__details:before {\n  top: 0;\n  height: 1px;\n  width: 100%;\n  z-index: 0;\n}\n.input-group--hide-details .input-group__details {\n  min-height: 2px;\n  padding: 0;\n}\n.input-group--async-loading .input-group__details:before,\n.input-group--async-loading .input-group__details:after {\n  display: none;\n}\n.input-group .progress-linear {\n  position: absolute;\n  top: 0;\n  left: 0;\n  margin: 0;\n}\n.input-group__hint {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group .input-group__error {\n  color: inherit;\n  flex: 1 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--overflow.input-group--active,\n.input-group--segmented.input-group--active,\n.input-group--editable.input-group--active {\n  background-color: #fff;\n}\n.theme--light .list,\n.application .theme--light.list {\n  background: #fff;\n}\n.theme--light .list .list__tile:not(.list__tile--active),\n.application .theme--light.list .list__tile:not(.list__tile--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .list .list__tile__sub-title,\n.application .theme--light.list .list__tile__sub-title {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .list .divider,\n.application .theme--light.list .divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .list .list__tile__mask,\n.application .theme--light.list .list__tile__mask {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .list--group .list__tile--active .list__tile__title,\n.application .theme--light.list--group .list__tile--active .list__tile__title {\n  color: #1976d2;\n}\n.theme--dark .list,\n.application .theme--dark.list {\n  background: #424242;\n}\n.theme--dark .list .list__tile:not(.list__tile--active),\n.application .theme--dark.list .list__tile:not(.list__tile--active) {\n  color: #fff;\n}\n.theme--dark .list .list__tile__sub-title,\n.application .theme--dark.list .list__tile__sub-title {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .list .divider,\n.application .theme--dark.list .divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .list .list__tile__mask,\n.application .theme--dark.list .list__tile__mask {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .list--group .list__tile--active .list__tile__title,\n.application .theme--dark.list--group .list__tile--active .list__tile__title {\n  color: #82b1ff;\n}\n.list {\n  list-style-type: none;\n  padding: 8px 0 8px;\n  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.list .input-group {\n  margin: 0;\n}\n.list > .list__tile ~ .list__tile {\n  margin-top: 0;\n}\n.list__tile {\n  font-size: 16px;\n  font-weight: 400;\n  display: flex;\n  height: 48px;\n  text-decoration: none;\n  align-items: center;\n  padding: 0 16px;\n  margin: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  position: relative;\n  user-select: none;\n}\n.list__tile:after {\n  content: '';\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 1px;\n  opacity: 0;\n  width: 100%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  background-color: rgba(0,0,0,0.12);\n}\n.list__tile--link {\n  cursor: pointer;\n}\n.list__tile--link:hover,\n.list__tile--highlighted {\n  background: rgba(0,0,0,0.12);\n}\n.list__tile__content,\n.list__tile__action,\n.list__tile__avatar {\n  height: 100%;\n}\n.list__tile__title,\n.list__tile__sub-title {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 100%;\n}\n.list__tile__title {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  height: 24px;\n  line-height: 24px;\n  position: relative;\n  text-align: left;\n}\n.list__tile__sub-title {\n  font-size: 14px;\n}\n.list__tile .avatar {\n  justify-content: flex-start;\n  min-width: 56px;\n}\n.list__tile__action {\n  display: flex;\n  justify-content: flex-start;\n  min-width: 56px;\n  align-items: center;\n}\n.list__tile__action .input-group--selection-controls {\n  align-items: center;\n  padding: 0;\n}\n.list__tile__action .input-group__details {\n  display: none;\n}\n.list__tile__action .icon {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.list__tile__action .btn {\n  padding: 0;\n  margin: 0;\n}\n.list__tile__action .btn--icon {\n  margin: -8px;\n}\n.list__tile__action-text {\n  color: #9e9e9e;\n  font-size: 12px;\n}\n.list__tile__action--stack {\n  align-items: flex-end;\n  justify-content: space-between;\n  padding-top: 8px;\n  padding-bottom: 8px;\n  white-space: nowrap;\n  flex-direction: column;\n}\n.list__tile__content {\n  text-align: left;\n  flex: 1 1 auto;\n  overflow: hidden;\n  display: flex;\n  align-items: flex-start;\n  justify-content: center;\n  flex-direction: column;\n}\n.list__tile__content ~ .avatar {\n  justify-content: flex-end;\n}\n.list__tile__content ~ .list__tile__action:not(.list__tile__action--stack) {\n  justify-content: flex-end;\n}\n.list__tile--active .list__tile__action:first-of-type .icon {\n  color: inherit;\n}\n.list__tile--disabled {\n  opacity: 0.4 !important;\n  pointer-events: none;\n}\n.list__tile--avatar {\n  height: 56px;\n}\n.list__tile--avatar .avatar img,\n.list__tile--avatar .avatar .icon {\n  height: 40px;\n  width: 40px;\n}\n.list--dense {\n  padding-top: 4px;\n  padding-bottom: 4px;\n}\n.list--dense .subheader {\n  font-size: 13px;\n  height: 40px;\n}\n.list--dense .list--group .subheader {\n  height: 40px;\n}\n.list--dense .list__tile {\n  font-size: 13px;\n}\n.list--dense .list__tile--avatar {\n  height: 48px;\n}\n.list--dense .list__tile:not(.list__tile--avatar) {\n  height: 40px;\n}\n.list--dense .list__tile .icon {\n  font-size: 22px;\n}\n.list--dense .list__tile__sub-title {\n  font-size: 13px;\n}\n.list--two-line .list__tile {\n  height: 72px;\n}\n.list--two-line.list--dense .list__tile {\n  height: 60px;\n}\n.list--three-line .list__tile {\n  height: 88px;\n}\n.list--three-line .list__tile__sub-title {\n  white-space: initial;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  display: -webkit-box;\n}\n.list--three-line.list--dense .list__tile {\n  height: 76px;\n}\n.list--group {\n  position: relative;\n  padding: 0;\n}\n.list--group:after {\n  content: '';\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 1px;\n  opacity: 0;\n  width: 100%;\n  background-color: rgba(0,0,0,0.12);\n}\n.list--group .list__tile {\n  padding-left: 72px;\n}\n.list--group__header > li:first-child {\n  cursor: pointer;\n  display: block;\n}\n.list--group__header > li:first-child:hover {\n  background: rgba(0,0,0,0.12);\n}\n.list--group__header + .list--group:after {\n  opacity: 1;\n}\n.list--group__header--active .list__tile {\n  background: rgba(0,0,0,0.12);\n}\n.list--group__header--active .list__tile:after {\n  opacity: 1;\n}\n.list--group__header--active .list__tile .list__tile__title {\n  color: inherit;\n}\n.list--group__header--active .list__tile .list__tile__action:last-of-type .icon {\n  transform: rotate(-180deg);\n}\n.list--group__header--no-action + .list--group .list__tile {\n  padding-left: 16px;\n}\n.list--subheader {\n  padding-top: 0;\n}\n.list.list--two-line .list__tile__avatar,\n.list.list--three-line .list__tile__avatar {\n  align-items: flex-start;\n}\n.menu {\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n.menu--disabled {\n  cursor: default;\n}\n.menu--disabled .menu__activator,\n.menu--disabled .menu__activator > * {\n  cursor: default;\n  pointer-events: none;\n}\n.menu__activator {\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n}\n.menu__activator input[readonly] {\n  cursor: pointer;\n}\n.menu__activator .toolbar__side-icon {\n  margin: 0;\n}\n.menu__content {\n  position: absolute;\n  display: inline-block;\n  border-radius: 2px;\n  max-width: 80%;\n  overflow-y: auto;\n  overflow-x: hidden;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  contain: content;\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.menu__content--active {\n  pointer-events: none;\n}\n.menu__content--dropdown {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border-top: 1px solid rgba(0,0,0,0.12);\n}\n.menu__content > .card {\n  contain: content;\n  backface-visibility: hidden;\n}\n.menu-transition-enter .list__tile {\n  min-width: 0;\n  transition-delay: 0.4s;\n  opacity: 0;\n  transform: translateY(-15px);\n  pointer-events: none;\n}\n.menu-transition-enter-to .list__tile {\n  pointer-events: auto;\n  opacity: 1;\n}\n.menu-transition-enter-to .list__tile--active {\n  transform: none !important;\n}\n.menu-transition-leave-to {\n  transform: translateY(-10px);\n}\n.menu-transition-leave-active,\n.menu-transition-leave-to {\n  pointer-events: none;\n}\n.menu-transition-enter,\n.menu-transition-leave-to {\n  opacity: 0;\n}\n.menu-transition-enter-to,\n.menu-transition-leave {\n  opacity: 1;\n}\n.menu-transition-enter-active,\n.menu-transition-leave-active {\n  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.menu-transition-enter.menu__content--auto .list__tile--active {\n  opacity: 1;\n  transform: none !important;\n  pointer-events: auto;\n}\n.theme--light .navigation-drawer,\n.application .theme--light.navigation-drawer {\n  background-color: #fff;\n}\n.theme--light .navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border,\n.application .theme--light.navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .navigation-drawer a:not(.list__tile--active),\n.application .theme--light.navigation-drawer a:not(.list__tile--active),\n.theme--light .navigation-drawer .list,\n.application .theme--light.navigation-drawer .list {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .navigation-drawer .divider,\n.application .theme--light.navigation-drawer .divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .navigation-drawer .list__tile:not(.list__tile--active),\n.application .theme--light.navigation-drawer .list__tile:not(.list__tile--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .navigation-drawer .list__tile:not(.list__tile--active) .icon,\n.application .theme--light.navigation-drawer .list__tile:not(.list__tile--active) .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .navigation-drawer .list__tile__sub-title,\n.application .theme--light.navigation-drawer .list__tile__sub-title {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .navigation-drawer .list--group__header--active .list__tile:after,\n.application .theme--light.navigation-drawer .list--group__header--active .list__tile:after,\n.theme--light .navigation-drawer .list--group__header--active + .list--group:after,\n.application .theme--light.navigation-drawer .list--group__header--active + .list--group:after {\n  background: rgba(0,0,0,0.12);\n}\n.theme--dark .navigation-drawer,\n.application .theme--dark.navigation-drawer {\n  background-color: #424242;\n}\n.theme--dark .navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border,\n.application .theme--dark.navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .navigation-drawer a:not(.list__tile--active),\n.application .theme--dark.navigation-drawer a:not(.list__tile--active),\n.theme--dark .navigation-drawer .list,\n.application .theme--dark.navigation-drawer .list {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .divider,\n.application .theme--dark.navigation-drawer .divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .navigation-drawer .list__tile:not(.list__tile--active),\n.application .theme--dark.navigation-drawer .list__tile:not(.list__tile--active) {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .list__tile:not(.list__tile--active) .icon,\n.application .theme--dark.navigation-drawer .list__tile:not(.list__tile--active) .icon {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .list__tile__sub-title,\n.application .theme--dark.navigation-drawer .list__tile__sub-title {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .navigation-drawer .list--group__header--active .list__tile:after,\n.application .theme--dark.navigation-drawer .list--group__header--active .list__tile:after,\n.theme--dark .navigation-drawer .list--group__header--active + .list--group:after,\n.application .theme--dark.navigation-drawer .list--group__header--active + .list--group:after {\n  background: rgba(255,255,255,0.12);\n}\n.navigation-drawer {\n  max-width: 100%;\n  overflow-y: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  padding: 0 0 100px;\n  pointer-events: auto;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  top: 0;\n  left: 0;\n  will-change: transform;\n  z-index: 3;\n}\n.navigation-drawer__border {\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 100%;\n  width: 1px;\n}\n.navigation-drawer.navigation-drawer--right:after {\n  left: 0;\n  right: initial;\n}\n.navigation-drawer--close.navigation-drawer:not(.navigation-drawer--right) {\n  transform: translateX(-100%);\n}\n.navigation-drawer--close.navigation-drawer--right {\n  transform: translateX(100%);\n}\n.navigation-drawer--right {\n  left: auto;\n  right: 0;\n}\n.navigation-drawer--right > .navigation-drawer__border {\n  right: auto;\n  left: 0;\n}\n.navigation-drawer--absolute {\n  position: absolute;\n}\n.navigation-drawer--fixed {\n  position: fixed;\n}\n.navigation-drawer--floating:after {\n  display: none;\n}\n.navigation-drawer--mini-variant {\n  overflow: hidden;\n}\n.navigation-drawer--mini-variant .list__tile__action,\n.navigation-drawer--mini-variant .list__tile__avatar {\n  justify-content: center;\n  min-width: 48px;\n}\n.navigation-drawer--mini-variant .list__tile__content,\n.navigation-drawer--mini-variant .list__tile:after {\n  opacity: 0;\n}\n.navigation-drawer--mini-variant .subheader,\n.navigation-drawer--mini-variant .divider,\n.navigation-drawer--mini-variant .list--group {\n  display: none !important;\n}\n.navigation-drawer--temporary,\n.navigation-drawer--is-mobile {\n  z-index: 6;\n}\n.navigation-drawer--temporary:not(.navigation-drawer--close),\n.navigation-drawer--is-mobile:not(.navigation-drawer--close) {\n  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12);\n}\n.navigation-drawer .list {\n  background: inherit;\n}\n.navigation-drawer > .list .list__tile {\n  transition: none;\n  font-weight: 500;\n}\n.navigation-drawer > .list .list__tile--active .list__tile__title {\n  color: inherit;\n}\n.navigation-drawer > .list .list--group .list__tile {\n  font-weight: 400;\n}\n.navigation-drawer > .list .list--group__header--active:after {\n  background: transparent;\n}\n.navigation-drawer > .list:not(.list--dense) .list__tile {\n  font-size: 14px;\n}\n.overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  pointer-events: none;\n  transition: 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);\n  z-index: 5;\n}\n.overlay--absolute {\n  position: absolute;\n}\n.overlay:before {\n  background-color: #212121;\n  bottom: 0;\n  content: '';\n  height: 100%;\n  left: 0;\n  opacity: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  transition: inherit;\n  transition-delay: 150ms;\n  width: 100%;\n}\n.overlay--active {\n  pointer-events: auto;\n  touch-action: none;\n}\n.overlay--active:before {\n  opacity: 0.46;\n}\n.theme--light .pagination__item,\n.application .theme--light.pagination__item {\n  background: #fff;\n  color: #000;\n}\n.theme--light .pagination__item--active,\n.application .theme--light.pagination__item--active {\n  color: #fff;\n}\n.theme--light .pagination__navigation,\n.application .theme--light.pagination__navigation {\n  background: #fff;\n}\n.theme--light .pagination__navigation .icon,\n.application .theme--light.pagination__navigation .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .pagination__item,\n.application .theme--dark.pagination__item {\n  background: #424242;\n  color: #fff;\n}\n.theme--dark .pagination__item--active,\n.application .theme--dark.pagination__item--active {\n  color: #fff;\n}\n.theme--dark .pagination__navigation,\n.application .theme--dark.pagination__navigation {\n  background: #424242;\n}\n.theme--dark .pagination__navigation .icon,\n.application .theme--dark.pagination__navigation .icon {\n  color: #fff;\n}\n.pagination {\n  align-items: center;\n  align-items: center;\n  display: inline-flex;\n  list-style-type: none;\n  margin: 0;\n  overflow-x: auto;\n  max-width: 100%;\n  padding: 0;\n}\n.pagination > li {\n  align-items: center;\n  display: flex;\n}\n.pagination--circle .pagination__item,\n.pagination--circle .pagination__more,\n.pagination--circle .pagination__navigation {\n  border-radius: 50%;\n}\n.pagination--disabled {\n  pointer-events: none;\n  opacity: 0.6;\n}\n.pagination__item {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n  border-radius: 4px;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 14px;\n  background: transparent;\n  height: 34px;\n  width: 34px;\n  margin: 0.3rem;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n}\n.pagination__item--active {\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.pagination__navigation {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  text-decoration: none;\n  height: 2rem;\n  border-radius: 4px;\n  width: 2rem;\n  margin: 0.3rem 10px;\n}\n.pagination__navigation .icon {\n  font-size: 2rem;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.6, 1);\n  vertical-align: middle;\n}\n.pagination__navigation--disabled {\n  opacity: 0.6;\n  pointer-events: none;\n}\n.pagination__more {\n  margin: 0.3rem;\n  display: inline-flex;\n  align-items: flex-end;\n  justify-content: center;\n  height: 2rem;\n  width: 2rem;\n}\n.parallax {\n  position: relative;\n  overflow: hidden;\n  z-index: 0;\n}\n.parallax__image-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 1;\n  contain: strict;\n}\n.parallax__image {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  min-width: 100%;\n  min-height: 100%;\n  display: none;\n  transform: translate(-50%, 0);\n  will-change: transform;\n  transition: 0.3s opacity cubic-bezier(0.25, 0.8, 0.5, 1);\n  z-index: 1;\n}\n.parallax__content {\n  color: #fff;\n  height: 100%;\n  z-index: 2;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding: 0 1rem;\n}\n.theme--dark .picker .picker__title,\n.application .theme--dark.picker .picker__title {\n  background: #616161;\n}\n.theme--light .picker,\n.application .theme--light.picker {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .picker .picker__body,\n.application .theme--light.picker .picker__body {\n  background: #fff;\n}\n.theme--dark .picker,\n.application .theme--dark.picker {\n  color: #fff;\n}\n.theme--dark .picker .picker__body,\n.application .theme--dark.picker .picker__body {\n  background: #424242;\n}\n.picker {\n  border-radius: 2px;\n  display: flex;\n  flex-direction: column;\n  width: 290px;\n  contain: content;\n}\n.picker .card__row--actions {\n  border: none;\n  margin-top: -20px;\n}\n.picker__title {\n  color: #fff;\n  border-top-left-radius: 2px;\n  border-top-right-radius: 2px;\n  height: 105px;\n  padding: 16px;\n}\n.picker__body {\n  height: 290px;\n  overflow: hidden;\n  position: relative;\n}\n.picker--landscape {\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 500px;\n}\n.picker--landscape .picker__title {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n  flex: 0 1 170px;\n  width: 170px;\n  height: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  z-index: 1;\n}\n.picker--landscape .picker__body {\n  flex: 1 0;\n  width: 330px;\n  margin-left: 170px;\n}\n.picker--landscape .card__row--actions {\n  margin-left: 170px;\n  width: 330px;\n}\n.progress-circular {\n  position: relative;\n  display: inline-flex;\n}\n.progress-circular--indeterminate svg {\n  animation: progress-circular-rotate 1.4s linear infinite;\n  transform-origin: center center;\n  width: 100%;\n  height: 100%;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  transition: all 0.2s ease-in-out;\n  z-index: 0;\n}\n.progress-circular--indeterminate .progress-circular__overlay {\n  animation: progress-circular-dash 1.4s ease-in-out infinite;\n  stroke-linecap: round;\n  stroke-dasharray: 80, 200;\n  stroke-dashoffset: 0px;\n}\n.progress-circular__underlay {\n  stroke: rgba(0,0,0,0.1);\n  z-index: 1;\n}\n.progress-circular__overlay {\n  stroke: currentColor;\n  z-index: 2;\n  transition: all 0.6s ease-in-out;\n}\n.progress-circular__info {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n@-moz-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-webkit-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-o-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-moz-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@-webkit-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@-o-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n.progress-linear {\n  background: transparent;\n  margin: 1rem 0;\n  overflow: hidden;\n  width: 100%;\n  position: relative;\n}\n.progress-linear__bar {\n  width: 100%;\n  height: inherit;\n  position: relative;\n  transition: 0.3s ease-in;\n  z-index: 1;\n}\n.progress-linear__bar__determinate {\n  height: inherit;\n  transition: 0.3s ease-in;\n}\n.progress-linear__bar__indeterminate .long,\n.progress-linear__bar__indeterminate .short {\n  height: inherit;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  will-change: left, right;\n  width: auto;\n  background-color: inherit;\n}\n.progress-linear__bar__indeterminate--active .long {\n  animation: indeterminate;\n  animation-duration: 2.2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear__bar__indeterminate--active .short {\n  animation: indeterminate-short;\n  animation-duration: 2.2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear__background {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  transition: 0.3s ease-in;\n}\n.progress-linear--query .progress-linear__bar__indeterminate--active .long {\n  animation: only screen and (min-width: 1904px);\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear--query .progress-linear__bar__indeterminate--active .short {\n  animation: query-short;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n}\n@-moz-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-webkit-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-o-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-moz-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-webkit-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-o-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-moz-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-webkit-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-o-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-moz-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@-webkit-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@-o-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n.radio-group .input-group__details:before,\n.radio-group .input-group__details:after {\n  display: none;\n}\n.radio-group .input-group {\n  padding: 0;\n}\n.radio-group--column .input-group__input {\n  display: block;\n}\n.radio-group--row .input-group__input {\n  flex-direction: row;\n}\n.radio-group.input-group--error .radio label,\n.radio-group.input-group--error .radio .icon--selection-control {\n  color: inherit;\n}\n.ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict;\n}\n.ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity;\n}\n.ripple__animation--enter {\n  transition: none;\n}\n.ripple__animation--visible {\n  opacity: 0.15;\n}\n.theme--light .input-group--select.input-group--editable .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--editable .input-group__input:hover,\n.theme--light .input-group--select.input-group--overflow .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--overflow .input-group__input:hover,\n.theme--light .input-group--select.input-group--segmented .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--segmented .input-group__input:hover {\n  background: #fff;\n}\n.theme--light .input-group--select.input-group--editable.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--editable.input-group--focused .input-group__input,\n.theme--light .input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.theme--light .input-group--select.input-group--segmented.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--segmented.input-group--focused .input-group__input {\n  background: #fff;\n}\n.theme--dark .input-group--select.input-group--editable .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--editable .input-group__input:hover,\n.theme--dark .input-group--select.input-group--overflow .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--overflow .input-group__input:hover,\n.theme--dark .input-group--select.input-group--segmented .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--segmented .input-group__input:hover {\n  background: #424242;\n}\n.theme--dark .input-group--select.input-group--editable.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--editable.input-group--focused .input-group__input,\n.theme--dark .input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.theme--dark .input-group--select.input-group--segmented.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--segmented.input-group--focused .input-group__input {\n  background: #424242;\n}\n.input-group--select .input-group--select__autocomplete {\n  display: block;\n  height: 0px;\n}\n.input-group--select .input-group--select__autocomplete--index {\n  opacity: 0 !important;\n}\n.input-group--select .input-group__append-icon {\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n}\n.input-group--select .input-group__append-icon.input-group__icon-clearable {\n  transition: none;\n}\n.input-group--select:not(.input-group--dirty) .input-group--select__autocomplete,\n.input-group--select.input-group--focused .input-group--select__autocomplete {\n  padding-bottom: 1px;\n  height: 30px;\n}\n.input-group--select.input-group--focused .input-group--select__autocomplete {\n  display: inline-block;\n  opacity: 1;\n}\n.input-group--select.input-group--focused.input-group--open .input-group__append-icon:not(.input-group__icon-clearable) {\n  transform: rotate(-180deg);\n}\n.input-group--select .input-group__input {\n  cursor: pointer;\n}\n.input-group--select.input-group--disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.input-group--select .input-group__selections {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  position: relative;\n  width: 100%;\n}\n.input-group--select .input-group__selections__comma {\n  display: inline-flex;\n  font-size: 16px;\n  padding: 3px 4px 3px 0;\n}\n.input-group--select .input-group__selections__comma--active {\n  color: inherit;\n}\n.input-group--select .menu {\n  display: inline;\n}\n.input-group--select .fade-transition-leave-active {\n  position: absolute;\n  left: 0;\n}\n.input-group--select.input-group--autocomplete.input-group--search-focused .input-group__selections__comma {\n  display: none;\n}\n.input-group--autocomplete .input-group__selections {\n  cursor: text;\n}\n.input-group.input-group--overflow,\n.input-group.input-group--editable,\n.input-group.input-group--segmented {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__append-icon,\n.input-group.input-group--editable .input-group__append-icon,\n.input-group.input-group--segmented .input-group__append-icon {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__selections,\n.input-group.input-group--editable .input-group__selections,\n.input-group.input-group--segmented .input-group__selections,\n.input-group.input-group--overflow input,\n.input-group.input-group--editable input,\n.input-group.input-group--segmented input {\n  height: 48px;\n}\n.input-group.input-group--overflow .input-group__selections__comma,\n.input-group.input-group--editable .input-group__selections__comma,\n.input-group.input-group--segmented .input-group__selections__comma,\n.input-group.input-group--overflow input,\n.input-group.input-group--editable input,\n.input-group.input-group--segmented input {\n  top: 0;\n  left: 0;\n  padding-left: 16px;\n}\n.input-group.input-group--overflow .input-group__selections,\n.input-group.input-group--editable .input-group__selections,\n.input-group.input-group--segmented .input-group__selections {\n  width: calc(100% - 55px);\n}\n.input-group.input-group--overflow .input-group__selections .btn,\n.input-group.input-group--editable .input-group__selections .btn,\n.input-group.input-group--segmented .input-group__selections .btn {\n  border-radius: 0;\n  margin: 0;\n  height: 48px;\n  width: 100%;\n}\n.input-group.input-group--overflow .input-group__selections .btn .btn__content,\n.input-group.input-group--editable .input-group__selections .btn .btn__content,\n.input-group.input-group--segmented .input-group__selections .btn .btn__content {\n  justify-content: start;\n}\n.input-group.input-group--overflow .input-group__input,\n.input-group.input-group--editable .input-group__input,\n.input-group.input-group--segmented .input-group__input {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--overflow.input-group--focused .input-group__input,\n.input-group.input-group--editable.input-group--focused .input-group__input,\n.input-group.input-group--segmented.input-group--focused .input-group__input {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.input-group.input-group--overflow label,\n.input-group.input-group--editable label,\n.input-group.input-group--segmented label {\n  left: 16px !important;\n  top: 9px !important;\n}\n.input-group.input-group--overflow .input-group__details:after,\n.input-group.input-group--editable .input-group__details:after,\n.input-group.input-group--segmented .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--overflow .input-group__input,\n.input-group.input-group--editable .input-group__input,\n.input-group.input-group--segmented .input-group__input {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__input:before,\n.input-group.input-group--editable .input-group__input:before,\n.input-group.input-group--segmented .input-group__input:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  width: 100%;\n  height: 1px;\n  top: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--overflow .input-group__append-icon,\n.input-group.input-group--editable .input-group__append-icon,\n.input-group.input-group--segmented .input-group__append-icon {\n  width: 55px;\n}\n.input-group--segmented .input-group__input:after,\n.input-group--editable .input-group__input:hover:after,\n.input-group.input-group--focused.input-group--editable .input-group__input:after {\n  background-color: rgba(0,0,0,0.12);\n  content: '';\n  position: absolute;\n  right: 55px;\n  height: 48px;\n  top: 0;\n  width: 1px;\n}\n.menu__content--select .input-group--selection-controls__ripple {\n  display: none;\n}\n.menu__content--autocomplete {\n  border-radius: 0;\n}\n.menu__content--autocomplete > .card {\n  border-radius: 0;\n}\n.theme--light .input-group--selection-controls label,\n.application .theme--light.input-group--selection-controls label {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group--selection-controls .icon--selection-control,\n.application .theme--light.input-group--selection-controls .icon--selection-control {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group--selection-controls.input-group--active .icon--selection-control,\n.application .theme--light.input-group--selection-controls.input-group--active .icon--selection-control {\n  color: inherit;\n}\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox {\n  color: inherit;\n}\n.theme--dark .input-group--selection-controls label,\n.application .theme--dark.input-group--selection-controls label {\n  color: #fff;\n}\n.theme--dark .input-group--selection-controls .icon--selection-control,\n.application .theme--dark.input-group--selection-controls .icon--selection-control {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group--selection-controls.input-group--active .icon--selection-control,\n.application .theme--dark.input-group--selection-controls.input-group--active .icon--selection-control {\n  color: inherit;\n}\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox {\n  color: inherit;\n}\n.input-group--selection-controls.input-group--tab-focused .input-group--selection-controls__ripple:before,\n.input-group--tab-focused .input-group:focus .input-group--selection-controls__ripple:before {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 0.15;\n}\n.input-group.input-group--selection-controls {\n  display: flex;\n  padding: 0;\n}\n.input-group.input-group--selection-controls .icon--selection-control {\n  cursor: pointer;\n  position: absolute;\n  left: 0;\n  user-select: none;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.input-group.input-group--selection-controls .input-group__details:before,\n.input-group.input-group--selection-controls .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--selection-controls .input-group__input {\n  color: inherit;\n  width: 100%;\n  position: relative;\n}\n.input-group.input-group--selection-controls .input-group__input .icon--selection-control {\n  align-self: center;\n  height: 30px;\n  margin: auto;\n}\n.input-group.input-group--selection-controls.input-group--error label {\n  color: inherit;\n}\n.input-group.input-group--selection-controls.input-group--error .input-group__input .icon--selection-control {\n  color: inherit;\n}\n.input-group.input-group--selection-controls label {\n  cursor: pointer;\n  position: absolute;\n  left: 32px;\n  user-select: none;\n  z-index: 1;\n  pointer-events: all;\n}\n.input-group--selection-controls__ripple {\n  border-radius: 50%;\n  height: 48px;\n  width: 48px;\n  cursor: pointer;\n  position: absolute;\n  transform: translate(-12px, -50%);\n  transform-origin: center center;\n  top: 50%;\n  left: 0;\n}\n.input-group--selection-controls__ripple:before {\n  content: '';\n  position: absolute;\n  width: 36px;\n  height: 36px;\n  background: currentColor;\n  border-radius: 50%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) scale(0.3);\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  transform-origin: center center;\n}\n.input-group--prepend-icon.input-group--selection-controls .icon--selection-control,\n.input-group--prepend-icon.input-group--selection-controls .input-group--selection-controls__ripple {\n  left: 38px;\n}\n.input-group--prepend-icon.input-group--selection-controls label {\n  left: 76px;\n}\n.input-group--prepend-icon.radio-group--row .icon--selection-control,\n.input-group--prepend-icon.radio-group--row .input-group--selection-controls__ripple {\n  left: 14px;\n}\n.input-group--prepend-icon.radio-group--row label {\n  left: 52px;\n}\n.theme--light .input-group--slider label,\n.application .theme--light.input-group--slider label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group--slider .slider__track,\n.application .theme--light.input-group--slider .slider__track,\n.theme--light .input-group--slider .slider__track-fill,\n.application .theme--light.input-group--slider .slider__track-fill {\n  background: rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider .slider__track__container:after,\n.application .theme--light.input-group--slider .slider__track__container:after {\n  border: 1px solid rgba(0,0,0,0.87);\n}\n.theme--light .input-group--slider .slider__tick,\n.application .theme--light.input-group--slider .slider__tick {\n  border: 1px solid rgba(0,0,0,0.87);\n}\n.theme--light .input-group--slider:not(.input-group--dirty) .slider__thumb--label,\n.application .theme--light.input-group--slider:not(.input-group--dirty) .slider__thumb--label {\n  background: rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider:not(.input-group--dirty) .slider__thumb,\n.application .theme--light.input-group--slider:not(.input-group--dirty) .slider__thumb {\n  border: 3px solid rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider:not(.input-group--dirty):focus .slider__thumb,\n.application .theme--light.input-group--slider:not(.input-group--dirty):focus .slider__thumb {\n  border: 3px solid rgba(0,0,0,0.38);\n}\n.theme--light .input-group--slider.input-group--disabled .slider__thumb,\n.application .theme--light.input-group--slider.input-group--disabled .slider__thumb {\n  background: none;\n  border: 3px solid rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider.input-group--disabled.input-group--dirty .slider__thumb,\n.application .theme--light.input-group--slider.input-group--disabled.input-group--dirty .slider__thumb {\n  background: rgba(0,0,0,0.26);\n  border: 0px solid transparent;\n}\n.theme--light .input-group--slider:focus .slider__track,\n.application .theme--light.input-group--slider:focus .slider__track {\n  background: rgba(0,0,0,0.38);\n}\n.theme--dark .input-group--slider label,\n.application .theme--dark.input-group--slider label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group--slider .slider__track,\n.application .theme--dark.input-group--slider .slider__track,\n.theme--dark .input-group--slider .slider__track-fill,\n.application .theme--dark.input-group--slider .slider__track-fill {\n  background: rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider .slider__track__container:after,\n.application .theme--dark.input-group--slider .slider__track__container:after {\n  border: 1px solid #fff;\n}\n.theme--dark .input-group--slider .slider__tick,\n.application .theme--dark.input-group--slider .slider__tick {\n  border: 1px solid #fff;\n}\n.theme--dark .input-group--slider:not(.input-group--dirty) .slider__thumb--label,\n.application .theme--dark.input-group--slider:not(.input-group--dirty) .slider__thumb--label {\n  background: rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider:not(.input-group--dirty) .slider__thumb,\n.application .theme--dark.input-group--slider:not(.input-group--dirty) .slider__thumb {\n  border: 3px solid rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider:not(.input-group--dirty):focus .slider__thumb,\n.application .theme--dark.input-group--slider:not(.input-group--dirty):focus .slider__thumb {\n  border: 3px solid rgba(255,255,255,0.3);\n}\n.theme--dark .input-group--slider.input-group--disabled .slider__thumb,\n.application .theme--dark.input-group--slider.input-group--disabled .slider__thumb {\n  background: none;\n  border: 3px solid rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider.input-group--disabled.input-group--dirty .slider__thumb,\n.application .theme--dark.input-group--slider.input-group--disabled.input-group--dirty .slider__thumb {\n  background: rgba(255,255,255,0.2);\n  border: 0px solid transparent;\n}\n.theme--dark .input-group--slider:focus .slider__track,\n.application .theme--dark.input-group--slider:focus .slider__track {\n  background: rgba(255,255,255,0.3);\n}\n.input-group.input-group--slider {\n  flex-direction: row;\n  flex-wrap: wrap;\n  padding-right: 16px;\n}\n.input-group.input-group--slider .input-group__details:before,\n.input-group.input-group--slider .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--slider .input-group__input {\n  flex: 1 1 100%;\n}\n.input-group.input-group--slider label {\n  flex: 0 1 auto;\n  width: auto;\n  align-items: center;\n  display: inline-flex;\n  font-size: 18px;\n  transform: none;\n}\n.input-group.input-group--slider label + .input-group__input {\n  margin-left: 16px;\n  flex: 1 0 auto;\n}\n.input-group.input-group--slider.input-group--active .slider__thumb {\n  transform: translateY(-50%) scale(1.2);\n}\n.input-group.input-group--slider.input-group--active .slider__track {\n  transition: none;\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container--label .slider__thumb {\n  transform: translateY(-50%) scale(0);\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container--label .slider__thumb:hover {\n  transform: translateY(-50%) scale(0);\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container,\n.input-group.input-group--slider.input-group--active .slider__track-fill {\n  transition: none;\n}\n.input-group.input-group--slider.input-group--active.input-group--ticks .slider__track__container:after,\n.input-group.input-group--slider.input-group--active.input-group--ticks .slider__tick {\n  opacity: 1;\n}\n.input-group.input-group--slider.input-group--disabled {\n  pointer-events: none;\n}\n.input-group.input-group--slider.input-group--disabled .slider__thumb {\n  transform: translateY(-50%) scale(0.5);\n  background: transparent;\n}\n.input-group.input-group--slider.input-group--disabled.input-group--dirty {\n  border-color: transparent;\n}\n.input-group.input-group--slider.input-group--prepend-icon .slider {\n  margin-left: 40px;\n}\n.input-group.input-group--slider.input-group--append-icon .slider {\n  margin-right: 40px;\n}\n.slider {\n  cursor: default;\n  display: flex;\n  align-items: center;\n  position: relative;\n  height: 30px;\n  flex: 1;\n  user-select: none;\n}\n.slider__track__container {\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  height: 2px;\n  width: 100%;\n  overflow: hidden;\n}\n.slider__track__container:after {\n  content: '';\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 2px;\n  opacity: 0;\n}\n.slider__track,\n.slider__thumb,\n.slider__tick {\n  position: absolute;\n  top: 0;\n}\n.slider__track {\n  height: 2px;\n  left: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform-origin: right;\n  overflow: hidden;\n  width: 100%;\n}\n.slider__track-fill {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  transform-origin: left;\n  width: 100%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slider__ticks-container {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 100%;\n  top: 50%;\n  overflow: hidden;\n}\n.slider__tick {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  opacity: 0;\n}\n.slider__thumb-container {\n  position: absolute;\n  top: 50%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slider__thumb {\n  width: 16px;\n  height: 16px;\n  left: -8px;\n  top: 50%;\n  border-radius: 50%;\n  background: transparent;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform: translateY(-50%) scale(0.8);\n  user-select: none;\n}\n.slider__thumb--label__container {\n  position: absolute;\n  left: 0;\n  top: 0;\n  transition: 0.3s ease-in-out;\n}\n.slider__thumb--label {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 12px;\n  color: #fff;\n  width: 28px;\n  height: 28px;\n  border-radius: 50% 50% 0;\n  position: absolute;\n  left: -14px;\n  top: -40px;\n  transform: rotate(45deg);\n  user-select: none;\n  transition: 0.3s ease-in-out;\n}\n.slider__thumb--label span {\n  transform: rotate(-45deg);\n}\n.slider__track,\n.slider__track-fill {\n  position: absolute;\n}\n.theme--light .small-dialog__content,\n.application .theme--light.small-dialog__content {\n  background: #fff;\n}\n.theme--light .small-dialog__actions,\n.application .theme--light.small-dialog__actions {\n  background: #fff;\n}\n.theme--light .small-dialog a,\n.application .theme--light.small-dialog a {\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .small-dialog__content,\n.application .theme--dark.small-dialog__content {\n  background: #424242;\n}\n.theme--dark .small-dialog__actions,\n.application .theme--dark.small-dialog__actions {\n  background: #424242;\n}\n.theme--dark .small-dialog a,\n.application .theme--dark.small-dialog a {\n  color: #fff;\n}\n.small-dialog {\n  display: block;\n  height: 100%;\n}\n.small-dialog__content {\n  padding: 0 24px;\n}\n.small-dialog__actions {\n  text-align: right;\n}\n.small-dialog a {\n  display: flex;\n  align-items: center;\n  height: 100%;\n  text-decoration: none;\n}\n.small-dialog a > * {\n  width: 100%;\n}\n.small-dialog .menu__activator {\n  height: 100%;\n}\n.snack {\n  background-color: #323232;\n  position: fixed;\n  display: flex;\n  height: 0;\n  pointer-events: none;\n  visibility: visible;\n  z-index: 1000;\n}\n.snack--absolute {\n  position: absolute;\n}\n.snack--top {\n  top: 0;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n.snack--bottom {\n  bottom: 48px;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n.snack--left {\n  left: 8px;\n  right: initial;\n  transform: none;\n}\n.snack--left.snack--top {\n  top: 8px;\n}\n.snack--left.snack--bottom {\n  bottom: 56px;\n}\n.snack--right {\n  left: initial;\n  right: 8px;\n  transform: none;\n}\n.snack--right.snack--top {\n  top: 8px;\n}\n.snack--right.snack--bottom {\n  top: initial;\n  bottom: 56px;\n}\n.snack__content {\n  background-color: inherit;\n  padding: 14px 24px;\n  border-radius: 2px;\n  pointer-events: auto;\n  max-width: 568px;\n  min-width: 288px;\n  height: 48px;\n  align-items: center;\n  color: #fff;\n  display: flex;\n  font-size: 14px;\n  justify-content: space-between;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n  position: relative !important;\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);\n}\n.snack__content .btn {\n  margin: 0 0 0 48px;\n}\n.snack--multi-line .snack__content {\n  height: 80px;\n  padding: 24px;\n}\n.snack--bottom.snack--multi-line,\n.snack--right.snack--multi-line {\n  bottom: 80px;\n}\n.snack--vertical .snack__content {\n  height: 112px;\n  padding: 24px 24px 14px;\n  flex-direction: column;\n  align-items: initial;\n}\n.snack--vertical .snack__content .btn {\n  align-self: flex-end;\n}\n.snack--bottom.snack--vertical,\n.snack--right.snack--vertical {\n  bottom: 112px;\n}\n@media only screen and (max-width: 599px) {\n.snack {\n    width: 100%;\n    left: 0;\n    right: initial;\n    transform: none;\n}\n.snack--right.snack--top,\n  .snack--left.snack--top {\n    top: 0;\n}\n.snack--right.snack--bottom,\n  .snack--left.snack--bottom {\n    bottom: 48px;\n}\n.snack__content {\n    border-radius: 0;\n    max-width: 100%;\n    width: 100%;\n}\n.snack__content .btn {\n    margin: 0 0 0 24px;\n}\n}\n.speed-dial {\n  position: relative;\n}\n.speed-dial--absolute {\n  position: absolute;\n}\n.speed-dial--fixed {\n  position: fixed;\n}\n.speed-dial--top:not(.speed-dial--absolute) {\n  top: 16px;\n}\n.speed-dial--top.speed-dial--absolute {\n  top: 50%;\n  transform: translateY(-50%);\n}\n.speed-dial--bottom:not(.speed-dial--absolute) {\n  bottom: 16px;\n}\n.speed-dial--bottom.speed-dial--absolute {\n  bottom: 50%;\n  transform: translateY(50%);\n}\n.speed-dial--left {\n  left: 16px;\n}\n.speed-dial--right {\n  right: 16px;\n}\n.speed-dial--direction-left .speed-dial__list,\n.speed-dial--direction-right .speed-dial__list {\n  height: 100%;\n  top: 0;\n}\n.speed-dial--direction-top .speed-dial__list,\n.speed-dial--direction-bottom .speed-dial__list {\n  left: 0;\n  width: 100%;\n}\n.speed-dial--direction-top .speed-dial__list {\n  flex-direction: column-reverse;\n  bottom: 100%;\n}\n.speed-dial--direction-right .speed-dial__list {\n  flex-direction: row;\n  left: 100%;\n}\n.speed-dial--direction-bottom .speed-dial__list {\n  flex-direction: column;\n  top: 100%;\n}\n.speed-dial--direction-left .speed-dial__list {\n  flex-direction: row-reverse;\n  right: 100%;\n}\n.speed-dial__list {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  position: absolute;\n}\n.speed-dial__list .btn:nth-child(1) {\n  transition-delay: 0.05s;\n}\n.speed-dial__list .btn:nth-child(2) {\n  transition-delay: 0.1s;\n}\n.speed-dial__list .btn:nth-child(3) {\n  transition-delay: 0.15s;\n}\n.speed-dial__list .btn:nth-child(4) {\n  transition-delay: 0.2s;\n}\n.speed-dial__list .btn:nth-child(5) {\n  transition-delay: 0.25s;\n}\n.speed-dial__list .btn:nth-child(6) {\n  transition-delay: 0.3s;\n}\n.speed-dial__list .btn:nth-child(7) {\n  transition-delay: 0.35s;\n}\n.theme--light .stepper,\n.application .theme--light.stepper {\n  background: #fff;\n}\n.theme--light .stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step,\n.application .theme--light.stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step {\n  background: rgba(0,0,0,0.38);\n}\n.theme--light .stepper .stepper__step__step,\n.application .theme--light.stepper .stepper__step__step {\n  color: #fff;\n}\n.theme--light .stepper .stepper__step__step .icon,\n.application .theme--light.stepper .stepper__step__step .icon {\n  color: #fff;\n}\n.theme--light .stepper .stepper__header .divider,\n.application .theme--light.stepper .stepper__header .divider {\n  background: rgba(0,0,0,0.12);\n}\n.theme--light .stepper .stepper__step--active .stepper__label,\n.application .theme--light.stepper .stepper__step--active .stepper__label {\n  text-shadow: 0px 0px 0px #000;\n}\n.theme--light .stepper .stepper__step--editable:hover,\n.application .theme--light.stepper .stepper__step--editable:hover {\n  background: rgba(0,0,0,0.06);\n}\n.theme--light .stepper .stepper__step--editable:hover .stepper__label,\n.application .theme--light.stepper .stepper__step--editable:hover .stepper__label {\n  text-shadow: 0px 0px 0px #000;\n}\n.theme--light .stepper .stepper__step--complete .stepper__label,\n.application .theme--light.stepper .stepper__step--complete .stepper__label {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step,\n.application .theme--light.stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step {\n  background: rgba(0,0,0,0.54);\n}\n.theme--light .stepper .stepper__label,\n.application .theme--light.stepper .stepper__label {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .stepper .stepper__label small,\n.application .theme--light.stepper .stepper__label small {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label,\n.application .theme--light.stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .stepper--vertical .stepper__content:not(:last-child),\n.application .theme--light.stepper--vertical .stepper__content:not(:last-child) {\n  border-left: 1px solid rgba(0,0,0,0.12);\n}\n.theme--dark .stepper,\n.application .theme--dark.stepper {\n  background: #303030;\n}\n.theme--dark .stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step,\n.application .theme--dark.stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step {\n  background: rgba(255,255,255,0.5);\n}\n.theme--dark .stepper .stepper__step__step,\n.application .theme--dark.stepper .stepper__step__step {\n  color: #fff;\n}\n.theme--dark .stepper .stepper__step__step .icon,\n.application .theme--dark.stepper .stepper__step__step .icon {\n  color: #fff;\n}\n.theme--dark .stepper .stepper__header .divider,\n.application .theme--dark.stepper .stepper__header .divider {\n  background: rgba(255,255,255,0.12);\n}\n.theme--dark .stepper .stepper__step--active .stepper__label,\n.application .theme--dark.stepper .stepper__step--active .stepper__label {\n  text-shadow: 0px 0px 0px #fff;\n}\n.theme--dark .stepper .stepper__step--editable:hover,\n.application .theme--dark.stepper .stepper__step--editable:hover {\n  background: rgba(255,255,255,0.06);\n}\n.theme--dark .stepper .stepper__step--editable:hover .stepper__label,\n.application .theme--dark.stepper .stepper__step--editable:hover .stepper__label {\n  text-shadow: 0px 0px 0px #fff;\n}\n.theme--dark .stepper .stepper__step--complete .stepper__label,\n.application .theme--dark.stepper .stepper__step--complete .stepper__label {\n  color: rgba(255,255,255,0.87);\n}\n.theme--dark .stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step,\n.application .theme--dark.stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step {\n  background: rgba(255,255,255,0.75);\n}\n.theme--dark .stepper .stepper__label,\n.application .theme--dark.stepper .stepper__label {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .stepper .stepper__label small,\n.application .theme--dark.stepper .stepper__label small {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label,\n.application .theme--dark.stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .stepper--vertical .stepper__content:not(:last-child),\n.application .theme--dark.stepper--vertical .stepper__content:not(:last-child) {\n  border-left: 1px solid rgba(255,255,255,0.12);\n}\n.stepper {\n  overflow: hidden;\n  position: relative;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.stepper__header {\n  align-items: stretch;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.stepper__header .divider {\n  align-self: center;\n  margin: 0 -16px;\n}\n.stepper__items {\n  position: relative;\n  overflow: hidden;\n}\n.stepper__step__step {\n  align-items: center;\n  border-radius: 50%;\n  display: inline-flex;\n  font-size: 12px;\n  justify-content: center;\n  height: 24px;\n  margin-right: 8px;\n  min-width: 24px;\n  width: 24px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.stepper__step__step .icon {\n  font-size: 18px;\n}\n.stepper__step {\n  align-items: center;\n  display: flex;\n  flex-direction: row;\n  padding: 24px;\n  position: relative;\n}\n.stepper__step--active .stepper__label {\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.stepper__step--editable {\n  cursor: pointer;\n}\n.stepper__step.stepper__step--error .stepper__step__step {\n  background: transparent;\n  color: inherit;\n}\n.stepper__step.stepper__step--error .stepper__step__step .icon {\n  font-size: 24px;\n  color: inherit;\n}\n.stepper__step.stepper__step--error .stepper__label {\n  color: inherit;\n  text-shadow: none;\n  font-weight: 500;\n}\n.stepper__step.stepper__step--error .stepper__label small {\n  color: inherit;\n}\n.stepper__label {\n  align-items: flex-start;\n  display: flex;\n  flex-direction: column;\n  text-align: left;\n}\n.stepper__label small {\n  font-size: 12px;\n  font-weight: 300;\n  text-shadow: none;\n}\n.stepper__wrapper {\n  overflow: hidden;\n  transition: none;\n}\n.stepper__content {\n  top: initial;\n  bottom: 0;\n  padding: 16px;\n  flex: 1;\n  width: 100%;\n}\n.stepper__content .btn {\n  margin-left: 0;\n}\n.stepper--is-booted .stepper__content,\n.stepper--is-booted .stepper__wrapper {\n  transition: 0.4s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.stepper--vertical {\n  padding-bottom: 36px;\n}\n.stepper--vertical .stepper__content {\n  margin: -8px -36px -16px 36px;\n  padding: 16px 60px 16px 23px;\n  width: auto;\n}\n.stepper--vertical .stepper__step {\n  padding: 24px 24px 16px;\n}\n.stepper--vertical .stepper__step__step {\n  margin-right: 12px;\n}\n.stepper--alt-labels .stepper__header .divider {\n  margin: 35px -67px 0;\n  align-self: flex-start;\n}\n.stepper--alt-labels .stepper__step {\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  flex-basis: 175px;\n}\n.stepper--alt-labels .stepper__step small {\n  align-self: center;\n}\n.stepper--alt-labels .stepper__step__step {\n  margin-right: 0;\n  margin-bottom: 12px;\n}\n@media only screen and (max-width: 959px) {\n.stepper:not(.stepper--vertical) .stepper__label {\n    display: none;\n}\n.stepper:not(.stepper--vertical) .stepper__step__step {\n    margin-right: 0;\n}\n}\n.theme--light .subheader,\n.application .theme--light.subheader {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .subheader,\n.application .theme--dark.subheader {\n  color: rgba(255,255,255,0.7);\n}\n.subheader {\n  height: 48px;\n  display: flex;\n  align-items: center;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 0 16px 0 16px;\n}\n.subheader--inset {\n  margin-left: 56px;\n}\n.theme--light .switch:not(.input-group--dirty) .input-group--selection-controls__container,\n.application .theme--light.switch:not(.input-group--dirty) .input-group--selection-controls__container {\n  color: rgba(0,0,0,0.38) !important;\n}\n.theme--light .switch .input-group--selection-controls__ripple:after,\n.application .theme--light.switch .input-group--selection-controls__ripple:after {\n  background-color: #fafafa;\n}\n.theme--light .switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active),\n.application .theme--light.switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active) {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .switch .input-group--selection-controls__ripple--active:after,\n.application .theme--light.switch .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.theme--light .switch .input-group--selection-controls__toggle,\n.application .theme--light.switch .input-group--selection-controls__toggle {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .switch .input-group--selection-controls__toggle--active,\n.application .theme--light.switch .input-group--selection-controls__toggle--active {\n  color: inherit;\n}\n.theme--light .switch.input-group--disabled .input-group--selection-controls__ripple:after,\n.application .theme--light.switch.input-group--disabled .input-group--selection-controls__ripple:after {\n  background-color: #bdbdbd !important;\n}\n.theme--light .switch.input-group--disabled .input-group--selection-controls__toggle,\n.application .theme--light.switch.input-group--disabled .input-group--selection-controls__toggle {\n  color: rgba(0,0,0,0.12) !important;\n}\n.theme--dark .switch:not(.input-group--dirty) .input-group--selection-controls__container,\n.application .theme--dark.switch:not(.input-group--dirty) .input-group--selection-controls__container {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .switch .input-group--selection-controls__ripple:after,\n.application .theme--dark.switch .input-group--selection-controls__ripple:after {\n  background-color: #bdbdbd;\n}\n.theme--dark .switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active),\n.application .theme--dark.switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active) {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .switch .input-group--selection-controls__ripple--active:after,\n.application .theme--dark.switch .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.theme--dark .switch .input-group--selection-controls__toggle,\n.application .theme--dark.switch .input-group--selection-controls__toggle {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .switch .input-group--selection-controls__toggle--active,\n.application .theme--dark.switch .input-group--selection-controls__toggle--active {\n  color: inherit;\n}\n.theme--dark .switch.input-group--disabled .input-group--selection-controls__ripple:after,\n.application .theme--dark.switch.input-group--disabled .input-group--selection-controls__ripple:after {\n  background-color: #424242 !important;\n}\n.theme--dark .switch.input-group--disabled .input-group--selection-controls__toggle,\n.application .theme--dark.switch.input-group--disabled .input-group--selection-controls__toggle {\n  color: rgba(255,255,255,0.1) !important;\n}\n.input-group.input-group--selection-controls {\n  z-index: 0;\n}\n.input-group.input-group--selection-controls.switch {\n  min-width: 36px;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__container {\n  color: inherit;\n  position: relative;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__container[class*=\"--text\"] .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__toggle {\n  background-color: currentColor;\n  color: inherit;\n  position: absolute;\n  height: 14px;\n  top: 50%;\n  left: 0;\n  width: 34px;\n  border-radius: 8px;\n  transform: translateY(-50%);\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__toggle.input-group--selection-controls__toggle--active {\n  opacity: 0.5;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple {\n  transform: translate(-15px, -24px);\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n  z-index: 1;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple:after {\n  content: '';\n  position: absolute;\n  display: inline-block;\n  cursor: pointer;\n  width: 20px;\n  border-radius: 50%;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 20px;\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple--active {\n  transform: translate(2px, -24px);\n}\n.input-group.input-group--selection-controls.switch label {\n  padding-left: 14px;\n}\n.theme--light .system-bar,\n.application .theme--light.system-bar {\n  background-color: #e0e0e0;\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .system-bar .icon,\n.application .theme--light.system-bar .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .system-bar--lights-out,\n.application .theme--light.system-bar--lights-out {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.theme--dark .system-bar,\n.application .theme--dark.system-bar {\n  background-color: #000;\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .system-bar .icon,\n.application .theme--dark.system-bar .icon {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .system-bar--lights-out,\n.application .theme--dark.system-bar--lights-out {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.system-bar {\n  align-items: center;\n  display: flex;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 0 8px;\n}\n.system-bar .icon {\n  font-size: 16px;\n}\n.system-bar--fixed,\n.system-bar--absolute {\n  left: 0;\n  top: 0;\n  width: 100%;\n  z-index: 3;\n}\n.system-bar--fixed {\n  position: fixed;\n}\n.system-bar--absolute {\n  position: absolute;\n}\n.system-bar--status .icon {\n  margin-right: 4px;\n}\n.system-bar--window .icon {\n  font-size: 20px;\n  margin-right: 8px;\n}\n.theme--light .table,\n.application .theme--light.table {\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .table thead tr:first-child,\n.application .theme--light.table thead tr:first-child {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.theme--light .table thead th,\n.application .theme--light.table thead th {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .table tbody tr:not(:last-child),\n.application .theme--light.table tbody tr:not(:last-child) {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.theme--light .table tbody tr[active],\n.application .theme--light.table tbody tr[active] {\n  background: #f5f5f5;\n}\n.theme--light .table tbody tr:hover:not(.datatable__expand-row),\n.application .theme--light.table tbody tr:hover:not(.datatable__expand-row) {\n  background: #eee;\n}\n.theme--light .table tfoot tr,\n.application .theme--light.table tfoot tr {\n  border-top: 1px solid rgba(0,0,0,0.12);\n}\n.theme--dark .table,\n.application .theme--dark.table {\n  background-color: #424242;\n  color: #fff;\n}\n.theme--dark .table thead tr:first-child,\n.application .theme--dark.table thead tr:first-child {\n  border-bottom: 1px solid rgba(255,255,255,0.12);\n}\n.theme--dark .table thead th,\n.application .theme--dark.table thead th {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .table tbody tr:not(:last-child),\n.application .theme--dark.table tbody tr:not(:last-child) {\n  border-bottom: 1px solid rgba(255,255,255,0.12);\n}\n.theme--dark .table tbody tr[active],\n.application .theme--dark.table tbody tr[active] {\n  background: #505050;\n}\n.theme--dark .table tbody tr:hover:not(.datatable__expand-row),\n.application .theme--dark.table tbody tr:hover:not(.datatable__expand-row) {\n  background: #616161;\n}\n.theme--dark .table tfoot tr,\n.application .theme--dark.table tfoot tr {\n  border-top: 1px solid rgba(255,255,255,0.12);\n}\n.table__overflow {\n  width: 100%;\n  overflow-x: auto;\n  overflow-y: hidden;\n}\ntable.table {\n  border-radius: 2px;\n  border-collapse: collapse;\n  border-spacing: 0;\n  width: 100%;\n  max-width: 100%;\n}\ntable.table thead td:not(:nth-child(1)),\ntable.table tbody td:not(:nth-child(1)),\ntable.table thead th:not(:nth-child(1)),\ntable.table tbody th:not(:nth-child(1)),\ntable.table thead td:first-child,\ntable.table tbody td:first-child,\ntable.table thead th:first-child,\ntable.table tbody th:first-child {\n  padding: 0 24px;\n}\ntable.table thead tr {\n  height: 56px;\n}\ntable.table thead th {\n  font-weight: 500;\n  font-size: 12px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  white-space: nowrap;\n  user-select: none;\n}\ntable.table thead th.sortable {\n  pointer-events: auto;\n}\ntable.table thead th > div {\n  width: 100%;\n}\ntable.table tbody tr {\n  transition: background 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  will-change: background;\n}\ntable.table tbody td,\ntable.table tbody th {\n  height: 48px;\n}\ntable.table tbody td {\n  font-weight: 400;\n  font-size: 13px;\n}\ntable.table .input-group--selection-controls {\n  padding: 0;\n}\ntable.table .input-group--selection-controls .input-group__details {\n  display: none;\n}\ntable.table .input-group--selection-controls.checkbox .icon {\n  left: 50%;\n  transform: translateX(-50%);\n}\ntable.table .input-group--selection-controls.checkbox .input-group--selection-controls__ripple {\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\ntable.table tfoot tr:not(:last-child) {\n  height: 48px;\n}\ntable.table tfoot tr:not(:last-child):not(:only-child) td {\n  padding: 0 24px;\n}\ntable.table tfoot tr {\n  height: 56px;\n}\n.theme--light .tabs__bar .tabs__li,\n.application .theme--light.tabs__bar .tabs__li {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .tabs__bar .tabs__li.tabs__item--disabled,\n.application .theme--light.tabs__bar .tabs__li.tabs__item--disabled {\n  color: rgba(0,0,0,0.26);\n}\n.theme--light .tabs__bar .tabs__bar,\n.application .theme--light.tabs__bar .tabs__bar {\n  background-color: #fff;\n}\n.theme--light .tabs__bar .tabs__bar .icon--left,\n.application .theme--light.tabs__bar .tabs__bar .icon--left,\n.theme--light .tabs__bar .tabs__bar .icon--right,\n.application .theme--light.tabs__bar .tabs__bar .icon--right {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .tabs__bar .tabs__li,\n.application .theme--dark.tabs__bar .tabs__li {\n  color: #fff;\n}\n.theme--dark .tabs__bar .tabs__li.tabs__item--disabled,\n.application .theme--dark.tabs__bar .tabs__li.tabs__item--disabled {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .tabs__bar .tabs__bar,\n.application .theme--dark.tabs__bar .tabs__bar {\n  background-color: #424242;\n}\n.theme--dark .tabs__bar .tabs__bar .icon--left,\n.application .theme--dark.tabs__bar .tabs__bar .icon--left,\n.theme--dark .tabs__bar .tabs__bar .icon--right,\n.application .theme--dark.tabs__bar .tabs__bar .icon--right {\n  color: rgba(255,255,255,0.5);\n}\n.tabs {\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.tabs--grow .tabs__bar .tabs__li {\n  flex: 1;\n}\n.tabs--fixed > .tabs__bar .tabs__li {\n  min-width: 160px;\n  max-width: 264px;\n  flex: 0 1 160px;\n}\n@media only screen and (max-width: 599px) {\n.tabs--fixed > .tabs__bar .tabs__li {\n    min-width: 72px;\n}\n}\n.tabs--centered .tabs__bar .tabs__container {\n  justify-content: center;\n}\n.tabs--icons .tabs__bar {\n  height: 72px;\n}\n.tabs--icons .tabs__item {\n  flex-direction: column;\n}\n.tabs.tabs--mobile .tabs__bar .icon--left,\n.tabs.tabs--mobile .tabs__bar .icon--right {\n  display: none;\n}\n.tabs.tabs--mobile .tabs__bar .tabs__wrapper--scrollable.tabs__wrapper--overflow {\n  overflow: hidden !important;\n}\n.tabs:not(.tabs--grow):not(.tabs--mobile) .tabs__item {\n  padding: 0 24px;\n}\n.tabs:not(.tabs--centered):not(.tabs--grow):not(.tabs--mobile) .tabs__wrapper--scrollable {\n  margin: 0 60px;\n  overflow: hidden !important;\n}\n.tabs__bar {\n  width: 100%;\n  position: relative;\n  height: 48px;\n}\n@media only screen and (max-width: 959px) {\n.tabs__bar {\n    padding-left: 0;\n}\n}\n.tabs__bar .icon--left,\n.tabs__bar .icon--right {\n  position: absolute;\n  top: 0;\n  width: 32px;\n  align-items: center;\n  height: 100%;\n  cursor: pointer;\n  user-select: none;\n}\n.tabs__bar .icon--left {\n  left: 28px;\n}\n.tabs__bar .icon--right {\n  right: 28px;\n}\n.tabs__container {\n  display: flex;\n  height: 100%;\n  width: 100%;\n  position: absolute;\n  padding: 0;\n  top: 0;\n  align-items: center;\n  list-style: none;\n  will-change: transform;\n  transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);\n}\n.tabs__container > li:not(.tabs__slider) {\n  height: 100%;\n}\n.tabs__container-left {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 32px;\n  display: flex;\n  align-items: center;\n}\n.tabs__wrapper {\n  position: relative;\n  overflow-x: auto;\n  height: inherit;\n}\n.tabs__item {\n  align-items: center;\n  color: inherit !important;\n  display: flex;\n  flex-shrink: 0;\n  justify-content: center;\n  height: 100%;\n  padding: 0 12px;\n  position: relative;\n  opacity: 0.7;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.tabs__item .icon {\n  color: inherit;\n  margin: 0 0 5px;\n}\n.tabs__item--active {\n  opacity: 1;\n}\n.tabs__item--disabled {\n  pointer-events: none;\n}\n.tabs__items {\n  position: relative;\n  overflow: hidden;\n}\n.tabs__content {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.tabs__content .card {\n  border-radius: 0 0 2px 2px;\n}\n.tabs__slider {\n  position: absolute;\n  bottom: 0;\n  height: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.theme--light .input-group--text-field.input-group--text-field-box .input-group__input,\n.application .theme--light.input-group--text-field.input-group--text-field-box .input-group__input {\n  background: rgba(255,255,255,0.6);\n}\n.theme--light .input-group--text-field input::placeholder,\n.application .theme--light.input-group--text-field input::placeholder,\n.theme--light .input-group--text-field textarea::placeholder,\n.application .theme--light.input-group--text-field textarea::placeholder {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group--text-field:not(.input-group--error) .input-group__counter,\n.application .theme--light.input-group--text-field:not(.input-group--error) .input-group__counter {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .input-group--text-field.input-group--text-field-box .input-group__input,\n.application .theme--dark.input-group--text-field.input-group--text-field-box .input-group__input {\n  background: rgba(255,255,255,0.1);\n}\n.theme--dark .input-group--text-field input::placeholder,\n.application .theme--dark.input-group--text-field input::placeholder,\n.theme--dark .input-group--text-field textarea::placeholder,\n.application .theme--dark.input-group--text-field textarea::placeholder {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group--text-field:not(.input-group--error) .input-group__counter,\n.application .theme--dark.input-group--text-field:not(.input-group--error) .input-group__counter {\n  color: rgba(255,255,255,0.7);\n}\n.input-group--text-field label {\n  position: absolute;\n  top: 18px;\n  left: 0;\n}\n.input-group--text-field input,\n.input-group--text-field textarea {\n  font-size: 16px;\n}\n.input-group--text-field input::placeholder,\n.input-group--text-field textarea::placeholder {\n  color: inherit;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group--text-field input {\n  box-shadow: none;\n  flex: 1;\n  height: 30px;\n  margin: 0;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.input-group--text-field input:focus {\n  outline: none;\n}\n.input-group--text-field input:disabled {\n  pointer-events: none;\n}\n.input-group--text-field textarea {\n  flex: 1 1;\n}\n.input-group--text-field textarea:focus {\n  outline: none;\n}\n.input-group--text-field.input-group--textarea label {\n  top: 13px;\n}\n.input-group--text-field.input-group--textarea .input-group__input {\n  border-radius: 2px;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--text-field.input-group--textarea textarea {\n  font-size: 16px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group--text-field.input-group--textarea:not(.input-group--full-width) label {\n  top: 30px;\n  left: 15px;\n}\n.input-group--text-field.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  padding: 30px 0 0 13px;\n}\n.input-group--text-field.input-group--textarea .input-group__details:before,\n.input-group--text-field.input-group--textarea .input-group__details:after {\n  opacity: 0;\n}\n.input-group--text-field .input-group__counter {\n  margin-left: auto;\n}\n.input-group--text-field .input-group__counter--error {\n  color: inherit;\n}\n.input-group--text-field.input-group--placeholder.input-group--dirty input::placeholder,\n.input-group--text-field.input-group--placeholder.input-group--dirty textarea::placeholder {\n  opacity: 0;\n}\n.input-group--text-field.input-group--prepend-icon .input-group__prepend-icon {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n  min-width: 40px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--text-field.input-group--prepend-icon .input-group__details {\n  margin-left: auto;\n  max-width: calc(100% - 40px);\n}\n.input-group--text-field.input-group--prepend-icon label {\n  left: 40px;\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder label {\n  opacity: 1;\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused:not(.input-group--textarea) label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder:not(.input-group--textarea) label {\n  transform: translate(0, -18px) scale(0.75);\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused:not(.input-group--full-width).input-group--textarea label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder:not(.input-group--full-width).input-group--textarea label {\n  transform: translate(0, -8px) scale(0.75);\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused.input-group--text-field-box label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder.input-group--text-field-box label {\n  transform: translate(0, -10px) scale(0.75);\n}\n.input-group--text-field.input-group--dirty.input-group--select label,\n.input-group--text-field.input-group--dirty:not(.input-group--textarea) label {\n  transform: translate(0, -18px) scale(0.75);\n}\n.input-group--text-field.input-group--dirty:not(.input-group--full-width).input-group--textarea label {\n  transform: translate(0, -8px) scale(0.75);\n}\n.input-group--text-field.input-group--multi-line textarea {\n  padding-top: 4px;\n}\n.input-group--text-field.input-group--full-width {\n  padding: 16px;\n}\n.input-group--text-field.input-group--full-width label {\n  margin-left: 16px;\n}\n.input-group--text-field.input-group--full-width .input-group__details:before,\n.input-group--text-field.input-group--full-width .input-group__details:after {\n  display: none;\n}\n.input-group--prefix:not(.input-group--focused):not(.input-group--dirty) label {\n  left: 16px;\n}\n.input-group--prefix .input-group--text-field__prefix,\n.input-group--suffix .input-group--text-field__prefix,\n.input-group--prefix .input-group--text-field__suffix,\n.input-group--suffix .input-group--text-field__suffix {\n  align-items: center;\n  display: inline-flex;\n  font-size: 16px;\n  margin-top: 1px;\n}\n.input-group--prefix .input-group--text-field__prefix,\n.input-group--suffix .input-group--text-field__prefix {\n  margin-right: 3px;\n}\n.input-group--prefix .input-group--text-field__suffix,\n.input-group--suffix .input-group--text-field__suffix {\n  margin-left: 3px;\n}\n.input-group--text-field-box input,\n.input-group--text-field-box textarea {\n  cursor: pointer;\n}\n.input-group--text-field-box label {\n  left: 16px;\n}\n.input-group--text-field-box .input-group__input {\n  align-items: flex-end;\n  border-radius: 4px 4px 0 0;\n  cursor: pointer;\n  min-height: 56px;\n}\n.input-group--text-field-box .input-group__details {\n  padding: 8px 16px 0;\n}\n.input-group--text-field-box .input-group__details:before,\n.input-group--text-field-box .input-group__details:after {\n  height: 2px;\n  border-bottom-left-radius: 4px;\n  border-bottom-right-radius: 4px;\n}\n.input-group--text-field-box.input-group--multi-line textarea {\n  padding-left: 24px;\n  padding-right: 24px;\n}\n.input-group--text-field-box:not(.input-group--textarea).input-group--multi-line .input-group__input {\n  padding-top: 26px;\n}\n.input-group--text-field-box:not(.input-group--textarea).input-group--multi-line label {\n  top: 26px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--multi-line) .input-group__input {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--multi-line) label {\n  top: 32px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--single-line).input-group--focused label,\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--single-line).input-group--dirty label {\n  transform: translate(0, -10px) scale(0.75);\n}\n.input-group--text-field-box.input-group--prepend-icon .input-group__details:before,\n.input-group--text-field-box.input-group--prepend-icon .input-group__details:after {\n  margin-left: 56px;\n  max-width: calc(100% - 56px);\n}\n.input-group--text-field-box.input-group--prepend-icon label {\n  left: 56px;\n}\n.theme--light .picker--time .picker--time__clock,\n.application .theme--light.picker--time .picker--time__clock {\n  background: #e0e0e0;\n}\n.theme--light .picker--time .picker--time__clock > span.disabled,\n.application .theme--light.picker--time .picker--time__clock > span.disabled {\n  color: rgba(0,0,0,0.26);\n}\n.theme--dark .picker--time .picker--time__clock,\n.application .theme--dark.picker--time .picker--time__clock {\n  background: #616161;\n}\n.theme--dark .picker--time .picker--time__clock > span.disabled,\n.application .theme--dark.picker--time .picker--time__clock > span.disabled {\n  color: rgba(255,255,255,0.3);\n}\n.picker--time .card__row--actions {\n  margin-top: -10px;\n}\n.picker--time.picker--landscape {\n  flex-wrap: wrap;\n}\n.picker--time.picker--landscape .picker__title {\n  flex-direction: column;\n  justify-content: center;\n}\n.picker--time.picker--landscape .picker__title div:first-child {\n  text-align: right;\n}\n.picker--time.picker--landscape .picker__title div:first-child span {\n  height: 55px;\n  font-size: 55px;\n}\n.picker--time.picker--landscape .picker__title div:last-child {\n  margin: 16px 0 0;\n  align-self: initial;\n  text-align: center;\n}\n.picker--time.picker--landscape .picker--time__clock {\n  height: 250px;\n  width: 250px;\n}\n.picker--time.picker--landscape .picker--time__clock-hand {\n  height: 97px;\n}\n.picker--time .picker__title {\n  color: #fff;\n  display: flex;\n  justify-content: flex-end;\n}\n.picker--time .picker__title div:first-child {\n  white-space: nowrap;\n}\n.picker--time .picker__title div:first-child span {\n  align-items: center;\n  cursor: pointer;\n  display: inline-flex;\n  height: 70px;\n  font-size: 70px;\n  justify-content: center;\n  opacity: 0.6;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.picker--time .picker__title div:first-child span.active {\n  opacity: 1;\n}\n.picker--time .picker__title div:last-child {\n  align-self: flex-end;\n  display: flex;\n  flex-direction: column;\n  font-size: 16px;\n  margin: 8px 0 6px 8px;\n}\n.picker--time .picker__title div:last-child span {\n  cursor: pointer;\n  opacity: 0.6;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.picker--time .picker__title div:last-child span.active {\n  opacity: 1;\n}\n.picker--time .picker__title div:only-child {\n  flex-direction: row;\n}\n.picker--time__clock {\n  height: 270px;\n  width: 270px;\n  border-radius: 100%;\n  position: absolute;\n  user-select: none;\n  top: 50%;\n  left: 50%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock-hand {\n  height: 40%;\n  width: 2px;\n  bottom: 50%;\n  left: calc(50% - 1px);\n  transform-origin: center bottom;\n  position: absolute;\n  will-change: transform;\n  z-index: 1;\n}\n.picker--time__clock-hand:before {\n  background: transparent;\n  border-width: 2px;\n  border-style: solid;\n  border-color: inherit;\n  border-radius: 100%;\n  width: 10px;\n  height: 10px;\n  content: '';\n  position: absolute;\n  top: -3%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock-hand:after {\n  content: '';\n  position: absolute;\n  height: 8px;\n  width: 8px;\n  top: 100%;\n  left: 50%;\n  border-radius: 100%;\n  border-style: solid;\n  border-color: inherit;\n  background-color: inherit;\n  transform: translate(calc(-50%), -50%);\n}\n.picker--time__clock > span {\n  align-items: center;\n  border-radius: 100%;\n  cursor: default;\n  display: flex;\n  font-size: 16px;\n  justify-content: center;\n  left: calc(50% - 16px);\n  height: 32px;\n  position: absolute;\n  text-align: center;\n  top: calc(50% - 16px);\n  width: 32px;\n  user-select: none;\n}\n.picker--time__clock > span > span {\n  z-index: 1;\n}\n.picker--time__clock > span:before,\n.picker--time__clock > span:after {\n  content: '';\n  border-radius: 100%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 14px;\n  width: 14px;\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock > span:after,\n.picker--time__clock > span:before {\n  height: 40px;\n  width: 40px;\n}\n.picker--time__clock > span.active {\n  color: #fff;\n  cursor: default;\n  z-index: 2;\n}\n.picker--time__clock > span.disabled {\n  pointer-events: none;\n}\n.picker--time .card__row--actions {\n  border: none;\n}\n.theme--light .toolbar,\n.application .theme--light.toolbar {\n  background-color: #f5f5f5;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .toolbar,\n.application .theme--dark.toolbar {\n  background-color: #212121;\n  color: #fff;\n}\n.toolbar {\n  position: relative;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  width: 100%;\n  will-change: padding-left;\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.toolbar .input-group--solo .input-group__details {\n  display: none;\n}\n.toolbar .input-group--single-line:not(.input-group--solo) {\n  padding: 0;\n}\n.toolbar .input-group--single-line:not(.input-group--solo) label {\n  top: auto;\n}\n.toolbar__title {\n  font-size: 20px;\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  margin-left: 16px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.toolbar__content,\n.toolbar__extension {\n  align-items: center;\n  display: flex;\n}\n.toolbar__content > .list,\n.toolbar__extension > .list {\n  flex: 1 1 auto;\n  margin: 0 !important;\n  max-height: 100%;\n}\n.toolbar__content > .btn:last-child,\n.toolbar__extension > .btn:last-child,\n.toolbar__content > .menu:first-child,\n.toolbar__extension > .menu:first-child {\n  margin-right: 8px;\n}\n.toolbar__content > .btn:first-child,\n.toolbar__extension > .btn:first-child,\n.toolbar__content > .menu:first-child,\n.toolbar__extension > .menu:first-child {\n  margin-left: 8px;\n}\n.toolbar__content > *:not(.btn):not(.menu):first-child,\n.toolbar__extension > *:not(.btn):not(.menu):first-child {\n  margin-left: 16px;\n}\n.toolbar__content > *:not(.btn):not(.menu):last-child,\n.toolbar__extension > *:not(.btn):not(.menu):last-child {\n  margin-right: 16px;\n}\n.toolbar__items {\n  display: flex;\n  height: 100%;\n  max-width: 100%;\n  padding: 0;\n}\n.toolbar__items .menu {\n  height: 100%;\n}\n.toolbar__items > .menu .menu__activator {\n  height: 100%;\n}\n.toolbar__items > .menu .menu__activator .btn {\n  height: 100%;\n  margin: 0;\n}\n.toolbar__items > .btn {\n  height: 100%;\n  margin: 0;\n}\n@media only screen and (max-width: 599px) {\n.toolbar .toolbar__content > .btn:last-child,\n  .toolbar .toolbar__extension > .btn:last-child {\n    margin-right: 17px;\n}\n.toolbar .toolbar__content > .btn:first-child,\n  .toolbar .toolbar__extension > .btn:first-child {\n    margin-left: 17px;\n}\n.toolbar .toolbar__content > *:not(.btn):not(.menu):first-child,\n  .toolbar .toolbar__extension > *:not(.btn):not(.menu):first-child {\n    margin-left: 24px;\n}\n.toolbar .toolbar__content > *:not(.btn):not(.menu):last-child,\n  .toolbar .toolbar__extension > *:not(.btn):not(.menu):last-child {\n    margin-right: 24px;\n}\n}\n.toolbar--card {\n  border-radius: 2px 2px 0 0;\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.toolbar--fixed {\n  position: fixed;\n  z-index: 2;\n}\n.toolbar--fixed,\n.toolbar--absolute {\n  top: 0;\n  left: 0;\n}\n.toolbar--absolute {\n  position: absolute;\n  z-index: 2;\n}\n.toolbar--floating {\n  display: inline-flex;\n  margin: 16px;\n  width: auto;\n}\n.toolbar--clipped {\n  z-index: 3;\n}\n.toolbar__extension .toolbar__title {\n  margin-left: 72px !important;\n}\n.toolbar__extension .tabs__bar {\n  align-self: flex-end;\n  margin: 0;\n}\n.tooltip {\n  position: relative;\n}\n.tooltip__content {\n  background: #616161;\n  border-radius: 2px;\n  color: #fff;\n  font-size: 12px;\n  display: inline-block;\n  padding: 5px 8px;\n  position: absolute;\n  text-transform: initial;\n  transition: 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: auto;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.tooltip__content[class*=\"-active\"] {\n  pointer-events: none;\n}\n@media only screen and (max-width: 959px) {\n.tooltip .tooltip__content {\n    padding: 10px 16px;\n}\n}\nhtml,\nbody {\n  font-family: \"PingFang SC\", \"\\5FAE\\8F6F\\96C5\\9ED1\", \"Microsoft Yahei\", Helvetica, 'Helvetica Neue', Tahoma, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  min-height: 100%;\n  min-width: 100%;\n  height: 100%;\n}\n.application {\n  font-family: inherit !important;\n}\n.hidden {\n  display: none !important;\n}\n.center-item {\n  display: block !important;\n  margin: 0 auto !important;\n}\n.f27 {\n  font-size: 27px;\n}\n.no-decoration {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n.margin {\n  margin: 0 !important;\n}\n.page-title {\n  padding: 5px;\n  color: #000;\n  font-size: 25px;\n  margin-top: 50px;\n  margin-bottom: 20px;\n}\n.ql-editor p {\n  font-size: 18px;\n}\n.language-select {\n  padding: 5px;\n}\n.language-show {\n  margin-left: 56px;\n}\n.fullscreen {\n  max-height: 100%;\n}\n.foreienBg {\n  background-position: center !important;\n  background-image: url(\"https://i.imgur.com/lt58IlN.jpg\") !important;\n  background-size: cover !important;\n  max-height: 100% !important;\n  overflow: hidden !important;\n  z-index: 99;\n}\n.foreienBg::before {\n  content: '';\n  display: block;\n  position: absolute;\n  background-color: #000;\n  opacity: 0.3;\n  width: 100%;\n  height: 100%;\n}\n.identifyCard {\n  padding: 10px;\n  background-color: rgba(0,0,0,0.8) !important;\n  width: 450px;\n  z-index: 99;\n  margin-bottom: 10px;\n  border-radius: 5px;\n  transition: 0.5s;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.cards-wrapper.selected {\n  display: block;\n}\n.cards-wrapper.selected .identifyCard {\n  margin-top: -95%;\n}\n.cards-wrapper.selected .select-card {\n  display: none;\n  width: 100%;\n  height: 50px !important;\n}\n.cards-wrapper.selected .active {\n  display: block;\n}\n.cards-wrapper.selected .select-card-text {\n  padding-top: 5px;\n}\n.select-card {\n  width: 50%;\n  height: 150px !important;\n  display: inline-block;\n  color: #fff !important;\n  cursor: pointer;\n  transition: 0.5s;\n}\n.select-card-text {\n  font-size: 26px;\n  padding-top: 55px;\n  text-align: center !important;\n}\n.selected-card {\n  height: 35px;\n}\n.student {\n  background-color: #5e9861 !important;\n}\n.student:hover,\n.student.active {\n  background-color: #4caf50 !important;\n}\n.company {\n  background-color: #9a4d67 !important;\n}\n.company:hover,\n.company.active {\n  background-color: #e91e63 !important;\n}\n.transCard {\n  padding: 20px 20px 40px 20px;\n  background-color: rgba(0,0,0,0.8) !important;\n  width: 350px;\n  border-radius: 5px;\n  opacity: 0;\n  position: absolute;\n  margin-left: 50px;\n  transition: 0.5s;\n}\n.transCard.show {\n  opacity: 1;\n}\n@media only screen and (max-width: 600px) {\n.transCard,\n  .identifyCard {\n    width: 320px;\n}\n.transCard {\n    margin-left: 0;\n}\n}\n@media only screen and (max-height: 800px) {\n.cards-wrapper {\n    display: inherit;\n}\n.transCard .avatar img {\n    height: 120px;\n}\n.cards-wrapper.selected .transCard {\n    position: inherit;\n}\n.cards-wrapper.selected .identifyCard {\n    display: none;\n}\n}\n.wide-btn {\n  width: 100%;\n}\n.page-title button {\n  margin-top: -5px;\n}\n.recruit-edit-title {\n  color: #c63;\n  letter-spacing: 2px;\n  padding-left: 10px;\n  border-color: #c63;\n  border-width: 0 0 0 5px;\n  border-style: solid;\n  font-weight: 800;\n  font-size: 16px;\n  margin: 10px 5px;\n}\n.recruit-show-title {\n  color: #c63;\n  letter-spacing: 2px;\n  padding-left: 10px;\n  border-color: #c63;\n  border-width: 0 0 0 5px;\n  border-style: solid;\n  font-weight: 800;\n  font-size: 18px;\n  margin: 10px 5px;\n}\n.recruit-show-info {\n  font-size: 18px;\n  margin-left: 40px;\n  line-height: 25px;\n}\n.recruit-edit-field {\n  margin-left: 20px;\n}\n.recruit-edit-title button {\n  margin-top: 3px;\n}\n.recruit-edit-content {\n  margin-left: 40px;\n}\n.page-enter-active,\n.page-leave-active {\n  transition: all 0.4s;\n}\n.page-enter {\n  opacity: 0;\n  transform: translateX(-10%);\n}\n.page-leave-to {\n  opacity: 0;\n  transform: translateX(10%);\n}\n.page-enter-active,\n.page-leave-active {\n  transition: all 0.4s;\n}\n.page-enter {\n  opacity: 0;\n  transform: translateX(-10%);\n}\n", ""]);
+exports.push([module.i, "\n.black {\n  background-color: #000 !important;\n  border-color: #000 !important;\n}\n.black--text {\n  color: #000 !important;\n}\n.black--text input,\n.black--text textarea {\n  caret-color: #000 !important;\n}\n.black--after:after {\n  background: #000 !important;\n}\n.white {\n  background-color: #fff !important;\n  border-color: #fff !important;\n}\n.white--text {\n  color: #fff !important;\n}\n.white--text input,\n.white--text textarea {\n  caret-color: #fff !important;\n}\n.white--after:after {\n  background: #fff !important;\n}\n.transparent {\n  background-color: transparent !important;\n  border-color: transparent !important;\n}\n.transparent--text {\n  color: transparent !important;\n}\n.transparent--text input,\n.transparent--text textarea {\n  caret-color: transparent !important;\n}\n.transparent--after:after {\n  background: transparent !important;\n}\n.red {\n  background-color: #f44336 !important;\n  border-color: #f44336 !important;\n}\n.red--text {\n  color: #f44336 !important;\n}\n.red--text input,\n.red--text textarea {\n  caret-color: #f44336 !important;\n}\n.red--after:after {\n  background: #f44336 !important;\n}\n.red.lighten-5 {\n  background-color: #ffebee !important;\n  border-color: #ffebee !important;\n}\n.red.lighten-5--after:after {\n  background-color: #ffebee !important;\n}\n.red--text.text--lighten-5 {\n  color: #ffebee !important;\n}\n.red--text.text--lighten-5 input,\n.red--text.text--lighten-5 textarea {\n  caret-color: #ffebee !important;\n}\n.red.lighten-4 {\n  background-color: #ffcdd2 !important;\n  border-color: #ffcdd2 !important;\n}\n.red.lighten-4--after:after {\n  background-color: #ffcdd2 !important;\n}\n.red--text.text--lighten-4 {\n  color: #ffcdd2 !important;\n}\n.red--text.text--lighten-4 input,\n.red--text.text--lighten-4 textarea {\n  caret-color: #ffcdd2 !important;\n}\n.red.lighten-3 {\n  background-color: #ef9a9a !important;\n  border-color: #ef9a9a !important;\n}\n.red.lighten-3--after:after {\n  background-color: #ef9a9a !important;\n}\n.red--text.text--lighten-3 {\n  color: #ef9a9a !important;\n}\n.red--text.text--lighten-3 input,\n.red--text.text--lighten-3 textarea {\n  caret-color: #ef9a9a !important;\n}\n.red.lighten-2 {\n  background-color: #e57373 !important;\n  border-color: #e57373 !important;\n}\n.red.lighten-2--after:after {\n  background-color: #e57373 !important;\n}\n.red--text.text--lighten-2 {\n  color: #e57373 !important;\n}\n.red--text.text--lighten-2 input,\n.red--text.text--lighten-2 textarea {\n  caret-color: #e57373 !important;\n}\n.red.lighten-1 {\n  background-color: #ef5350 !important;\n  border-color: #ef5350 !important;\n}\n.red.lighten-1--after:after {\n  background-color: #ef5350 !important;\n}\n.red--text.text--lighten-1 {\n  color: #ef5350 !important;\n}\n.red--text.text--lighten-1 input,\n.red--text.text--lighten-1 textarea {\n  caret-color: #ef5350 !important;\n}\n.red.darken-1 {\n  background-color: #e53935 !important;\n  border-color: #e53935 !important;\n}\n.red.darken-1--after:after {\n  background-color: #e53935 !important;\n}\n.red--text.text--darken-1 {\n  color: #e53935 !important;\n}\n.red--text.text--darken-1 input,\n.red--text.text--darken-1 textarea {\n  caret-color: #e53935 !important;\n}\n.red.darken-2 {\n  background-color: #d32f2f !important;\n  border-color: #d32f2f !important;\n}\n.red.darken-2--after:after {\n  background-color: #d32f2f !important;\n}\n.red--text.text--darken-2 {\n  color: #d32f2f !important;\n}\n.red--text.text--darken-2 input,\n.red--text.text--darken-2 textarea {\n  caret-color: #d32f2f !important;\n}\n.red.darken-3 {\n  background-color: #c62828 !important;\n  border-color: #c62828 !important;\n}\n.red.darken-3--after:after {\n  background-color: #c62828 !important;\n}\n.red--text.text--darken-3 {\n  color: #c62828 !important;\n}\n.red--text.text--darken-3 input,\n.red--text.text--darken-3 textarea {\n  caret-color: #c62828 !important;\n}\n.red.darken-4 {\n  background-color: #b71c1c !important;\n  border-color: #b71c1c !important;\n}\n.red.darken-4--after:after {\n  background-color: #b71c1c !important;\n}\n.red--text.text--darken-4 {\n  color: #b71c1c !important;\n}\n.red--text.text--darken-4 input,\n.red--text.text--darken-4 textarea {\n  caret-color: #b71c1c !important;\n}\n.red.accent-1 {\n  background-color: #ff8a80 !important;\n  border-color: #ff8a80 !important;\n}\n.red.accent-1--after:after {\n  background-color: #ff8a80 !important;\n}\n.red--text.text--accent-1 {\n  color: #ff8a80 !important;\n}\n.red--text.text--accent-1 input,\n.red--text.text--accent-1 textarea {\n  caret-color: #ff8a80 !important;\n}\n.red.accent-2 {\n  background-color: #ff5252 !important;\n  border-color: #ff5252 !important;\n}\n.red.accent-2--after:after {\n  background-color: #ff5252 !important;\n}\n.red--text.text--accent-2 {\n  color: #ff5252 !important;\n}\n.red--text.text--accent-2 input,\n.red--text.text--accent-2 textarea {\n  caret-color: #ff5252 !important;\n}\n.red.accent-3 {\n  background-color: #ff1744 !important;\n  border-color: #ff1744 !important;\n}\n.red.accent-3--after:after {\n  background-color: #ff1744 !important;\n}\n.red--text.text--accent-3 {\n  color: #ff1744 !important;\n}\n.red--text.text--accent-3 input,\n.red--text.text--accent-3 textarea {\n  caret-color: #ff1744 !important;\n}\n.red.accent-4 {\n  background-color: #d50000 !important;\n  border-color: #d50000 !important;\n}\n.red.accent-4--after:after {\n  background-color: #d50000 !important;\n}\n.red--text.text--accent-4 {\n  color: #d50000 !important;\n}\n.red--text.text--accent-4 input,\n.red--text.text--accent-4 textarea {\n  caret-color: #d50000 !important;\n}\n.pink {\n  background-color: #e91e63 !important;\n  border-color: #e91e63 !important;\n}\n.pink--text {\n  color: #e91e63 !important;\n}\n.pink--text input,\n.pink--text textarea {\n  caret-color: #e91e63 !important;\n}\n.pink--after:after {\n  background: #e91e63 !important;\n}\n.pink.lighten-5 {\n  background-color: #fce4ec !important;\n  border-color: #fce4ec !important;\n}\n.pink.lighten-5--after:after {\n  background-color: #fce4ec !important;\n}\n.pink--text.text--lighten-5 {\n  color: #fce4ec !important;\n}\n.pink--text.text--lighten-5 input,\n.pink--text.text--lighten-5 textarea {\n  caret-color: #fce4ec !important;\n}\n.pink.lighten-4 {\n  background-color: #f8bbd0 !important;\n  border-color: #f8bbd0 !important;\n}\n.pink.lighten-4--after:after {\n  background-color: #f8bbd0 !important;\n}\n.pink--text.text--lighten-4 {\n  color: #f8bbd0 !important;\n}\n.pink--text.text--lighten-4 input,\n.pink--text.text--lighten-4 textarea {\n  caret-color: #f8bbd0 !important;\n}\n.pink.lighten-3 {\n  background-color: #f48fb1 !important;\n  border-color: #f48fb1 !important;\n}\n.pink.lighten-3--after:after {\n  background-color: #f48fb1 !important;\n}\n.pink--text.text--lighten-3 {\n  color: #f48fb1 !important;\n}\n.pink--text.text--lighten-3 input,\n.pink--text.text--lighten-3 textarea {\n  caret-color: #f48fb1 !important;\n}\n.pink.lighten-2 {\n  background-color: #f06292 !important;\n  border-color: #f06292 !important;\n}\n.pink.lighten-2--after:after {\n  background-color: #f06292 !important;\n}\n.pink--text.text--lighten-2 {\n  color: #f06292 !important;\n}\n.pink--text.text--lighten-2 input,\n.pink--text.text--lighten-2 textarea {\n  caret-color: #f06292 !important;\n}\n.pink.lighten-1 {\n  background-color: #ec407a !important;\n  border-color: #ec407a !important;\n}\n.pink.lighten-1--after:after {\n  background-color: #ec407a !important;\n}\n.pink--text.text--lighten-1 {\n  color: #ec407a !important;\n}\n.pink--text.text--lighten-1 input,\n.pink--text.text--lighten-1 textarea {\n  caret-color: #ec407a !important;\n}\n.pink.darken-1 {\n  background-color: #d81b60 !important;\n  border-color: #d81b60 !important;\n}\n.pink.darken-1--after:after {\n  background-color: #d81b60 !important;\n}\n.pink--text.text--darken-1 {\n  color: #d81b60 !important;\n}\n.pink--text.text--darken-1 input,\n.pink--text.text--darken-1 textarea {\n  caret-color: #d81b60 !important;\n}\n.pink.darken-2 {\n  background-color: #c2185b !important;\n  border-color: #c2185b !important;\n}\n.pink.darken-2--after:after {\n  background-color: #c2185b !important;\n}\n.pink--text.text--darken-2 {\n  color: #c2185b !important;\n}\n.pink--text.text--darken-2 input,\n.pink--text.text--darken-2 textarea {\n  caret-color: #c2185b !important;\n}\n.pink.darken-3 {\n  background-color: #ad1457 !important;\n  border-color: #ad1457 !important;\n}\n.pink.darken-3--after:after {\n  background-color: #ad1457 !important;\n}\n.pink--text.text--darken-3 {\n  color: #ad1457 !important;\n}\n.pink--text.text--darken-3 input,\n.pink--text.text--darken-3 textarea {\n  caret-color: #ad1457 !important;\n}\n.pink.darken-4 {\n  background-color: #880e4f !important;\n  border-color: #880e4f !important;\n}\n.pink.darken-4--after:after {\n  background-color: #880e4f !important;\n}\n.pink--text.text--darken-4 {\n  color: #880e4f !important;\n}\n.pink--text.text--darken-4 input,\n.pink--text.text--darken-4 textarea {\n  caret-color: #880e4f !important;\n}\n.pink.accent-1 {\n  background-color: #ff80ab !important;\n  border-color: #ff80ab !important;\n}\n.pink.accent-1--after:after {\n  background-color: #ff80ab !important;\n}\n.pink--text.text--accent-1 {\n  color: #ff80ab !important;\n}\n.pink--text.text--accent-1 input,\n.pink--text.text--accent-1 textarea {\n  caret-color: #ff80ab !important;\n}\n.pink.accent-2 {\n  background-color: #ff4081 !important;\n  border-color: #ff4081 !important;\n}\n.pink.accent-2--after:after {\n  background-color: #ff4081 !important;\n}\n.pink--text.text--accent-2 {\n  color: #ff4081 !important;\n}\n.pink--text.text--accent-2 input,\n.pink--text.text--accent-2 textarea {\n  caret-color: #ff4081 !important;\n}\n.pink.accent-3 {\n  background-color: #f50057 !important;\n  border-color: #f50057 !important;\n}\n.pink.accent-3--after:after {\n  background-color: #f50057 !important;\n}\n.pink--text.text--accent-3 {\n  color: #f50057 !important;\n}\n.pink--text.text--accent-3 input,\n.pink--text.text--accent-3 textarea {\n  caret-color: #f50057 !important;\n}\n.pink.accent-4 {\n  background-color: #c51162 !important;\n  border-color: #c51162 !important;\n}\n.pink.accent-4--after:after {\n  background-color: #c51162 !important;\n}\n.pink--text.text--accent-4 {\n  color: #c51162 !important;\n}\n.pink--text.text--accent-4 input,\n.pink--text.text--accent-4 textarea {\n  caret-color: #c51162 !important;\n}\n.purple {\n  background-color: #9c27b0 !important;\n  border-color: #9c27b0 !important;\n}\n.purple--text {\n  color: #9c27b0 !important;\n}\n.purple--text input,\n.purple--text textarea {\n  caret-color: #9c27b0 !important;\n}\n.purple--after:after {\n  background: #9c27b0 !important;\n}\n.purple.lighten-5 {\n  background-color: #f3e5f5 !important;\n  border-color: #f3e5f5 !important;\n}\n.purple.lighten-5--after:after {\n  background-color: #f3e5f5 !important;\n}\n.purple--text.text--lighten-5 {\n  color: #f3e5f5 !important;\n}\n.purple--text.text--lighten-5 input,\n.purple--text.text--lighten-5 textarea {\n  caret-color: #f3e5f5 !important;\n}\n.purple.lighten-4 {\n  background-color: #e1bee7 !important;\n  border-color: #e1bee7 !important;\n}\n.purple.lighten-4--after:after {\n  background-color: #e1bee7 !important;\n}\n.purple--text.text--lighten-4 {\n  color: #e1bee7 !important;\n}\n.purple--text.text--lighten-4 input,\n.purple--text.text--lighten-4 textarea {\n  caret-color: #e1bee7 !important;\n}\n.purple.lighten-3 {\n  background-color: #ce93d8 !important;\n  border-color: #ce93d8 !important;\n}\n.purple.lighten-3--after:after {\n  background-color: #ce93d8 !important;\n}\n.purple--text.text--lighten-3 {\n  color: #ce93d8 !important;\n}\n.purple--text.text--lighten-3 input,\n.purple--text.text--lighten-3 textarea {\n  caret-color: #ce93d8 !important;\n}\n.purple.lighten-2 {\n  background-color: #ba68c8 !important;\n  border-color: #ba68c8 !important;\n}\n.purple.lighten-2--after:after {\n  background-color: #ba68c8 !important;\n}\n.purple--text.text--lighten-2 {\n  color: #ba68c8 !important;\n}\n.purple--text.text--lighten-2 input,\n.purple--text.text--lighten-2 textarea {\n  caret-color: #ba68c8 !important;\n}\n.purple.lighten-1 {\n  background-color: #ab47bc !important;\n  border-color: #ab47bc !important;\n}\n.purple.lighten-1--after:after {\n  background-color: #ab47bc !important;\n}\n.purple--text.text--lighten-1 {\n  color: #ab47bc !important;\n}\n.purple--text.text--lighten-1 input,\n.purple--text.text--lighten-1 textarea {\n  caret-color: #ab47bc !important;\n}\n.purple.darken-1 {\n  background-color: #8e24aa !important;\n  border-color: #8e24aa !important;\n}\n.purple.darken-1--after:after {\n  background-color: #8e24aa !important;\n}\n.purple--text.text--darken-1 {\n  color: #8e24aa !important;\n}\n.purple--text.text--darken-1 input,\n.purple--text.text--darken-1 textarea {\n  caret-color: #8e24aa !important;\n}\n.purple.darken-2 {\n  background-color: #7b1fa2 !important;\n  border-color: #7b1fa2 !important;\n}\n.purple.darken-2--after:after {\n  background-color: #7b1fa2 !important;\n}\n.purple--text.text--darken-2 {\n  color: #7b1fa2 !important;\n}\n.purple--text.text--darken-2 input,\n.purple--text.text--darken-2 textarea {\n  caret-color: #7b1fa2 !important;\n}\n.purple.darken-3 {\n  background-color: #6a1b9a !important;\n  border-color: #6a1b9a !important;\n}\n.purple.darken-3--after:after {\n  background-color: #6a1b9a !important;\n}\n.purple--text.text--darken-3 {\n  color: #6a1b9a !important;\n}\n.purple--text.text--darken-3 input,\n.purple--text.text--darken-3 textarea {\n  caret-color: #6a1b9a !important;\n}\n.purple.darken-4 {\n  background-color: #4a148c !important;\n  border-color: #4a148c !important;\n}\n.purple.darken-4--after:after {\n  background-color: #4a148c !important;\n}\n.purple--text.text--darken-4 {\n  color: #4a148c !important;\n}\n.purple--text.text--darken-4 input,\n.purple--text.text--darken-4 textarea {\n  caret-color: #4a148c !important;\n}\n.purple.accent-1 {\n  background-color: #ea80fc !important;\n  border-color: #ea80fc !important;\n}\n.purple.accent-1--after:after {\n  background-color: #ea80fc !important;\n}\n.purple--text.text--accent-1 {\n  color: #ea80fc !important;\n}\n.purple--text.text--accent-1 input,\n.purple--text.text--accent-1 textarea {\n  caret-color: #ea80fc !important;\n}\n.purple.accent-2 {\n  background-color: #e040fb !important;\n  border-color: #e040fb !important;\n}\n.purple.accent-2--after:after {\n  background-color: #e040fb !important;\n}\n.purple--text.text--accent-2 {\n  color: #e040fb !important;\n}\n.purple--text.text--accent-2 input,\n.purple--text.text--accent-2 textarea {\n  caret-color: #e040fb !important;\n}\n.purple.accent-3 {\n  background-color: #d500f9 !important;\n  border-color: #d500f9 !important;\n}\n.purple.accent-3--after:after {\n  background-color: #d500f9 !important;\n}\n.purple--text.text--accent-3 {\n  color: #d500f9 !important;\n}\n.purple--text.text--accent-3 input,\n.purple--text.text--accent-3 textarea {\n  caret-color: #d500f9 !important;\n}\n.purple.accent-4 {\n  background-color: #a0f !important;\n  border-color: #a0f !important;\n}\n.purple.accent-4--after:after {\n  background-color: #a0f !important;\n}\n.purple--text.text--accent-4 {\n  color: #a0f !important;\n}\n.purple--text.text--accent-4 input,\n.purple--text.text--accent-4 textarea {\n  caret-color: #a0f !important;\n}\n.deep-purple {\n  background-color: #673ab7 !important;\n  border-color: #673ab7 !important;\n}\n.deep-purple--text {\n  color: #673ab7 !important;\n}\n.deep-purple--text input,\n.deep-purple--text textarea {\n  caret-color: #673ab7 !important;\n}\n.deep-purple--after:after {\n  background: #673ab7 !important;\n}\n.deep-purple.lighten-5 {\n  background-color: #ede7f6 !important;\n  border-color: #ede7f6 !important;\n}\n.deep-purple.lighten-5--after:after {\n  background-color: #ede7f6 !important;\n}\n.deep-purple--text.text--lighten-5 {\n  color: #ede7f6 !important;\n}\n.deep-purple--text.text--lighten-5 input,\n.deep-purple--text.text--lighten-5 textarea {\n  caret-color: #ede7f6 !important;\n}\n.deep-purple.lighten-4 {\n  background-color: #d1c4e9 !important;\n  border-color: #d1c4e9 !important;\n}\n.deep-purple.lighten-4--after:after {\n  background-color: #d1c4e9 !important;\n}\n.deep-purple--text.text--lighten-4 {\n  color: #d1c4e9 !important;\n}\n.deep-purple--text.text--lighten-4 input,\n.deep-purple--text.text--lighten-4 textarea {\n  caret-color: #d1c4e9 !important;\n}\n.deep-purple.lighten-3 {\n  background-color: #b39ddb !important;\n  border-color: #b39ddb !important;\n}\n.deep-purple.lighten-3--after:after {\n  background-color: #b39ddb !important;\n}\n.deep-purple--text.text--lighten-3 {\n  color: #b39ddb !important;\n}\n.deep-purple--text.text--lighten-3 input,\n.deep-purple--text.text--lighten-3 textarea {\n  caret-color: #b39ddb !important;\n}\n.deep-purple.lighten-2 {\n  background-color: #9575cd !important;\n  border-color: #9575cd !important;\n}\n.deep-purple.lighten-2--after:after {\n  background-color: #9575cd !important;\n}\n.deep-purple--text.text--lighten-2 {\n  color: #9575cd !important;\n}\n.deep-purple--text.text--lighten-2 input,\n.deep-purple--text.text--lighten-2 textarea {\n  caret-color: #9575cd !important;\n}\n.deep-purple.lighten-1 {\n  background-color: #7e57c2 !important;\n  border-color: #7e57c2 !important;\n}\n.deep-purple.lighten-1--after:after {\n  background-color: #7e57c2 !important;\n}\n.deep-purple--text.text--lighten-1 {\n  color: #7e57c2 !important;\n}\n.deep-purple--text.text--lighten-1 input,\n.deep-purple--text.text--lighten-1 textarea {\n  caret-color: #7e57c2 !important;\n}\n.deep-purple.darken-1 {\n  background-color: #5e35b1 !important;\n  border-color: #5e35b1 !important;\n}\n.deep-purple.darken-1--after:after {\n  background-color: #5e35b1 !important;\n}\n.deep-purple--text.text--darken-1 {\n  color: #5e35b1 !important;\n}\n.deep-purple--text.text--darken-1 input,\n.deep-purple--text.text--darken-1 textarea {\n  caret-color: #5e35b1 !important;\n}\n.deep-purple.darken-2 {\n  background-color: #512da8 !important;\n  border-color: #512da8 !important;\n}\n.deep-purple.darken-2--after:after {\n  background-color: #512da8 !important;\n}\n.deep-purple--text.text--darken-2 {\n  color: #512da8 !important;\n}\n.deep-purple--text.text--darken-2 input,\n.deep-purple--text.text--darken-2 textarea {\n  caret-color: #512da8 !important;\n}\n.deep-purple.darken-3 {\n  background-color: #4527a0 !important;\n  border-color: #4527a0 !important;\n}\n.deep-purple.darken-3--after:after {\n  background-color: #4527a0 !important;\n}\n.deep-purple--text.text--darken-3 {\n  color: #4527a0 !important;\n}\n.deep-purple--text.text--darken-3 input,\n.deep-purple--text.text--darken-3 textarea {\n  caret-color: #4527a0 !important;\n}\n.deep-purple.darken-4 {\n  background-color: #311b92 !important;\n  border-color: #311b92 !important;\n}\n.deep-purple.darken-4--after:after {\n  background-color: #311b92 !important;\n}\n.deep-purple--text.text--darken-4 {\n  color: #311b92 !important;\n}\n.deep-purple--text.text--darken-4 input,\n.deep-purple--text.text--darken-4 textarea {\n  caret-color: #311b92 !important;\n}\n.deep-purple.accent-1 {\n  background-color: #b388ff !important;\n  border-color: #b388ff !important;\n}\n.deep-purple.accent-1--after:after {\n  background-color: #b388ff !important;\n}\n.deep-purple--text.text--accent-1 {\n  color: #b388ff !important;\n}\n.deep-purple--text.text--accent-1 input,\n.deep-purple--text.text--accent-1 textarea {\n  caret-color: #b388ff !important;\n}\n.deep-purple.accent-2 {\n  background-color: #7c4dff !important;\n  border-color: #7c4dff !important;\n}\n.deep-purple.accent-2--after:after {\n  background-color: #7c4dff !important;\n}\n.deep-purple--text.text--accent-2 {\n  color: #7c4dff !important;\n}\n.deep-purple--text.text--accent-2 input,\n.deep-purple--text.text--accent-2 textarea {\n  caret-color: #7c4dff !important;\n}\n.deep-purple.accent-3 {\n  background-color: #651fff !important;\n  border-color: #651fff !important;\n}\n.deep-purple.accent-3--after:after {\n  background-color: #651fff !important;\n}\n.deep-purple--text.text--accent-3 {\n  color: #651fff !important;\n}\n.deep-purple--text.text--accent-3 input,\n.deep-purple--text.text--accent-3 textarea {\n  caret-color: #651fff !important;\n}\n.deep-purple.accent-4 {\n  background-color: #6200ea !important;\n  border-color: #6200ea !important;\n}\n.deep-purple.accent-4--after:after {\n  background-color: #6200ea !important;\n}\n.deep-purple--text.text--accent-4 {\n  color: #6200ea !important;\n}\n.deep-purple--text.text--accent-4 input,\n.deep-purple--text.text--accent-4 textarea {\n  caret-color: #6200ea !important;\n}\n.indigo {\n  background-color: #3f51b5 !important;\n  border-color: #3f51b5 !important;\n}\n.indigo--text {\n  color: #3f51b5 !important;\n}\n.indigo--text input,\n.indigo--text textarea {\n  caret-color: #3f51b5 !important;\n}\n.indigo--after:after {\n  background: #3f51b5 !important;\n}\n.indigo.lighten-5 {\n  background-color: #e8eaf6 !important;\n  border-color: #e8eaf6 !important;\n}\n.indigo.lighten-5--after:after {\n  background-color: #e8eaf6 !important;\n}\n.indigo--text.text--lighten-5 {\n  color: #e8eaf6 !important;\n}\n.indigo--text.text--lighten-5 input,\n.indigo--text.text--lighten-5 textarea {\n  caret-color: #e8eaf6 !important;\n}\n.indigo.lighten-4 {\n  background-color: #c5cae9 !important;\n  border-color: #c5cae9 !important;\n}\n.indigo.lighten-4--after:after {\n  background-color: #c5cae9 !important;\n}\n.indigo--text.text--lighten-4 {\n  color: #c5cae9 !important;\n}\n.indigo--text.text--lighten-4 input,\n.indigo--text.text--lighten-4 textarea {\n  caret-color: #c5cae9 !important;\n}\n.indigo.lighten-3 {\n  background-color: #9fa8da !important;\n  border-color: #9fa8da !important;\n}\n.indigo.lighten-3--after:after {\n  background-color: #9fa8da !important;\n}\n.indigo--text.text--lighten-3 {\n  color: #9fa8da !important;\n}\n.indigo--text.text--lighten-3 input,\n.indigo--text.text--lighten-3 textarea {\n  caret-color: #9fa8da !important;\n}\n.indigo.lighten-2 {\n  background-color: #7986cb !important;\n  border-color: #7986cb !important;\n}\n.indigo.lighten-2--after:after {\n  background-color: #7986cb !important;\n}\n.indigo--text.text--lighten-2 {\n  color: #7986cb !important;\n}\n.indigo--text.text--lighten-2 input,\n.indigo--text.text--lighten-2 textarea {\n  caret-color: #7986cb !important;\n}\n.indigo.lighten-1 {\n  background-color: #5c6bc0 !important;\n  border-color: #5c6bc0 !important;\n}\n.indigo.lighten-1--after:after {\n  background-color: #5c6bc0 !important;\n}\n.indigo--text.text--lighten-1 {\n  color: #5c6bc0 !important;\n}\n.indigo--text.text--lighten-1 input,\n.indigo--text.text--lighten-1 textarea {\n  caret-color: #5c6bc0 !important;\n}\n.indigo.darken-1 {\n  background-color: #3949ab !important;\n  border-color: #3949ab !important;\n}\n.indigo.darken-1--after:after {\n  background-color: #3949ab !important;\n}\n.indigo--text.text--darken-1 {\n  color: #3949ab !important;\n}\n.indigo--text.text--darken-1 input,\n.indigo--text.text--darken-1 textarea {\n  caret-color: #3949ab !important;\n}\n.indigo.darken-2 {\n  background-color: #303f9f !important;\n  border-color: #303f9f !important;\n}\n.indigo.darken-2--after:after {\n  background-color: #303f9f !important;\n}\n.indigo--text.text--darken-2 {\n  color: #303f9f !important;\n}\n.indigo--text.text--darken-2 input,\n.indigo--text.text--darken-2 textarea {\n  caret-color: #303f9f !important;\n}\n.indigo.darken-3 {\n  background-color: #283593 !important;\n  border-color: #283593 !important;\n}\n.indigo.darken-3--after:after {\n  background-color: #283593 !important;\n}\n.indigo--text.text--darken-3 {\n  color: #283593 !important;\n}\n.indigo--text.text--darken-3 input,\n.indigo--text.text--darken-3 textarea {\n  caret-color: #283593 !important;\n}\n.indigo.darken-4 {\n  background-color: #1a237e !important;\n  border-color: #1a237e !important;\n}\n.indigo.darken-4--after:after {\n  background-color: #1a237e !important;\n}\n.indigo--text.text--darken-4 {\n  color: #1a237e !important;\n}\n.indigo--text.text--darken-4 input,\n.indigo--text.text--darken-4 textarea {\n  caret-color: #1a237e !important;\n}\n.indigo.accent-1 {\n  background-color: #8c9eff !important;\n  border-color: #8c9eff !important;\n}\n.indigo.accent-1--after:after {\n  background-color: #8c9eff !important;\n}\n.indigo--text.text--accent-1 {\n  color: #8c9eff !important;\n}\n.indigo--text.text--accent-1 input,\n.indigo--text.text--accent-1 textarea {\n  caret-color: #8c9eff !important;\n}\n.indigo.accent-2 {\n  background-color: #536dfe !important;\n  border-color: #536dfe !important;\n}\n.indigo.accent-2--after:after {\n  background-color: #536dfe !important;\n}\n.indigo--text.text--accent-2 {\n  color: #536dfe !important;\n}\n.indigo--text.text--accent-2 input,\n.indigo--text.text--accent-2 textarea {\n  caret-color: #536dfe !important;\n}\n.indigo.accent-3 {\n  background-color: #3d5afe !important;\n  border-color: #3d5afe !important;\n}\n.indigo.accent-3--after:after {\n  background-color: #3d5afe !important;\n}\n.indigo--text.text--accent-3 {\n  color: #3d5afe !important;\n}\n.indigo--text.text--accent-3 input,\n.indigo--text.text--accent-3 textarea {\n  caret-color: #3d5afe !important;\n}\n.indigo.accent-4 {\n  background-color: #304ffe !important;\n  border-color: #304ffe !important;\n}\n.indigo.accent-4--after:after {\n  background-color: #304ffe !important;\n}\n.indigo--text.text--accent-4 {\n  color: #304ffe !important;\n}\n.indigo--text.text--accent-4 input,\n.indigo--text.text--accent-4 textarea {\n  caret-color: #304ffe !important;\n}\n.blue {\n  background-color: #2196f3 !important;\n  border-color: #2196f3 !important;\n}\n.blue--text {\n  color: #2196f3 !important;\n}\n.blue--text input,\n.blue--text textarea {\n  caret-color: #2196f3 !important;\n}\n.blue--after:after {\n  background: #2196f3 !important;\n}\n.blue.lighten-5 {\n  background-color: #e3f2fd !important;\n  border-color: #e3f2fd !important;\n}\n.blue.lighten-5--after:after {\n  background-color: #e3f2fd !important;\n}\n.blue--text.text--lighten-5 {\n  color: #e3f2fd !important;\n}\n.blue--text.text--lighten-5 input,\n.blue--text.text--lighten-5 textarea {\n  caret-color: #e3f2fd !important;\n}\n.blue.lighten-4 {\n  background-color: #bbdefb !important;\n  border-color: #bbdefb !important;\n}\n.blue.lighten-4--after:after {\n  background-color: #bbdefb !important;\n}\n.blue--text.text--lighten-4 {\n  color: #bbdefb !important;\n}\n.blue--text.text--lighten-4 input,\n.blue--text.text--lighten-4 textarea {\n  caret-color: #bbdefb !important;\n}\n.blue.lighten-3 {\n  background-color: #90caf9 !important;\n  border-color: #90caf9 !important;\n}\n.blue.lighten-3--after:after {\n  background-color: #90caf9 !important;\n}\n.blue--text.text--lighten-3 {\n  color: #90caf9 !important;\n}\n.blue--text.text--lighten-3 input,\n.blue--text.text--lighten-3 textarea {\n  caret-color: #90caf9 !important;\n}\n.blue.lighten-2 {\n  background-color: #64b5f6 !important;\n  border-color: #64b5f6 !important;\n}\n.blue.lighten-2--after:after {\n  background-color: #64b5f6 !important;\n}\n.blue--text.text--lighten-2 {\n  color: #64b5f6 !important;\n}\n.blue--text.text--lighten-2 input,\n.blue--text.text--lighten-2 textarea {\n  caret-color: #64b5f6 !important;\n}\n.blue.lighten-1 {\n  background-color: #42a5f5 !important;\n  border-color: #42a5f5 !important;\n}\n.blue.lighten-1--after:after {\n  background-color: #42a5f5 !important;\n}\n.blue--text.text--lighten-1 {\n  color: #42a5f5 !important;\n}\n.blue--text.text--lighten-1 input,\n.blue--text.text--lighten-1 textarea {\n  caret-color: #42a5f5 !important;\n}\n.blue.darken-1 {\n  background-color: #1e88e5 !important;\n  border-color: #1e88e5 !important;\n}\n.blue.darken-1--after:after {\n  background-color: #1e88e5 !important;\n}\n.blue--text.text--darken-1 {\n  color: #1e88e5 !important;\n}\n.blue--text.text--darken-1 input,\n.blue--text.text--darken-1 textarea {\n  caret-color: #1e88e5 !important;\n}\n.blue.darken-2 {\n  background-color: #1976d2 !important;\n  border-color: #1976d2 !important;\n}\n.blue.darken-2--after:after {\n  background-color: #1976d2 !important;\n}\n.blue--text.text--darken-2 {\n  color: #1976d2 !important;\n}\n.blue--text.text--darken-2 input,\n.blue--text.text--darken-2 textarea {\n  caret-color: #1976d2 !important;\n}\n.blue.darken-3 {\n  background-color: #1565c0 !important;\n  border-color: #1565c0 !important;\n}\n.blue.darken-3--after:after {\n  background-color: #1565c0 !important;\n}\n.blue--text.text--darken-3 {\n  color: #1565c0 !important;\n}\n.blue--text.text--darken-3 input,\n.blue--text.text--darken-3 textarea {\n  caret-color: #1565c0 !important;\n}\n.blue.darken-4 {\n  background-color: #0d47a1 !important;\n  border-color: #0d47a1 !important;\n}\n.blue.darken-4--after:after {\n  background-color: #0d47a1 !important;\n}\n.blue--text.text--darken-4 {\n  color: #0d47a1 !important;\n}\n.blue--text.text--darken-4 input,\n.blue--text.text--darken-4 textarea {\n  caret-color: #0d47a1 !important;\n}\n.blue.accent-1 {\n  background-color: #82b1ff !important;\n  border-color: #82b1ff !important;\n}\n.blue.accent-1--after:after {\n  background-color: #82b1ff !important;\n}\n.blue--text.text--accent-1 {\n  color: #82b1ff !important;\n}\n.blue--text.text--accent-1 input,\n.blue--text.text--accent-1 textarea {\n  caret-color: #82b1ff !important;\n}\n.blue.accent-2 {\n  background-color: #448aff !important;\n  border-color: #448aff !important;\n}\n.blue.accent-2--after:after {\n  background-color: #448aff !important;\n}\n.blue--text.text--accent-2 {\n  color: #448aff !important;\n}\n.blue--text.text--accent-2 input,\n.blue--text.text--accent-2 textarea {\n  caret-color: #448aff !important;\n}\n.blue.accent-3 {\n  background-color: #2979ff !important;\n  border-color: #2979ff !important;\n}\n.blue.accent-3--after:after {\n  background-color: #2979ff !important;\n}\n.blue--text.text--accent-3 {\n  color: #2979ff !important;\n}\n.blue--text.text--accent-3 input,\n.blue--text.text--accent-3 textarea {\n  caret-color: #2979ff !important;\n}\n.blue.accent-4 {\n  background-color: #2962ff !important;\n  border-color: #2962ff !important;\n}\n.blue.accent-4--after:after {\n  background-color: #2962ff !important;\n}\n.blue--text.text--accent-4 {\n  color: #2962ff !important;\n}\n.blue--text.text--accent-4 input,\n.blue--text.text--accent-4 textarea {\n  caret-color: #2962ff !important;\n}\n.light-blue {\n  background-color: #03a9f4 !important;\n  border-color: #03a9f4 !important;\n}\n.light-blue--text {\n  color: #03a9f4 !important;\n}\n.light-blue--text input,\n.light-blue--text textarea {\n  caret-color: #03a9f4 !important;\n}\n.light-blue--after:after {\n  background: #03a9f4 !important;\n}\n.light-blue.lighten-5 {\n  background-color: #e1f5fe !important;\n  border-color: #e1f5fe !important;\n}\n.light-blue.lighten-5--after:after {\n  background-color: #e1f5fe !important;\n}\n.light-blue--text.text--lighten-5 {\n  color: #e1f5fe !important;\n}\n.light-blue--text.text--lighten-5 input,\n.light-blue--text.text--lighten-5 textarea {\n  caret-color: #e1f5fe !important;\n}\n.light-blue.lighten-4 {\n  background-color: #b3e5fc !important;\n  border-color: #b3e5fc !important;\n}\n.light-blue.lighten-4--after:after {\n  background-color: #b3e5fc !important;\n}\n.light-blue--text.text--lighten-4 {\n  color: #b3e5fc !important;\n}\n.light-blue--text.text--lighten-4 input,\n.light-blue--text.text--lighten-4 textarea {\n  caret-color: #b3e5fc !important;\n}\n.light-blue.lighten-3 {\n  background-color: #81d4fa !important;\n  border-color: #81d4fa !important;\n}\n.light-blue.lighten-3--after:after {\n  background-color: #81d4fa !important;\n}\n.light-blue--text.text--lighten-3 {\n  color: #81d4fa !important;\n}\n.light-blue--text.text--lighten-3 input,\n.light-blue--text.text--lighten-3 textarea {\n  caret-color: #81d4fa !important;\n}\n.light-blue.lighten-2 {\n  background-color: #4fc3f7 !important;\n  border-color: #4fc3f7 !important;\n}\n.light-blue.lighten-2--after:after {\n  background-color: #4fc3f7 !important;\n}\n.light-blue--text.text--lighten-2 {\n  color: #4fc3f7 !important;\n}\n.light-blue--text.text--lighten-2 input,\n.light-blue--text.text--lighten-2 textarea {\n  caret-color: #4fc3f7 !important;\n}\n.light-blue.lighten-1 {\n  background-color: #29b6f6 !important;\n  border-color: #29b6f6 !important;\n}\n.light-blue.lighten-1--after:after {\n  background-color: #29b6f6 !important;\n}\n.light-blue--text.text--lighten-1 {\n  color: #29b6f6 !important;\n}\n.light-blue--text.text--lighten-1 input,\n.light-blue--text.text--lighten-1 textarea {\n  caret-color: #29b6f6 !important;\n}\n.light-blue.darken-1 {\n  background-color: #039be5 !important;\n  border-color: #039be5 !important;\n}\n.light-blue.darken-1--after:after {\n  background-color: #039be5 !important;\n}\n.light-blue--text.text--darken-1 {\n  color: #039be5 !important;\n}\n.light-blue--text.text--darken-1 input,\n.light-blue--text.text--darken-1 textarea {\n  caret-color: #039be5 !important;\n}\n.light-blue.darken-2 {\n  background-color: #0288d1 !important;\n  border-color: #0288d1 !important;\n}\n.light-blue.darken-2--after:after {\n  background-color: #0288d1 !important;\n}\n.light-blue--text.text--darken-2 {\n  color: #0288d1 !important;\n}\n.light-blue--text.text--darken-2 input,\n.light-blue--text.text--darken-2 textarea {\n  caret-color: #0288d1 !important;\n}\n.light-blue.darken-3 {\n  background-color: #0277bd !important;\n  border-color: #0277bd !important;\n}\n.light-blue.darken-3--after:after {\n  background-color: #0277bd !important;\n}\n.light-blue--text.text--darken-3 {\n  color: #0277bd !important;\n}\n.light-blue--text.text--darken-3 input,\n.light-blue--text.text--darken-3 textarea {\n  caret-color: #0277bd !important;\n}\n.light-blue.darken-4 {\n  background-color: #01579b !important;\n  border-color: #01579b !important;\n}\n.light-blue.darken-4--after:after {\n  background-color: #01579b !important;\n}\n.light-blue--text.text--darken-4 {\n  color: #01579b !important;\n}\n.light-blue--text.text--darken-4 input,\n.light-blue--text.text--darken-4 textarea {\n  caret-color: #01579b !important;\n}\n.light-blue.accent-1 {\n  background-color: #80d8ff !important;\n  border-color: #80d8ff !important;\n}\n.light-blue.accent-1--after:after {\n  background-color: #80d8ff !important;\n}\n.light-blue--text.text--accent-1 {\n  color: #80d8ff !important;\n}\n.light-blue--text.text--accent-1 input,\n.light-blue--text.text--accent-1 textarea {\n  caret-color: #80d8ff !important;\n}\n.light-blue.accent-2 {\n  background-color: #40c4ff !important;\n  border-color: #40c4ff !important;\n}\n.light-blue.accent-2--after:after {\n  background-color: #40c4ff !important;\n}\n.light-blue--text.text--accent-2 {\n  color: #40c4ff !important;\n}\n.light-blue--text.text--accent-2 input,\n.light-blue--text.text--accent-2 textarea {\n  caret-color: #40c4ff !important;\n}\n.light-blue.accent-3 {\n  background-color: #00b0ff !important;\n  border-color: #00b0ff !important;\n}\n.light-blue.accent-3--after:after {\n  background-color: #00b0ff !important;\n}\n.light-blue--text.text--accent-3 {\n  color: #00b0ff !important;\n}\n.light-blue--text.text--accent-3 input,\n.light-blue--text.text--accent-3 textarea {\n  caret-color: #00b0ff !important;\n}\n.light-blue.accent-4 {\n  background-color: #0091ea !important;\n  border-color: #0091ea !important;\n}\n.light-blue.accent-4--after:after {\n  background-color: #0091ea !important;\n}\n.light-blue--text.text--accent-4 {\n  color: #0091ea !important;\n}\n.light-blue--text.text--accent-4 input,\n.light-blue--text.text--accent-4 textarea {\n  caret-color: #0091ea !important;\n}\n.cyan {\n  background-color: #00bcd4 !important;\n  border-color: #00bcd4 !important;\n}\n.cyan--text {\n  color: #00bcd4 !important;\n}\n.cyan--text input,\n.cyan--text textarea {\n  caret-color: #00bcd4 !important;\n}\n.cyan--after:after {\n  background: #00bcd4 !important;\n}\n.cyan.lighten-5 {\n  background-color: #e0f7fa !important;\n  border-color: #e0f7fa !important;\n}\n.cyan.lighten-5--after:after {\n  background-color: #e0f7fa !important;\n}\n.cyan--text.text--lighten-5 {\n  color: #e0f7fa !important;\n}\n.cyan--text.text--lighten-5 input,\n.cyan--text.text--lighten-5 textarea {\n  caret-color: #e0f7fa !important;\n}\n.cyan.lighten-4 {\n  background-color: #b2ebf2 !important;\n  border-color: #b2ebf2 !important;\n}\n.cyan.lighten-4--after:after {\n  background-color: #b2ebf2 !important;\n}\n.cyan--text.text--lighten-4 {\n  color: #b2ebf2 !important;\n}\n.cyan--text.text--lighten-4 input,\n.cyan--text.text--lighten-4 textarea {\n  caret-color: #b2ebf2 !important;\n}\n.cyan.lighten-3 {\n  background-color: #80deea !important;\n  border-color: #80deea !important;\n}\n.cyan.lighten-3--after:after {\n  background-color: #80deea !important;\n}\n.cyan--text.text--lighten-3 {\n  color: #80deea !important;\n}\n.cyan--text.text--lighten-3 input,\n.cyan--text.text--lighten-3 textarea {\n  caret-color: #80deea !important;\n}\n.cyan.lighten-2 {\n  background-color: #4dd0e1 !important;\n  border-color: #4dd0e1 !important;\n}\n.cyan.lighten-2--after:after {\n  background-color: #4dd0e1 !important;\n}\n.cyan--text.text--lighten-2 {\n  color: #4dd0e1 !important;\n}\n.cyan--text.text--lighten-2 input,\n.cyan--text.text--lighten-2 textarea {\n  caret-color: #4dd0e1 !important;\n}\n.cyan.lighten-1 {\n  background-color: #26c6da !important;\n  border-color: #26c6da !important;\n}\n.cyan.lighten-1--after:after {\n  background-color: #26c6da !important;\n}\n.cyan--text.text--lighten-1 {\n  color: #26c6da !important;\n}\n.cyan--text.text--lighten-1 input,\n.cyan--text.text--lighten-1 textarea {\n  caret-color: #26c6da !important;\n}\n.cyan.darken-1 {\n  background-color: #00acc1 !important;\n  border-color: #00acc1 !important;\n}\n.cyan.darken-1--after:after {\n  background-color: #00acc1 !important;\n}\n.cyan--text.text--darken-1 {\n  color: #00acc1 !important;\n}\n.cyan--text.text--darken-1 input,\n.cyan--text.text--darken-1 textarea {\n  caret-color: #00acc1 !important;\n}\n.cyan.darken-2 {\n  background-color: #0097a7 !important;\n  border-color: #0097a7 !important;\n}\n.cyan.darken-2--after:after {\n  background-color: #0097a7 !important;\n}\n.cyan--text.text--darken-2 {\n  color: #0097a7 !important;\n}\n.cyan--text.text--darken-2 input,\n.cyan--text.text--darken-2 textarea {\n  caret-color: #0097a7 !important;\n}\n.cyan.darken-3 {\n  background-color: #00838f !important;\n  border-color: #00838f !important;\n}\n.cyan.darken-3--after:after {\n  background-color: #00838f !important;\n}\n.cyan--text.text--darken-3 {\n  color: #00838f !important;\n}\n.cyan--text.text--darken-3 input,\n.cyan--text.text--darken-3 textarea {\n  caret-color: #00838f !important;\n}\n.cyan.darken-4 {\n  background-color: #006064 !important;\n  border-color: #006064 !important;\n}\n.cyan.darken-4--after:after {\n  background-color: #006064 !important;\n}\n.cyan--text.text--darken-4 {\n  color: #006064 !important;\n}\n.cyan--text.text--darken-4 input,\n.cyan--text.text--darken-4 textarea {\n  caret-color: #006064 !important;\n}\n.cyan.accent-1 {\n  background-color: #84ffff !important;\n  border-color: #84ffff !important;\n}\n.cyan.accent-1--after:after {\n  background-color: #84ffff !important;\n}\n.cyan--text.text--accent-1 {\n  color: #84ffff !important;\n}\n.cyan--text.text--accent-1 input,\n.cyan--text.text--accent-1 textarea {\n  caret-color: #84ffff !important;\n}\n.cyan.accent-2 {\n  background-color: #18ffff !important;\n  border-color: #18ffff !important;\n}\n.cyan.accent-2--after:after {\n  background-color: #18ffff !important;\n}\n.cyan--text.text--accent-2 {\n  color: #18ffff !important;\n}\n.cyan--text.text--accent-2 input,\n.cyan--text.text--accent-2 textarea {\n  caret-color: #18ffff !important;\n}\n.cyan.accent-3 {\n  background-color: #00e5ff !important;\n  border-color: #00e5ff !important;\n}\n.cyan.accent-3--after:after {\n  background-color: #00e5ff !important;\n}\n.cyan--text.text--accent-3 {\n  color: #00e5ff !important;\n}\n.cyan--text.text--accent-3 input,\n.cyan--text.text--accent-3 textarea {\n  caret-color: #00e5ff !important;\n}\n.cyan.accent-4 {\n  background-color: #00b8d4 !important;\n  border-color: #00b8d4 !important;\n}\n.cyan.accent-4--after:after {\n  background-color: #00b8d4 !important;\n}\n.cyan--text.text--accent-4 {\n  color: #00b8d4 !important;\n}\n.cyan--text.text--accent-4 input,\n.cyan--text.text--accent-4 textarea {\n  caret-color: #00b8d4 !important;\n}\n.teal {\n  background-color: #009688 !important;\n  border-color: #009688 !important;\n}\n.teal--text {\n  color: #009688 !important;\n}\n.teal--text input,\n.teal--text textarea {\n  caret-color: #009688 !important;\n}\n.teal--after:after {\n  background: #009688 !important;\n}\n.teal.lighten-5 {\n  background-color: #e0f2f1 !important;\n  border-color: #e0f2f1 !important;\n}\n.teal.lighten-5--after:after {\n  background-color: #e0f2f1 !important;\n}\n.teal--text.text--lighten-5 {\n  color: #e0f2f1 !important;\n}\n.teal--text.text--lighten-5 input,\n.teal--text.text--lighten-5 textarea {\n  caret-color: #e0f2f1 !important;\n}\n.teal.lighten-4 {\n  background-color: #b2dfdb !important;\n  border-color: #b2dfdb !important;\n}\n.teal.lighten-4--after:after {\n  background-color: #b2dfdb !important;\n}\n.teal--text.text--lighten-4 {\n  color: #b2dfdb !important;\n}\n.teal--text.text--lighten-4 input,\n.teal--text.text--lighten-4 textarea {\n  caret-color: #b2dfdb !important;\n}\n.teal.lighten-3 {\n  background-color: #80cbc4 !important;\n  border-color: #80cbc4 !important;\n}\n.teal.lighten-3--after:after {\n  background-color: #80cbc4 !important;\n}\n.teal--text.text--lighten-3 {\n  color: #80cbc4 !important;\n}\n.teal--text.text--lighten-3 input,\n.teal--text.text--lighten-3 textarea {\n  caret-color: #80cbc4 !important;\n}\n.teal.lighten-2 {\n  background-color: #4db6ac !important;\n  border-color: #4db6ac !important;\n}\n.teal.lighten-2--after:after {\n  background-color: #4db6ac !important;\n}\n.teal--text.text--lighten-2 {\n  color: #4db6ac !important;\n}\n.teal--text.text--lighten-2 input,\n.teal--text.text--lighten-2 textarea {\n  caret-color: #4db6ac !important;\n}\n.teal.lighten-1 {\n  background-color: #26a69a !important;\n  border-color: #26a69a !important;\n}\n.teal.lighten-1--after:after {\n  background-color: #26a69a !important;\n}\n.teal--text.text--lighten-1 {\n  color: #26a69a !important;\n}\n.teal--text.text--lighten-1 input,\n.teal--text.text--lighten-1 textarea {\n  caret-color: #26a69a !important;\n}\n.teal.darken-1 {\n  background-color: #00897b !important;\n  border-color: #00897b !important;\n}\n.teal.darken-1--after:after {\n  background-color: #00897b !important;\n}\n.teal--text.text--darken-1 {\n  color: #00897b !important;\n}\n.teal--text.text--darken-1 input,\n.teal--text.text--darken-1 textarea {\n  caret-color: #00897b !important;\n}\n.teal.darken-2 {\n  background-color: #00796b !important;\n  border-color: #00796b !important;\n}\n.teal.darken-2--after:after {\n  background-color: #00796b !important;\n}\n.teal--text.text--darken-2 {\n  color: #00796b !important;\n}\n.teal--text.text--darken-2 input,\n.teal--text.text--darken-2 textarea {\n  caret-color: #00796b !important;\n}\n.teal.darken-3 {\n  background-color: #00695c !important;\n  border-color: #00695c !important;\n}\n.teal.darken-3--after:after {\n  background-color: #00695c !important;\n}\n.teal--text.text--darken-3 {\n  color: #00695c !important;\n}\n.teal--text.text--darken-3 input,\n.teal--text.text--darken-3 textarea {\n  caret-color: #00695c !important;\n}\n.teal.darken-4 {\n  background-color: #004d40 !important;\n  border-color: #004d40 !important;\n}\n.teal.darken-4--after:after {\n  background-color: #004d40 !important;\n}\n.teal--text.text--darken-4 {\n  color: #004d40 !important;\n}\n.teal--text.text--darken-4 input,\n.teal--text.text--darken-4 textarea {\n  caret-color: #004d40 !important;\n}\n.teal.accent-1 {\n  background-color: #a7ffeb !important;\n  border-color: #a7ffeb !important;\n}\n.teal.accent-1--after:after {\n  background-color: #a7ffeb !important;\n}\n.teal--text.text--accent-1 {\n  color: #a7ffeb !important;\n}\n.teal--text.text--accent-1 input,\n.teal--text.text--accent-1 textarea {\n  caret-color: #a7ffeb !important;\n}\n.teal.accent-2 {\n  background-color: #64ffda !important;\n  border-color: #64ffda !important;\n}\n.teal.accent-2--after:after {\n  background-color: #64ffda !important;\n}\n.teal--text.text--accent-2 {\n  color: #64ffda !important;\n}\n.teal--text.text--accent-2 input,\n.teal--text.text--accent-2 textarea {\n  caret-color: #64ffda !important;\n}\n.teal.accent-3 {\n  background-color: #1de9b6 !important;\n  border-color: #1de9b6 !important;\n}\n.teal.accent-3--after:after {\n  background-color: #1de9b6 !important;\n}\n.teal--text.text--accent-3 {\n  color: #1de9b6 !important;\n}\n.teal--text.text--accent-3 input,\n.teal--text.text--accent-3 textarea {\n  caret-color: #1de9b6 !important;\n}\n.teal.accent-4 {\n  background-color: #00bfa5 !important;\n  border-color: #00bfa5 !important;\n}\n.teal.accent-4--after:after {\n  background-color: #00bfa5 !important;\n}\n.teal--text.text--accent-4 {\n  color: #00bfa5 !important;\n}\n.teal--text.text--accent-4 input,\n.teal--text.text--accent-4 textarea {\n  caret-color: #00bfa5 !important;\n}\n.green {\n  background-color: #4caf50 !important;\n  border-color: #4caf50 !important;\n}\n.green--text {\n  color: #4caf50 !important;\n}\n.green--text input,\n.green--text textarea {\n  caret-color: #4caf50 !important;\n}\n.green--after:after {\n  background: #4caf50 !important;\n}\n.green.lighten-5 {\n  background-color: #e8f5e9 !important;\n  border-color: #e8f5e9 !important;\n}\n.green.lighten-5--after:after {\n  background-color: #e8f5e9 !important;\n}\n.green--text.text--lighten-5 {\n  color: #e8f5e9 !important;\n}\n.green--text.text--lighten-5 input,\n.green--text.text--lighten-5 textarea {\n  caret-color: #e8f5e9 !important;\n}\n.green.lighten-4 {\n  background-color: #c8e6c9 !important;\n  border-color: #c8e6c9 !important;\n}\n.green.lighten-4--after:after {\n  background-color: #c8e6c9 !important;\n}\n.green--text.text--lighten-4 {\n  color: #c8e6c9 !important;\n}\n.green--text.text--lighten-4 input,\n.green--text.text--lighten-4 textarea {\n  caret-color: #c8e6c9 !important;\n}\n.green.lighten-3 {\n  background-color: #a5d6a7 !important;\n  border-color: #a5d6a7 !important;\n}\n.green.lighten-3--after:after {\n  background-color: #a5d6a7 !important;\n}\n.green--text.text--lighten-3 {\n  color: #a5d6a7 !important;\n}\n.green--text.text--lighten-3 input,\n.green--text.text--lighten-3 textarea {\n  caret-color: #a5d6a7 !important;\n}\n.green.lighten-2 {\n  background-color: #81c784 !important;\n  border-color: #81c784 !important;\n}\n.green.lighten-2--after:after {\n  background-color: #81c784 !important;\n}\n.green--text.text--lighten-2 {\n  color: #81c784 !important;\n}\n.green--text.text--lighten-2 input,\n.green--text.text--lighten-2 textarea {\n  caret-color: #81c784 !important;\n}\n.green.lighten-1 {\n  background-color: #66bb6a !important;\n  border-color: #66bb6a !important;\n}\n.green.lighten-1--after:after {\n  background-color: #66bb6a !important;\n}\n.green--text.text--lighten-1 {\n  color: #66bb6a !important;\n}\n.green--text.text--lighten-1 input,\n.green--text.text--lighten-1 textarea {\n  caret-color: #66bb6a !important;\n}\n.green.darken-1 {\n  background-color: #43a047 !important;\n  border-color: #43a047 !important;\n}\n.green.darken-1--after:after {\n  background-color: #43a047 !important;\n}\n.green--text.text--darken-1 {\n  color: #43a047 !important;\n}\n.green--text.text--darken-1 input,\n.green--text.text--darken-1 textarea {\n  caret-color: #43a047 !important;\n}\n.green.darken-2 {\n  background-color: #388e3c !important;\n  border-color: #388e3c !important;\n}\n.green.darken-2--after:after {\n  background-color: #388e3c !important;\n}\n.green--text.text--darken-2 {\n  color: #388e3c !important;\n}\n.green--text.text--darken-2 input,\n.green--text.text--darken-2 textarea {\n  caret-color: #388e3c !important;\n}\n.green.darken-3 {\n  background-color: #2e7d32 !important;\n  border-color: #2e7d32 !important;\n}\n.green.darken-3--after:after {\n  background-color: #2e7d32 !important;\n}\n.green--text.text--darken-3 {\n  color: #2e7d32 !important;\n}\n.green--text.text--darken-3 input,\n.green--text.text--darken-3 textarea {\n  caret-color: #2e7d32 !important;\n}\n.green.darken-4 {\n  background-color: #1b5e20 !important;\n  border-color: #1b5e20 !important;\n}\n.green.darken-4--after:after {\n  background-color: #1b5e20 !important;\n}\n.green--text.text--darken-4 {\n  color: #1b5e20 !important;\n}\n.green--text.text--darken-4 input,\n.green--text.text--darken-4 textarea {\n  caret-color: #1b5e20 !important;\n}\n.green.accent-1 {\n  background-color: #b9f6ca !important;\n  border-color: #b9f6ca !important;\n}\n.green.accent-1--after:after {\n  background-color: #b9f6ca !important;\n}\n.green--text.text--accent-1 {\n  color: #b9f6ca !important;\n}\n.green--text.text--accent-1 input,\n.green--text.text--accent-1 textarea {\n  caret-color: #b9f6ca !important;\n}\n.green.accent-2 {\n  background-color: #69f0ae !important;\n  border-color: #69f0ae !important;\n}\n.green.accent-2--after:after {\n  background-color: #69f0ae !important;\n}\n.green--text.text--accent-2 {\n  color: #69f0ae !important;\n}\n.green--text.text--accent-2 input,\n.green--text.text--accent-2 textarea {\n  caret-color: #69f0ae !important;\n}\n.green.accent-3 {\n  background-color: #00e676 !important;\n  border-color: #00e676 !important;\n}\n.green.accent-3--after:after {\n  background-color: #00e676 !important;\n}\n.green--text.text--accent-3 {\n  color: #00e676 !important;\n}\n.green--text.text--accent-3 input,\n.green--text.text--accent-3 textarea {\n  caret-color: #00e676 !important;\n}\n.green.accent-4 {\n  background-color: #00c853 !important;\n  border-color: #00c853 !important;\n}\n.green.accent-4--after:after {\n  background-color: #00c853 !important;\n}\n.green--text.text--accent-4 {\n  color: #00c853 !important;\n}\n.green--text.text--accent-4 input,\n.green--text.text--accent-4 textarea {\n  caret-color: #00c853 !important;\n}\n.light-green {\n  background-color: #8bc34a !important;\n  border-color: #8bc34a !important;\n}\n.light-green--text {\n  color: #8bc34a !important;\n}\n.light-green--text input,\n.light-green--text textarea {\n  caret-color: #8bc34a !important;\n}\n.light-green--after:after {\n  background: #8bc34a !important;\n}\n.light-green.lighten-5 {\n  background-color: #f1f8e9 !important;\n  border-color: #f1f8e9 !important;\n}\n.light-green.lighten-5--after:after {\n  background-color: #f1f8e9 !important;\n}\n.light-green--text.text--lighten-5 {\n  color: #f1f8e9 !important;\n}\n.light-green--text.text--lighten-5 input,\n.light-green--text.text--lighten-5 textarea {\n  caret-color: #f1f8e9 !important;\n}\n.light-green.lighten-4 {\n  background-color: #dcedc8 !important;\n  border-color: #dcedc8 !important;\n}\n.light-green.lighten-4--after:after {\n  background-color: #dcedc8 !important;\n}\n.light-green--text.text--lighten-4 {\n  color: #dcedc8 !important;\n}\n.light-green--text.text--lighten-4 input,\n.light-green--text.text--lighten-4 textarea {\n  caret-color: #dcedc8 !important;\n}\n.light-green.lighten-3 {\n  background-color: #c5e1a5 !important;\n  border-color: #c5e1a5 !important;\n}\n.light-green.lighten-3--after:after {\n  background-color: #c5e1a5 !important;\n}\n.light-green--text.text--lighten-3 {\n  color: #c5e1a5 !important;\n}\n.light-green--text.text--lighten-3 input,\n.light-green--text.text--lighten-3 textarea {\n  caret-color: #c5e1a5 !important;\n}\n.light-green.lighten-2 {\n  background-color: #aed581 !important;\n  border-color: #aed581 !important;\n}\n.light-green.lighten-2--after:after {\n  background-color: #aed581 !important;\n}\n.light-green--text.text--lighten-2 {\n  color: #aed581 !important;\n}\n.light-green--text.text--lighten-2 input,\n.light-green--text.text--lighten-2 textarea {\n  caret-color: #aed581 !important;\n}\n.light-green.lighten-1 {\n  background-color: #9ccc65 !important;\n  border-color: #9ccc65 !important;\n}\n.light-green.lighten-1--after:after {\n  background-color: #9ccc65 !important;\n}\n.light-green--text.text--lighten-1 {\n  color: #9ccc65 !important;\n}\n.light-green--text.text--lighten-1 input,\n.light-green--text.text--lighten-1 textarea {\n  caret-color: #9ccc65 !important;\n}\n.light-green.darken-1 {\n  background-color: #7cb342 !important;\n  border-color: #7cb342 !important;\n}\n.light-green.darken-1--after:after {\n  background-color: #7cb342 !important;\n}\n.light-green--text.text--darken-1 {\n  color: #7cb342 !important;\n}\n.light-green--text.text--darken-1 input,\n.light-green--text.text--darken-1 textarea {\n  caret-color: #7cb342 !important;\n}\n.light-green.darken-2 {\n  background-color: #689f38 !important;\n  border-color: #689f38 !important;\n}\n.light-green.darken-2--after:after {\n  background-color: #689f38 !important;\n}\n.light-green--text.text--darken-2 {\n  color: #689f38 !important;\n}\n.light-green--text.text--darken-2 input,\n.light-green--text.text--darken-2 textarea {\n  caret-color: #689f38 !important;\n}\n.light-green.darken-3 {\n  background-color: #558b2f !important;\n  border-color: #558b2f !important;\n}\n.light-green.darken-3--after:after {\n  background-color: #558b2f !important;\n}\n.light-green--text.text--darken-3 {\n  color: #558b2f !important;\n}\n.light-green--text.text--darken-3 input,\n.light-green--text.text--darken-3 textarea {\n  caret-color: #558b2f !important;\n}\n.light-green.darken-4 {\n  background-color: #33691e !important;\n  border-color: #33691e !important;\n}\n.light-green.darken-4--after:after {\n  background-color: #33691e !important;\n}\n.light-green--text.text--darken-4 {\n  color: #33691e !important;\n}\n.light-green--text.text--darken-4 input,\n.light-green--text.text--darken-4 textarea {\n  caret-color: #33691e !important;\n}\n.light-green.accent-1 {\n  background-color: #ccff90 !important;\n  border-color: #ccff90 !important;\n}\n.light-green.accent-1--after:after {\n  background-color: #ccff90 !important;\n}\n.light-green--text.text--accent-1 {\n  color: #ccff90 !important;\n}\n.light-green--text.text--accent-1 input,\n.light-green--text.text--accent-1 textarea {\n  caret-color: #ccff90 !important;\n}\n.light-green.accent-2 {\n  background-color: #b2ff59 !important;\n  border-color: #b2ff59 !important;\n}\n.light-green.accent-2--after:after {\n  background-color: #b2ff59 !important;\n}\n.light-green--text.text--accent-2 {\n  color: #b2ff59 !important;\n}\n.light-green--text.text--accent-2 input,\n.light-green--text.text--accent-2 textarea {\n  caret-color: #b2ff59 !important;\n}\n.light-green.accent-3 {\n  background-color: #76ff03 !important;\n  border-color: #76ff03 !important;\n}\n.light-green.accent-3--after:after {\n  background-color: #76ff03 !important;\n}\n.light-green--text.text--accent-3 {\n  color: #76ff03 !important;\n}\n.light-green--text.text--accent-3 input,\n.light-green--text.text--accent-3 textarea {\n  caret-color: #76ff03 !important;\n}\n.light-green.accent-4 {\n  background-color: #64dd17 !important;\n  border-color: #64dd17 !important;\n}\n.light-green.accent-4--after:after {\n  background-color: #64dd17 !important;\n}\n.light-green--text.text--accent-4 {\n  color: #64dd17 !important;\n}\n.light-green--text.text--accent-4 input,\n.light-green--text.text--accent-4 textarea {\n  caret-color: #64dd17 !important;\n}\n.lime {\n  background-color: #cddc39 !important;\n  border-color: #cddc39 !important;\n}\n.lime--text {\n  color: #cddc39 !important;\n}\n.lime--text input,\n.lime--text textarea {\n  caret-color: #cddc39 !important;\n}\n.lime--after:after {\n  background: #cddc39 !important;\n}\n.lime.lighten-5 {\n  background-color: #f9fbe7 !important;\n  border-color: #f9fbe7 !important;\n}\n.lime.lighten-5--after:after {\n  background-color: #f9fbe7 !important;\n}\n.lime--text.text--lighten-5 {\n  color: #f9fbe7 !important;\n}\n.lime--text.text--lighten-5 input,\n.lime--text.text--lighten-5 textarea {\n  caret-color: #f9fbe7 !important;\n}\n.lime.lighten-4 {\n  background-color: #f0f4c3 !important;\n  border-color: #f0f4c3 !important;\n}\n.lime.lighten-4--after:after {\n  background-color: #f0f4c3 !important;\n}\n.lime--text.text--lighten-4 {\n  color: #f0f4c3 !important;\n}\n.lime--text.text--lighten-4 input,\n.lime--text.text--lighten-4 textarea {\n  caret-color: #f0f4c3 !important;\n}\n.lime.lighten-3 {\n  background-color: #e6ee9c !important;\n  border-color: #e6ee9c !important;\n}\n.lime.lighten-3--after:after {\n  background-color: #e6ee9c !important;\n}\n.lime--text.text--lighten-3 {\n  color: #e6ee9c !important;\n}\n.lime--text.text--lighten-3 input,\n.lime--text.text--lighten-3 textarea {\n  caret-color: #e6ee9c !important;\n}\n.lime.lighten-2 {\n  background-color: #dce775 !important;\n  border-color: #dce775 !important;\n}\n.lime.lighten-2--after:after {\n  background-color: #dce775 !important;\n}\n.lime--text.text--lighten-2 {\n  color: #dce775 !important;\n}\n.lime--text.text--lighten-2 input,\n.lime--text.text--lighten-2 textarea {\n  caret-color: #dce775 !important;\n}\n.lime.lighten-1 {\n  background-color: #d4e157 !important;\n  border-color: #d4e157 !important;\n}\n.lime.lighten-1--after:after {\n  background-color: #d4e157 !important;\n}\n.lime--text.text--lighten-1 {\n  color: #d4e157 !important;\n}\n.lime--text.text--lighten-1 input,\n.lime--text.text--lighten-1 textarea {\n  caret-color: #d4e157 !important;\n}\n.lime.darken-1 {\n  background-color: #c0ca33 !important;\n  border-color: #c0ca33 !important;\n}\n.lime.darken-1--after:after {\n  background-color: #c0ca33 !important;\n}\n.lime--text.text--darken-1 {\n  color: #c0ca33 !important;\n}\n.lime--text.text--darken-1 input,\n.lime--text.text--darken-1 textarea {\n  caret-color: #c0ca33 !important;\n}\n.lime.darken-2 {\n  background-color: #afb42b !important;\n  border-color: #afb42b !important;\n}\n.lime.darken-2--after:after {\n  background-color: #afb42b !important;\n}\n.lime--text.text--darken-2 {\n  color: #afb42b !important;\n}\n.lime--text.text--darken-2 input,\n.lime--text.text--darken-2 textarea {\n  caret-color: #afb42b !important;\n}\n.lime.darken-3 {\n  background-color: #9e9d24 !important;\n  border-color: #9e9d24 !important;\n}\n.lime.darken-3--after:after {\n  background-color: #9e9d24 !important;\n}\n.lime--text.text--darken-3 {\n  color: #9e9d24 !important;\n}\n.lime--text.text--darken-3 input,\n.lime--text.text--darken-3 textarea {\n  caret-color: #9e9d24 !important;\n}\n.lime.darken-4 {\n  background-color: #827717 !important;\n  border-color: #827717 !important;\n}\n.lime.darken-4--after:after {\n  background-color: #827717 !important;\n}\n.lime--text.text--darken-4 {\n  color: #827717 !important;\n}\n.lime--text.text--darken-4 input,\n.lime--text.text--darken-4 textarea {\n  caret-color: #827717 !important;\n}\n.lime.accent-1 {\n  background-color: #f4ff81 !important;\n  border-color: #f4ff81 !important;\n}\n.lime.accent-1--after:after {\n  background-color: #f4ff81 !important;\n}\n.lime--text.text--accent-1 {\n  color: #f4ff81 !important;\n}\n.lime--text.text--accent-1 input,\n.lime--text.text--accent-1 textarea {\n  caret-color: #f4ff81 !important;\n}\n.lime.accent-2 {\n  background-color: #eeff41 !important;\n  border-color: #eeff41 !important;\n}\n.lime.accent-2--after:after {\n  background-color: #eeff41 !important;\n}\n.lime--text.text--accent-2 {\n  color: #eeff41 !important;\n}\n.lime--text.text--accent-2 input,\n.lime--text.text--accent-2 textarea {\n  caret-color: #eeff41 !important;\n}\n.lime.accent-3 {\n  background-color: #c6ff00 !important;\n  border-color: #c6ff00 !important;\n}\n.lime.accent-3--after:after {\n  background-color: #c6ff00 !important;\n}\n.lime--text.text--accent-3 {\n  color: #c6ff00 !important;\n}\n.lime--text.text--accent-3 input,\n.lime--text.text--accent-3 textarea {\n  caret-color: #c6ff00 !important;\n}\n.lime.accent-4 {\n  background-color: #aeea00 !important;\n  border-color: #aeea00 !important;\n}\n.lime.accent-4--after:after {\n  background-color: #aeea00 !important;\n}\n.lime--text.text--accent-4 {\n  color: #aeea00 !important;\n}\n.lime--text.text--accent-4 input,\n.lime--text.text--accent-4 textarea {\n  caret-color: #aeea00 !important;\n}\n.yellow {\n  background-color: #ffeb3b !important;\n  border-color: #ffeb3b !important;\n}\n.yellow--text {\n  color: #ffeb3b !important;\n}\n.yellow--text input,\n.yellow--text textarea {\n  caret-color: #ffeb3b !important;\n}\n.yellow--after:after {\n  background: #ffeb3b !important;\n}\n.yellow.lighten-5 {\n  background-color: #fffde7 !important;\n  border-color: #fffde7 !important;\n}\n.yellow.lighten-5--after:after {\n  background-color: #fffde7 !important;\n}\n.yellow--text.text--lighten-5 {\n  color: #fffde7 !important;\n}\n.yellow--text.text--lighten-5 input,\n.yellow--text.text--lighten-5 textarea {\n  caret-color: #fffde7 !important;\n}\n.yellow.lighten-4 {\n  background-color: #fff9c4 !important;\n  border-color: #fff9c4 !important;\n}\n.yellow.lighten-4--after:after {\n  background-color: #fff9c4 !important;\n}\n.yellow--text.text--lighten-4 {\n  color: #fff9c4 !important;\n}\n.yellow--text.text--lighten-4 input,\n.yellow--text.text--lighten-4 textarea {\n  caret-color: #fff9c4 !important;\n}\n.yellow.lighten-3 {\n  background-color: #fff59d !important;\n  border-color: #fff59d !important;\n}\n.yellow.lighten-3--after:after {\n  background-color: #fff59d !important;\n}\n.yellow--text.text--lighten-3 {\n  color: #fff59d !important;\n}\n.yellow--text.text--lighten-3 input,\n.yellow--text.text--lighten-3 textarea {\n  caret-color: #fff59d !important;\n}\n.yellow.lighten-2 {\n  background-color: #fff176 !important;\n  border-color: #fff176 !important;\n}\n.yellow.lighten-2--after:after {\n  background-color: #fff176 !important;\n}\n.yellow--text.text--lighten-2 {\n  color: #fff176 !important;\n}\n.yellow--text.text--lighten-2 input,\n.yellow--text.text--lighten-2 textarea {\n  caret-color: #fff176 !important;\n}\n.yellow.lighten-1 {\n  background-color: #ffee58 !important;\n  border-color: #ffee58 !important;\n}\n.yellow.lighten-1--after:after {\n  background-color: #ffee58 !important;\n}\n.yellow--text.text--lighten-1 {\n  color: #ffee58 !important;\n}\n.yellow--text.text--lighten-1 input,\n.yellow--text.text--lighten-1 textarea {\n  caret-color: #ffee58 !important;\n}\n.yellow.darken-1 {\n  background-color: #fdd835 !important;\n  border-color: #fdd835 !important;\n}\n.yellow.darken-1--after:after {\n  background-color: #fdd835 !important;\n}\n.yellow--text.text--darken-1 {\n  color: #fdd835 !important;\n}\n.yellow--text.text--darken-1 input,\n.yellow--text.text--darken-1 textarea {\n  caret-color: #fdd835 !important;\n}\n.yellow.darken-2 {\n  background-color: #fbc02d !important;\n  border-color: #fbc02d !important;\n}\n.yellow.darken-2--after:after {\n  background-color: #fbc02d !important;\n}\n.yellow--text.text--darken-2 {\n  color: #fbc02d !important;\n}\n.yellow--text.text--darken-2 input,\n.yellow--text.text--darken-2 textarea {\n  caret-color: #fbc02d !important;\n}\n.yellow.darken-3 {\n  background-color: #f9a825 !important;\n  border-color: #f9a825 !important;\n}\n.yellow.darken-3--after:after {\n  background-color: #f9a825 !important;\n}\n.yellow--text.text--darken-3 {\n  color: #f9a825 !important;\n}\n.yellow--text.text--darken-3 input,\n.yellow--text.text--darken-3 textarea {\n  caret-color: #f9a825 !important;\n}\n.yellow.darken-4 {\n  background-color: #f57f17 !important;\n  border-color: #f57f17 !important;\n}\n.yellow.darken-4--after:after {\n  background-color: #f57f17 !important;\n}\n.yellow--text.text--darken-4 {\n  color: #f57f17 !important;\n}\n.yellow--text.text--darken-4 input,\n.yellow--text.text--darken-4 textarea {\n  caret-color: #f57f17 !important;\n}\n.yellow.accent-1 {\n  background-color: #ffff8d !important;\n  border-color: #ffff8d !important;\n}\n.yellow.accent-1--after:after {\n  background-color: #ffff8d !important;\n}\n.yellow--text.text--accent-1 {\n  color: #ffff8d !important;\n}\n.yellow--text.text--accent-1 input,\n.yellow--text.text--accent-1 textarea {\n  caret-color: #ffff8d !important;\n}\n.yellow.accent-2 {\n  background-color: #ff0 !important;\n  border-color: #ff0 !important;\n}\n.yellow.accent-2--after:after {\n  background-color: #ff0 !important;\n}\n.yellow--text.text--accent-2 {\n  color: #ff0 !important;\n}\n.yellow--text.text--accent-2 input,\n.yellow--text.text--accent-2 textarea {\n  caret-color: #ff0 !important;\n}\n.yellow.accent-3 {\n  background-color: #ffea00 !important;\n  border-color: #ffea00 !important;\n}\n.yellow.accent-3--after:after {\n  background-color: #ffea00 !important;\n}\n.yellow--text.text--accent-3 {\n  color: #ffea00 !important;\n}\n.yellow--text.text--accent-3 input,\n.yellow--text.text--accent-3 textarea {\n  caret-color: #ffea00 !important;\n}\n.yellow.accent-4 {\n  background-color: #ffd600 !important;\n  border-color: #ffd600 !important;\n}\n.yellow.accent-4--after:after {\n  background-color: #ffd600 !important;\n}\n.yellow--text.text--accent-4 {\n  color: #ffd600 !important;\n}\n.yellow--text.text--accent-4 input,\n.yellow--text.text--accent-4 textarea {\n  caret-color: #ffd600 !important;\n}\n.amber {\n  background-color: #ffc107 !important;\n  border-color: #ffc107 !important;\n}\n.amber--text {\n  color: #ffc107 !important;\n}\n.amber--text input,\n.amber--text textarea {\n  caret-color: #ffc107 !important;\n}\n.amber--after:after {\n  background: #ffc107 !important;\n}\n.amber.lighten-5 {\n  background-color: #fff8e1 !important;\n  border-color: #fff8e1 !important;\n}\n.amber.lighten-5--after:after {\n  background-color: #fff8e1 !important;\n}\n.amber--text.text--lighten-5 {\n  color: #fff8e1 !important;\n}\n.amber--text.text--lighten-5 input,\n.amber--text.text--lighten-5 textarea {\n  caret-color: #fff8e1 !important;\n}\n.amber.lighten-4 {\n  background-color: #ffecb3 !important;\n  border-color: #ffecb3 !important;\n}\n.amber.lighten-4--after:after {\n  background-color: #ffecb3 !important;\n}\n.amber--text.text--lighten-4 {\n  color: #ffecb3 !important;\n}\n.amber--text.text--lighten-4 input,\n.amber--text.text--lighten-4 textarea {\n  caret-color: #ffecb3 !important;\n}\n.amber.lighten-3 {\n  background-color: #ffe082 !important;\n  border-color: #ffe082 !important;\n}\n.amber.lighten-3--after:after {\n  background-color: #ffe082 !important;\n}\n.amber--text.text--lighten-3 {\n  color: #ffe082 !important;\n}\n.amber--text.text--lighten-3 input,\n.amber--text.text--lighten-3 textarea {\n  caret-color: #ffe082 !important;\n}\n.amber.lighten-2 {\n  background-color: #ffd54f !important;\n  border-color: #ffd54f !important;\n}\n.amber.lighten-2--after:after {\n  background-color: #ffd54f !important;\n}\n.amber--text.text--lighten-2 {\n  color: #ffd54f !important;\n}\n.amber--text.text--lighten-2 input,\n.amber--text.text--lighten-2 textarea {\n  caret-color: #ffd54f !important;\n}\n.amber.lighten-1 {\n  background-color: #ffca28 !important;\n  border-color: #ffca28 !important;\n}\n.amber.lighten-1--after:after {\n  background-color: #ffca28 !important;\n}\n.amber--text.text--lighten-1 {\n  color: #ffca28 !important;\n}\n.amber--text.text--lighten-1 input,\n.amber--text.text--lighten-1 textarea {\n  caret-color: #ffca28 !important;\n}\n.amber.darken-1 {\n  background-color: #ffb300 !important;\n  border-color: #ffb300 !important;\n}\n.amber.darken-1--after:after {\n  background-color: #ffb300 !important;\n}\n.amber--text.text--darken-1 {\n  color: #ffb300 !important;\n}\n.amber--text.text--darken-1 input,\n.amber--text.text--darken-1 textarea {\n  caret-color: #ffb300 !important;\n}\n.amber.darken-2 {\n  background-color: #ffa000 !important;\n  border-color: #ffa000 !important;\n}\n.amber.darken-2--after:after {\n  background-color: #ffa000 !important;\n}\n.amber--text.text--darken-2 {\n  color: #ffa000 !important;\n}\n.amber--text.text--darken-2 input,\n.amber--text.text--darken-2 textarea {\n  caret-color: #ffa000 !important;\n}\n.amber.darken-3 {\n  background-color: #ff8f00 !important;\n  border-color: #ff8f00 !important;\n}\n.amber.darken-3--after:after {\n  background-color: #ff8f00 !important;\n}\n.amber--text.text--darken-3 {\n  color: #ff8f00 !important;\n}\n.amber--text.text--darken-3 input,\n.amber--text.text--darken-3 textarea {\n  caret-color: #ff8f00 !important;\n}\n.amber.darken-4 {\n  background-color: #ff6f00 !important;\n  border-color: #ff6f00 !important;\n}\n.amber.darken-4--after:after {\n  background-color: #ff6f00 !important;\n}\n.amber--text.text--darken-4 {\n  color: #ff6f00 !important;\n}\n.amber--text.text--darken-4 input,\n.amber--text.text--darken-4 textarea {\n  caret-color: #ff6f00 !important;\n}\n.amber.accent-1 {\n  background-color: #ffe57f !important;\n  border-color: #ffe57f !important;\n}\n.amber.accent-1--after:after {\n  background-color: #ffe57f !important;\n}\n.amber--text.text--accent-1 {\n  color: #ffe57f !important;\n}\n.amber--text.text--accent-1 input,\n.amber--text.text--accent-1 textarea {\n  caret-color: #ffe57f !important;\n}\n.amber.accent-2 {\n  background-color: #ffd740 !important;\n  border-color: #ffd740 !important;\n}\n.amber.accent-2--after:after {\n  background-color: #ffd740 !important;\n}\n.amber--text.text--accent-2 {\n  color: #ffd740 !important;\n}\n.amber--text.text--accent-2 input,\n.amber--text.text--accent-2 textarea {\n  caret-color: #ffd740 !important;\n}\n.amber.accent-3 {\n  background-color: #ffc400 !important;\n  border-color: #ffc400 !important;\n}\n.amber.accent-3--after:after {\n  background-color: #ffc400 !important;\n}\n.amber--text.text--accent-3 {\n  color: #ffc400 !important;\n}\n.amber--text.text--accent-3 input,\n.amber--text.text--accent-3 textarea {\n  caret-color: #ffc400 !important;\n}\n.amber.accent-4 {\n  background-color: #ffab00 !important;\n  border-color: #ffab00 !important;\n}\n.amber.accent-4--after:after {\n  background-color: #ffab00 !important;\n}\n.amber--text.text--accent-4 {\n  color: #ffab00 !important;\n}\n.amber--text.text--accent-4 input,\n.amber--text.text--accent-4 textarea {\n  caret-color: #ffab00 !important;\n}\n.orange {\n  background-color: #ff9800 !important;\n  border-color: #ff9800 !important;\n}\n.orange--text {\n  color: #ff9800 !important;\n}\n.orange--text input,\n.orange--text textarea {\n  caret-color: #ff9800 !important;\n}\n.orange--after:after {\n  background: #ff9800 !important;\n}\n.orange.lighten-5 {\n  background-color: #fff3e0 !important;\n  border-color: #fff3e0 !important;\n}\n.orange.lighten-5--after:after {\n  background-color: #fff3e0 !important;\n}\n.orange--text.text--lighten-5 {\n  color: #fff3e0 !important;\n}\n.orange--text.text--lighten-5 input,\n.orange--text.text--lighten-5 textarea {\n  caret-color: #fff3e0 !important;\n}\n.orange.lighten-4 {\n  background-color: #ffe0b2 !important;\n  border-color: #ffe0b2 !important;\n}\n.orange.lighten-4--after:after {\n  background-color: #ffe0b2 !important;\n}\n.orange--text.text--lighten-4 {\n  color: #ffe0b2 !important;\n}\n.orange--text.text--lighten-4 input,\n.orange--text.text--lighten-4 textarea {\n  caret-color: #ffe0b2 !important;\n}\n.orange.lighten-3 {\n  background-color: #ffcc80 !important;\n  border-color: #ffcc80 !important;\n}\n.orange.lighten-3--after:after {\n  background-color: #ffcc80 !important;\n}\n.orange--text.text--lighten-3 {\n  color: #ffcc80 !important;\n}\n.orange--text.text--lighten-3 input,\n.orange--text.text--lighten-3 textarea {\n  caret-color: #ffcc80 !important;\n}\n.orange.lighten-2 {\n  background-color: #ffb74d !important;\n  border-color: #ffb74d !important;\n}\n.orange.lighten-2--after:after {\n  background-color: #ffb74d !important;\n}\n.orange--text.text--lighten-2 {\n  color: #ffb74d !important;\n}\n.orange--text.text--lighten-2 input,\n.orange--text.text--lighten-2 textarea {\n  caret-color: #ffb74d !important;\n}\n.orange.lighten-1 {\n  background-color: #ffa726 !important;\n  border-color: #ffa726 !important;\n}\n.orange.lighten-1--after:after {\n  background-color: #ffa726 !important;\n}\n.orange--text.text--lighten-1 {\n  color: #ffa726 !important;\n}\n.orange--text.text--lighten-1 input,\n.orange--text.text--lighten-1 textarea {\n  caret-color: #ffa726 !important;\n}\n.orange.darken-1 {\n  background-color: #fb8c00 !important;\n  border-color: #fb8c00 !important;\n}\n.orange.darken-1--after:after {\n  background-color: #fb8c00 !important;\n}\n.orange--text.text--darken-1 {\n  color: #fb8c00 !important;\n}\n.orange--text.text--darken-1 input,\n.orange--text.text--darken-1 textarea {\n  caret-color: #fb8c00 !important;\n}\n.orange.darken-2 {\n  background-color: #f57c00 !important;\n  border-color: #f57c00 !important;\n}\n.orange.darken-2--after:after {\n  background-color: #f57c00 !important;\n}\n.orange--text.text--darken-2 {\n  color: #f57c00 !important;\n}\n.orange--text.text--darken-2 input,\n.orange--text.text--darken-2 textarea {\n  caret-color: #f57c00 !important;\n}\n.orange.darken-3 {\n  background-color: #ef6c00 !important;\n  border-color: #ef6c00 !important;\n}\n.orange.darken-3--after:after {\n  background-color: #ef6c00 !important;\n}\n.orange--text.text--darken-3 {\n  color: #ef6c00 !important;\n}\n.orange--text.text--darken-3 input,\n.orange--text.text--darken-3 textarea {\n  caret-color: #ef6c00 !important;\n}\n.orange.darken-4 {\n  background-color: #e65100 !important;\n  border-color: #e65100 !important;\n}\n.orange.darken-4--after:after {\n  background-color: #e65100 !important;\n}\n.orange--text.text--darken-4 {\n  color: #e65100 !important;\n}\n.orange--text.text--darken-4 input,\n.orange--text.text--darken-4 textarea {\n  caret-color: #e65100 !important;\n}\n.orange.accent-1 {\n  background-color: #ffd180 !important;\n  border-color: #ffd180 !important;\n}\n.orange.accent-1--after:after {\n  background-color: #ffd180 !important;\n}\n.orange--text.text--accent-1 {\n  color: #ffd180 !important;\n}\n.orange--text.text--accent-1 input,\n.orange--text.text--accent-1 textarea {\n  caret-color: #ffd180 !important;\n}\n.orange.accent-2 {\n  background-color: #ffab40 !important;\n  border-color: #ffab40 !important;\n}\n.orange.accent-2--after:after {\n  background-color: #ffab40 !important;\n}\n.orange--text.text--accent-2 {\n  color: #ffab40 !important;\n}\n.orange--text.text--accent-2 input,\n.orange--text.text--accent-2 textarea {\n  caret-color: #ffab40 !important;\n}\n.orange.accent-3 {\n  background-color: #ff9100 !important;\n  border-color: #ff9100 !important;\n}\n.orange.accent-3--after:after {\n  background-color: #ff9100 !important;\n}\n.orange--text.text--accent-3 {\n  color: #ff9100 !important;\n}\n.orange--text.text--accent-3 input,\n.orange--text.text--accent-3 textarea {\n  caret-color: #ff9100 !important;\n}\n.orange.accent-4 {\n  background-color: #ff6d00 !important;\n  border-color: #ff6d00 !important;\n}\n.orange.accent-4--after:after {\n  background-color: #ff6d00 !important;\n}\n.orange--text.text--accent-4 {\n  color: #ff6d00 !important;\n}\n.orange--text.text--accent-4 input,\n.orange--text.text--accent-4 textarea {\n  caret-color: #ff6d00 !important;\n}\n.deep-orange {\n  background-color: #ff5722 !important;\n  border-color: #ff5722 !important;\n}\n.deep-orange--text {\n  color: #ff5722 !important;\n}\n.deep-orange--text input,\n.deep-orange--text textarea {\n  caret-color: #ff5722 !important;\n}\n.deep-orange--after:after {\n  background: #ff5722 !important;\n}\n.deep-orange.lighten-5 {\n  background-color: #fbe9e7 !important;\n  border-color: #fbe9e7 !important;\n}\n.deep-orange.lighten-5--after:after {\n  background-color: #fbe9e7 !important;\n}\n.deep-orange--text.text--lighten-5 {\n  color: #fbe9e7 !important;\n}\n.deep-orange--text.text--lighten-5 input,\n.deep-orange--text.text--lighten-5 textarea {\n  caret-color: #fbe9e7 !important;\n}\n.deep-orange.lighten-4 {\n  background-color: #ffccbc !important;\n  border-color: #ffccbc !important;\n}\n.deep-orange.lighten-4--after:after {\n  background-color: #ffccbc !important;\n}\n.deep-orange--text.text--lighten-4 {\n  color: #ffccbc !important;\n}\n.deep-orange--text.text--lighten-4 input,\n.deep-orange--text.text--lighten-4 textarea {\n  caret-color: #ffccbc !important;\n}\n.deep-orange.lighten-3 {\n  background-color: #ffab91 !important;\n  border-color: #ffab91 !important;\n}\n.deep-orange.lighten-3--after:after {\n  background-color: #ffab91 !important;\n}\n.deep-orange--text.text--lighten-3 {\n  color: #ffab91 !important;\n}\n.deep-orange--text.text--lighten-3 input,\n.deep-orange--text.text--lighten-3 textarea {\n  caret-color: #ffab91 !important;\n}\n.deep-orange.lighten-2 {\n  background-color: #ff8a65 !important;\n  border-color: #ff8a65 !important;\n}\n.deep-orange.lighten-2--after:after {\n  background-color: #ff8a65 !important;\n}\n.deep-orange--text.text--lighten-2 {\n  color: #ff8a65 !important;\n}\n.deep-orange--text.text--lighten-2 input,\n.deep-orange--text.text--lighten-2 textarea {\n  caret-color: #ff8a65 !important;\n}\n.deep-orange.lighten-1 {\n  background-color: #ff7043 !important;\n  border-color: #ff7043 !important;\n}\n.deep-orange.lighten-1--after:after {\n  background-color: #ff7043 !important;\n}\n.deep-orange--text.text--lighten-1 {\n  color: #ff7043 !important;\n}\n.deep-orange--text.text--lighten-1 input,\n.deep-orange--text.text--lighten-1 textarea {\n  caret-color: #ff7043 !important;\n}\n.deep-orange.darken-1 {\n  background-color: #f4511e !important;\n  border-color: #f4511e !important;\n}\n.deep-orange.darken-1--after:after {\n  background-color: #f4511e !important;\n}\n.deep-orange--text.text--darken-1 {\n  color: #f4511e !important;\n}\n.deep-orange--text.text--darken-1 input,\n.deep-orange--text.text--darken-1 textarea {\n  caret-color: #f4511e !important;\n}\n.deep-orange.darken-2 {\n  background-color: #e64a19 !important;\n  border-color: #e64a19 !important;\n}\n.deep-orange.darken-2--after:after {\n  background-color: #e64a19 !important;\n}\n.deep-orange--text.text--darken-2 {\n  color: #e64a19 !important;\n}\n.deep-orange--text.text--darken-2 input,\n.deep-orange--text.text--darken-2 textarea {\n  caret-color: #e64a19 !important;\n}\n.deep-orange.darken-3 {\n  background-color: #d84315 !important;\n  border-color: #d84315 !important;\n}\n.deep-orange.darken-3--after:after {\n  background-color: #d84315 !important;\n}\n.deep-orange--text.text--darken-3 {\n  color: #d84315 !important;\n}\n.deep-orange--text.text--darken-3 input,\n.deep-orange--text.text--darken-3 textarea {\n  caret-color: #d84315 !important;\n}\n.deep-orange.darken-4 {\n  background-color: #bf360c !important;\n  border-color: #bf360c !important;\n}\n.deep-orange.darken-4--after:after {\n  background-color: #bf360c !important;\n}\n.deep-orange--text.text--darken-4 {\n  color: #bf360c !important;\n}\n.deep-orange--text.text--darken-4 input,\n.deep-orange--text.text--darken-4 textarea {\n  caret-color: #bf360c !important;\n}\n.deep-orange.accent-1 {\n  background-color: #ff9e80 !important;\n  border-color: #ff9e80 !important;\n}\n.deep-orange.accent-1--after:after {\n  background-color: #ff9e80 !important;\n}\n.deep-orange--text.text--accent-1 {\n  color: #ff9e80 !important;\n}\n.deep-orange--text.text--accent-1 input,\n.deep-orange--text.text--accent-1 textarea {\n  caret-color: #ff9e80 !important;\n}\n.deep-orange.accent-2 {\n  background-color: #ff6e40 !important;\n  border-color: #ff6e40 !important;\n}\n.deep-orange.accent-2--after:after {\n  background-color: #ff6e40 !important;\n}\n.deep-orange--text.text--accent-2 {\n  color: #ff6e40 !important;\n}\n.deep-orange--text.text--accent-2 input,\n.deep-orange--text.text--accent-2 textarea {\n  caret-color: #ff6e40 !important;\n}\n.deep-orange.accent-3 {\n  background-color: #ff3d00 !important;\n  border-color: #ff3d00 !important;\n}\n.deep-orange.accent-3--after:after {\n  background-color: #ff3d00 !important;\n}\n.deep-orange--text.text--accent-3 {\n  color: #ff3d00 !important;\n}\n.deep-orange--text.text--accent-3 input,\n.deep-orange--text.text--accent-3 textarea {\n  caret-color: #ff3d00 !important;\n}\n.deep-orange.accent-4 {\n  background-color: #dd2c00 !important;\n  border-color: #dd2c00 !important;\n}\n.deep-orange.accent-4--after:after {\n  background-color: #dd2c00 !important;\n}\n.deep-orange--text.text--accent-4 {\n  color: #dd2c00 !important;\n}\n.deep-orange--text.text--accent-4 input,\n.deep-orange--text.text--accent-4 textarea {\n  caret-color: #dd2c00 !important;\n}\n.brown {\n  background-color: #795548 !important;\n  border-color: #795548 !important;\n}\n.brown--text {\n  color: #795548 !important;\n}\n.brown--text input,\n.brown--text textarea {\n  caret-color: #795548 !important;\n}\n.brown--after:after {\n  background: #795548 !important;\n}\n.brown.lighten-5 {\n  background-color: #efebe9 !important;\n  border-color: #efebe9 !important;\n}\n.brown.lighten-5--after:after {\n  background-color: #efebe9 !important;\n}\n.brown--text.text--lighten-5 {\n  color: #efebe9 !important;\n}\n.brown--text.text--lighten-5 input,\n.brown--text.text--lighten-5 textarea {\n  caret-color: #efebe9 !important;\n}\n.brown.lighten-4 {\n  background-color: #d7ccc8 !important;\n  border-color: #d7ccc8 !important;\n}\n.brown.lighten-4--after:after {\n  background-color: #d7ccc8 !important;\n}\n.brown--text.text--lighten-4 {\n  color: #d7ccc8 !important;\n}\n.brown--text.text--lighten-4 input,\n.brown--text.text--lighten-4 textarea {\n  caret-color: #d7ccc8 !important;\n}\n.brown.lighten-3 {\n  background-color: #bcaaa4 !important;\n  border-color: #bcaaa4 !important;\n}\n.brown.lighten-3--after:after {\n  background-color: #bcaaa4 !important;\n}\n.brown--text.text--lighten-3 {\n  color: #bcaaa4 !important;\n}\n.brown--text.text--lighten-3 input,\n.brown--text.text--lighten-3 textarea {\n  caret-color: #bcaaa4 !important;\n}\n.brown.lighten-2 {\n  background-color: #a1887f !important;\n  border-color: #a1887f !important;\n}\n.brown.lighten-2--after:after {\n  background-color: #a1887f !important;\n}\n.brown--text.text--lighten-2 {\n  color: #a1887f !important;\n}\n.brown--text.text--lighten-2 input,\n.brown--text.text--lighten-2 textarea {\n  caret-color: #a1887f !important;\n}\n.brown.lighten-1 {\n  background-color: #8d6e63 !important;\n  border-color: #8d6e63 !important;\n}\n.brown.lighten-1--after:after {\n  background-color: #8d6e63 !important;\n}\n.brown--text.text--lighten-1 {\n  color: #8d6e63 !important;\n}\n.brown--text.text--lighten-1 input,\n.brown--text.text--lighten-1 textarea {\n  caret-color: #8d6e63 !important;\n}\n.brown.darken-1 {\n  background-color: #6d4c41 !important;\n  border-color: #6d4c41 !important;\n}\n.brown.darken-1--after:after {\n  background-color: #6d4c41 !important;\n}\n.brown--text.text--darken-1 {\n  color: #6d4c41 !important;\n}\n.brown--text.text--darken-1 input,\n.brown--text.text--darken-1 textarea {\n  caret-color: #6d4c41 !important;\n}\n.brown.darken-2 {\n  background-color: #5d4037 !important;\n  border-color: #5d4037 !important;\n}\n.brown.darken-2--after:after {\n  background-color: #5d4037 !important;\n}\n.brown--text.text--darken-2 {\n  color: #5d4037 !important;\n}\n.brown--text.text--darken-2 input,\n.brown--text.text--darken-2 textarea {\n  caret-color: #5d4037 !important;\n}\n.brown.darken-3 {\n  background-color: #4e342e !important;\n  border-color: #4e342e !important;\n}\n.brown.darken-3--after:after {\n  background-color: #4e342e !important;\n}\n.brown--text.text--darken-3 {\n  color: #4e342e !important;\n}\n.brown--text.text--darken-3 input,\n.brown--text.text--darken-3 textarea {\n  caret-color: #4e342e !important;\n}\n.brown.darken-4 {\n  background-color: #3e2723 !important;\n  border-color: #3e2723 !important;\n}\n.brown.darken-4--after:after {\n  background-color: #3e2723 !important;\n}\n.brown--text.text--darken-4 {\n  color: #3e2723 !important;\n}\n.brown--text.text--darken-4 input,\n.brown--text.text--darken-4 textarea {\n  caret-color: #3e2723 !important;\n}\n.blue-grey {\n  background-color: #607d8b !important;\n  border-color: #607d8b !important;\n}\n.blue-grey--text {\n  color: #607d8b !important;\n}\n.blue-grey--text input,\n.blue-grey--text textarea {\n  caret-color: #607d8b !important;\n}\n.blue-grey--after:after {\n  background: #607d8b !important;\n}\n.blue-grey.lighten-5 {\n  background-color: #eceff1 !important;\n  border-color: #eceff1 !important;\n}\n.blue-grey.lighten-5--after:after {\n  background-color: #eceff1 !important;\n}\n.blue-grey--text.text--lighten-5 {\n  color: #eceff1 !important;\n}\n.blue-grey--text.text--lighten-5 input,\n.blue-grey--text.text--lighten-5 textarea {\n  caret-color: #eceff1 !important;\n}\n.blue-grey.lighten-4 {\n  background-color: #cfd8dc !important;\n  border-color: #cfd8dc !important;\n}\n.blue-grey.lighten-4--after:after {\n  background-color: #cfd8dc !important;\n}\n.blue-grey--text.text--lighten-4 {\n  color: #cfd8dc !important;\n}\n.blue-grey--text.text--lighten-4 input,\n.blue-grey--text.text--lighten-4 textarea {\n  caret-color: #cfd8dc !important;\n}\n.blue-grey.lighten-3 {\n  background-color: #b0bec5 !important;\n  border-color: #b0bec5 !important;\n}\n.blue-grey.lighten-3--after:after {\n  background-color: #b0bec5 !important;\n}\n.blue-grey--text.text--lighten-3 {\n  color: #b0bec5 !important;\n}\n.blue-grey--text.text--lighten-3 input,\n.blue-grey--text.text--lighten-3 textarea {\n  caret-color: #b0bec5 !important;\n}\n.blue-grey.lighten-2 {\n  background-color: #90a4ae !important;\n  border-color: #90a4ae !important;\n}\n.blue-grey.lighten-2--after:after {\n  background-color: #90a4ae !important;\n}\n.blue-grey--text.text--lighten-2 {\n  color: #90a4ae !important;\n}\n.blue-grey--text.text--lighten-2 input,\n.blue-grey--text.text--lighten-2 textarea {\n  caret-color: #90a4ae !important;\n}\n.blue-grey.lighten-1 {\n  background-color: #78909c !important;\n  border-color: #78909c !important;\n}\n.blue-grey.lighten-1--after:after {\n  background-color: #78909c !important;\n}\n.blue-grey--text.text--lighten-1 {\n  color: #78909c !important;\n}\n.blue-grey--text.text--lighten-1 input,\n.blue-grey--text.text--lighten-1 textarea {\n  caret-color: #78909c !important;\n}\n.blue-grey.darken-1 {\n  background-color: #546e7a !important;\n  border-color: #546e7a !important;\n}\n.blue-grey.darken-1--after:after {\n  background-color: #546e7a !important;\n}\n.blue-grey--text.text--darken-1 {\n  color: #546e7a !important;\n}\n.blue-grey--text.text--darken-1 input,\n.blue-grey--text.text--darken-1 textarea {\n  caret-color: #546e7a !important;\n}\n.blue-grey.darken-2 {\n  background-color: #455a64 !important;\n  border-color: #455a64 !important;\n}\n.blue-grey.darken-2--after:after {\n  background-color: #455a64 !important;\n}\n.blue-grey--text.text--darken-2 {\n  color: #455a64 !important;\n}\n.blue-grey--text.text--darken-2 input,\n.blue-grey--text.text--darken-2 textarea {\n  caret-color: #455a64 !important;\n}\n.blue-grey.darken-3 {\n  background-color: #37474f !important;\n  border-color: #37474f !important;\n}\n.blue-grey.darken-3--after:after {\n  background-color: #37474f !important;\n}\n.blue-grey--text.text--darken-3 {\n  color: #37474f !important;\n}\n.blue-grey--text.text--darken-3 input,\n.blue-grey--text.text--darken-3 textarea {\n  caret-color: #37474f !important;\n}\n.blue-grey.darken-4 {\n  background-color: #263238 !important;\n  border-color: #263238 !important;\n}\n.blue-grey.darken-4--after:after {\n  background-color: #263238 !important;\n}\n.blue-grey--text.text--darken-4 {\n  color: #263238 !important;\n}\n.blue-grey--text.text--darken-4 input,\n.blue-grey--text.text--darken-4 textarea {\n  caret-color: #263238 !important;\n}\n.grey {\n  background-color: #9e9e9e !important;\n  border-color: #9e9e9e !important;\n}\n.grey--text {\n  color: #9e9e9e !important;\n}\n.grey--text input,\n.grey--text textarea {\n  caret-color: #9e9e9e !important;\n}\n.grey--after:after {\n  background: #9e9e9e !important;\n}\n.grey.lighten-5 {\n  background-color: #fafafa !important;\n  border-color: #fafafa !important;\n}\n.grey.lighten-5--after:after {\n  background-color: #fafafa !important;\n}\n.grey--text.text--lighten-5 {\n  color: #fafafa !important;\n}\n.grey--text.text--lighten-5 input,\n.grey--text.text--lighten-5 textarea {\n  caret-color: #fafafa !important;\n}\n.grey.lighten-4 {\n  background-color: #f5f5f5 !important;\n  border-color: #f5f5f5 !important;\n}\n.grey.lighten-4--after:after {\n  background-color: #f5f5f5 !important;\n}\n.grey--text.text--lighten-4 {\n  color: #f5f5f5 !important;\n}\n.grey--text.text--lighten-4 input,\n.grey--text.text--lighten-4 textarea {\n  caret-color: #f5f5f5 !important;\n}\n.grey.lighten-3 {\n  background-color: #eee !important;\n  border-color: #eee !important;\n}\n.grey.lighten-3--after:after {\n  background-color: #eee !important;\n}\n.grey--text.text--lighten-3 {\n  color: #eee !important;\n}\n.grey--text.text--lighten-3 input,\n.grey--text.text--lighten-3 textarea {\n  caret-color: #eee !important;\n}\n.grey.lighten-2 {\n  background-color: #e0e0e0 !important;\n  border-color: #e0e0e0 !important;\n}\n.grey.lighten-2--after:after {\n  background-color: #e0e0e0 !important;\n}\n.grey--text.text--lighten-2 {\n  color: #e0e0e0 !important;\n}\n.grey--text.text--lighten-2 input,\n.grey--text.text--lighten-2 textarea {\n  caret-color: #e0e0e0 !important;\n}\n.grey.lighten-1 {\n  background-color: #bdbdbd !important;\n  border-color: #bdbdbd !important;\n}\n.grey.lighten-1--after:after {\n  background-color: #bdbdbd !important;\n}\n.grey--text.text--lighten-1 {\n  color: #bdbdbd !important;\n}\n.grey--text.text--lighten-1 input,\n.grey--text.text--lighten-1 textarea {\n  caret-color: #bdbdbd !important;\n}\n.grey.darken-1 {\n  background-color: #757575 !important;\n  border-color: #757575 !important;\n}\n.grey.darken-1--after:after {\n  background-color: #757575 !important;\n}\n.grey--text.text--darken-1 {\n  color: #757575 !important;\n}\n.grey--text.text--darken-1 input,\n.grey--text.text--darken-1 textarea {\n  caret-color: #757575 !important;\n}\n.grey.darken-2 {\n  background-color: #616161 !important;\n  border-color: #616161 !important;\n}\n.grey.darken-2--after:after {\n  background-color: #616161 !important;\n}\n.grey--text.text--darken-2 {\n  color: #616161 !important;\n}\n.grey--text.text--darken-2 input,\n.grey--text.text--darken-2 textarea {\n  caret-color: #616161 !important;\n}\n.grey.darken-3 {\n  background-color: #424242 !important;\n  border-color: #424242 !important;\n}\n.grey.darken-3--after:after {\n  background-color: #424242 !important;\n}\n.grey--text.text--darken-3 {\n  color: #424242 !important;\n}\n.grey--text.text--darken-3 input,\n.grey--text.text--darken-3 textarea {\n  caret-color: #424242 !important;\n}\n.grey.darken-4 {\n  background-color: #212121 !important;\n  border-color: #212121 !important;\n}\n.grey.darken-4--after:after {\n  background-color: #212121 !important;\n}\n.grey--text.text--darken-4 {\n  color: #212121 !important;\n}\n.grey--text.text--darken-4 input,\n.grey--text.text--darken-4 textarea {\n  caret-color: #212121 !important;\n}\n.shades.black {\n  background-color: #000 !important;\n  border-color: #000 !important;\n}\n.shades.black--after:after {\n  background-color: #000 !important;\n}\n.shades--text.text--black {\n  color: #000 !important;\n}\n.shades--text.text--black input,\n.shades--text.text--black textarea {\n  caret-color: #000 !important;\n}\n.shades.white {\n  background-color: #fff !important;\n  border-color: #fff !important;\n}\n.shades.white--after:after {\n  background-color: #fff !important;\n}\n.shades--text.text--white {\n  color: #fff !important;\n}\n.shades--text.text--white input,\n.shades--text.text--white textarea {\n  caret-color: #fff !important;\n}\n.shades.transparent {\n  background-color: transparent !important;\n  border-color: transparent !important;\n}\n.shades.transparent--after:after {\n  background-color: transparent !important;\n}\n.shades--text.text--transparent {\n  color: transparent !important;\n}\n.shades--text.text--transparent input,\n.shades--text.text--transparent textarea {\n  caret-color: transparent !important;\n}\nhtml {\n  box-sizing: border-box;\n  overflow-y: scroll; /* All browsers without overlaying scrollbars */\n  -webkit-text-size-adjust: 100%; /* iOS 8+ */\n}\n*,\n::before,\n::after {\n  box-sizing: inherit;\n}\n::before,\n::after {\n  text-decoration: inherit; /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */\n  vertical-align: inherit;\n}\n* {\n  background-repeat: no-repeat; /* Set `background-repeat: no-repeat` to all elements */\n  padding: 0; /* Reset `padding` and `margin` of all elements */\n  margin: 0;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\nhr {\n  overflow: visible; /* Show the overflow in Edge and IE */\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\nsummary {\n  display: list-item; /* Add the correct display in all browsers */\n}\nsmall {\n  font-size: 80%; /* Set font-size to 80% in `small` elements */\n}\n[hidden],\ntemplate {\n  display: none; /* Add the correct display in IE */\n}\nabbr[title] {\n  border-bottom: 1px dotted; /* Add a bordered underline effect in all browsers */\n  text-decoration: none; /* Remove text decoration in Firefox 40+ */\n}\na {\n  background-color: transparent; /* Remove the gray background on active links in IE 10 */\n  -webkit-text-decoration-skip: objects; /* Remove gaps in links underline in iOS 8+ and Safari 8+ */\n}\na:active,\na:hover {\n  outline-width: 0; /* Remove the outline when hovering in all browsers */\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace; /* Specify the font family of code elements */\n}\nb,\nstrong {\n  font-weight: bolder; /* Correct style set to `bold` in Edge 12+, Safari 6.2+, and Chrome 18+ */\n}\ndfn {\n  font-style: italic; /* Address styling not present in Safari and Chrome */\n}\nmark {\n  background-color: #ff0;\n  color: #000;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\ninput {\n  border-radius: 0;\n}\nbutton,\n[type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"],\n[role=\"button\"] {\n  cursor: pointer;\n}\n[disabled] {\n  cursor: default;\n}\n[type=\"number\"] {\n  width: auto; /* Firefox 36+ */\n}\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* Safari 8+ */\n}\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; /* Safari 8 */\n}\ntextarea {\n  overflow: auto; /* Internet Explorer 11+ */\n  resize: vertical; /* Specify textarea resizability */\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font: inherit; /* Specify font inheritance of form elements */\n}\noptgroup {\n  font-weight: bold; /* Restore the font weight unset by the previous rule. */\n}\nbutton {\n  overflow: visible; /* Address `overflow` set to `hidden` in IE 8/9/10/11 */\n}\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: 0;\n  padding: 0;\n}\nbutton:-moz-focusring,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  outline: 0;\n  border: 0;\n}\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */\n}\nbutton,\nselect {\n  text-transform: none; /* Firefox 40+, Internet Explorer 11- */\n}\nbutton,\ninput,\nselect,\ntextarea {\n  background-color: transparent;\n  border-style: none;\n  color: inherit;\n}\nselect {\n  -moz-appearance: none; /* Firefox 36+ */\n  -webkit-appearance: none; /* Chrome 41+ */\n}\nselect::-ms-expand {\n  display: none; /* Internet Explorer 11+ */\n}\nselect::-ms-value {\n  color: currentColor; /* Internet Explorer 11+ */\n}\nlegend {\n  border: 0; /* Correct `color` not being inherited in IE 8/9/10/11 */\n  color: inherit; /* Correct the color inheritance from `fieldset` elements in IE */\n  display: table; /* Correct the text wrapping in Edge and IE */\n  max-width: 100%; /* Correct the text wrapping in Edge and IE */\n  white-space: normal; /* Correct the text wrapping in Edge and IE */\n}\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* Correct the inability to style clickable types in iOS and Safari */\n  font: inherit; /* Change font properties to `inherit` in Chrome and Safari */\n}\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */\n  outline-offset: -2px; /* Correct the outline style in Safari */\n}\nimg {\n  border-style: none; /* Remove border when inside `a` element in IE 8/9/10 */\n}\nprogress {\n  vertical-align: baseline;\n}\nsvg:not(:root) {\n  overflow: hidden; /* Internet Explorer 11- */\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; /* Internet Explorer 11+, Windows Phone 8.1+ */\n}\n@media screen {\n[hidden~=\"screen\"] {\n    display: inherit;\n}\n[hidden~=\"screen\"]:not(:active):not(:focus):not(:target) {\n    position: absolute !important;\n    clip: rect(0 0 0 0) !important;\n}\n}\n[aria-busy=\"true\"] {\n  cursor: progress;\n}\n[aria-controls] {\n  cursor: pointer;\n}\n[aria-disabled] {\n  cursor: default;\n}\n::-moz-selection {\n  background-color: #b3d4fc; /* Required when declaring ::selection */\n  color: #000;\n  text-shadow: none;\n}\n::selection {\n  background-color: #b3d4fc; /* Required when declaring ::selection */\n  color: #000;\n  text-shadow: none;\n}\n.bottom-sheet-transition-enter {\n  transform: translateY(100%);\n}\n.bottom-sheet-transition-leave-to {\n  transform: translateY(100%);\n}\n.carousel-transition-enter {\n  transform: translate(100%, 0);\n}\n.carousel-transition-leave,\n.carousel-transition-leave-to {\n  position: absolute;\n  top: 0;\n  transform: translate(-100%, 0);\n}\n.carousel-reverse-transition-enter {\n  transform: translate(-100%, 0);\n}\n.carousel-reverse-transition-leave,\n.carousel-reverse-transition-leave-to {\n  position: absolute;\n  top: 0;\n  transform: translate(100%, 0);\n}\n.dialog-transition-enter,\n.dialog-transition-leave-to {\n  transform: scale(0.5);\n  opacity: 0;\n}\n.dialog-transition-enter-to,\n.dialog-transition-leave {\n  opacity: 1;\n}\n.dialog-bottom-transition-enter,\n.dialog-bottom-transition-leave-to {\n  transform: translateY(100%);\n}\n.tab-transition-enter {\n  transform: translate(100%, 0);\n}\n.tab-transition-enter-to {\n  transform: translate(0, 0);\n}\n.tab-transition-leave,\n.tab-transition-leave-active {\n  position: absolute;\n  top: 0;\n}\n.tab-transition-leave-to {\n  position: absolute;\n  transform: translate(-100%, 0);\n}\n.tab-reverse-transition-enter {\n  transform: translate(-100%, 0);\n}\n.tab-reverse-transition-leave,\n.tab-reverse-transition-leave-to {\n  top: 0;\n  position: absolute;\n  transform: translate(100%, 0);\n}\n.scale-transition-enter-active,\n.scale-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.scale-transition-enter,\n.scale-transition-leave,\n.scale-transition-leave-to {\n  opacity: 0;\n  transform: scale(0);\n}\n.slide-y-transition-enter-active,\n.slide-y-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-y-transition-enter,\n.slide-y-transition-leave-to {\n  opacity: 0;\n  transform: translateY(-15px);\n}\n.slide-y-reverse-transition-enter-active,\n.slide-y-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-y-reverse-transition-enter,\n.slide-y-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translateY(15px);\n}\n.slide-x-transition-enter-active,\n.slide-x-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-x-transition-enter,\n.slide-x-transition-leave-to {\n  opacity: 0;\n  transform: translateX(-15px);\n}\n.slide-x-reverse-transition-enter-active,\n.slide-x-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slide-x-reverse-transition-enter,\n.slide-x-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translateX(15px);\n}\n.fade-transition-enter-active,\n.fade-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.fade-transition-enter,\n.fade-transition-leave-to {\n  opacity: 0;\n}\n.fab-transition-enter-active,\n.fab-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.fab-transition-enter,\n.fab-transition-leave-to {\n  transform: scale(0) rotate(-45deg);\n}\n.blockquote {\n  padding: 16px 0 16px 24px;\n  font-size: 18px;\n  font-weight: 300;\n}\ncode,\nkbd {\n  display: inline-block;\n  border-radius: 3px;\n  white-space: pre-wrap;\n  font-size: 85%;\n  font-weight: 900;\n}\ncode:after,\nkbd:after,\ncode:before,\nkbd:before {\n  content: \"\\A0\";\n  letter-spacing: -1px;\n}\ncode {\n  background-color: #f5f5f5;\n  color: #bd4147;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\nkbd {\n  background: #424242;\n  color: #fff;\n}\nhtml {\n  font-size: 14px;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-tap-highlight-color: rgba(0,0,0,0);\n  overflow-x: hidden;\n}\n.application {\n  font-family: 'Roboto', sans-serif;\n  line-height: 1.5;\n}\n::-ms-clear,\n::-ms-reveal {\n  display: none;\n}\n.browser-list {\n  padding-left: 24px;\n}\n.browser-list--unstyled {\n  list-style-type: none;\n}\n.display-4 {\n  font-size: 112px !important;\n  font-weight: 300;\n  line-height: 1 !important;\n  letter-spacing: -0.04em !important;\n}\n.display-3 {\n  font-size: 56px !important;\n  font-weight: 400;\n  line-height: 1.35 !important;\n  letter-spacing: -0.02em !important;\n}\n.display-2 {\n  font-size: 45px !important;\n  font-weight: 400;\n  line-height: 48px !important;\n  letter-spacing: normal !important;\n}\n.display-1 {\n  font-size: 34px !important;\n  font-weight: 400;\n  line-height: 40px !important;\n  letter-spacing: normal !important;\n}\n.headline {\n  font-size: 24px !important;\n  font-weight: 400;\n  line-height: 32px !important;\n  letter-spacing: normal !important;\n}\n.title {\n  font-size: 20px !important;\n  font-weight: 500;\n  line-height: 1 !important;\n  letter-spacing: 0.02em !important;\n}\n.subheading {\n  font-size: 16px !important;\n  font-weight: 400;\n}\n.body-2 {\n  font-size: 14px !important;\n  font-weight: 500;\n}\n.body-1 {\n  font-size: 14px !important;\n  font-weight: 400;\n}\n.caption {\n  font-size: 12px !important;\n  font-weight: 400;\n}\n.btn {\n  font-size: 14px;\n  font-weight: 500;\n}\np {\n  margin-bottom: 16px;\n}\n@-moz-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@-webkit-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@-o-keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n@keyframes shake {\n59% {\n    margin-left: 0;\n}\n60%, 80% {\n    margin-left: 2px;\n}\n70%, 90% {\n    margin-left: -2px;\n}\n}\n.elevation-0 {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-1 {\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-2 {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-3 {\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-4 {\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-5 {\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-6 {\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12) !important;\n}\n.elevation-7 {\n  box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2), 0px 7px 10px 1px rgba(0,0,0,0.14), 0px 2px 16px 1px rgba(0,0,0,0.12) !important;\n}\n.elevation-8 {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12) !important;\n}\n.elevation-9 {\n  box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2), 0px 9px 12px 1px rgba(0,0,0,0.14), 0px 3px 16px 2px rgba(0,0,0,0.12) !important;\n}\n.elevation-10 {\n  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2), 0px 10px 14px 1px rgba(0,0,0,0.14), 0px 4px 18px 3px rgba(0,0,0,0.12) !important;\n}\n.elevation-11 {\n  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2), 0px 11px 15px 1px rgba(0,0,0,0.14), 0px 4px 20px 3px rgba(0,0,0,0.12) !important;\n}\n.elevation-12 {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-13 {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 13px 19px 2px rgba(0,0,0,0.14), 0px 5px 24px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-14 {\n  box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2), 0px 14px 21px 2px rgba(0,0,0,0.14), 0px 5px 26px 4px rgba(0,0,0,0.12) !important;\n}\n.elevation-15 {\n  box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2), 0px 15px 22px 2px rgba(0,0,0,0.14), 0px 6px 28px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-16 {\n  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-17 {\n  box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2), 0px 17px 26px 2px rgba(0,0,0,0.14), 0px 6px 32px 5px rgba(0,0,0,0.12) !important;\n}\n.elevation-18 {\n  box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2), 0px 18px 28px 2px rgba(0,0,0,0.14), 0px 7px 34px 6px rgba(0,0,0,0.12) !important;\n}\n.elevation-19 {\n  box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2), 0px 19px 29px 2px rgba(0,0,0,0.14), 0px 7px 36px 6px rgba(0,0,0,0.12) !important;\n}\n.elevation-20 {\n  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2), 0px 20px 31px 3px rgba(0,0,0,0.14), 0px 8px 38px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-21 {\n  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2), 0px 21px 33px 3px rgba(0,0,0,0.14), 0px 8px 40px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-22 {\n  box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2), 0px 22px 35px 3px rgba(0,0,0,0.14), 0px 8px 42px 7px rgba(0,0,0,0.12) !important;\n}\n.elevation-23 {\n  box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2), 0px 23px 36px 3px rgba(0,0,0,0.14), 0px 9px 44px 8px rgba(0,0,0,0.12) !important;\n}\n.elevation-24 {\n  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12) !important;\n}\n@media only screen and (max-width: 599px) {\n.hidden-xs-only {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 600px) and (max-width: 959px) {\n.hidden-sm-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 959px) {\n.hidden-sm-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 600px) {\n.hidden-sm-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 960px) and (max-width: 1263px) {\n.hidden-md-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 1263px) {\n.hidden-md-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 960px) {\n.hidden-md-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1264px) and (max-width: 1903px) {\n.hidden-lg-only {\n    display: none !important;\n}\n}\n@media only screen and (max-width: 1903px) {\n.hidden-lg-and-down {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1264px) {\n.hidden-lg-and-up {\n    display: none !important;\n}\n}\n@media only screen and (min-width: 1904px) {\n.hidden-xl-only {\n    display: none !important;\n}\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.overflow-x-hidden {\n  overflow-x: hidden;\n}\n.overflow-y-hidden {\n  overflow-y: hidden;\n}\n.right {\n  float: right !important;\n}\n.left {\n  float: left !important;\n}\n.mt-0 {\n  margin-top: 0 !important;\n}\n.mr-0 {\n  margin-right: 0 !important;\n}\n.mb-0 {\n  margin-bottom: 0 !important;\n}\n.ml-0 {\n  margin-left: 0 !important;\n}\n.mx-0 {\n  margin-left: 0 !important;\n  margin-right: 0 !important;\n}\n.my-0 {\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n}\n.ma-0 {\n  margin: 0 0 !important;\n}\n.pt-0 {\n  padding-top: 0 !important;\n}\n.pr-0 {\n  padding-right: 0 !important;\n}\n.pb-0 {\n  padding-bottom: 0 !important;\n}\n.pl-0 {\n  padding-left: 0 !important;\n}\n.px-0 {\n  padding-left: 0 !important;\n  padding-right: 0 !important;\n}\n.py-0 {\n  padding-top: 0 !important;\n  padding-bottom: 0 !important;\n}\n.pa-0 {\n  padding: 0 0 !important;\n}\n.mt-1 {\n  margin-top: 4px !important;\n}\n.mr-1 {\n  margin-right: 4px !important;\n}\n.mb-1 {\n  margin-bottom: 4px !important;\n}\n.ml-1 {\n  margin-left: 4px !important;\n}\n.mx-1 {\n  margin-left: 4px !important;\n  margin-right: 4px !important;\n}\n.my-1 {\n  margin-top: 4px !important;\n  margin-bottom: 4px !important;\n}\n.ma-1 {\n  margin: 4px 4px !important;\n}\n.pt-1 {\n  padding-top: 4px !important;\n}\n.pr-1 {\n  padding-right: 4px !important;\n}\n.pb-1 {\n  padding-bottom: 4px !important;\n}\n.pl-1 {\n  padding-left: 4px !important;\n}\n.px-1 {\n  padding-left: 4px !important;\n  padding-right: 4px !important;\n}\n.py-1 {\n  padding-top: 4px !important;\n  padding-bottom: 4px !important;\n}\n.pa-1 {\n  padding: 4px 4px !important;\n}\n.mt-2 {\n  margin-top: 8px !important;\n}\n.mr-2 {\n  margin-right: 8px !important;\n}\n.mb-2 {\n  margin-bottom: 8px !important;\n}\n.ml-2 {\n  margin-left: 8px !important;\n}\n.mx-2 {\n  margin-left: 8px !important;\n  margin-right: 8px !important;\n}\n.my-2 {\n  margin-top: 8px !important;\n  margin-bottom: 8px !important;\n}\n.ma-2 {\n  margin: 8px 8px !important;\n}\n.pt-2 {\n  padding-top: 8px !important;\n}\n.pr-2 {\n  padding-right: 8px !important;\n}\n.pb-2 {\n  padding-bottom: 8px !important;\n}\n.pl-2 {\n  padding-left: 8px !important;\n}\n.px-2 {\n  padding-left: 8px !important;\n  padding-right: 8px !important;\n}\n.py-2 {\n  padding-top: 8px !important;\n  padding-bottom: 8px !important;\n}\n.pa-2 {\n  padding: 8px 8px !important;\n}\n.mt-3 {\n  margin-top: 16px !important;\n}\n.mr-3 {\n  margin-right: 16px !important;\n}\n.mb-3 {\n  margin-bottom: 16px !important;\n}\n.ml-3 {\n  margin-left: 16px !important;\n}\n.mx-3 {\n  margin-left: 16px !important;\n  margin-right: 16px !important;\n}\n.my-3 {\n  margin-top: 16px !important;\n  margin-bottom: 16px !important;\n}\n.ma-3 {\n  margin: 16px 16px !important;\n}\n.pt-3 {\n  padding-top: 16px !important;\n}\n.pr-3 {\n  padding-right: 16px !important;\n}\n.pb-3 {\n  padding-bottom: 16px !important;\n}\n.pl-3 {\n  padding-left: 16px !important;\n}\n.px-3 {\n  padding-left: 16px !important;\n  padding-right: 16px !important;\n}\n.py-3 {\n  padding-top: 16px !important;\n  padding-bottom: 16px !important;\n}\n.pa-3 {\n  padding: 16px 16px !important;\n}\n.mt-4 {\n  margin-top: 24px !important;\n}\n.mr-4 {\n  margin-right: 24px !important;\n}\n.mb-4 {\n  margin-bottom: 24px !important;\n}\n.ml-4 {\n  margin-left: 24px !important;\n}\n.mx-4 {\n  margin-left: 24px !important;\n  margin-right: 24px !important;\n}\n.my-4 {\n  margin-top: 24px !important;\n  margin-bottom: 24px !important;\n}\n.ma-4 {\n  margin: 24px 24px !important;\n}\n.pt-4 {\n  padding-top: 24px !important;\n}\n.pr-4 {\n  padding-right: 24px !important;\n}\n.pb-4 {\n  padding-bottom: 24px !important;\n}\n.pl-4 {\n  padding-left: 24px !important;\n}\n.px-4 {\n  padding-left: 24px !important;\n  padding-right: 24px !important;\n}\n.py-4 {\n  padding-top: 24px !important;\n  padding-bottom: 24px !important;\n}\n.pa-4 {\n  padding: 24px 24px !important;\n}\n.mt-5 {\n  margin-top: 48px !important;\n}\n.mr-5 {\n  margin-right: 48px !important;\n}\n.mb-5 {\n  margin-bottom: 48px !important;\n}\n.ml-5 {\n  margin-left: 48px !important;\n}\n.mx-5 {\n  margin-left: 48px !important;\n  margin-right: 48px !important;\n}\n.my-5 {\n  margin-top: 48px !important;\n  margin-bottom: 48px !important;\n}\n.ma-5 {\n  margin: 48px 48px !important;\n}\n.pt-5 {\n  padding-top: 48px !important;\n}\n.pr-5 {\n  padding-right: 48px !important;\n}\n.pb-5 {\n  padding-bottom: 48px !important;\n}\n.pl-5 {\n  padding-left: 48px !important;\n}\n.px-5 {\n  padding-left: 48px !important;\n  padding-right: 48px !important;\n}\n.py-5 {\n  padding-top: 48px !important;\n  padding-bottom: 48px !important;\n}\n.pa-5 {\n  padding: 48px 48px !important;\n}\n@media all and (min-width: 0) {\n.text-xs-left {\n    text-align: left !important;\n}\n.text-xs-center {\n    text-align: center !important;\n}\n.text-xs-right {\n    text-align: right !important;\n}\n.text-xs-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 600px) {\n.text-sm-left {\n    text-align: left !important;\n}\n.text-sm-center {\n    text-align: center !important;\n}\n.text-sm-right {\n    text-align: right !important;\n}\n.text-sm-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 960px) {\n.text-md-left {\n    text-align: left !important;\n}\n.text-md-center {\n    text-align: center !important;\n}\n.text-md-right {\n    text-align: right !important;\n}\n.text-md-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 1264px) {\n.text-lg-left {\n    text-align: left !important;\n}\n.text-lg-center {\n    text-align: center !important;\n}\n.text-lg-right {\n    text-align: right !important;\n}\n.text-lg-justify {\n    text-align: justify !important;\n}\n}\n@media all and (min-width: 1904px) {\n.text-xl-left {\n    text-align: left !important;\n}\n.text-xl-center {\n    text-align: center !important;\n}\n.text-xl-right {\n    text-align: right !important;\n}\n.text-xl-justify {\n    text-align: justify !important;\n}\n}\n.tooltip {\n  position: relative;\n}\n.tooltip__content {\n  background: #616161;\n  border-radius: 2px;\n  color: #fff;\n  font-size: 12px;\n  display: inline-block;\n  padding: 5px 8px;\n  position: absolute;\n  text-transform: initial;\n  transition: 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: auto;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.tooltip__content[class*=\"-active\"] {\n  pointer-events: none;\n}\n@media only screen and (max-width: 959px) {\n.tooltip .tooltip__content {\n    padding: 10px 16px;\n}\n}\n.alert {\n  border-radius: 0;\n  border-width: 4px 0 0 0;\n  border-style: solid;\n  color: #fff;\n  display: flex;\n  font-size: 14px;\n  margin: 4px auto;\n  padding: 16px;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.alert .alert__icon.icon,\n.alert__dismissible .icon {\n  align-self: center;\n  color: rgba(0,0,0,0.3);\n  font-size: 24px;\n}\n.alert--outline .icon {\n  color: inherit !important;\n}\n.alert__icon {\n  margin-right: 16px;\n}\n.alert__dismissible {\n  align-self: flex-start;\n  margin-left: 16px;\n  margin-right: 0;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.alert__dismissible:hover {\n  color: rgba(26,26,26,0.3);\n}\n.alert--no-icon .alert__icon {\n  display: none;\n}\n.alert > div {\n  align-self: center;\n  flex: 1 1;\n}\n@media screen and (max-width: 600px) {\n.alert__icon {\n    display: none;\n}\n}\n.alert.alert {\n  border-color: rgba(0,0,0,0.12) !important;\n}\n.alert.alert--outline {\n  border: 1px solid currentColor !important;\n}\n.application {\n  display: flex;\n}\n.application--wrap {\n  flex: 1 1 auto;\n  backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  max-width: 100%;\n  position: relative;\n}\n.application--wrap > main:not(.content) {\n  flex: 1 0 auto;\n  display: flex;\n}\n.application.theme--light {\n  background: #fafafa;\n  color: rgba(0,0,0,0.87);\n}\n.application.theme--light a {\n  cursor: pointer;\n}\n.application.theme--dark {\n  background: #303030;\n  color: #fff;\n}\n.application.theme--dark a {\n  cursor: pointer;\n}\n.avatar {\n  align-items: center;\n  border-radius: 50%;\n  display: inline-flex;\n  justify-content: center;\n  text-align: center;\n  vertical-align: middle;\n}\n.avatar img,\n.avatar .icon {\n  border-radius: 50%;\n  height: inherit;\n  width: inherit;\n}\n.avatar--tile {\n  border-radius: 0;\n}\n.avatar--tile img,\n.avatar--tile .icon {\n  border-radius: 0;\n}\n.badge {\n  display: inline-block;\n  position: relative;\n}\n.badge__badge {\n  color: #fff;\n  display: flex;\n  position: absolute;\n  font-size: 14px;\n  top: -11px;\n  right: -22px;\n  border-radius: 50%;\n  height: 22px;\n  width: 22px;\n  justify-content: center;\n  align-items: center;\n  flex-direction: row;\n  flex-wrap: wrap;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.badge__badge .icon {\n  font-size: 14px;\n}\n.badge--overlap .badge__badge {\n  top: -8px;\n  right: -8px;\n}\n.badge--overlap.badge--left .badge__badge {\n  left: -8px;\n  right: initial;\n}\n.badge--overlap.badge--bottom .badge__badge {\n  bottom: -8px;\n  top: initial;\n}\n.badge--left .badge__badge {\n  left: -22px;\n}\n.badge--bottom .badge__badge {\n  bottom: -11px;\n  top: initial;\n}\n.bottom-nav {\n  bottom: 0;\n  box-shadow: 0 3px 14px 2px rgba(0,0,0,0.12);\n  display: flex;\n  height: 56px;\n  justify-content: center;\n  position: fixed;\n  transform: translate(0, 60px);\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n  z-index: 4;\n}\n.bottom-nav--absolute {\n  position: absolute;\n}\n.bottom-nav--active {\n  transform: translate(0, 0);\n}\n.bottom-nav .btn {\n  background: transparent !important;\n  border-radius: 0;\n  box-shadow: none !important;\n  font-weight: 400;\n  height: 100%;\n  margin: 0;\n  max-width: 168px;\n  min-width: 80px;\n  padding: 0px;\n  text-transform: none;\n  opacity: 0.5;\n  width: 100%;\n}\n.bottom-nav .btn .btn__content {\n  height: 100%;\n  flex-direction: column-reverse;\n  height: 56px;\n  font-size: 12px;\n  transform: scale(1, 1) translate(0, 0);\n  white-space: nowrap;\n  will-change: font-size;\n}\n.bottom-nav .btn .btn__content i.icon {\n  color: inherit;\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.bottom-nav .btn--active {\n  opacity: 1;\n}\n.bottom-nav .btn--active .btn__content {\n  font-size: 14px;\n}\n.bottom-nav .btn--active .btn__content:before {\n  opacity: 0;\n}\n.bottom-nav .btn--active .btn__content .icon {\n  transform: none;\n}\n.bottom-nav .btn:not(.btn--active) {\n  filter: grayscale(100%);\n}\n.bottom-nav--shift .btn__content {\n  font-size: 14px;\n}\n.bottom-nav--shift .btn__content span {\n  height: 21px;\n}\n.bottom-nav--shift .btn {\n  transition: all 0.3s;\n  min-width: 56px;\n  max-width: 96px;\n}\n.bottom-nav--shift .btn--active {\n  min-width: 96px;\n  max-width: 168px;\n}\n.bottom-nav--shift .btn:not(.btn--active) .btn__content .icon {\n  transform: scale(1, 1) translate(0, 10px);\n}\n.bottom-nav--shift .btn:not(.btn--active) .btn__content span {\n  color: transparent;\n}\n.bottom-sheet.dialog {\n  align-self: flex-end;\n  border-radius: 0;\n  flex: 1 0 100%;\n  margin: 0;\n  min-width: 100%;\n  overflow: visible;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.bottom-sheet.dialog.bottom-sheet--inset {\n  max-width: 70%;\n  min-width: 0;\n}\n@media only screen and (max-width: 599px) {\n.bottom-sheet.dialog.bottom-sheet--inset {\n    max-width: none;\n}\n}\n.theme--light .breadcrumbs li.breadcrumbs__divider,\n.application .theme--light.breadcrumbs li.breadcrumbs__divider,\n.theme--light .breadcrumbs li:last-child .breadcrumbs__item,\n.application .theme--light.breadcrumbs li:last-child .breadcrumbs__item,\n.theme--light .breadcrumbs li .breadcrumbs__item--disabled,\n.application .theme--light.breadcrumbs li .breadcrumbs__item--disabled {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .breadcrumbs li.breadcrumbs__divider,\n.application .theme--dark.breadcrumbs li.breadcrumbs__divider,\n.theme--dark .breadcrumbs li:last-child .breadcrumbs__item,\n.application .theme--dark.breadcrumbs li:last-child .breadcrumbs__item,\n.theme--dark .breadcrumbs li .breadcrumbs__item--disabled,\n.application .theme--dark.breadcrumbs li .breadcrumbs__item--disabled {\n  color: rgba(255,255,255,0.5);\n}\n.breadcrumbs {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  flex: 0 1 auto;\n  list-style-type: none;\n  margin: 0;\n  padding: 18px 12px;\n}\n.breadcrumbs li {\n  align-items: center;\n  display: inline-flex;\n  font-size: 14px;\n}\n.breadcrumbs li .icon {\n  font-size: 16px;\n}\n.breadcrumbs li:last-child a {\n  cursor: default;\n  pointer-events: none;\n}\n.breadcrumbs li:nth-child(even) {\n  padding: 0 12px;\n}\n.breadcrumbs--large li {\n  font-size: 16px;\n}\n.breadcrumbs--large li .icon {\n  font-size: 16px;\n}\n.breadcrumbs__item {\n  align-items: center;\n  display: inline-flex;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.breadcrumbs__item--disabled {\n  pointer-events: none;\n}\n.theme--light .btn-toggle,\n.application .theme--light.btn-toggle {\n  background: #fff;\n}\n.theme--light .btn-toggle .btn,\n.application .theme--light.btn-toggle .btn {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]),\n.application .theme--light.btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]) {\n  border-right-color: rgba(0,0,0,0.26);\n}\n.theme--dark .btn-toggle,\n.application .theme--dark.btn-toggle {\n  background: #424242;\n}\n.theme--dark .btn-toggle .btn,\n.application .theme--dark.btn-toggle .btn {\n  color: #fff;\n}\n.theme--dark .btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]),\n.application .theme--dark.btn-toggle .btn[data-selected]:not(:last-child):not([data-only-child]) {\n  border-right-color: rgba(255,255,255,0.3);\n}\n.btn-toggle {\n  display: inline-flex;\n  border-radius: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  will-change: background, box-shadow;\n}\n.btn-toggle .btn {\n  justify-content: center;\n  min-width: auto;\n  width: auto;\n  padding: 0 8px;\n  margin: 0;\n  opacity: 0.4;\n  border-radius: 0;\n}\n.btn-toggle .btn:not(:last-child) {\n  border-right: 1px solid transparent;\n}\n.btn-toggle .btn:after {\n  display: none;\n}\n.btn-toggle .btn[data-selected] {\n  opacity: 1;\n}\n.btn-toggle .btn__content {\n  padding: 0;\n}\n.btn-toggle .btn span + .icon {\n  font-size: initial;\n  margin-left: 10px;\n}\n.btn-toggle .btn:first-child {\n  border-radius: 2px 0 0 2px;\n}\n.btn-toggle .btn:last-child {\n  border-radius: 0 2px 2px 0;\n}\n.btn-toggle--selected {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict;\n}\n.ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity;\n}\n.ripple__animation--enter {\n  transition: none;\n}\n.ripple__animation--visible {\n  opacity: 0.15;\n}\n.theme--light .btn,\n.application .theme--light.btn {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .btn.btn--disabled,\n.application .theme--light.btn.btn--disabled {\n  color: rgba(0,0,0,0.26) !important;\n}\n.theme--light .btn.btn--disabled .icon,\n.application .theme--light.btn.btn--disabled .icon {\n  color: rgba(0,0,0,0.26) !important;\n}\n.theme--light .btn.btn--disabled:not(.btn--icon):not(.btn--flat),\n.application .theme--light.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {\n  background-color: rgba(0,0,0,0.12) !important;\n}\n.theme--light .btn:not(.btn--icon):not(.btn--flat),\n.application .theme--light.btn:not(.btn--icon):not(.btn--flat) {\n  background-color: #f5f5f5;\n}\n.theme--dark .btn,\n.application .theme--dark.btn {\n  color: #fff;\n}\n.theme--dark .btn.btn--disabled,\n.application .theme--dark.btn.btn--disabled {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .btn.btn--disabled .icon,\n.application .theme--dark.btn.btn--disabled .icon {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .btn.btn--disabled:not(.btn--icon):not(.btn--flat),\n.application .theme--dark.btn.btn--disabled:not(.btn--icon):not(.btn--flat) {\n  background-color: rgba(255,255,255,0.12) !important;\n}\n.theme--dark .btn:not(.btn--icon):not(.btn--flat),\n.application .theme--dark.btn:not(.btn--icon):not(.btn--flat) {\n  background-color: #212121;\n}\n.btn {\n  align-items: center;\n  border-radius: 2px;\n  display: inline-flex;\n  height: 36px;\n  flex: 0 1 auto;\n  font-size: 14px;\n  font-weight: 500;\n  justify-content: center;\n  margin: 6px 8px;\n  min-width: 88px;\n  outline: 0;\n  text-transform: uppercase;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;\n  position: relative;\n  vertical-align: middle;\n  user-select: none;\n}\n.btn__content:before {\n  border-radius: inherit;\n  color: inherit;\n  content: '';\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  opacity: 0.12;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.btn--active .btn__content:before,\n.btn:hover .btn__content:before,\n.btn:focus .btn__content:before {\n  background-color: currentColor;\n}\n.btn__content {\n  align-items: center;\n  border-radius: inherit;\n  color: inherit;\n  display: flex;\n  height: 100%;\n  flex: 1 0 auto;\n  justify-content: center;\n  margin: 0 auto;\n  padding: 0 16px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  white-space: nowrap;\n}\n.btn .btn__content .icon {\n  color: inherit;\n}\n.btn--flat {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n.btn:not(.btn--depressed) {\n  will-change: box-shadow;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.btn:not(.btn--depressed):active {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.btn--icon {\n  background: transparent;\n  box-shadow: none !important;\n  border-radius: 50%;\n  justify-content: center;\n  height: 36px;\n  width: 36px;\n  min-width: 0;\n}\n.btn--icon .btn__content {\n  padding: 0;\n}\n.btn--icon .btn__content:before {\n  border-radius: 50%;\n}\n.btn--icon.btn--small {\n  width: 28px;\n}\n.btn--icon.btn--small .btn__content {\n  height: 28px;\n}\n.btn--icon.btn--large {\n  width: 44px;\n}\n.btn--icon.btn--large .btn__content {\n  height: 44px;\n}\n.btn--floating {\n  border-radius: 50%;\n  min-width: 0;\n  height: 56px;\n  width: 56px;\n  padding: 0;\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);\n}\n.btn--floating.btn--fixed,\n.btn--floating.btn--absolute {\n  z-index: 4;\n}\n.btn--floating:active {\n  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12);\n}\n.btn--floating .btn__content {\n  flex: 1 1 auto;\n  margin: 0;\n  padding: 0;\n}\n.btn--floating:after {\n  border-radius: 50%;\n}\n.btn--floating .btn__content :not(:only-child) {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.btn--floating .btn__content :not(:only-child):last-child {\n  opacity: 0;\n  position: absolute;\n  transform: rotate(-45deg);\n  left: calc(50% - 12px);\n  top: calc(50% - 12px);\n}\n.btn--floating.btn--active .btn__content :not(:only-child):first-child {\n  opacity: 0;\n  transform: rotate(45deg);\n  left: calc(50% - 12);\n  top: calc(50% - 12);\n}\n.btn--floating.btn--active .btn__content :not(:only-child):last-child {\n  opacity: 1;\n  transform: none;\n}\n.btn--floating .icon {\n  height: 24px;\n  width: 24px;\n}\n.btn--floating.btn--small {\n  height: 40px;\n  width: 40px;\n}\n.btn--floating.btn--small .icon {\n  font-size: 18px;\n  height: 18px;\n  width: 18px;\n}\n.btn--floating.btn--small.btn--floating .icon {\n  left: calc(50% - 9px);\n  top: calc(50% - 9px);\n}\n.btn--floating.btn--large {\n  height: 72px;\n  width: 72px;\n}\n.btn--floating.btn--large .icon {\n  font-size: 30px;\n  height: 30px;\n  width: 30px;\n}\n.btn--floating.btn--large.btn--floating .icon {\n  left: calc(50% - 15px);\n  top: calc(50% - 15px);\n}\n.btn--reverse .btn__content {\n  flex-direction: row-reverse;\n}\n.btn--reverse.btn--column .btn__content {\n  flex-direction: column-reverse;\n}\n.btn--fixed,\n.btn--absolute {\n  margin: 0;\n}\n.btn.btn--absolute {\n  position: absolute;\n}\n.btn.btn--fixed {\n  position: fixed;\n}\n.btn--top:not(.btn--absolute) {\n  top: 16px;\n}\n.btn--top.btn--absolute {\n  top: -28px;\n}\n.btn--top.btn--absolute.btn--small {\n  top: -20px;\n}\n.btn--top.btn--absolute.btn--large {\n  top: -36px;\n}\n.btn--bottom:not(.btn--absolute) {\n  bottom: 16px;\n}\n.btn--bottom.btn--absolute {\n  bottom: -28px;\n}\n.btn--bottom.btn--absolute.btn--small {\n  bottom: -20px;\n}\n.btn--bottom.btn--absolute.btn--large {\n  bottom: -36px;\n}\n.btn--left {\n  left: 16px;\n}\n.btn--right {\n  right: 16px;\n}\n.btn.btn--disabled {\n  box-shadow: none !important;\n  pointer-events: none;\n}\n.btn--small {\n  font-size: 13px;\n  height: 28px;\n}\n.btn--small .btn__content {\n  padding: 0 8px;\n}\n.btn--large {\n  font-size: 15px;\n  height: 44px;\n}\n.btn--large .btn__content {\n  padding: 0 32px;\n}\n.btn--loader {\n  pointer-events: none;\n}\n.btn--loader .btn__content {\n  opacity: 0;\n}\n.btn__loading {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.btn__loading .icon--left {\n  margin-right: 1rem;\n  line-height: inherit;\n}\n.btn__loading .icon--right {\n  margin-left: 1rem;\n  line-height: inherit;\n}\n.btn.btn--outline {\n  border: 1px solid currentColor;\n  background: transparent !important;\n  box-shadow: none;\n}\n.btn.btn--outline:hover {\n  box-shadow: none;\n}\n.btn--block {\n  display: flex;\n  flex: 1;\n  margin: 6px 0;\n  width: 100%;\n}\n.btn--round {\n  border-radius: 28px;\n}\n.btn--round:after {\n  border-radius: 28px;\n}\n.btn .icon--right {\n  margin-left: 16px;\n}\n.btn .icon--left {\n  margin-right: 16px;\n}\n.btn.primary,\n.btn.secondary,\n.btn.success,\n.btn.error,\n.btn.warning,\n.btn.info {\n  color: #fff;\n}\n.theme--light .card,\n.application .theme--light.card {\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .card,\n.application .theme--dark.card {\n  background-color: #424242;\n  color: #fff;\n}\n.card {\n  display: block;\n  border-radius: 2px;\n  min-width: 0;\n  position: relative;\n  text-decoration: none;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\n.card > *:first-child {\n  border-top-left-radius: inherit;\n  border-top-right-radius: inherit;\n}\n.card > *:last-child {\n  border-bottom-left-radius: inherit;\n  border-bottom-right-radius: inherit;\n}\n.card--raised {\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);\n}\n.card--tile {\n  border-radius: 0;\n}\n.card--flat {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.card--hover {\n  cursor: pointer;\n  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition-property: box-shadow;\n}\n.card--hover:hover {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.card__title {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  padding: 16px;\n}\n.card__title--primary {\n  padding-top: 24px;\n}\n.card__text {\n  padding: 16px;\n  width: 100%;\n}\n.card__media {\n  display: flex;\n  overflow: hidden;\n  position: relative;\n}\n.card__media img {\n  width: 100%;\n}\n.card__media__background {\n  border-radius: inherit;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n.card__media__content {\n  display: flex;\n  flex: 1 1 auto;\n  position: relative;\n}\n.card__actions {\n  align-items: center;\n  display: flex;\n  padding: 8px 4px;\n}\n.card__actions > *,\n.card__actions .btn {\n  margin: 0 4px;\n}\n.carousel {\n  height: 500px;\n  width: 100%;\n  position: relative;\n  overflow: hidden;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.carousel__item {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex: 1 0 100%;\n  height: 100%;\n  width: 100%;\n  background-size: cover;\n  background-position: center center;\n  transition: 0.2s ease-out;\n}\n.carousel__left,\n.carousel__right {\n  position: absolute;\n  top: 50%;\n  z-index: 1;\n  transform: translateY(-50%);\n}\n.carousel__left .btn,\n.carousel__right .btn {\n  color: #fff;\n  margin: 0 !important;\n  height: auto;\n  width: auto;\n}\n.carousel__left .btn i,\n.carousel__right .btn i {\n  font-size: 48px;\n}\n.carousel__left .btn:hover,\n.carousel__right .btn:hover {\n  background: none;\n}\n.carousel__left {\n  left: 5px;\n}\n.carousel__right {\n  right: 5px;\n}\n.carousel__controls {\n  background: rgba(0,0,0,0.5);\n  align-items: center;\n  bottom: 0;\n  display: flex;\n  justify-content: center;\n  left: 0;\n  position: absolute;\n  height: 50px;\n  list-style-type: none;\n  width: 100%;\n  z-index: 1;\n}\n.carousel__controls__item {\n  color: #fff;\n  margin: 0 1rem !important;\n}\n.carousel__controls__item i {\n  opacity: 0.5;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.carousel__controls__item--active i {\n  opacity: 1;\n  vertical-align: middle;\n  font-size: 2rem !important;\n}\n.carousel__controls__item:hover {\n  background: none;\n}\n.carousel__controls__item:hover i {\n  opacity: 0.8;\n}\n.theme--light .chip,\n.application .theme--light.chip {\n  background: #e0e0e0;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .chip:not(.chip--outline) .chip__close,\n.application .theme--light.chip:not(.chip--outline) .chip__close {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .chip,\n.application .theme--dark.chip {\n  background: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .chip:not(.chip--outline) .chip__close,\n.application .theme--dark.chip:not(.chip--outline) .chip__close {\n  color: #fff;\n}\n.chip {\n  align-items: center;\n  border-radius: 28px;\n  border: 1px solid transparent;\n  display: inline-flex;\n  font-size: 13px;\n  margin: 4px;\n  outline: none;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  vertical-align: middle;\n}\n.chip .chip__content {\n  align-items: center;\n  border-radius: 28px;\n  cursor: default;\n  display: inline-flex;\n  height: 32px;\n  justify-content: space-between;\n  padding: 0 12px;\n  vertical-align: middle;\n  white-space: nowrap;\n  z-index: 1;\n}\n.chip--removable .chip__content {\n  padding: 0 4px 0 12px;\n}\n.chip .avatar {\n  height: 32px !important;\n  margin-left: -12px;\n  margin-right: 8px;\n  min-width: 32px;\n  width: 32px !important;\n}\n.chip .avatar img {\n  height: 100%;\n  width: 100%;\n}\n.chip:focus:not(.chip--disabled),\n.chip--active:not(.chip--disabled),\n.chip--selected:not(.chip--disabled) {\n  border-color: rgba(0,0,0,0.13);\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.chip:focus:not(.chip--disabled):after,\n.chip--active:not(.chip--disabled):after,\n.chip--selected:not(.chip--disabled):after {\n  background: currentColor;\n  border-radius: inherit;\n  content: '';\n  height: 100%;\n  position: absolute;\n  top: 0;\n  transition: inherit;\n  width: 100%;\n  pointer-events: none;\n  opacity: 0.13;\n}\n.chip--label {\n  border-radius: 2px;\n}\n.chip--label .chip__content {\n  border-radius: 2px;\n}\n.chip.chip--outline {\n  background: transparent !important;\n  border-color: currentColor;\n  color: #9e9e9e;\n}\n.chip--small {\n  height: 26px;\n}\n.chip--small .avatar {\n  height: 26px;\n  min-width: 26px;\n  width: 26px;\n}\n.chip--small .icon {\n  font-size: 20px;\n}\n.chip__close {\n  align-items: center;\n  color: inherit;\n  cursor: pointer;\n  display: flex;\n  font-size: 20px;\n  margin: 0 -1px 0 4px;\n  text-decoration: none;\n  transition: none !important;\n  user-select: none;\n}\n.chip__close > .icon {\n  color: inherit !important;\n}\n.chip__close:hover {\n  opacity: 0.8;\n}\n.chip--select-multi {\n  margin: 4px 4px 4px 0;\n}\n.chip .icon {\n  color: inherit;\n  transition: none;\n}\n.chip .icon--right {\n  margin-left: 12px;\n  margin-right: -8px;\n}\n.chip .icon--left {\n  margin-left: -8px;\n  margin-right: 12px;\n}\n.content {\n  flex: 1 1 auto;\n  max-width: 100%;\n  transition: 0.2s padding cubic-bezier(0.4, 0, 0.2, 1);\n  will-change: padding;\n}\n.content--wrap {\n  flex: 1 0 auto;\n  display: flex;\n  max-width: 100%;\n}\n.theme--light .datatable thead th.column.sortable i,\n.application .theme--light.datatable thead th.column.sortable i {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .datatable thead th.column.sortable:hover,\n.application .theme--light.datatable thead th.column.sortable:hover {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable thead th.column.sortable.active,\n.application .theme--light.datatable thead th.column.sortable.active {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable thead th.column.sortable.active i,\n.application .theme--light.datatable thead th.column.sortable.active i {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .datatable .datatable__actions,\n.application .theme--light.datatable .datatable__actions {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .datatable .datatable__actions__select .input-group--select .input-group__selections__comma,\n.application .theme--light.datatable .datatable__actions__select .input-group--select .input-group__selections__comma {\n  color: rgba(0,0,0,0.54) !important;\n}\n.theme--light .datatable .datatable__actions__select .input-group--select .input-group__append-icon,\n.application .theme--light.datatable .datatable__actions__select .input-group--select .input-group__append-icon {\n  color: rgba(0,0,0,0.54) !important;\n}\n.theme--dark .datatable thead th.column.sortable i,\n.application .theme--dark.datatable thead th.column.sortable i {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .datatable thead th.column.sortable:hover,\n.application .theme--dark.datatable thead th.column.sortable:hover {\n  color: #fff;\n}\n.theme--dark .datatable thead th.column.sortable.active,\n.application .theme--dark.datatable thead th.column.sortable.active {\n  color: #fff;\n}\n.theme--dark .datatable thead th.column.sortable.active i,\n.application .theme--dark.datatable thead th.column.sortable.active i {\n  color: #fff;\n}\n.theme--dark .datatable .datatable__actions,\n.application .theme--dark.datatable .datatable__actions {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .datatable .datatable__actions__select .input-group--select .input-group__selections__comma,\n.application .theme--dark.datatable .datatable__actions__select .input-group--select .input-group__selections__comma {\n  color: rgba(255,255,255,0.7) !important;\n}\n.theme--dark .datatable .datatable__actions__select .input-group--select .input-group__append-icon,\n.application .theme--dark.datatable .datatable__actions__select .input-group--select .input-group__append-icon {\n  color: rgba(255,255,255,0.7) !important;\n}\n.datatable thead th.column.sortable {\n  cursor: pointer;\n}\n.datatable thead th.column.sortable i {\n  font-size: 16px;\n  vertical-align: sub;\n  display: inline-block;\n  opacity: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.datatable thead th.column.sortable:hover i {\n  opacity: 0.6;\n}\n.datatable thead th.column.sortable.active {\n  transform: none;\n}\n.datatable thead th.column.sortable.active i {\n  opacity: 1;\n}\n.datatable thead th.column.sortable.active.desc i {\n  transform: rotate(-180deg);\n}\n.datatable__actions {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  font-size: 12px;\n}\n.datatable__actions .btn {\n  color: inherit;\n}\n.datatable__actions .btn:last-of-type {\n  margin-left: 18px;\n}\n.datatable__actions__pagination {\n  text-align: center;\n  margin: 0 26px 0 32px;\n}\n.datatable__actions__select {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.datatable__actions__select .input-group--select {\n  margin: 13px 0 13px 34px;\n  padding: 0;\n  position: initial;\n}\n.datatable__actions__select .input-group--select .input-group__selections__comma {\n  font-size: 12px;\n}\n.datatable__progress {\n  height: auto !important;\n}\n.datatable__progress tr,\n.datatable__progress td,\n.datatable__progress th {\n  height: auto !important;\n}\n.datatable__progress th {\n  padding: 0 !important;\n}\n.datatable__progress th .progress-linear {\n  top: -2px;\n  margin: 0 0 -2px;\n}\n.datatable__expand-row {\n  border: none !important;\n}\n.datatable__expand-col {\n  padding: 0 !important;\n  height: 0px !important;\n}\n.datatable__expand-col--expanded {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.datatable__expand-content {\n  transition: height 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.datatable__expand-content > .card {\n  border-radius: 0;\n  box-shadow: none;\n}\n.theme--light .picker--date .picker--date__years li,\n.application .theme--light.picker--date .picker--date__years li {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .picker--date .picker--date__header-selector-date strong:not(:hover),\n.application .theme--light.picker--date .picker--date__header-selector-date strong:not(:hover) {\n  color: rgba(0,0,0,0.87) !important;\n}\n.theme--dark .picker--date .picker--date__years li,\n.application .theme--dark.picker--date .picker--date__years li {\n  color: #fff;\n}\n.theme--dark .picker--date .picker--date__header-selector-date strong:not(:hover),\n.application .theme--dark.picker--date .picker--date__header-selector-date strong:not(:hover) {\n  color: #fff !important;\n}\n.picker--date__table .btn.btn--active {\n  color: #fff;\n}\n.picker--date__years {\n  font-size: 16px;\n  font-weight: 400;\n  list-style-type: none;\n  max-height: 290px;\n  overflow: auto;\n  padding: 0;\n  text-align: center;\n}\n.picker--date__years li {\n  cursor: pointer;\n  padding: 8px 0;\n  transition: none;\n}\n.picker--date__years li.active {\n  font-size: 24px;\n  font-weight: 500;\n  padding: 10px 0;\n}\n.picker--date__years li:hover {\n  background: rgba(0,0,0,0.12);\n}\n.picker--date__title {\n  justify-content: space-between;\n  flex-direction: column;\n  flex-wrap: wrap;\n}\n.picker--date__title-year {\n  align-items: center;\n  display: inline-flex;\n  font-size: 14px;\n}\n.picker--date__title-date {\n  font-size: 34px;\n  text-align: left;\n}\n.picker--date__title-date > div {\n  position: relative;\n}\n.picker--date__title-year,\n.picker--date__title-date {\n  font-weight: 500;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.picker--date__title-year:not(.active),\n.picker--date__title-date:not(.active) {\n  cursor: pointer;\n}\n.picker--date__header {\n  padding: 4px 16px;\n}\n.picker--date__header-selector {\n  align-items: center;\n  display: flex;\n  justify-content: space-between;\n  position: relative;\n}\n.picker--date__header-selector .btn {\n  margin: 0;\n}\n.picker--date__header-selector .icon {\n  cursor: pointer;\n  user-select: none;\n}\n.picker--date__header-selector-date {\n  flex: 1;\n  text-align: center;\n  position: relative;\n  overflow: hidden;\n}\n.picker--date__header-selector-date strong {\n  cursor: pointer;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  display: block;\n  width: 100%;\n}\n.picker--date .btn {\n  z-index: auto;\n}\n.picker--date__table {\n  position: relative;\n}\n.picker--date table {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  top: 0;\n  table-layout: fixed;\n}\n.picker--date table th {\n  padding: 8px 0;\n  font-weight: 600;\n  font-size: 12px;\n}\n.picker--date table th,\n.picker--date table td {\n  text-align: center;\n  width: 45px;\n}\n.picker--date table .btn {\n  margin: 0;\n  height: 32px;\n  width: 32px;\n}\n.picker--month__table table {\n  width: 100%;\n}\n.picker--month__table table td {\n  width: 33.333333%;\n  height: 56px;\n  vertical-align: middle;\n}\n.dialog {\n  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12);\n  border-radius: 2px;\n  margin: 24px;\n  overflow-y: auto;\n  pointer-events: auto;\n  transition: 0.3s ease-in-out;\n  width: 100%;\n}\n.dialog__content {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  left: 0;\n  pointer-events: none;\n  position: fixed;\n  top: 0;\n  transition: 0.3s ease-in-out;\n  width: 100%;\n  z-index: 6;\n  outline: none;\n}\n.dialog:not(.dialog--fullscreen) {\n  max-height: 90%;\n}\n.dialog__container {\n  display: inline-block;\n  vertical-align: middle;\n}\n.dialog--fullscreen {\n  margin: 0;\n  height: 100%;\n  position: fixed;\n  overflow-y: auto;\n  top: 0;\n  left: 0;\n}\n.dialog--fullscreen > .card {\n  min-height: 100%;\n  min-width: 100%;\n  margin: 0 !important;\n  padding: 0 !important;\n}\n.dialog--scrollable {\n  display: flex;\n}\n.dialog--scrollable > .card {\n  display: flex;\n  flex: 1 1 auto;\n  flex-direction: column;\n}\n.dialog--scrollable > .card > .card__title,\n.dialog--scrollable > .card > .card__actions {\n  flex: 1 0 auto;\n}\n.dialog--scrollable > .card > .card__text {\n  overflow-y: auto;\n  backface-visibility: hidden;\n}\n.theme--light .divider,\n.application .theme--light.divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--dark .divider,\n.application .theme--dark.divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.divider {\n  border: none;\n  display: block;\n  height: 1px;\n  min-height: 1px;\n  flex: 1;\n  width: 100%;\n}\n.divider--inset {\n  margin-left: 72px;\n  width: calc(100% - 72px);\n}\n.theme--light .expansion-panel .expansion-panel__container,\n.application .theme--light.expansion-panel .expansion-panel__container {\n  border-top: 1px solid rgba(0,0,0,0.12);\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .expansion-panel .expansion-panel__container .expansion-panel__header .icon,\n.application .theme--light.expansion-panel .expansion-panel__container .expansion-panel__header .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .expansion-panel--focusable .expansion-panel__container:focus,\n.application .theme--light.expansion-panel--focusable .expansion-panel__container:focus {\n  background-color: #eee;\n}\n.theme--dark .expansion-panel .expansion-panel__container,\n.application .theme--dark.expansion-panel .expansion-panel__container {\n  border-top: 1px solid rgba(255,255,255,0.12);\n  background-color: #424242;\n  color: #fff;\n}\n.theme--dark .expansion-panel .expansion-panel__container .expansion-panel__header .icon,\n.application .theme--dark.expansion-panel .expansion-panel__container .expansion-panel__header .icon {\n  color: #fff;\n}\n.theme--dark .expansion-panel--focusable .expansion-panel__container:focus,\n.application .theme--dark.expansion-panel--focusable .expansion-panel__container:focus {\n  background-color: rgba(0,0,0,0.7);\n}\n.expansion-panel {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  list-style-type: none;\n  padding: 0;\n  text-align: left;\n  width: 100%;\n  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel__container {\n  flex: 1 0 100%;\n  outline: none;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.expansion-panel__container:first-child {\n  border-top: none !important;\n}\n.expansion-panel__container .header__icon {\n  margin-left: auto;\n}\n.expansion-panel__container .header__icon .icon {\n  transition: none;\n}\n.expansion-panel__container--active > .expansion-panel__header .header__icon .icon {\n  transform: rotate(-180deg);\n}\n.expansion-panel__header {\n  display: flex;\n  cursor: pointer;\n  align-items: center;\n  position: relative;\n  padding: 12px 24px;\n}\n.expansion-panel__header > *:not(.header__icon) {\n  flex: 1 1 auto;\n}\n.expansion-panel__body {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.expansion-panel__body .card {\n  border-radius: 0;\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout,\n.expansion-panel--inset {\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout .expansion-panel__container--active,\n.expansion-panel--inset .expansion-panel__container--active {\n  margin: 16px;\n  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);\n}\n.expansion-panel--popout .expansion-panel__container,\n.expansion-panel--inset .expansion-panel__container {\n  max-width: 95%;\n}\n.expansion-panel--popout .expansion-panel__container--active {\n  max-width: 100%;\n}\n.expansion-panel--inset .expansion-panel__container--active {\n  max-width: 85%;\n}\n.theme--light .footer,\n.application .theme--light.footer {\n  background: #f5f5f5;\n}\n.theme--dark .footer,\n.application .theme--dark.footer {\n  background: #212121;\n}\n.footer {\n  align-items: center;\n  display: flex;\n  flex: 0 1 auto !important;\n  min-height: 36px;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.footer--absolute,\n.footer--fixed {\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  z-index: 3;\n}\n.footer--absolute {\n  position: absolute;\n}\n.footer--fixed {\n  position: fixed;\n}\n.footer > *:first-child {\n  margin-left: 8px;\n}\n.footer > *:last-child {\n  margin-right: 8px;\n}\n@media only screen and (max-width: 599px) {\n.footer > *:first-child {\n    margin-left: 16px;\n}\n.footer > *:last-child {\n    margin-right: 16px;\n}\n}\n.container {\n  flex: 1 1 100%;\n  margin: auto;\n  padding: 16px;\n  width: 100%;\n}\n@media only screen and (min-width: 960px) {\n.container {\n    max-width: 900px;\n}\n}\n@media only screen and (min-width: 1264px) {\n.container {\n    max-width: 1185px;\n}\n}\n@media only screen and (min-width: 1904px) {\n.container {\n    max-width: 1785px;\n}\n}\n@media only screen and (max-width: 599px) {\n.container {\n    padding: 24px;\n}\n}\n.container.fluid {\n  max-width: 100%;\n}\n.container.fill-height {\n  align-items: center;\n  display: flex;\n}\n.container.fill-height .layout {\n  height: 100%;\n  flex: 1 1 auto;\n}\n.container.grid-list-xs {\n  padding: 2px;\n}\n.container.grid-list-xs .layout .flex {\n  padding: 1px;\n}\n.container.grid-list-xs .layout:only-child {\n  margin: -1px;\n}\n.container.grid-list-xs .layout:not(:only-child) {\n  margin: auto -1px;\n}\n.container.grid-list-xs *:not(:only-child) .layout:first-child {\n  margin-top: -1px;\n}\n.container.grid-list-xs *:not(:only-child) .layout:last-child {\n  margin-bottom: -1px;\n}\n.container.grid-list-sm {\n  padding: 4px;\n}\n.container.grid-list-sm .layout .flex {\n  padding: 2px;\n}\n.container.grid-list-sm .layout:only-child {\n  margin: -2px;\n}\n.container.grid-list-sm .layout:not(:only-child) {\n  margin: auto -2px;\n}\n.container.grid-list-sm *:not(:only-child) .layout:first-child {\n  margin-top: -2px;\n}\n.container.grid-list-sm *:not(:only-child) .layout:last-child {\n  margin-bottom: -2px;\n}\n.container.grid-list-md {\n  padding: 8px;\n}\n.container.grid-list-md .layout .flex {\n  padding: 4px;\n}\n.container.grid-list-md .layout:only-child {\n  margin: -4px;\n}\n.container.grid-list-md .layout:not(:only-child) {\n  margin: auto -4px;\n}\n.container.grid-list-md *:not(:only-child) .layout:first-child {\n  margin-top: -4px;\n}\n.container.grid-list-md *:not(:only-child) .layout:last-child {\n  margin-bottom: -4px;\n}\n.container.grid-list-lg {\n  padding: 16px;\n}\n.container.grid-list-lg .layout .flex {\n  padding: 8px;\n}\n.container.grid-list-lg .layout:only-child {\n  margin: -8px;\n}\n.container.grid-list-lg .layout:not(:only-child) {\n  margin: auto -8px;\n}\n.container.grid-list-lg *:not(:only-child) .layout:first-child {\n  margin-top: -8px;\n}\n.container.grid-list-lg *:not(:only-child) .layout:last-child {\n  margin-bottom: -8px;\n}\n.container.grid-list-xl {\n  padding: 24px;\n}\n.container.grid-list-xl .layout .flex {\n  padding: 12px;\n}\n.container.grid-list-xl .layout:only-child {\n  margin: -12px;\n}\n.container.grid-list-xl .layout:not(:only-child) {\n  margin: auto -12px;\n}\n.container.grid-list-xl *:not(:only-child) .layout:first-child {\n  margin-top: -12px;\n}\n.container.grid-list-xl *:not(:only-child) .layout:last-child {\n  margin-bottom: -12px;\n}\n.layout {\n  display: flex;\n  flex: 1 1 auto;\n  flex-wrap: nowrap;\n}\n.layout.row {\n  flex-direction: row;\n}\n.layout.row.reverse {\n  flex-direction: row-reverse;\n}\n.layout.column {\n  flex-direction: column;\n}\n.layout.column.reverse {\n  flex-direction: column-reverse;\n}\n.layout.wrap {\n  flex-wrap: wrap;\n}\n@media all and (min-width: 0) {\n.flex.xs1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-xs1 {\n    order: 1;\n}\n.flex.xs2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-xs2 {\n    order: 2;\n}\n.flex.xs3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-xs3 {\n    order: 3;\n}\n.flex.xs4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-xs4 {\n    order: 4;\n}\n.flex.xs5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-xs5 {\n    order: 5;\n}\n.flex.xs6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-xs6 {\n    order: 6;\n}\n.flex.xs7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-xs7 {\n    order: 7;\n}\n.flex.xs8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-xs8 {\n    order: 8;\n}\n.flex.xs9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-xs9 {\n    order: 9;\n}\n.flex.xs10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-xs10 {\n    order: 10;\n}\n.flex.xs11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-xs11 {\n    order: 11;\n}\n.flex.xs12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-xs12 {\n    order: 12;\n}\n.flex.offset-xs0 {\n    margin-left: 0%;\n}\n.flex.offset-xs1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-xs2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-xs3 {\n    margin-left: 25%;\n}\n.flex.offset-xs4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-xs5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-xs6 {\n    margin-left: 50%;\n}\n.flex.offset-xs7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-xs8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-xs9 {\n    margin-left: 75%;\n}\n.flex.offset-xs10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-xs11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-xs12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 600px) {\n.flex.sm1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-sm1 {\n    order: 1;\n}\n.flex.sm2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-sm2 {\n    order: 2;\n}\n.flex.sm3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-sm3 {\n    order: 3;\n}\n.flex.sm4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-sm4 {\n    order: 4;\n}\n.flex.sm5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-sm5 {\n    order: 5;\n}\n.flex.sm6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-sm6 {\n    order: 6;\n}\n.flex.sm7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-sm7 {\n    order: 7;\n}\n.flex.sm8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-sm8 {\n    order: 8;\n}\n.flex.sm9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-sm9 {\n    order: 9;\n}\n.flex.sm10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-sm10 {\n    order: 10;\n}\n.flex.sm11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-sm11 {\n    order: 11;\n}\n.flex.sm12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-sm12 {\n    order: 12;\n}\n.flex.offset-sm0 {\n    margin-left: 0%;\n}\n.flex.offset-sm1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-sm2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-sm3 {\n    margin-left: 25%;\n}\n.flex.offset-sm4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-sm5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-sm6 {\n    margin-left: 50%;\n}\n.flex.offset-sm7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-sm8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-sm9 {\n    margin-left: 75%;\n}\n.flex.offset-sm10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-sm11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-sm12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 960px) {\n.flex.md1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-md1 {\n    order: 1;\n}\n.flex.md2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-md2 {\n    order: 2;\n}\n.flex.md3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-md3 {\n    order: 3;\n}\n.flex.md4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-md4 {\n    order: 4;\n}\n.flex.md5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-md5 {\n    order: 5;\n}\n.flex.md6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-md6 {\n    order: 6;\n}\n.flex.md7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-md7 {\n    order: 7;\n}\n.flex.md8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-md8 {\n    order: 8;\n}\n.flex.md9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-md9 {\n    order: 9;\n}\n.flex.md10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-md10 {\n    order: 10;\n}\n.flex.md11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-md11 {\n    order: 11;\n}\n.flex.md12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-md12 {\n    order: 12;\n}\n.flex.offset-md0 {\n    margin-left: 0%;\n}\n.flex.offset-md1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-md2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-md3 {\n    margin-left: 25%;\n}\n.flex.offset-md4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-md5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-md6 {\n    margin-left: 50%;\n}\n.flex.offset-md7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-md8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-md9 {\n    margin-left: 75%;\n}\n.flex.offset-md10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-md11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-md12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 1264px) {\n.flex.lg1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-lg1 {\n    order: 1;\n}\n.flex.lg2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-lg2 {\n    order: 2;\n}\n.flex.lg3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-lg3 {\n    order: 3;\n}\n.flex.lg4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-lg4 {\n    order: 4;\n}\n.flex.lg5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-lg5 {\n    order: 5;\n}\n.flex.lg6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-lg6 {\n    order: 6;\n}\n.flex.lg7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-lg7 {\n    order: 7;\n}\n.flex.lg8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-lg8 {\n    order: 8;\n}\n.flex.lg9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-lg9 {\n    order: 9;\n}\n.flex.lg10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-lg10 {\n    order: 10;\n}\n.flex.lg11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-lg11 {\n    order: 11;\n}\n.flex.lg12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-lg12 {\n    order: 12;\n}\n.flex.offset-lg0 {\n    margin-left: 0%;\n}\n.flex.offset-lg1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-lg2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-lg3 {\n    margin-left: 25%;\n}\n.flex.offset-lg4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-lg5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-lg6 {\n    margin-left: 50%;\n}\n.flex.offset-lg7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-lg8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-lg9 {\n    margin-left: 75%;\n}\n.flex.offset-lg10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-lg11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-lg12 {\n    margin-left: 100%;\n}\n}\n@media all and (min-width: 1904px) {\n.flex.xl1 {\n    flex-basis: 8.333333333333332%;\n    max-width: 8.333333333333332%;\n}\n.flex.order-xl1 {\n    order: 1;\n}\n.flex.xl2 {\n    flex-basis: 16.666666666666664%;\n    max-width: 16.666666666666664%;\n}\n.flex.order-xl2 {\n    order: 2;\n}\n.flex.xl3 {\n    flex-basis: 25%;\n    max-width: 25%;\n}\n.flex.order-xl3 {\n    order: 3;\n}\n.flex.xl4 {\n    flex-basis: 33.33333333333333%;\n    max-width: 33.33333333333333%;\n}\n.flex.order-xl4 {\n    order: 4;\n}\n.flex.xl5 {\n    flex-basis: 41.66666666666667%;\n    max-width: 41.66666666666667%;\n}\n.flex.order-xl5 {\n    order: 5;\n}\n.flex.xl6 {\n    flex-basis: 50%;\n    max-width: 50%;\n}\n.flex.order-xl6 {\n    order: 6;\n}\n.flex.xl7 {\n    flex-basis: 58.333333333333336%;\n    max-width: 58.333333333333336%;\n}\n.flex.order-xl7 {\n    order: 7;\n}\n.flex.xl8 {\n    flex-basis: 66.66666666666666%;\n    max-width: 66.66666666666666%;\n}\n.flex.order-xl8 {\n    order: 8;\n}\n.flex.xl9 {\n    flex-basis: 75%;\n    max-width: 75%;\n}\n.flex.order-xl9 {\n    order: 9;\n}\n.flex.xl10 {\n    flex-basis: 83.33333333333334%;\n    max-width: 83.33333333333334%;\n}\n.flex.order-xl10 {\n    order: 10;\n}\n.flex.xl11 {\n    flex-basis: 91.66666666666666%;\n    max-width: 91.66666666666666%;\n}\n.flex.order-xl11 {\n    order: 11;\n}\n.flex.xl12 {\n    flex-basis: 100%;\n    max-width: 100%;\n}\n.flex.order-xl12 {\n    order: 12;\n}\n.flex.offset-xl0 {\n    margin-left: 0%;\n}\n.flex.offset-xl1 {\n    margin-left: 8.333333333333332%;\n}\n.flex.offset-xl2 {\n    margin-left: 16.666666666666664%;\n}\n.flex.offset-xl3 {\n    margin-left: 25%;\n}\n.flex.offset-xl4 {\n    margin-left: 33.33333333333333%;\n}\n.flex.offset-xl5 {\n    margin-left: 41.66666666666667%;\n}\n.flex.offset-xl6 {\n    margin-left: 50%;\n}\n.flex.offset-xl7 {\n    margin-left: 58.333333333333336%;\n}\n.flex.offset-xl8 {\n    margin-left: 66.66666666666666%;\n}\n.flex.offset-xl9 {\n    margin-left: 75%;\n}\n.flex.offset-xl10 {\n    margin-left: 83.33333333333334%;\n}\n.flex.offset-xl11 {\n    margin-left: 91.66666666666666%;\n}\n.flex.offset-xl12 {\n    margin-left: 100%;\n}\n}\n.flex,\n.child-flex > * {\n  flex: 1 1 auto;\n}\n.align-start {\n  align-items: flex-start;\n}\n.align-end {\n  align-items: flex-end;\n}\n.align-center {\n  align-items: center;\n}\n.align-baseline {\n  align-items: baseline;\n}\n.align-content-start {\n  align-content: flex-start;\n}\n.align-content-end {\n  align-content: flex-end;\n}\n.align-content-center {\n  align-content: center;\n}\n.align-content-space-between {\n  align-content: space-between;\n}\n.align-content-space-around {\n  align-content: space-around;\n}\n.justify-start {\n  justify-content: flex-start;\n}\n.justify-end {\n  justify-content: flex-end;\n}\n.justify-center {\n  justify-content: center;\n}\n.justify-space-around {\n  justify-content: space-around;\n}\n.justify-space-between {\n  justify-content: space-between;\n}\n.spacer {\n  flex-grow: 1 !important;\n}\n.scroll-y {\n  overflow-y: auto;\n}\n.fill-height {\n  height: 100%;\n}\n.hide-overflow {\n  overflow: hidden !important;\n}\n.show-overflow {\n  overflow: visible !important;\n}\n.no-wrap {\n  white-space: nowrap;\n}\n.ellipsis {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.d-flex {\n  display: flex;\n}\n.d-inline-flex {\n  display: inline-flex;\n}\n.d-flex > *,\n.d-inline-flex > * {\n  flex: 1 1 auto;\n}\n.d-block {\n  display: block;\n}\n.d-inline-block {\n  display: inline-block;\n}\n.theme--light .icon,\n.application .theme--light.icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .icon.icon--disabled:not(.input-group__append-icon),\n.application .theme--light.icon.icon--disabled:not(.input-group__append-icon) {\n  color: rgba(0,0,0,0.38) !important;\n}\n.theme--dark .icon,\n.application .theme--dark.icon {\n  color: #fff;\n}\n.theme--dark .icon.icon--disabled:not(.input-group__append-icon),\n.application .theme--dark.icon.icon--disabled:not(.input-group__append-icon) {\n  color: rgba(255,255,255,0.5) !important;\n}\n.icon {\n  align-items: center;\n  display: inline-flex;\n  font-size: 24px;\n  justify-content: center;\n  line-height: 1;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  vertical-align: middle;\n}\n.icon.icon--large {\n  font-size: 2.5rem;\n}\n.icon.icon--medium {\n  font-size: 2rem;\n}\n.icon.icon--x-large {\n  font-size: 3rem;\n}\n.icon.icon--disabled {\n  cursor: default;\n}\n.theme--light .input-group input,\n.application .theme--light.input-group input,\n.theme--light .input-group textarea,\n.application .theme--light.input-group textarea {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group input:disabled,\n.application .theme--light.input-group input:disabled,\n.theme--light .input-group textarea:disabled,\n.application .theme--light.input-group textarea:disabled {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group:not(.input-group--error) .input-group__messages,\n.application .theme--light.input-group:not(.input-group--error) .input-group__messages {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--light.input-group.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border: 2px solid rgba(0,0,0,0.54);\n}\n.theme--light .input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active),\n.application .theme--light.input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group:not(.input-group--error) label,\n.application .theme--light.input-group:not(.input-group--error) label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group:not(.input-group--error).input-group--disabled label,\n.application .theme--light.input-group:not(.input-group--error).input-group--disabled label,\n.theme--light .input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma,\n.application .theme--light.input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group:not(.input-group--error) .input-group__details:before,\n.application .theme--light.input-group:not(.input-group--error) .input-group__details:before {\n  background-color: rgba(0,0,0,0.42);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover),\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover) {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before,\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before {\n  background-color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--light.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border-color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group.input-group--overflow .input-group__input:before,\n.application .theme--light.input-group.input-group--overflow .input-group__input:before,\n.theme--light .input-group.input-group--segmented .input-group__input:before,\n.application .theme--light.input-group.input-group--segmented .input-group__input:before,\n.theme--light .input-group.input-group--editable .input-group__input:before,\n.application .theme--light.input-group.input-group--editable .input-group__input:before,\n.theme--light .input-group.input-group--overflow .input-group__details:before,\n.application .theme--light.input-group.input-group--overflow .input-group__details:before,\n.theme--light .input-group.input-group--segmented .input-group__details:before,\n.application .theme--light.input-group.input-group--segmented .input-group__details:before,\n.theme--light .input-group.input-group--editable .input-group__details:before,\n.application .theme--light.input-group.input-group--editable .input-group__details:before {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.application .theme--light.input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.theme--light .input-group.input-group--disabled .input-group__input .input-group__prepend-icon,\n.application .theme--light.input-group.input-group--disabled .input-group__input .input-group__prepend-icon {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group.input-group--disabled .input-group__details:before,\n.application .theme--light.input-group.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-image: linear-gradient(to right, rgba(0,0,0,0.38) 0, rgba(0,0,0,0.38) 33%, transparent 0);\n}\n.theme--light .input-group .input-group--text-field__prefix,\n.application .theme--light.input-group .input-group--text-field__prefix,\n.theme--light .input-group .input-group--text-field__suffix,\n.application .theme--light.input-group .input-group--text-field__suffix {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group .input-group--text-field.input-group--disabled__prefix,\n.application .theme--light.input-group .input-group--text-field.input-group--disabled__prefix,\n.theme--light .input-group .input-group--text-field.input-group--disabled__suffix,\n.application .theme--light.input-group .input-group--text-field.input-group--disabled__suffix {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .input-group input,\n.application .theme--dark.input-group input,\n.theme--dark .input-group textarea,\n.application .theme--dark.input-group textarea {\n  color: #fff;\n}\n.theme--dark .input-group input:disabled,\n.application .theme--dark.input-group input:disabled,\n.theme--dark .input-group textarea:disabled,\n.application .theme--dark.input-group textarea:disabled {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group:not(.input-group--error) .input-group__messages,\n.application .theme--dark.input-group:not(.input-group--error) .input-group__messages {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--dark.input-group.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border: 2px solid rgba(255,255,255,0.7);\n}\n.theme--dark .input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active),\n.application .theme--dark.input-group.input-group--dirty .input-group__selections__comma:not(.input-group__selections__comma--active) {\n  color: #fff;\n}\n.theme--dark .input-group:not(.input-group--error) label,\n.application .theme--dark.input-group:not(.input-group--error) label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error).input-group--disabled label,\n.application .theme--dark.input-group:not(.input-group--error).input-group--disabled label,\n.theme--dark .input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma,\n.application .theme--dark.input-group:not(.input-group--error).input-group--disabled .input-group__selections__comma {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group:not(.input-group--error) .input-group__details:before,\n.application .theme--dark.input-group:not(.input-group--error) .input-group__details:before {\n  background-color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__append-icon:not(:hover),\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover),\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled) .input-group__input .input-group__prepend-icon:not(:hover) {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before,\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover .input-group__details:before {\n  background-color: #fff;\n}\n.theme--dark .input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input,\n.application .theme--dark.input-group:not(.input-group--error):not(.input-group--focused):not(.input-group--disabled):not(.input-group--disabled):not(.input-group--overflow):not(.input-group--segmented):not(.input-group--editable):hover.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  border-color: #fff;\n}\n.theme--dark .input-group.input-group--overflow .input-group__input:before,\n.application .theme--dark.input-group.input-group--overflow .input-group__input:before,\n.theme--dark .input-group.input-group--segmented .input-group__input:before,\n.application .theme--dark.input-group.input-group--segmented .input-group__input:before,\n.theme--dark .input-group.input-group--editable .input-group__input:before,\n.application .theme--dark.input-group.input-group--editable .input-group__input:before,\n.theme--dark .input-group.input-group--overflow .input-group__details:before,\n.application .theme--dark.input-group.input-group--overflow .input-group__details:before,\n.theme--dark .input-group.input-group--segmented .input-group__details:before,\n.application .theme--dark.input-group.input-group--segmented .input-group__details:before,\n.theme--dark .input-group.input-group--editable .input-group__details:before,\n.application .theme--dark.input-group.input-group--editable .input-group__details:before {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.application .theme--dark.input-group.input-group--disabled .input-group__input .input-group__append-icon,\n.theme--dark .input-group.input-group--disabled .input-group__input .input-group__prepend-icon,\n.application .theme--dark.input-group.input-group--disabled .input-group__input .input-group__prepend-icon {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group.input-group--disabled .input-group__details:before,\n.application .theme--dark.input-group.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-image: linear-gradient(to right, rgba(255,255,255,0.5) 0, rgba(255,255,255,0.5) 33%, transparent 0);\n}\n.theme--dark .input-group .input-group--text-field__prefix,\n.application .theme--dark.input-group .input-group--text-field__prefix,\n.theme--dark .input-group .input-group--text-field__suffix,\n.application .theme--dark.input-group .input-group--text-field__suffix {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group .input-group--text-field.input-group--disabled__prefix,\n.application .theme--dark.input-group .input-group--text-field.input-group--disabled__prefix,\n.theme--dark .input-group .input-group--text-field.input-group--disabled__suffix,\n.application .theme--dark.input-group .input-group--text-field.input-group--disabled__suffix {\n  color: rgba(255,255,255,0.5);\n}\n.input-group {\n  display: flex;\n  flex: 1 1;\n  flex-wrap: wrap;\n  min-width: 24px;\n  padding: 18px 0 0;\n  position: relative;\n  width: 100%;\n  outline: none;\n  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group label {\n  display: inline-block;\n  font-size: 16px;\n  line-height: 30px;\n  height: 30px;\n  max-width: 90%;\n  min-width: 0;\n  overflow: hidden;\n  pointer-events: none;\n  text-align: left;\n  text-overflow: ellipsis;\n  transform-origin: top left;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n  white-space: nowrap;\n  width: 100%;\n  z-index: 0;\n}\n.input-group__input {\n  display: flex;\n  flex: 1 0 100%;\n  min-width: 0;\n  min-height: 30px;\n}\n.input-group__icon-cb {\n  cursor: pointer;\n}\n.input-group.input-group--focused .input-group__append-icon,\n.input-group.input-group--error .input-group__append-icon,\n.input-group.input-group--focused .input-group__prepend-icon,\n.input-group.input-group--error .input-group__prepend-icon {\n  color: inherit;\n}\n.input-group.input-group--append-icon label,\n.input-group.input-group--selection-controls label {\n  max-width: 75%;\n}\n.input-group.input-group--prepend-icon label {\n  max-width: 75%;\n}\n.input-group.input-group--append-icon.input-group--prepend-icon label {\n  max-width: 65%;\n}\n.input-group .input-group__append-icon {\n  padding: 0 6px;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.input-group .input-group__append-icon,\n.input-group .input-group__prepend-icon {\n  align-self: center;\n  user-select: none;\n}\n.input-group.input-group--single-line.input-group--dirty label,\n.input-group.input-group--solo.input-group--dirty label {\n  display: none;\n}\n.input-group.input-group--solo {\n  background: #fff;\n  min-height: 46px;\n  border-radius: 2px;\n  padding: 0;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.input-group.input-group--solo label {\n  top: 8px;\n  padding-left: 16px;\n  transform: none !important;\n}\n.input-group.input-group--solo .input-group__input {\n  align-items: center;\n  padding: 8px 16px;\n}\n.input-group.input-group--solo .input-group__details {\n  display: none;\n}\n.input-group--disabled .input-group__details:before {\n  background-color: transparent;\n  background-position: bottom;\n  background-size: 3px 1px;\n  background-repeat: repeat-x;\n}\n.input-group.input-group--text-field:not(.input-group--single-line):not(.input-group--error).input-group--focused label {\n  color: inherit;\n}\n.input-group.input-group--text-field:not(.input-group--single-line):not(.input-group--error).input-group--focused .input-group__input {\n  border-color: inherit;\n}\n.input-group.input-group--text-field.input-group--focused:not(.input-group--disabled) .input-group__details:after {\n  transform: scaleX(1);\n}\n.input-group--required label:after {\n  content: '*';\n}\n.input-group.input-group--error label {\n  animation: shake 0.6s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--error .input-group__messages {\n  color: inherit;\n}\n.input-group.input-group--error .input-group__details:before {\n  background-color: currentColor;\n}\n.input-group .slide-y-transition-leave,\n.input-group .slide-y-transition-leave-to {\n  position: absolute;\n}\n.input-group__details {\n  color: inherit;\n  display: flex;\n  padding-top: 4px;\n  flex: 1 0 100%;\n  font-size: 12px;\n  min-height: 26px;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.input-group__details:after,\n.input-group__details:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.input-group__details:after {\n  background-color: currentColor;\n  color: inherit;\n  top: 0;\n  height: 2px;\n  transform: scaleX(0);\n  transform-origin: center center 0;\n  width: 100%;\n  z-index: 1;\n}\n.input-group__details:before {\n  top: 0;\n  height: 1px;\n  width: 100%;\n  z-index: 0;\n}\n.input-group--hide-details .input-group__details {\n  min-height: 2px;\n  padding: 0;\n}\n.input-group--async-loading .input-group__details:before,\n.input-group--async-loading .input-group__details:after {\n  display: none;\n}\n.input-group .progress-linear {\n  position: absolute;\n  top: 0;\n  left: 0;\n  margin: 0;\n}\n.input-group__hint {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group .input-group__error {\n  color: inherit;\n  flex: 1 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--overflow.input-group--active,\n.input-group--segmented.input-group--active,\n.input-group--editable.input-group--active {\n  background-color: #fff;\n}\n.theme--light .list,\n.application .theme--light.list {\n  background: #fff;\n}\n.theme--light .list .list__tile:not(.list__tile--active),\n.application .theme--light.list .list__tile:not(.list__tile--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .list .list__tile__sub-title,\n.application .theme--light.list .list__tile__sub-title {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .list .divider,\n.application .theme--light.list .divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .list .list__tile__mask,\n.application .theme--light.list .list__tile__mask {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .list--group .list__tile--active .list__tile__title,\n.application .theme--light.list--group .list__tile--active .list__tile__title {\n  color: #1976d2;\n}\n.theme--dark .list,\n.application .theme--dark.list {\n  background: #424242;\n}\n.theme--dark .list .list__tile:not(.list__tile--active),\n.application .theme--dark.list .list__tile:not(.list__tile--active) {\n  color: #fff;\n}\n.theme--dark .list .list__tile__sub-title,\n.application .theme--dark.list .list__tile__sub-title {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .list .divider,\n.application .theme--dark.list .divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .list .list__tile__mask,\n.application .theme--dark.list .list__tile__mask {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .list--group .list__tile--active .list__tile__title,\n.application .theme--dark.list--group .list__tile--active .list__tile__title {\n  color: #82b1ff;\n}\n.list {\n  list-style-type: none;\n  padding: 8px 0 8px;\n  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.list .input-group {\n  margin: 0;\n}\n.list > .list__tile ~ .list__tile {\n  margin-top: 0;\n}\n.list__tile {\n  font-size: 16px;\n  font-weight: 400;\n  display: flex;\n  height: 48px;\n  text-decoration: none;\n  align-items: center;\n  padding: 0 16px;\n  margin: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  position: relative;\n  user-select: none;\n}\n.list__tile:after {\n  content: '';\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 1px;\n  opacity: 0;\n  width: 100%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  background-color: rgba(0,0,0,0.12);\n}\n.list__tile--link {\n  cursor: pointer;\n}\n.list__tile--link:hover,\n.list__tile--highlighted {\n  background: rgba(0,0,0,0.12);\n}\n.list__tile__content,\n.list__tile__action,\n.list__tile__avatar {\n  height: 100%;\n}\n.list__tile__title,\n.list__tile__sub-title {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 100%;\n}\n.list__tile__title {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  height: 24px;\n  line-height: 24px;\n  position: relative;\n  text-align: left;\n}\n.list__tile__sub-title {\n  font-size: 14px;\n}\n.list__tile .avatar {\n  justify-content: flex-start;\n  min-width: 56px;\n}\n.list__tile__action {\n  display: flex;\n  justify-content: flex-start;\n  min-width: 56px;\n  align-items: center;\n}\n.list__tile__action .input-group--selection-controls {\n  align-items: center;\n  padding: 0;\n}\n.list__tile__action .input-group__details {\n  display: none;\n}\n.list__tile__action .icon {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.list__tile__action .btn {\n  padding: 0;\n  margin: 0;\n}\n.list__tile__action .btn--icon {\n  margin: -8px;\n}\n.list__tile__action-text {\n  color: #9e9e9e;\n  font-size: 12px;\n}\n.list__tile__action--stack {\n  align-items: flex-end;\n  justify-content: space-between;\n  padding-top: 8px;\n  padding-bottom: 8px;\n  white-space: nowrap;\n  flex-direction: column;\n}\n.list__tile__content {\n  text-align: left;\n  flex: 1 1 auto;\n  overflow: hidden;\n  display: flex;\n  align-items: flex-start;\n  justify-content: center;\n  flex-direction: column;\n}\n.list__tile__content ~ .avatar {\n  justify-content: flex-end;\n}\n.list__tile__content ~ .list__tile__action:not(.list__tile__action--stack) {\n  justify-content: flex-end;\n}\n.list__tile--active .list__tile__action:first-of-type .icon {\n  color: inherit;\n}\n.list__tile--disabled {\n  opacity: 0.4 !important;\n  pointer-events: none;\n}\n.list__tile--avatar {\n  height: 56px;\n}\n.list__tile--avatar .avatar img,\n.list__tile--avatar .avatar .icon {\n  height: 40px;\n  width: 40px;\n}\n.list--dense {\n  padding-top: 4px;\n  padding-bottom: 4px;\n}\n.list--dense .subheader {\n  font-size: 13px;\n  height: 40px;\n}\n.list--dense .list--group .subheader {\n  height: 40px;\n}\n.list--dense .list__tile {\n  font-size: 13px;\n}\n.list--dense .list__tile--avatar {\n  height: 48px;\n}\n.list--dense .list__tile:not(.list__tile--avatar) {\n  height: 40px;\n}\n.list--dense .list__tile .icon {\n  font-size: 22px;\n}\n.list--dense .list__tile__sub-title {\n  font-size: 13px;\n}\n.list--two-line .list__tile {\n  height: 72px;\n}\n.list--two-line.list--dense .list__tile {\n  height: 60px;\n}\n.list--three-line .list__tile {\n  height: 88px;\n}\n.list--three-line .list__tile__sub-title {\n  white-space: initial;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  display: -webkit-box;\n}\n.list--three-line.list--dense .list__tile {\n  height: 76px;\n}\n.list--group {\n  position: relative;\n  padding: 0;\n}\n.list--group:after {\n  content: '';\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 1px;\n  opacity: 0;\n  width: 100%;\n  background-color: rgba(0,0,0,0.12);\n}\n.list--group .list__tile {\n  padding-left: 72px;\n}\n.list--group__header > li:first-child {\n  cursor: pointer;\n  display: block;\n}\n.list--group__header > li:first-child:hover {\n  background: rgba(0,0,0,0.12);\n}\n.list--group__header + .list--group:after {\n  opacity: 1;\n}\n.list--group__header--active .list__tile {\n  background: rgba(0,0,0,0.12);\n}\n.list--group__header--active .list__tile:after {\n  opacity: 1;\n}\n.list--group__header--active .list__tile .list__tile__title {\n  color: inherit;\n}\n.list--group__header--active .list__tile .list__tile__action:last-of-type .icon {\n  transform: rotate(-180deg);\n}\n.list--group__header--no-action + .list--group .list__tile {\n  padding-left: 16px;\n}\n.list--subheader {\n  padding-top: 0;\n}\n.list.list--two-line .list__tile__avatar,\n.list.list--three-line .list__tile__avatar {\n  align-items: flex-start;\n}\n.menu {\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n.menu--disabled {\n  cursor: default;\n}\n.menu--disabled .menu__activator,\n.menu--disabled .menu__activator > * {\n  cursor: default;\n  pointer-events: none;\n}\n.menu__activator {\n  align-items: center;\n  cursor: pointer;\n  position: relative;\n}\n.menu__activator input[readonly] {\n  cursor: pointer;\n}\n.menu__activator .toolbar__side-icon {\n  margin: 0;\n}\n.menu__content {\n  position: absolute;\n  display: inline-block;\n  border-radius: 2px;\n  max-width: 80%;\n  overflow-y: auto;\n  overflow-x: hidden;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  contain: content;\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.menu__content--active {\n  pointer-events: none;\n}\n.menu__content--dropdown {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border-top: 1px solid rgba(0,0,0,0.12);\n}\n.menu__content > .card {\n  contain: content;\n  backface-visibility: hidden;\n}\n.menu-transition-enter .list__tile {\n  min-width: 0;\n  transition-delay: 0.4s;\n  opacity: 0;\n  transform: translateY(-15px);\n  pointer-events: none;\n}\n.menu-transition-enter-to .list__tile {\n  pointer-events: auto;\n  opacity: 1;\n}\n.menu-transition-enter-to .list__tile--active {\n  transform: none !important;\n}\n.menu-transition-leave-to {\n  transform: translateY(-10px);\n}\n.menu-transition-leave-active,\n.menu-transition-leave-to {\n  pointer-events: none;\n}\n.menu-transition-enter,\n.menu-transition-leave-to {\n  opacity: 0;\n}\n.menu-transition-enter-to,\n.menu-transition-leave {\n  opacity: 1;\n}\n.menu-transition-enter-active,\n.menu-transition-leave-active {\n  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.menu-transition-enter.menu__content--auto .list__tile--active {\n  opacity: 1;\n  transform: none !important;\n  pointer-events: auto;\n}\n.theme--light .navigation-drawer,\n.application .theme--light.navigation-drawer {\n  background-color: #fff;\n}\n.theme--light .navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border,\n.application .theme--light.navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .navigation-drawer a:not(.list__tile--active),\n.application .theme--light.navigation-drawer a:not(.list__tile--active),\n.theme--light .navigation-drawer .list,\n.application .theme--light.navigation-drawer .list {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .navigation-drawer .divider,\n.application .theme--light.navigation-drawer .divider {\n  background-color: rgba(0,0,0,0.12);\n}\n.theme--light .navigation-drawer .list__tile:not(.list__tile--active),\n.application .theme--light.navigation-drawer .list__tile:not(.list__tile--active) {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .navigation-drawer .list__tile:not(.list__tile--active) .icon,\n.application .theme--light.navigation-drawer .list__tile:not(.list__tile--active) .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .navigation-drawer .list__tile__sub-title,\n.application .theme--light.navigation-drawer .list__tile__sub-title {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .navigation-drawer .list--group__header--active .list__tile:after,\n.application .theme--light.navigation-drawer .list--group__header--active .list__tile:after,\n.theme--light .navigation-drawer .list--group__header--active + .list--group:after,\n.application .theme--light.navigation-drawer .list--group__header--active + .list--group:after {\n  background: rgba(0,0,0,0.12);\n}\n.theme--dark .navigation-drawer,\n.application .theme--dark.navigation-drawer {\n  background-color: #424242;\n}\n.theme--dark .navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border,\n.application .theme--dark.navigation-drawer:not(.navigation-drawer--floating) .navigation-drawer__border {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .navigation-drawer a:not(.list__tile--active),\n.application .theme--dark.navigation-drawer a:not(.list__tile--active),\n.theme--dark .navigation-drawer .list,\n.application .theme--dark.navigation-drawer .list {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .divider,\n.application .theme--dark.navigation-drawer .divider {\n  background-color: rgba(255,255,255,0.12);\n}\n.theme--dark .navigation-drawer .list__tile:not(.list__tile--active),\n.application .theme--dark.navigation-drawer .list__tile:not(.list__tile--active) {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .list__tile:not(.list__tile--active) .icon,\n.application .theme--dark.navigation-drawer .list__tile:not(.list__tile--active) .icon {\n  color: #fff;\n}\n.theme--dark .navigation-drawer .list__tile__sub-title,\n.application .theme--dark.navigation-drawer .list__tile__sub-title {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .navigation-drawer .list--group__header--active .list__tile:after,\n.application .theme--dark.navigation-drawer .list--group__header--active .list__tile:after,\n.theme--dark .navigation-drawer .list--group__header--active + .list--group:after,\n.application .theme--dark.navigation-drawer .list--group__header--active + .list--group:after {\n  background: rgba(255,255,255,0.12);\n}\n.navigation-drawer {\n  max-width: 100%;\n  overflow-y: auto;\n  overflow-x: hidden;\n  -webkit-overflow-scrolling: touch;\n  padding: 0 0 100px;\n  pointer-events: auto;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  top: 0;\n  left: 0;\n  will-change: transform;\n  z-index: 3;\n}\n.navigation-drawer__border {\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 100%;\n  width: 1px;\n}\n.navigation-drawer.navigation-drawer--right:after {\n  left: 0;\n  right: initial;\n}\n.navigation-drawer--close.navigation-drawer:not(.navigation-drawer--right) {\n  transform: translateX(-100%);\n}\n.navigation-drawer--close.navigation-drawer--right {\n  transform: translateX(100%);\n}\n.navigation-drawer--right {\n  left: auto;\n  right: 0;\n}\n.navigation-drawer--right > .navigation-drawer__border {\n  right: auto;\n  left: 0;\n}\n.navigation-drawer--absolute {\n  position: absolute;\n}\n.navigation-drawer--fixed {\n  position: fixed;\n}\n.navigation-drawer--floating:after {\n  display: none;\n}\n.navigation-drawer--mini-variant {\n  overflow: hidden;\n}\n.navigation-drawer--mini-variant .list__tile__action,\n.navigation-drawer--mini-variant .list__tile__avatar {\n  justify-content: center;\n  min-width: 48px;\n}\n.navigation-drawer--mini-variant .list__tile__content,\n.navigation-drawer--mini-variant .list__tile:after {\n  opacity: 0;\n}\n.navigation-drawer--mini-variant .subheader,\n.navigation-drawer--mini-variant .divider,\n.navigation-drawer--mini-variant .list--group {\n  display: none !important;\n}\n.navigation-drawer--temporary,\n.navigation-drawer--is-mobile {\n  z-index: 6;\n}\n.navigation-drawer--temporary:not(.navigation-drawer--close),\n.navigation-drawer--is-mobile:not(.navigation-drawer--close) {\n  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12);\n}\n.navigation-drawer .list {\n  background: inherit;\n}\n.navigation-drawer > .list .list__tile {\n  transition: none;\n  font-weight: 500;\n}\n.navigation-drawer > .list .list__tile--active .list__tile__title {\n  color: inherit;\n}\n.navigation-drawer > .list .list--group .list__tile {\n  font-weight: 400;\n}\n.navigation-drawer > .list .list--group__header--active:after {\n  background: transparent;\n}\n.navigation-drawer > .list:not(.list--dense) .list__tile {\n  font-size: 14px;\n}\n.overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  pointer-events: none;\n  transition: 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);\n  z-index: 5;\n}\n.overlay--absolute {\n  position: absolute;\n}\n.overlay:before {\n  background-color: #212121;\n  bottom: 0;\n  content: '';\n  height: 100%;\n  left: 0;\n  opacity: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  transition: inherit;\n  transition-delay: 150ms;\n  width: 100%;\n}\n.overlay--active {\n  pointer-events: auto;\n  touch-action: none;\n}\n.overlay--active:before {\n  opacity: 0.46;\n}\n.theme--light .pagination__item,\n.application .theme--light.pagination__item {\n  background: #fff;\n  color: #000;\n}\n.theme--light .pagination__item--active,\n.application .theme--light.pagination__item--active {\n  color: #fff;\n}\n.theme--light .pagination__navigation,\n.application .theme--light.pagination__navigation {\n  background: #fff;\n}\n.theme--light .pagination__navigation .icon,\n.application .theme--light.pagination__navigation .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .pagination__item,\n.application .theme--dark.pagination__item {\n  background: #424242;\n  color: #fff;\n}\n.theme--dark .pagination__item--active,\n.application .theme--dark.pagination__item--active {\n  color: #fff;\n}\n.theme--dark .pagination__navigation,\n.application .theme--dark.pagination__navigation {\n  background: #424242;\n}\n.theme--dark .pagination__navigation .icon,\n.application .theme--dark.pagination__navigation .icon {\n  color: #fff;\n}\n.pagination {\n  align-items: center;\n  align-items: center;\n  display: inline-flex;\n  list-style-type: none;\n  margin: 0;\n  overflow-x: auto;\n  max-width: 100%;\n  padding: 0;\n}\n.pagination > li {\n  align-items: center;\n  display: flex;\n}\n.pagination--circle .pagination__item,\n.pagination--circle .pagination__more,\n.pagination--circle .pagination__navigation {\n  border-radius: 50%;\n}\n.pagination--disabled {\n  pointer-events: none;\n  opacity: 0.6;\n}\n.pagination__item {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n  border-radius: 4px;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 14px;\n  background: transparent;\n  height: 34px;\n  width: 34px;\n  margin: 0.3rem;\n  text-decoration: none;\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n}\n.pagination__item--active {\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.pagination__navigation {\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n  text-decoration: none;\n  height: 2rem;\n  border-radius: 4px;\n  width: 2rem;\n  margin: 0.3rem 10px;\n}\n.pagination__navigation .icon {\n  font-size: 2rem;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.6, 1);\n  vertical-align: middle;\n}\n.pagination__navigation--disabled {\n  opacity: 0.6;\n  pointer-events: none;\n}\n.pagination__more {\n  margin: 0.3rem;\n  display: inline-flex;\n  align-items: flex-end;\n  justify-content: center;\n  height: 2rem;\n  width: 2rem;\n}\n.parallax {\n  position: relative;\n  overflow: hidden;\n  z-index: 0;\n}\n.parallax__image-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 1;\n  contain: strict;\n}\n.parallax__image {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  min-width: 100%;\n  min-height: 100%;\n  display: none;\n  transform: translate(-50%, 0);\n  will-change: transform;\n  transition: 0.3s opacity cubic-bezier(0.25, 0.8, 0.5, 1);\n  z-index: 1;\n}\n.parallax__content {\n  color: #fff;\n  height: 100%;\n  z-index: 2;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding: 0 1rem;\n}\n.theme--dark .picker .picker__title,\n.application .theme--dark.picker .picker__title {\n  background: #616161;\n}\n.theme--light .picker,\n.application .theme--light.picker {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .picker .picker__body,\n.application .theme--light.picker .picker__body {\n  background: #fff;\n}\n.theme--dark .picker,\n.application .theme--dark.picker {\n  color: #fff;\n}\n.theme--dark .picker .picker__body,\n.application .theme--dark.picker .picker__body {\n  background: #424242;\n}\n.picker {\n  border-radius: 2px;\n  display: flex;\n  flex-direction: column;\n  width: 290px;\n  contain: content;\n}\n.picker .card__row--actions {\n  border: none;\n  margin-top: -20px;\n}\n.picker__title {\n  color: #fff;\n  border-top-left-radius: 2px;\n  border-top-right-radius: 2px;\n  height: 105px;\n  padding: 16px;\n}\n.picker__body {\n  height: 290px;\n  overflow: hidden;\n  position: relative;\n}\n.picker--landscape {\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 500px;\n}\n.picker--landscape .picker__title {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n  flex: 0 1 170px;\n  width: 170px;\n  height: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  z-index: 1;\n}\n.picker--landscape .picker__body {\n  flex: 1 0;\n  width: 330px;\n  margin-left: 170px;\n}\n.picker--landscape .card__row--actions {\n  margin-left: 170px;\n  width: 330px;\n}\n.progress-circular {\n  position: relative;\n  display: inline-flex;\n}\n.progress-circular--indeterminate svg {\n  animation: progress-circular-rotate 1.4s linear infinite;\n  transform-origin: center center;\n  width: 100%;\n  height: 100%;\n  margin: auto;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  transition: all 0.2s ease-in-out;\n  z-index: 0;\n}\n.progress-circular--indeterminate .progress-circular__overlay {\n  animation: progress-circular-dash 1.4s ease-in-out infinite;\n  stroke-linecap: round;\n  stroke-dasharray: 80, 200;\n  stroke-dashoffset: 0px;\n}\n.progress-circular__underlay {\n  stroke: rgba(0,0,0,0.1);\n  z-index: 1;\n}\n.progress-circular__overlay {\n  stroke: currentColor;\n  z-index: 2;\n  transition: all 0.6s ease-in-out;\n}\n.progress-circular__info {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n@-moz-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-webkit-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-o-keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@keyframes progress-circular-dash {\n0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0px;\n}\n50% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -15px;\n}\n100% {\n    stroke-dasharray: 100, 200;\n    stroke-dashoffset: -125px;\n}\n}\n@-moz-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@-webkit-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@-o-keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes progress-circular-rotate {\n100% {\n    transform: rotate(360deg);\n}\n}\n.progress-linear {\n  background: transparent;\n  margin: 1rem 0;\n  overflow: hidden;\n  width: 100%;\n  position: relative;\n}\n.progress-linear__bar {\n  width: 100%;\n  height: inherit;\n  position: relative;\n  transition: 0.3s ease-in;\n  z-index: 1;\n}\n.progress-linear__bar__determinate {\n  height: inherit;\n  transition: 0.3s ease-in;\n}\n.progress-linear__bar__indeterminate .long,\n.progress-linear__bar__indeterminate .short {\n  height: inherit;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  will-change: left, right;\n  width: auto;\n  background-color: inherit;\n}\n.progress-linear__bar__indeterminate--active .long {\n  animation: indeterminate;\n  animation-duration: 2.2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear__bar__indeterminate--active .short {\n  animation: indeterminate-short;\n  animation-duration: 2.2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear__background {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  transition: 0.3s ease-in;\n}\n.progress-linear--query .progress-linear__bar__indeterminate--active .long {\n  animation: only screen and (min-width: 1904px);\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n}\n.progress-linear--query .progress-linear__bar__indeterminate--active .short {\n  animation: query-short;\n  animation-duration: 2s;\n  animation-iteration-count: infinite;\n}\n@-moz-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-webkit-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-o-keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@keyframes indeterminate {\n0% {\n    left: -90%;\n    right: 100%;\n}\n60% {\n    left: -90%;\n    right: 100%;\n}\n100% {\n    left: 100%;\n    right: -35%;\n}\n}\n@-moz-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-webkit-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-o-keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@keyframes indeterminate-short {\n0% {\n    left: -200%;\n    right: 100%;\n}\n60% {\n    left: 107%;\n    right: -8%;\n}\n100% {\n    left: 107%;\n    right: -8%;\n}\n}\n@-moz-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-webkit-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-o-keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@keyframes only screen and (min-width: 1904px) {\n0% {\n    right: -90%;\n    left: 100%;\n}\n60% {\n    right: -90%;\n    left: 100%;\n}\n100% {\n    right: 100%;\n    left: -35%;\n}\n}\n@-moz-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@-webkit-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@-o-keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n@keyframes query-short {\n0% {\n    right: -200%;\n    left: 100%;\n}\n60% {\n    right: 107%;\n    left: -8%;\n}\n100% {\n    right: 107%;\n    left: -8%;\n}\n}\n.radio-group .input-group__details:before,\n.radio-group .input-group__details:after {\n  display: none;\n}\n.radio-group .input-group {\n  padding: 0;\n}\n.radio-group--column .input-group__input {\n  display: block;\n}\n.radio-group--row .input-group__input {\n  flex-direction: row;\n}\n.radio-group.input-group--error .radio label,\n.radio-group.input-group--error .radio .icon--selection-control {\n  color: inherit;\n}\n.ripple__container {\n  color: inherit;\n  border-radius: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  overflow: hidden;\n  z-index: 0;\n  pointer-events: none;\n  contain: strict;\n}\n.ripple__animation {\n  color: inherit;\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n  background: currentColor;\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  pointer-events: none;\n  overflow: hidden;\n  will-change: transform, opacity;\n}\n.ripple__animation--enter {\n  transition: none;\n}\n.ripple__animation--visible {\n  opacity: 0.15;\n}\n.theme--light .input-group--select.input-group--editable .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--editable .input-group__input:hover,\n.theme--light .input-group--select.input-group--overflow .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--overflow .input-group__input:hover,\n.theme--light .input-group--select.input-group--segmented .input-group__input:hover,\n.application .theme--light.input-group--select.input-group--segmented .input-group__input:hover {\n  background: #fff;\n}\n.theme--light .input-group--select.input-group--editable.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--editable.input-group--focused .input-group__input,\n.theme--light .input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.theme--light .input-group--select.input-group--segmented.input-group--focused .input-group__input,\n.application .theme--light.input-group--select.input-group--segmented.input-group--focused .input-group__input {\n  background: #fff;\n}\n.theme--dark .input-group--select.input-group--editable .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--editable .input-group__input:hover,\n.theme--dark .input-group--select.input-group--overflow .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--overflow .input-group__input:hover,\n.theme--dark .input-group--select.input-group--segmented .input-group__input:hover,\n.application .theme--dark.input-group--select.input-group--segmented .input-group__input:hover {\n  background: #424242;\n}\n.theme--dark .input-group--select.input-group--editable.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--editable.input-group--focused .input-group__input,\n.theme--dark .input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--overflow.input-group--focused .input-group__input,\n.theme--dark .input-group--select.input-group--segmented.input-group--focused .input-group__input,\n.application .theme--dark.input-group--select.input-group--segmented.input-group--focused .input-group__input {\n  background: #424242;\n}\n.input-group--select .input-group--select__autocomplete {\n  display: block;\n  height: 0px;\n}\n.input-group--select .input-group--select__autocomplete--index {\n  opacity: 0 !important;\n}\n.input-group--select .input-group__append-icon {\n  transition: 0.3s cubic-bezier(0, 0, 0.2, 1);\n}\n.input-group--select .input-group__append-icon.input-group__icon-clearable {\n  transition: none;\n}\n.input-group--select:not(.input-group--dirty) .input-group--select__autocomplete,\n.input-group--select.input-group--focused .input-group--select__autocomplete {\n  padding-bottom: 1px;\n  height: 30px;\n}\n.input-group--select.input-group--focused .input-group--select__autocomplete {\n  display: inline-block;\n  opacity: 1;\n}\n.input-group--select.input-group--focused.input-group--open .input-group__append-icon:not(.input-group__icon-clearable) {\n  transform: rotate(-180deg);\n}\n.input-group--select .input-group__input {\n  cursor: pointer;\n}\n.input-group--select.input-group--disabled {\n  cursor: default;\n  pointer-events: none;\n}\n.input-group--select .input-group__selections {\n  align-items: center;\n  display: flex;\n  flex-wrap: wrap;\n  position: relative;\n  width: 100%;\n}\n.input-group--select .input-group__selections__comma {\n  display: inline-flex;\n  font-size: 16px;\n  padding: 3px 4px 3px 0;\n}\n.input-group--select .input-group__selections__comma--active {\n  color: inherit;\n}\n.input-group--select .menu {\n  display: inline;\n}\n.input-group--select .fade-transition-leave-active {\n  position: absolute;\n  left: 0;\n}\n.input-group--select.input-group--autocomplete.input-group--search-focused .input-group__selections__comma {\n  display: none;\n}\n.input-group--autocomplete .input-group__selections {\n  cursor: text;\n}\n.input-group.input-group--overflow,\n.input-group.input-group--editable,\n.input-group.input-group--segmented {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__append-icon,\n.input-group.input-group--editable .input-group__append-icon,\n.input-group.input-group--segmented .input-group__append-icon {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__selections,\n.input-group.input-group--editable .input-group__selections,\n.input-group.input-group--segmented .input-group__selections,\n.input-group.input-group--overflow input,\n.input-group.input-group--editable input,\n.input-group.input-group--segmented input {\n  height: 48px;\n}\n.input-group.input-group--overflow .input-group__selections__comma,\n.input-group.input-group--editable .input-group__selections__comma,\n.input-group.input-group--segmented .input-group__selections__comma,\n.input-group.input-group--overflow input,\n.input-group.input-group--editable input,\n.input-group.input-group--segmented input {\n  top: 0;\n  left: 0;\n  padding-left: 16px;\n}\n.input-group.input-group--overflow .input-group__selections,\n.input-group.input-group--editable .input-group__selections,\n.input-group.input-group--segmented .input-group__selections {\n  width: calc(100% - 55px);\n}\n.input-group.input-group--overflow .input-group__selections .btn,\n.input-group.input-group--editable .input-group__selections .btn,\n.input-group.input-group--segmented .input-group__selections .btn {\n  border-radius: 0;\n  margin: 0;\n  height: 48px;\n  width: 100%;\n}\n.input-group.input-group--overflow .input-group__selections .btn .btn__content,\n.input-group.input-group--editable .input-group__selections .btn .btn__content,\n.input-group.input-group--segmented .input-group__selections .btn .btn__content {\n  justify-content: start;\n}\n.input-group.input-group--overflow .input-group__input,\n.input-group.input-group--editable .input-group__input,\n.input-group.input-group--segmented .input-group__input {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--overflow.input-group--focused .input-group__input,\n.input-group.input-group--editable.input-group--focused .input-group__input,\n.input-group.input-group--segmented.input-group--focused .input-group__input {\n  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\n}\n.input-group.input-group--overflow label,\n.input-group.input-group--editable label,\n.input-group.input-group--segmented label {\n  left: 16px !important;\n  top: 9px !important;\n}\n.input-group.input-group--overflow .input-group__details:after,\n.input-group.input-group--editable .input-group__details:after,\n.input-group.input-group--segmented .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--overflow .input-group__input,\n.input-group.input-group--editable .input-group__input,\n.input-group.input-group--segmented .input-group__input {\n  padding: 0;\n}\n.input-group.input-group--overflow .input-group__input:before,\n.input-group.input-group--editable .input-group__input:before,\n.input-group.input-group--segmented .input-group__input:before {\n  content: '';\n  position: absolute;\n  left: 0;\n  width: 100%;\n  height: 1px;\n  top: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group.input-group--overflow .input-group__append-icon,\n.input-group.input-group--editable .input-group__append-icon,\n.input-group.input-group--segmented .input-group__append-icon {\n  width: 55px;\n}\n.input-group--segmented .input-group__input:after,\n.input-group--editable .input-group__input:hover:after,\n.input-group.input-group--focused.input-group--editable .input-group__input:after {\n  background-color: rgba(0,0,0,0.12);\n  content: '';\n  position: absolute;\n  right: 55px;\n  height: 48px;\n  top: 0;\n  width: 1px;\n}\n.menu__content--select .input-group--selection-controls__ripple {\n  display: none;\n}\n.menu__content--autocomplete {\n  border-radius: 0;\n}\n.menu__content--autocomplete > .card {\n  border-radius: 0;\n}\n.theme--light .input-group--selection-controls label,\n.application .theme--light.input-group--selection-controls label {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .input-group--selection-controls .icon--selection-control,\n.application .theme--light.input-group--selection-controls .icon--selection-control {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group--selection-controls.input-group--active .icon--selection-control,\n.application .theme--light.input-group--selection-controls.input-group--active .icon--selection-control {\n  color: inherit;\n}\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.theme--light .input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox,\n.application .theme--light.input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox {\n  color: inherit;\n}\n.theme--dark .input-group--selection-controls label,\n.application .theme--dark.input-group--selection-controls label {\n  color: #fff;\n}\n.theme--dark .input-group--selection-controls .icon--selection-control,\n.application .theme--dark.input-group--selection-controls .icon--selection-control {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group--selection-controls.input-group--active .icon--selection-control,\n.application .theme--dark.input-group--selection-controls.input-group--active .icon--selection-control {\n  color: inherit;\n}\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input .icon--radio,\n.theme--dark .input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox,\n.application .theme--dark.input-group--selection-controls.input-group--disabled .input-group__input .icon--checkbox {\n  color: inherit;\n}\n.input-group--selection-controls.input-group--tab-focused .input-group--selection-controls__ripple:before,\n.input-group--tab-focused .input-group:focus .input-group--selection-controls__ripple:before {\n  transform: translate(-50%, -50%) scale(1);\n  opacity: 0.15;\n}\n.input-group.input-group--selection-controls {\n  display: flex;\n  padding: 0;\n}\n.input-group.input-group--selection-controls .icon--selection-control {\n  cursor: pointer;\n  position: absolute;\n  left: 0;\n  user-select: none;\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.input-group.input-group--selection-controls .input-group__details:before,\n.input-group.input-group--selection-controls .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--selection-controls .input-group__input {\n  color: inherit;\n  width: 100%;\n  position: relative;\n}\n.input-group.input-group--selection-controls .input-group__input .icon--selection-control {\n  align-self: center;\n  height: 30px;\n  margin: auto;\n}\n.input-group.input-group--selection-controls.input-group--error label {\n  color: inherit;\n}\n.input-group.input-group--selection-controls.input-group--error .input-group__input .icon--selection-control {\n  color: inherit;\n}\n.input-group.input-group--selection-controls label {\n  cursor: pointer;\n  position: absolute;\n  left: 32px;\n  user-select: none;\n  z-index: 1;\n  pointer-events: all;\n}\n.input-group--selection-controls__ripple {\n  border-radius: 50%;\n  height: 48px;\n  width: 48px;\n  cursor: pointer;\n  position: absolute;\n  transform: translate(-12px, -50%);\n  transform-origin: center center;\n  top: 50%;\n  left: 0;\n}\n.input-group--selection-controls__ripple:before {\n  content: '';\n  position: absolute;\n  width: 36px;\n  height: 36px;\n  background: currentColor;\n  border-radius: 50%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%) scale(0.3);\n  opacity: 0;\n  transition: 0.4s cubic-bezier(0, 0, 0.2, 1);\n  transform-origin: center center;\n}\n.input-group--prepend-icon.input-group--selection-controls .icon--selection-control,\n.input-group--prepend-icon.input-group--selection-controls .input-group--selection-controls__ripple {\n  left: 38px;\n}\n.input-group--prepend-icon.input-group--selection-controls label {\n  left: 76px;\n}\n.input-group--prepend-icon.radio-group--row .icon--selection-control,\n.input-group--prepend-icon.radio-group--row .input-group--selection-controls__ripple {\n  left: 14px;\n}\n.input-group--prepend-icon.radio-group--row label {\n  left: 52px;\n}\n.theme--light .input-group--slider label,\n.application .theme--light.input-group--slider label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .input-group--slider .slider__track,\n.application .theme--light.input-group--slider .slider__track,\n.theme--light .input-group--slider .slider__track-fill,\n.application .theme--light.input-group--slider .slider__track-fill {\n  background: rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider .slider__track__container:after,\n.application .theme--light.input-group--slider .slider__track__container:after {\n  border: 1px solid rgba(0,0,0,0.87);\n}\n.theme--light .input-group--slider .slider__tick,\n.application .theme--light.input-group--slider .slider__tick {\n  border: 1px solid rgba(0,0,0,0.87);\n}\n.theme--light .input-group--slider:not(.input-group--dirty) .slider__thumb--label,\n.application .theme--light.input-group--slider:not(.input-group--dirty) .slider__thumb--label {\n  background: rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider:not(.input-group--dirty) .slider__thumb,\n.application .theme--light.input-group--slider:not(.input-group--dirty) .slider__thumb {\n  border: 3px solid rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider:not(.input-group--dirty):focus .slider__thumb,\n.application .theme--light.input-group--slider:not(.input-group--dirty):focus .slider__thumb {\n  border: 3px solid rgba(0,0,0,0.38);\n}\n.theme--light .input-group--slider.input-group--disabled .slider__thumb,\n.application .theme--light.input-group--slider.input-group--disabled .slider__thumb {\n  background: none;\n  border: 3px solid rgba(0,0,0,0.26);\n}\n.theme--light .input-group--slider.input-group--disabled.input-group--dirty .slider__thumb,\n.application .theme--light.input-group--slider.input-group--disabled.input-group--dirty .slider__thumb {\n  background: rgba(0,0,0,0.26);\n  border: 0px solid transparent;\n}\n.theme--light .input-group--slider:focus .slider__track,\n.application .theme--light.input-group--slider:focus .slider__track {\n  background: rgba(0,0,0,0.38);\n}\n.theme--dark .input-group--slider label,\n.application .theme--dark.input-group--slider label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .input-group--slider .slider__track,\n.application .theme--dark.input-group--slider .slider__track,\n.theme--dark .input-group--slider .slider__track-fill,\n.application .theme--dark.input-group--slider .slider__track-fill {\n  background: rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider .slider__track__container:after,\n.application .theme--dark.input-group--slider .slider__track__container:after {\n  border: 1px solid #fff;\n}\n.theme--dark .input-group--slider .slider__tick,\n.application .theme--dark.input-group--slider .slider__tick {\n  border: 1px solid #fff;\n}\n.theme--dark .input-group--slider:not(.input-group--dirty) .slider__thumb--label,\n.application .theme--dark.input-group--slider:not(.input-group--dirty) .slider__thumb--label {\n  background: rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider:not(.input-group--dirty) .slider__thumb,\n.application .theme--dark.input-group--slider:not(.input-group--dirty) .slider__thumb {\n  border: 3px solid rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider:not(.input-group--dirty):focus .slider__thumb,\n.application .theme--dark.input-group--slider:not(.input-group--dirty):focus .slider__thumb {\n  border: 3px solid rgba(255,255,255,0.3);\n}\n.theme--dark .input-group--slider.input-group--disabled .slider__thumb,\n.application .theme--dark.input-group--slider.input-group--disabled .slider__thumb {\n  background: none;\n  border: 3px solid rgba(255,255,255,0.2);\n}\n.theme--dark .input-group--slider.input-group--disabled.input-group--dirty .slider__thumb,\n.application .theme--dark.input-group--slider.input-group--disabled.input-group--dirty .slider__thumb {\n  background: rgba(255,255,255,0.2);\n  border: 0px solid transparent;\n}\n.theme--dark .input-group--slider:focus .slider__track,\n.application .theme--dark.input-group--slider:focus .slider__track {\n  background: rgba(255,255,255,0.3);\n}\n.input-group.input-group--slider {\n  flex-direction: row;\n  flex-wrap: wrap;\n  padding-right: 16px;\n}\n.input-group.input-group--slider .input-group__details:before,\n.input-group.input-group--slider .input-group__details:after {\n  display: none;\n}\n.input-group.input-group--slider .input-group__input {\n  flex: 1 1 100%;\n}\n.input-group.input-group--slider label {\n  flex: 0 1 auto;\n  width: auto;\n  align-items: center;\n  display: inline-flex;\n  font-size: 18px;\n  transform: none;\n}\n.input-group.input-group--slider label + .input-group__input {\n  margin-left: 16px;\n  flex: 1 0 auto;\n}\n.input-group.input-group--slider.input-group--active .slider__thumb {\n  transform: translateY(-50%) scale(1.2);\n}\n.input-group.input-group--slider.input-group--active .slider__track {\n  transition: none;\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container--label .slider__thumb {\n  transform: translateY(-50%) scale(0);\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container--label .slider__thumb:hover {\n  transform: translateY(-50%) scale(0);\n}\n.input-group.input-group--slider.input-group--active .slider__thumb-container,\n.input-group.input-group--slider.input-group--active .slider__track-fill {\n  transition: none;\n}\n.input-group.input-group--slider.input-group--active.input-group--ticks .slider__track__container:after,\n.input-group.input-group--slider.input-group--active.input-group--ticks .slider__tick {\n  opacity: 1;\n}\n.input-group.input-group--slider.input-group--disabled {\n  pointer-events: none;\n}\n.input-group.input-group--slider.input-group--disabled .slider__thumb {\n  transform: translateY(-50%) scale(0.5);\n  background: transparent;\n}\n.input-group.input-group--slider.input-group--disabled.input-group--dirty {\n  border-color: transparent;\n}\n.input-group.input-group--slider.input-group--prepend-icon .slider {\n  margin-left: 40px;\n}\n.input-group.input-group--slider.input-group--append-icon .slider {\n  margin-right: 40px;\n}\n.slider {\n  cursor: default;\n  display: flex;\n  align-items: center;\n  position: relative;\n  height: 30px;\n  flex: 1;\n  user-select: none;\n}\n.slider__track__container {\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  height: 2px;\n  width: 100%;\n  overflow: hidden;\n}\n.slider__track__container:after {\n  content: '';\n  position: absolute;\n  right: 0;\n  top: 0;\n  height: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 2px;\n  opacity: 0;\n}\n.slider__track,\n.slider__thumb,\n.slider__tick {\n  position: absolute;\n  top: 0;\n}\n.slider__track {\n  height: 2px;\n  left: 0;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform-origin: right;\n  overflow: hidden;\n  width: 100%;\n}\n.slider__track-fill {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  transform-origin: left;\n  width: 100%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slider__ticks-container {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 100%;\n  top: 50%;\n  overflow: hidden;\n}\n.slider__tick {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  opacity: 0;\n}\n.slider__thumb-container {\n  position: absolute;\n  top: 50%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.slider__thumb {\n  width: 16px;\n  height: 16px;\n  left: -8px;\n  top: 50%;\n  border-radius: 50%;\n  background: transparent;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform: translateY(-50%) scale(0.8);\n  user-select: none;\n}\n.slider__thumb--label__container {\n  position: absolute;\n  left: 0;\n  top: 0;\n  transition: 0.3s ease-in-out;\n}\n.slider__thumb--label {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 12px;\n  color: #fff;\n  width: 28px;\n  height: 28px;\n  border-radius: 50% 50% 0;\n  position: absolute;\n  left: -14px;\n  top: -40px;\n  transform: rotate(45deg);\n  user-select: none;\n  transition: 0.3s ease-in-out;\n}\n.slider__thumb--label span {\n  transform: rotate(-45deg);\n}\n.slider__track,\n.slider__track-fill {\n  position: absolute;\n}\n.theme--light .small-dialog__content,\n.application .theme--light.small-dialog__content {\n  background: #fff;\n}\n.theme--light .small-dialog__actions,\n.application .theme--light.small-dialog__actions {\n  background: #fff;\n}\n.theme--light .small-dialog a,\n.application .theme--light.small-dialog a {\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .small-dialog__content,\n.application .theme--dark.small-dialog__content {\n  background: #424242;\n}\n.theme--dark .small-dialog__actions,\n.application .theme--dark.small-dialog__actions {\n  background: #424242;\n}\n.theme--dark .small-dialog a,\n.application .theme--dark.small-dialog a {\n  color: #fff;\n}\n.small-dialog {\n  display: block;\n  height: 100%;\n}\n.small-dialog__content {\n  padding: 0 24px;\n}\n.small-dialog__actions {\n  text-align: right;\n}\n.small-dialog a {\n  display: flex;\n  align-items: center;\n  height: 100%;\n  text-decoration: none;\n}\n.small-dialog a > * {\n  width: 100%;\n}\n.small-dialog .menu__activator {\n  height: 100%;\n}\n.snack {\n  background-color: #323232;\n  position: fixed;\n  display: flex;\n  height: 0;\n  pointer-events: none;\n  visibility: visible;\n  z-index: 1000;\n}\n.snack--absolute {\n  position: absolute;\n}\n.snack--top {\n  top: 0;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n.snack--bottom {\n  bottom: 48px;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n.snack--left {\n  left: 8px;\n  right: initial;\n  transform: none;\n}\n.snack--left.snack--top {\n  top: 8px;\n}\n.snack--left.snack--bottom {\n  bottom: 56px;\n}\n.snack--right {\n  left: initial;\n  right: 8px;\n  transform: none;\n}\n.snack--right.snack--top {\n  top: 8px;\n}\n.snack--right.snack--bottom {\n  top: initial;\n  bottom: 56px;\n}\n.snack__content {\n  background-color: inherit;\n  padding: 14px 24px;\n  border-radius: 2px;\n  pointer-events: auto;\n  max-width: 568px;\n  min-width: 288px;\n  height: 48px;\n  align-items: center;\n  color: #fff;\n  display: flex;\n  font-size: 14px;\n  justify-content: space-between;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);\n  position: relative !important;\n  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);\n}\n.snack__content .btn {\n  margin: 0 0 0 48px;\n}\n.snack--multi-line .snack__content {\n  height: 80px;\n  padding: 24px;\n}\n.snack--bottom.snack--multi-line,\n.snack--right.snack--multi-line {\n  bottom: 80px;\n}\n.snack--vertical .snack__content {\n  height: 112px;\n  padding: 24px 24px 14px;\n  flex-direction: column;\n  align-items: initial;\n}\n.snack--vertical .snack__content .btn {\n  align-self: flex-end;\n}\n.snack--bottom.snack--vertical,\n.snack--right.snack--vertical {\n  bottom: 112px;\n}\n@media only screen and (max-width: 599px) {\n.snack {\n    width: 100%;\n    left: 0;\n    right: initial;\n    transform: none;\n}\n.snack--right.snack--top,\n  .snack--left.snack--top {\n    top: 0;\n}\n.snack--right.snack--bottom,\n  .snack--left.snack--bottom {\n    bottom: 48px;\n}\n.snack__content {\n    border-radius: 0;\n    max-width: 100%;\n    width: 100%;\n}\n.snack__content .btn {\n    margin: 0 0 0 24px;\n}\n}\n.speed-dial {\n  position: relative;\n}\n.speed-dial--absolute {\n  position: absolute;\n}\n.speed-dial--fixed {\n  position: fixed;\n}\n.speed-dial--top:not(.speed-dial--absolute) {\n  top: 16px;\n}\n.speed-dial--top.speed-dial--absolute {\n  top: 50%;\n  transform: translateY(-50%);\n}\n.speed-dial--bottom:not(.speed-dial--absolute) {\n  bottom: 16px;\n}\n.speed-dial--bottom.speed-dial--absolute {\n  bottom: 50%;\n  transform: translateY(50%);\n}\n.speed-dial--left {\n  left: 16px;\n}\n.speed-dial--right {\n  right: 16px;\n}\n.speed-dial--direction-left .speed-dial__list,\n.speed-dial--direction-right .speed-dial__list {\n  height: 100%;\n  top: 0;\n}\n.speed-dial--direction-top .speed-dial__list,\n.speed-dial--direction-bottom .speed-dial__list {\n  left: 0;\n  width: 100%;\n}\n.speed-dial--direction-top .speed-dial__list {\n  flex-direction: column-reverse;\n  bottom: 100%;\n}\n.speed-dial--direction-right .speed-dial__list {\n  flex-direction: row;\n  left: 100%;\n}\n.speed-dial--direction-bottom .speed-dial__list {\n  flex-direction: column;\n  top: 100%;\n}\n.speed-dial--direction-left .speed-dial__list {\n  flex-direction: row-reverse;\n  right: 100%;\n}\n.speed-dial__list {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  position: absolute;\n}\n.speed-dial__list .btn:nth-child(1) {\n  transition-delay: 0.05s;\n}\n.speed-dial__list .btn:nth-child(2) {\n  transition-delay: 0.1s;\n}\n.speed-dial__list .btn:nth-child(3) {\n  transition-delay: 0.15s;\n}\n.speed-dial__list .btn:nth-child(4) {\n  transition-delay: 0.2s;\n}\n.speed-dial__list .btn:nth-child(5) {\n  transition-delay: 0.25s;\n}\n.speed-dial__list .btn:nth-child(6) {\n  transition-delay: 0.3s;\n}\n.speed-dial__list .btn:nth-child(7) {\n  transition-delay: 0.35s;\n}\n.theme--light .stepper,\n.application .theme--light.stepper {\n  background: #fff;\n}\n.theme--light .stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step,\n.application .theme--light.stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step {\n  background: rgba(0,0,0,0.38);\n}\n.theme--light .stepper .stepper__step__step,\n.application .theme--light.stepper .stepper__step__step {\n  color: #fff;\n}\n.theme--light .stepper .stepper__step__step .icon,\n.application .theme--light.stepper .stepper__step__step .icon {\n  color: #fff;\n}\n.theme--light .stepper .stepper__header .divider,\n.application .theme--light.stepper .stepper__header .divider {\n  background: rgba(0,0,0,0.12);\n}\n.theme--light .stepper .stepper__step--active .stepper__label,\n.application .theme--light.stepper .stepper__step--active .stepper__label {\n  text-shadow: 0px 0px 0px #000;\n}\n.theme--light .stepper .stepper__step--editable:hover,\n.application .theme--light.stepper .stepper__step--editable:hover {\n  background: rgba(0,0,0,0.06);\n}\n.theme--light .stepper .stepper__step--editable:hover .stepper__label,\n.application .theme--light.stepper .stepper__step--editable:hover .stepper__label {\n  text-shadow: 0px 0px 0px #000;\n}\n.theme--light .stepper .stepper__step--complete .stepper__label,\n.application .theme--light.stepper .stepper__step--complete .stepper__label {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step,\n.application .theme--light.stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step {\n  background: rgba(0,0,0,0.54);\n}\n.theme--light .stepper .stepper__label,\n.application .theme--light.stepper .stepper__label {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .stepper .stepper__label small,\n.application .theme--light.stepper .stepper__label small {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label,\n.application .theme--light.stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .stepper--vertical .stepper__content:not(:last-child),\n.application .theme--light.stepper--vertical .stepper__content:not(:last-child) {\n  border-left: 1px solid rgba(0,0,0,0.12);\n}\n.theme--dark .stepper,\n.application .theme--dark.stepper {\n  background: #303030;\n}\n.theme--dark .stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step,\n.application .theme--dark.stepper .stepper__step:not(.stepper__step--active):not(.stepper__step--complete):not(.stepper__step--error) .stepper__step__step {\n  background: rgba(255,255,255,0.5);\n}\n.theme--dark .stepper .stepper__step__step,\n.application .theme--dark.stepper .stepper__step__step {\n  color: #fff;\n}\n.theme--dark .stepper .stepper__step__step .icon,\n.application .theme--dark.stepper .stepper__step__step .icon {\n  color: #fff;\n}\n.theme--dark .stepper .stepper__header .divider,\n.application .theme--dark.stepper .stepper__header .divider {\n  background: rgba(255,255,255,0.12);\n}\n.theme--dark .stepper .stepper__step--active .stepper__label,\n.application .theme--dark.stepper .stepper__step--active .stepper__label {\n  text-shadow: 0px 0px 0px #fff;\n}\n.theme--dark .stepper .stepper__step--editable:hover,\n.application .theme--dark.stepper .stepper__step--editable:hover {\n  background: rgba(255,255,255,0.06);\n}\n.theme--dark .stepper .stepper__step--editable:hover .stepper__label,\n.application .theme--dark.stepper .stepper__step--editable:hover .stepper__label {\n  text-shadow: 0px 0px 0px #fff;\n}\n.theme--dark .stepper .stepper__step--complete .stepper__label,\n.application .theme--dark.stepper .stepper__step--complete .stepper__label {\n  color: rgba(255,255,255,0.87);\n}\n.theme--dark .stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step,\n.application .theme--dark.stepper .stepper__step--inactive.stepper__step--editable:hover .stepper__step__step {\n  background: rgba(255,255,255,0.75);\n}\n.theme--dark .stepper .stepper__label,\n.application .theme--dark.stepper .stepper__label {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .stepper .stepper__label small,\n.application .theme--dark.stepper .stepper__label small {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label,\n.application .theme--dark.stepper--non-linear .stepper__step:not(.stepper__step--complete) .stepper__label {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .stepper--vertical .stepper__content:not(:last-child),\n.application .theme--dark.stepper--vertical .stepper__content:not(:last-child) {\n  border-left: 1px solid rgba(255,255,255,0.12);\n}\n.stepper {\n  overflow: hidden;\n  position: relative;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.stepper__header {\n  align-items: stretch;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.stepper__header .divider {\n  align-self: center;\n  margin: 0 -16px;\n}\n.stepper__items {\n  position: relative;\n  overflow: hidden;\n}\n.stepper__step__step {\n  align-items: center;\n  border-radius: 50%;\n  display: inline-flex;\n  font-size: 12px;\n  justify-content: center;\n  height: 24px;\n  margin-right: 8px;\n  min-width: 24px;\n  width: 24px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.stepper__step__step .icon {\n  font-size: 18px;\n}\n.stepper__step {\n  align-items: center;\n  display: flex;\n  flex-direction: row;\n  padding: 24px;\n  position: relative;\n}\n.stepper__step--active .stepper__label {\n  transition: 0.3s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.stepper__step--editable {\n  cursor: pointer;\n}\n.stepper__step.stepper__step--error .stepper__step__step {\n  background: transparent;\n  color: inherit;\n}\n.stepper__step.stepper__step--error .stepper__step__step .icon {\n  font-size: 24px;\n  color: inherit;\n}\n.stepper__step.stepper__step--error .stepper__label {\n  color: inherit;\n  text-shadow: none;\n  font-weight: 500;\n}\n.stepper__step.stepper__step--error .stepper__label small {\n  color: inherit;\n}\n.stepper__label {\n  align-items: flex-start;\n  display: flex;\n  flex-direction: column;\n  text-align: left;\n}\n.stepper__label small {\n  font-size: 12px;\n  font-weight: 300;\n  text-shadow: none;\n}\n.stepper__wrapper {\n  overflow: hidden;\n  transition: none;\n}\n.stepper__content {\n  top: initial;\n  bottom: 0;\n  padding: 16px;\n  flex: 1;\n  width: 100%;\n}\n.stepper__content .btn {\n  margin-left: 0;\n}\n.stepper--is-booted .stepper__content,\n.stepper--is-booted .stepper__wrapper {\n  transition: 0.4s cubic-bezier(0.4, 0, 0.6, 1);\n}\n.stepper--vertical {\n  padding-bottom: 36px;\n}\n.stepper--vertical .stepper__content {\n  margin: -8px -36px -16px 36px;\n  padding: 16px 60px 16px 23px;\n  width: auto;\n}\n.stepper--vertical .stepper__step {\n  padding: 24px 24px 16px;\n}\n.stepper--vertical .stepper__step__step {\n  margin-right: 12px;\n}\n.stepper--alt-labels .stepper__header .divider {\n  margin: 35px -67px 0;\n  align-self: flex-start;\n}\n.stepper--alt-labels .stepper__step {\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  flex-basis: 175px;\n}\n.stepper--alt-labels .stepper__step small {\n  align-self: center;\n}\n.stepper--alt-labels .stepper__step__step {\n  margin-right: 0;\n  margin-bottom: 12px;\n}\n@media only screen and (max-width: 959px) {\n.stepper:not(.stepper--vertical) .stepper__label {\n    display: none;\n}\n.stepper:not(.stepper--vertical) .stepper__step__step {\n    margin-right: 0;\n}\n}\n.theme--light .subheader,\n.application .theme--light.subheader {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .subheader,\n.application .theme--dark.subheader {\n  color: rgba(255,255,255,0.7);\n}\n.subheader {\n  height: 48px;\n  display: flex;\n  align-items: center;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 0 16px 0 16px;\n}\n.subheader--inset {\n  margin-left: 56px;\n}\n.theme--light .switch:not(.input-group--dirty) .input-group--selection-controls__container,\n.application .theme--light.switch:not(.input-group--dirty) .input-group--selection-controls__container {\n  color: rgba(0,0,0,0.38) !important;\n}\n.theme--light .switch .input-group--selection-controls__ripple:after,\n.application .theme--light.switch .input-group--selection-controls__ripple:after {\n  background-color: #fafafa;\n}\n.theme--light .switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active),\n.application .theme--light.switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active) {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .switch .input-group--selection-controls__ripple--active:after,\n.application .theme--light.switch .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.theme--light .switch .input-group--selection-controls__toggle,\n.application .theme--light.switch .input-group--selection-controls__toggle {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .switch .input-group--selection-controls__toggle--active,\n.application .theme--light.switch .input-group--selection-controls__toggle--active {\n  color: inherit;\n}\n.theme--light .switch.input-group--disabled .input-group--selection-controls__ripple:after,\n.application .theme--light.switch.input-group--disabled .input-group--selection-controls__ripple:after {\n  background-color: #bdbdbd !important;\n}\n.theme--light .switch.input-group--disabled .input-group--selection-controls__toggle,\n.application .theme--light.switch.input-group--disabled .input-group--selection-controls__toggle {\n  color: rgba(0,0,0,0.12) !important;\n}\n.theme--dark .switch:not(.input-group--dirty) .input-group--selection-controls__container,\n.application .theme--dark.switch:not(.input-group--dirty) .input-group--selection-controls__container {\n  color: rgba(255,255,255,0.3) !important;\n}\n.theme--dark .switch .input-group--selection-controls__ripple:after,\n.application .theme--dark.switch .input-group--selection-controls__ripple:after {\n  background-color: #bdbdbd;\n}\n.theme--dark .switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active),\n.application .theme--dark.switch .input-group--selection-controls__ripple:not(.input-group--selection-controls__ripple--active) {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .switch .input-group--selection-controls__ripple--active:after,\n.application .theme--dark.switch .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.theme--dark .switch .input-group--selection-controls__toggle,\n.application .theme--dark.switch .input-group--selection-controls__toggle {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .switch .input-group--selection-controls__toggle--active,\n.application .theme--dark.switch .input-group--selection-controls__toggle--active {\n  color: inherit;\n}\n.theme--dark .switch.input-group--disabled .input-group--selection-controls__ripple:after,\n.application .theme--dark.switch.input-group--disabled .input-group--selection-controls__ripple:after {\n  background-color: #424242 !important;\n}\n.theme--dark .switch.input-group--disabled .input-group--selection-controls__toggle,\n.application .theme--dark.switch.input-group--disabled .input-group--selection-controls__toggle {\n  color: rgba(255,255,255,0.1) !important;\n}\n.input-group.input-group--selection-controls {\n  z-index: 0;\n}\n.input-group.input-group--selection-controls.switch {\n  min-width: 36px;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__container {\n  color: inherit;\n  position: relative;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__container[class*=\"--text\"] .input-group--selection-controls__ripple--active:after {\n  background-color: currentColor;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__toggle {\n  background-color: currentColor;\n  color: inherit;\n  position: absolute;\n  height: 14px;\n  top: 50%;\n  left: 0;\n  width: 34px;\n  border-radius: 8px;\n  transform: translateY(-50%);\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__toggle.input-group--selection-controls__toggle--active {\n  opacity: 0.5;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple {\n  transform: translate(-15px, -24px);\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n  z-index: 1;\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple:after {\n  content: '';\n  position: absolute;\n  display: inline-block;\n  cursor: pointer;\n  width: 20px;\n  border-radius: 50%;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  height: 20px;\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.input-group.input-group--selection-controls.switch .input-group--selection-controls__ripple--active {\n  transform: translate(2px, -24px);\n}\n.input-group.input-group--selection-controls.switch label {\n  padding-left: 14px;\n}\n.theme--light .system-bar,\n.application .theme--light.system-bar {\n  background-color: #e0e0e0;\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .system-bar .icon,\n.application .theme--light.system-bar .icon {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .system-bar--lights-out,\n.application .theme--light.system-bar--lights-out {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.theme--dark .system-bar,\n.application .theme--dark.system-bar {\n  background-color: #000;\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .system-bar .icon,\n.application .theme--dark.system-bar .icon {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .system-bar--lights-out,\n.application .theme--dark.system-bar--lights-out {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.system-bar {\n  align-items: center;\n  display: flex;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 0 8px;\n}\n.system-bar .icon {\n  font-size: 16px;\n}\n.system-bar--fixed,\n.system-bar--absolute {\n  left: 0;\n  top: 0;\n  width: 100%;\n  z-index: 3;\n}\n.system-bar--fixed {\n  position: fixed;\n}\n.system-bar--absolute {\n  position: absolute;\n}\n.system-bar--status .icon {\n  margin-right: 4px;\n}\n.system-bar--window .icon {\n  font-size: 20px;\n  margin-right: 8px;\n}\n.theme--light .table,\n.application .theme--light.table {\n  background-color: #fff;\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .table thead tr:first-child,\n.application .theme--light.table thead tr:first-child {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.theme--light .table thead th,\n.application .theme--light.table thead th {\n  color: rgba(0,0,0,0.54);\n}\n.theme--light .table tbody tr:not(:last-child),\n.application .theme--light.table tbody tr:not(:last-child) {\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\n.theme--light .table tbody tr[active],\n.application .theme--light.table tbody tr[active] {\n  background: #f5f5f5;\n}\n.theme--light .table tbody tr:hover:not(.datatable__expand-row),\n.application .theme--light.table tbody tr:hover:not(.datatable__expand-row) {\n  background: #eee;\n}\n.theme--light .table tfoot tr,\n.application .theme--light.table tfoot tr {\n  border-top: 1px solid rgba(0,0,0,0.12);\n}\n.theme--dark .table,\n.application .theme--dark.table {\n  background-color: #424242;\n  color: #fff;\n}\n.theme--dark .table thead tr:first-child,\n.application .theme--dark.table thead tr:first-child {\n  border-bottom: 1px solid rgba(255,255,255,0.12);\n}\n.theme--dark .table thead th,\n.application .theme--dark.table thead th {\n  color: rgba(255,255,255,0.7);\n}\n.theme--dark .table tbody tr:not(:last-child),\n.application .theme--dark.table tbody tr:not(:last-child) {\n  border-bottom: 1px solid rgba(255,255,255,0.12);\n}\n.theme--dark .table tbody tr[active],\n.application .theme--dark.table tbody tr[active] {\n  background: #505050;\n}\n.theme--dark .table tbody tr:hover:not(.datatable__expand-row),\n.application .theme--dark.table tbody tr:hover:not(.datatable__expand-row) {\n  background: #616161;\n}\n.theme--dark .table tfoot tr,\n.application .theme--dark.table tfoot tr {\n  border-top: 1px solid rgba(255,255,255,0.12);\n}\n.table__overflow {\n  width: 100%;\n  overflow-x: auto;\n  overflow-y: hidden;\n}\ntable.table {\n  border-radius: 2px;\n  border-collapse: collapse;\n  border-spacing: 0;\n  width: 100%;\n  max-width: 100%;\n}\ntable.table thead td:not(:nth-child(1)),\ntable.table tbody td:not(:nth-child(1)),\ntable.table thead th:not(:nth-child(1)),\ntable.table tbody th:not(:nth-child(1)),\ntable.table thead td:first-child,\ntable.table tbody td:first-child,\ntable.table thead th:first-child,\ntable.table tbody th:first-child {\n  padding: 0 24px;\n}\ntable.table thead tr {\n  height: 56px;\n}\ntable.table thead th {\n  font-weight: 500;\n  font-size: 12px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  white-space: nowrap;\n  user-select: none;\n}\ntable.table thead th.sortable {\n  pointer-events: auto;\n}\ntable.table thead th > div {\n  width: 100%;\n}\ntable.table tbody tr {\n  transition: background 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  will-change: background;\n}\ntable.table tbody td,\ntable.table tbody th {\n  height: 48px;\n}\ntable.table tbody td {\n  font-weight: 400;\n  font-size: 13px;\n}\ntable.table .input-group--selection-controls {\n  padding: 0;\n}\ntable.table .input-group--selection-controls .input-group__details {\n  display: none;\n}\ntable.table .input-group--selection-controls.checkbox .icon {\n  left: 50%;\n  transform: translateX(-50%);\n}\ntable.table .input-group--selection-controls.checkbox .input-group--selection-controls__ripple {\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\ntable.table tfoot tr:not(:last-child) {\n  height: 48px;\n}\ntable.table tfoot tr:not(:last-child):not(:only-child) td {\n  padding: 0 24px;\n}\ntable.table tfoot tr {\n  height: 56px;\n}\n.theme--light .tabs__bar .tabs__li,\n.application .theme--light.tabs__bar .tabs__li {\n  color: rgba(0,0,0,0.87);\n}\n.theme--light .tabs__bar .tabs__li.tabs__item--disabled,\n.application .theme--light.tabs__bar .tabs__li.tabs__item--disabled {\n  color: rgba(0,0,0,0.26);\n}\n.theme--light .tabs__bar .tabs__bar,\n.application .theme--light.tabs__bar .tabs__bar {\n  background-color: #fff;\n}\n.theme--light .tabs__bar .tabs__bar .icon--left,\n.application .theme--light.tabs__bar .tabs__bar .icon--left,\n.theme--light .tabs__bar .tabs__bar .icon--right,\n.application .theme--light.tabs__bar .tabs__bar .icon--right {\n  color: rgba(0,0,0,0.38);\n}\n.theme--dark .tabs__bar .tabs__li,\n.application .theme--dark.tabs__bar .tabs__li {\n  color: #fff;\n}\n.theme--dark .tabs__bar .tabs__li.tabs__item--disabled,\n.application .theme--dark.tabs__bar .tabs__li.tabs__item--disabled {\n  color: rgba(255,255,255,0.3);\n}\n.theme--dark .tabs__bar .tabs__bar,\n.application .theme--dark.tabs__bar .tabs__bar {\n  background-color: #424242;\n}\n.theme--dark .tabs__bar .tabs__bar .icon--left,\n.application .theme--dark.tabs__bar .tabs__bar .icon--left,\n.theme--dark .tabs__bar .tabs__bar .icon--right,\n.application .theme--dark.tabs__bar .tabs__bar .icon--right {\n  color: rgba(255,255,255,0.5);\n}\n.tabs {\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.tabs--grow .tabs__bar .tabs__li {\n  flex: 1;\n}\n.tabs--fixed > .tabs__bar .tabs__li {\n  min-width: 160px;\n  max-width: 264px;\n  flex: 0 1 160px;\n}\n@media only screen and (max-width: 599px) {\n.tabs--fixed > .tabs__bar .tabs__li {\n    min-width: 72px;\n}\n}\n.tabs--centered .tabs__bar .tabs__container {\n  justify-content: center;\n}\n.tabs--icons .tabs__bar {\n  height: 72px;\n}\n.tabs--icons .tabs__item {\n  flex-direction: column;\n}\n.tabs.tabs--mobile .tabs__bar .icon--left,\n.tabs.tabs--mobile .tabs__bar .icon--right {\n  display: none;\n}\n.tabs.tabs--mobile .tabs__bar .tabs__wrapper--scrollable.tabs__wrapper--overflow {\n  overflow: hidden !important;\n}\n.tabs:not(.tabs--grow):not(.tabs--mobile) .tabs__item {\n  padding: 0 24px;\n}\n.tabs:not(.tabs--centered):not(.tabs--grow):not(.tabs--mobile) .tabs__wrapper--scrollable {\n  margin: 0 60px;\n  overflow: hidden !important;\n}\n.tabs__bar {\n  width: 100%;\n  position: relative;\n  height: 48px;\n}\n@media only screen and (max-width: 959px) {\n.tabs__bar {\n    padding-left: 0;\n}\n}\n.tabs__bar .icon--left,\n.tabs__bar .icon--right {\n  position: absolute;\n  top: 0;\n  width: 32px;\n  align-items: center;\n  height: 100%;\n  cursor: pointer;\n  user-select: none;\n}\n.tabs__bar .icon--left {\n  left: 28px;\n}\n.tabs__bar .icon--right {\n  right: 28px;\n}\n.tabs__container {\n  display: flex;\n  height: 100%;\n  width: 100%;\n  position: absolute;\n  padding: 0;\n  top: 0;\n  align-items: center;\n  list-style: none;\n  will-change: transform;\n  transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);\n}\n.tabs__container > li:not(.tabs__slider) {\n  height: 100%;\n}\n.tabs__container-left {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 32px;\n  display: flex;\n  align-items: center;\n}\n.tabs__wrapper {\n  position: relative;\n  overflow-x: auto;\n  height: inherit;\n}\n.tabs__item {\n  align-items: center;\n  color: inherit !important;\n  display: flex;\n  flex-shrink: 0;\n  justify-content: center;\n  height: 100%;\n  padding: 0 12px;\n  position: relative;\n  opacity: 0.7;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.tabs__item .icon {\n  color: inherit;\n  margin: 0 0 5px;\n}\n.tabs__item--active {\n  opacity: 1;\n}\n.tabs__item--disabled {\n  pointer-events: none;\n}\n.tabs__items {\n  position: relative;\n  overflow: hidden;\n}\n.tabs__content {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: 100%;\n}\n.tabs__content .card {\n  border-radius: 0 0 2px 2px;\n}\n.tabs__slider {\n  position: absolute;\n  bottom: 0;\n  height: 2px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.theme--light .input-group--text-field.input-group--text-field-box .input-group__input,\n.application .theme--light.input-group--text-field.input-group--text-field-box .input-group__input {\n  background: rgba(255,255,255,0.6);\n}\n.theme--light .input-group--text-field input::placeholder,\n.application .theme--light.input-group--text-field input::placeholder,\n.theme--light .input-group--text-field textarea::placeholder,\n.application .theme--light.input-group--text-field textarea::placeholder {\n  color: rgba(0,0,0,0.38);\n}\n.theme--light .input-group--text-field:not(.input-group--error) .input-group__counter,\n.application .theme--light.input-group--text-field:not(.input-group--error) .input-group__counter {\n  color: rgba(0,0,0,0.54);\n}\n.theme--dark .input-group--text-field.input-group--text-field-box .input-group__input,\n.application .theme--dark.input-group--text-field.input-group--text-field-box .input-group__input {\n  background: rgba(255,255,255,0.1);\n}\n.theme--dark .input-group--text-field input::placeholder,\n.application .theme--dark.input-group--text-field input::placeholder,\n.theme--dark .input-group--text-field textarea::placeholder,\n.application .theme--dark.input-group--text-field textarea::placeholder {\n  color: rgba(255,255,255,0.5);\n}\n.theme--dark .input-group--text-field:not(.input-group--error) .input-group__counter,\n.application .theme--dark.input-group--text-field:not(.input-group--error) .input-group__counter {\n  color: rgba(255,255,255,0.7);\n}\n.input-group--text-field label {\n  position: absolute;\n  top: 18px;\n  left: 0;\n}\n.input-group--text-field input,\n.input-group--text-field textarea {\n  font-size: 16px;\n}\n.input-group--text-field input::placeholder,\n.input-group--text-field textarea::placeholder {\n  color: inherit;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group--text-field input {\n  box-shadow: none;\n  flex: 1;\n  height: 30px;\n  margin: 0;\n  min-width: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.input-group--text-field input:focus {\n  outline: none;\n}\n.input-group--text-field input:disabled {\n  pointer-events: none;\n}\n.input-group--text-field textarea {\n  flex: 1 1;\n}\n.input-group--text-field textarea:focus {\n  outline: none;\n}\n.input-group--text-field.input-group--textarea label {\n  top: 13px;\n}\n.input-group--text-field.input-group--textarea .input-group__input {\n  border-radius: 2px;\n  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--text-field.input-group--textarea textarea {\n  font-size: 16px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.input-group--text-field.input-group--textarea:not(.input-group--full-width) label {\n  top: 30px;\n  left: 15px;\n}\n.input-group--text-field.input-group--textarea:not(.input-group--full-width) .input-group__input {\n  padding: 30px 0 0 13px;\n}\n.input-group--text-field.input-group--textarea .input-group__details:before,\n.input-group--text-field.input-group--textarea .input-group__details:after {\n  opacity: 0;\n}\n.input-group--text-field .input-group__counter {\n  margin-left: auto;\n}\n.input-group--text-field .input-group__counter--error {\n  color: inherit;\n}\n.input-group--text-field.input-group--placeholder.input-group--dirty input::placeholder,\n.input-group--text-field.input-group--placeholder.input-group--dirty textarea::placeholder {\n  opacity: 0;\n}\n.input-group--text-field.input-group--prepend-icon .input-group__prepend-icon {\n  align-items: center;\n  display: flex;\n  justify-content: flex-start;\n  min-width: 40px;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n}\n.input-group--text-field.input-group--prepend-icon .input-group__details {\n  margin-left: auto;\n  max-width: calc(100% - 40px);\n}\n.input-group--text-field.input-group--prepend-icon label {\n  left: 40px;\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder label {\n  opacity: 1;\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused:not(.input-group--textarea) label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder:not(.input-group--textarea) label {\n  transform: translate(0, -18px) scale(0.75);\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused:not(.input-group--full-width).input-group--textarea label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder:not(.input-group--full-width).input-group--textarea label {\n  transform: translate(0, -8px) scale(0.75);\n}\n.input-group--text-field:not(.input-group--single-line).input-group--focused.input-group--text-field-box label,\n.input-group--text-field:not(.input-group--single-line).input-group--placeholder.input-group--text-field-box label {\n  transform: translate(0, -10px) scale(0.75);\n}\n.input-group--text-field.input-group--dirty.input-group--select label,\n.input-group--text-field.input-group--dirty:not(.input-group--textarea) label {\n  transform: translate(0, -18px) scale(0.75);\n}\n.input-group--text-field.input-group--dirty:not(.input-group--full-width).input-group--textarea label {\n  transform: translate(0, -8px) scale(0.75);\n}\n.input-group--text-field.input-group--multi-line textarea {\n  padding-top: 4px;\n}\n.input-group--text-field.input-group--full-width {\n  padding: 16px;\n}\n.input-group--text-field.input-group--full-width label {\n  margin-left: 16px;\n}\n.input-group--text-field.input-group--full-width .input-group__details:before,\n.input-group--text-field.input-group--full-width .input-group__details:after {\n  display: none;\n}\n.input-group--prefix:not(.input-group--focused):not(.input-group--dirty) label {\n  left: 16px;\n}\n.input-group--prefix .input-group--text-field__prefix,\n.input-group--suffix .input-group--text-field__prefix,\n.input-group--prefix .input-group--text-field__suffix,\n.input-group--suffix .input-group--text-field__suffix {\n  align-items: center;\n  display: inline-flex;\n  font-size: 16px;\n  margin-top: 1px;\n}\n.input-group--prefix .input-group--text-field__prefix,\n.input-group--suffix .input-group--text-field__prefix {\n  margin-right: 3px;\n}\n.input-group--prefix .input-group--text-field__suffix,\n.input-group--suffix .input-group--text-field__suffix {\n  margin-left: 3px;\n}\n.input-group--text-field-box input,\n.input-group--text-field-box textarea {\n  cursor: pointer;\n}\n.input-group--text-field-box label {\n  left: 16px;\n}\n.input-group--text-field-box .input-group__input {\n  align-items: flex-end;\n  border-radius: 4px 4px 0 0;\n  cursor: pointer;\n  min-height: 56px;\n}\n.input-group--text-field-box .input-group__details {\n  padding: 8px 16px 0;\n}\n.input-group--text-field-box .input-group__details:before,\n.input-group--text-field-box .input-group__details:after {\n  height: 2px;\n  border-bottom-left-radius: 4px;\n  border-bottom-right-radius: 4px;\n}\n.input-group--text-field-box.input-group--multi-line textarea {\n  padding-left: 24px;\n  padding-right: 24px;\n}\n.input-group--text-field-box:not(.input-group--textarea).input-group--multi-line .input-group__input {\n  padding-top: 26px;\n}\n.input-group--text-field-box:not(.input-group--textarea).input-group--multi-line label {\n  top: 26px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--multi-line) .input-group__input {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--multi-line) label {\n  top: 32px;\n}\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--single-line).input-group--focused label,\n.input-group--text-field-box:not(.input-group--textarea):not(.input-group--single-line).input-group--dirty label {\n  transform: translate(0, -10px) scale(0.75);\n}\n.input-group--text-field-box.input-group--prepend-icon .input-group__details:before,\n.input-group--text-field-box.input-group--prepend-icon .input-group__details:after {\n  margin-left: 56px;\n  max-width: calc(100% - 56px);\n}\n.input-group--text-field-box.input-group--prepend-icon label {\n  left: 56px;\n}\n.theme--light .picker--time .picker--time__clock,\n.application .theme--light.picker--time .picker--time__clock {\n  background: #e0e0e0;\n}\n.theme--light .picker--time .picker--time__clock > span.disabled,\n.application .theme--light.picker--time .picker--time__clock > span.disabled {\n  color: rgba(0,0,0,0.26);\n}\n.theme--dark .picker--time .picker--time__clock,\n.application .theme--dark.picker--time .picker--time__clock {\n  background: #616161;\n}\n.theme--dark .picker--time .picker--time__clock > span.disabled,\n.application .theme--dark.picker--time .picker--time__clock > span.disabled {\n  color: rgba(255,255,255,0.3);\n}\n.picker--time .card__row--actions {\n  margin-top: -10px;\n}\n.picker--time.picker--landscape {\n  flex-wrap: wrap;\n}\n.picker--time.picker--landscape .picker__title {\n  flex-direction: column;\n  justify-content: center;\n}\n.picker--time.picker--landscape .picker__title div:first-child {\n  text-align: right;\n}\n.picker--time.picker--landscape .picker__title div:first-child span {\n  height: 55px;\n  font-size: 55px;\n}\n.picker--time.picker--landscape .picker__title div:last-child {\n  margin: 16px 0 0;\n  align-self: initial;\n  text-align: center;\n}\n.picker--time.picker--landscape .picker--time__clock {\n  height: 250px;\n  width: 250px;\n}\n.picker--time.picker--landscape .picker--time__clock-hand {\n  height: 97px;\n}\n.picker--time .picker__title {\n  color: #fff;\n  display: flex;\n  justify-content: flex-end;\n}\n.picker--time .picker__title div:first-child {\n  white-space: nowrap;\n}\n.picker--time .picker__title div:first-child span {\n  align-items: center;\n  cursor: pointer;\n  display: inline-flex;\n  height: 70px;\n  font-size: 70px;\n  justify-content: center;\n  opacity: 0.6;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.picker--time .picker__title div:first-child span.active {\n  opacity: 1;\n}\n.picker--time .picker__title div:last-child {\n  align-self: flex-end;\n  display: flex;\n  flex-direction: column;\n  font-size: 16px;\n  margin: 8px 0 6px 8px;\n}\n.picker--time .picker__title div:last-child span {\n  cursor: pointer;\n  opacity: 0.6;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.picker--time .picker__title div:last-child span.active {\n  opacity: 1;\n}\n.picker--time .picker__title div:only-child {\n  flex-direction: row;\n}\n.picker--time__clock {\n  height: 270px;\n  width: 270px;\n  border-radius: 100%;\n  position: absolute;\n  user-select: none;\n  top: 50%;\n  left: 50%;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock-hand {\n  height: 40%;\n  width: 2px;\n  bottom: 50%;\n  left: calc(50% - 1px);\n  transform-origin: center bottom;\n  position: absolute;\n  will-change: transform;\n  z-index: 1;\n}\n.picker--time__clock-hand:before {\n  background: transparent;\n  border-width: 2px;\n  border-style: solid;\n  border-color: inherit;\n  border-radius: 100%;\n  width: 10px;\n  height: 10px;\n  content: '';\n  position: absolute;\n  top: -3%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock-hand:after {\n  content: '';\n  position: absolute;\n  height: 8px;\n  width: 8px;\n  top: 100%;\n  left: 50%;\n  border-radius: 100%;\n  border-style: solid;\n  border-color: inherit;\n  background-color: inherit;\n  transform: translate(calc(-50%), -50%);\n}\n.picker--time__clock > span {\n  align-items: center;\n  border-radius: 100%;\n  cursor: default;\n  display: flex;\n  font-size: 16px;\n  justify-content: center;\n  left: calc(50% - 16px);\n  height: 32px;\n  position: absolute;\n  text-align: center;\n  top: calc(50% - 16px);\n  width: 32px;\n  user-select: none;\n}\n.picker--time__clock > span > span {\n  z-index: 1;\n}\n.picker--time__clock > span:before,\n.picker--time__clock > span:after {\n  content: '';\n  border-radius: 100%;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  height: 14px;\n  width: 14px;\n  transform: translate(-50%, -50%);\n}\n.picker--time__clock > span:after,\n.picker--time__clock > span:before {\n  height: 40px;\n  width: 40px;\n}\n.picker--time__clock > span.active {\n  color: #fff;\n  cursor: default;\n  z-index: 2;\n}\n.picker--time__clock > span.disabled {\n  pointer-events: none;\n}\n.picker--time .card__row--actions {\n  border: none;\n}\n.theme--light .toolbar,\n.application .theme--light.toolbar {\n  background-color: #f5f5f5;\n  color: rgba(0,0,0,0.87);\n}\n.theme--dark .toolbar,\n.application .theme--dark.toolbar {\n  background-color: #212121;\n  color: #fff;\n}\n.toolbar {\n  position: relative;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  width: 100%;\n  will-change: padding-left;\n  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);\n}\n.toolbar .input-group--solo .input-group__details {\n  display: none;\n}\n.toolbar .input-group--single-line:not(.input-group--solo) {\n  padding: 0;\n}\n.toolbar .input-group--single-line:not(.input-group--solo) label {\n  top: auto;\n}\n.toolbar__title {\n  font-size: 20px;\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  margin-left: 16px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.toolbar__content,\n.toolbar__extension {\n  align-items: center;\n  display: flex;\n}\n.toolbar__content > .list,\n.toolbar__extension > .list {\n  flex: 1 1 auto;\n  margin: 0 !important;\n  max-height: 100%;\n}\n.toolbar__content > .btn:last-child,\n.toolbar__extension > .btn:last-child,\n.toolbar__content > .menu:first-child,\n.toolbar__extension > .menu:first-child {\n  margin-right: 8px;\n}\n.toolbar__content > .btn:first-child,\n.toolbar__extension > .btn:first-child,\n.toolbar__content > .menu:first-child,\n.toolbar__extension > .menu:first-child {\n  margin-left: 8px;\n}\n.toolbar__content > *:not(.btn):not(.menu):first-child,\n.toolbar__extension > *:not(.btn):not(.menu):first-child {\n  margin-left: 16px;\n}\n.toolbar__content > *:not(.btn):not(.menu):last-child,\n.toolbar__extension > *:not(.btn):not(.menu):last-child {\n  margin-right: 16px;\n}\n.toolbar__items {\n  display: flex;\n  height: 100%;\n  max-width: 100%;\n  padding: 0;\n}\n.toolbar__items .menu {\n  height: 100%;\n}\n.toolbar__items > .menu .menu__activator {\n  height: 100%;\n}\n.toolbar__items > .menu .menu__activator .btn {\n  height: 100%;\n  margin: 0;\n}\n.toolbar__items > .btn {\n  height: 100%;\n  margin: 0;\n}\n@media only screen and (max-width: 599px) {\n.toolbar .toolbar__content > .btn:last-child,\n  .toolbar .toolbar__extension > .btn:last-child {\n    margin-right: 17px;\n}\n.toolbar .toolbar__content > .btn:first-child,\n  .toolbar .toolbar__extension > .btn:first-child {\n    margin-left: 17px;\n}\n.toolbar .toolbar__content > *:not(.btn):not(.menu):first-child,\n  .toolbar .toolbar__extension > *:not(.btn):not(.menu):first-child {\n    margin-left: 24px;\n}\n.toolbar .toolbar__content > *:not(.btn):not(.menu):last-child,\n  .toolbar .toolbar__extension > *:not(.btn):not(.menu):last-child {\n    margin-right: 24px;\n}\n}\n.toolbar--card {\n  border-radius: 2px 2px 0 0;\n  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);\n}\n.toolbar--fixed {\n  position: fixed;\n  z-index: 2;\n}\n.toolbar--fixed,\n.toolbar--absolute {\n  top: 0;\n  left: 0;\n}\n.toolbar--absolute {\n  position: absolute;\n  z-index: 2;\n}\n.toolbar--floating {\n  display: inline-flex;\n  margin: 16px;\n  width: auto;\n}\n.toolbar--clipped {\n  z-index: 3;\n}\n.toolbar__extension .toolbar__title {\n  margin-left: 72px !important;\n}\n.toolbar__extension .tabs__bar {\n  align-self: flex-end;\n  margin: 0;\n}\n.tooltip {\n  position: relative;\n}\n.tooltip__content {\n  background: #616161;\n  border-radius: 2px;\n  color: #fff;\n  font-size: 12px;\n  display: inline-block;\n  padding: 5px 8px;\n  position: absolute;\n  text-transform: initial;\n  transition: 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);\n  width: auto;\n  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);\n}\n.tooltip__content[class*=\"-active\"] {\n  pointer-events: none;\n}\n@media only screen and (max-width: 959px) {\n.tooltip .tooltip__content {\n    padding: 10px 16px;\n}\n}\nhtml,\nbody {\n  font-family: \"PingFang SC\", \"\\5FAE\\8F6F\\96C5\\9ED1\", \"Microsoft Yahei\", Helvetica, 'Helvetica Neue', Tahoma, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  min-height: 100%;\n  min-width: 100%;\n  height: 100%;\n}\ntable.table tbody td {\n  font-size: 16px;\n}\n.shadow {\n  -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12);\n  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12);\n}\n.application {\n  font-family: inherit !important;\n}\n.hidden {\n  display: none !important;\n}\n.center-item {\n  display: block !important;\n  margin: 0 auto !important;\n}\n.f27 {\n  font-size: 27px;\n}\n.no-decoration {\n  color: inherit !important;\n  text-decoration: none !important;\n}\n.margin {\n  margin: 0 !important;\n}\n.page-title {\n  padding: 5px;\n  color: #000;\n  font-size: 25px;\n  margin-top: 50px;\n  margin-bottom: 20px;\n}\n.ql-editor p {\n  font-size: 18px;\n}\n.language-select {\n  padding: 5px;\n}\n.language-show {\n  margin-left: 56px;\n}\n.fullscreen {\n  max-height: 100%;\n}\n.foreienBg {\n  background-position: center !important;\n  background-image: url(\"https://i.imgur.com/lt58IlN.jpg\") !important;\n  background-size: cover !important;\n  max-height: 100% !important;\n  overflow: hidden !important;\n  z-index: 99;\n}\n.foreienBg::before {\n  content: '';\n  display: block;\n  position: absolute;\n  background-color: #000;\n  opacity: 0.3;\n  width: 100%;\n  height: 100%;\n}\n.identifyCard {\n  padding: 10px;\n  background-color: rgba(0,0,0,0.8) !important;\n  width: 450px;\n  z-index: 99;\n  margin-bottom: 10px;\n  border-radius: 5px;\n  transition: 0.5s;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.cards-wrapper.selected {\n  display: block;\n}\n.cards-wrapper.selected .identifyCard {\n  margin-top: -95%;\n}\n.cards-wrapper.selected .select-card {\n  display: none;\n  width: 100%;\n  height: 50px !important;\n}\n.cards-wrapper.selected .active {\n  display: block;\n}\n.cards-wrapper.selected .select-card-text {\n  padding-top: 5px;\n}\n.select-card {\n  width: 50%;\n  height: 150px !important;\n  display: inline-block;\n  color: #fff !important;\n  cursor: pointer;\n  transition: 0.5s;\n}\n.select-card-text {\n  font-size: 26px;\n  padding-top: 55px;\n  text-align: center !important;\n}\n.selected-card {\n  height: 35px;\n}\n.student {\n  background-color: #5e9861 !important;\n}\n.student:hover,\n.student.active {\n  background-color: #4caf50 !important;\n}\n.company {\n  background-color: #9a4d67 !important;\n}\n.company:hover,\n.company.active {\n  background-color: #e91e63 !important;\n}\n.transCard {\n  padding: 20px 20px 40px 20px;\n  background-color: rgba(0,0,0,0.8) !important;\n  width: 350px;\n  border-radius: 5px;\n  opacity: 0;\n  position: absolute;\n  margin-left: 50px;\n  transition: 0.5s;\n}\n.transCard.show {\n  opacity: 1;\n}\n@media only screen and (max-width: 600px) {\n.transCard,\n  .identifyCard {\n    width: 320px;\n}\n.transCard {\n    margin-left: 0;\n}\n}\n@media only screen and (max-height: 800px) {\n.cards-wrapper {\n    display: inherit;\n}\n.transCard .avatar img {\n    height: 120px;\n}\n.cards-wrapper.selected .transCard {\n    position: inherit;\n}\n.cards-wrapper.selected .identifyCard {\n    display: none;\n}\n}\n.wide-btn {\n  width: 100%;\n}\n.side-resume-menu {\n  margin-top: 50px !important;\n  height: 380px !important;\n}\n.page-title button {\n  margin-top: -5px;\n}\n.recruit-edit-title {\n  color: #c63;\n  letter-spacing: 2px;\n  padding-left: 10px;\n  border-color: #c63;\n  border-width: 0 0 0 5px;\n  border-style: solid;\n  font-weight: 800;\n  font-size: 16px;\n  margin: 10px 5px;\n}\n.recruit-show-title {\n  color: #c63;\n  letter-spacing: 2px;\n  padding-left: 10px;\n  border-color: #c63;\n  border-width: 0 0 0 5px;\n  border-style: solid;\n  font-weight: 800;\n  font-size: 18px;\n  margin: 10px 5px;\n}\n.recruit-show-info {\n  font-size: 18px;\n  margin-left: 40px;\n  line-height: 25px;\n}\n.recruit-edit-field {\n  margin-left: 20px;\n}\n.recruit-edit-title button {\n  margin-top: 3px;\n}\n.recruit-edit-content {\n  margin-left: 40px;\n}\n.page-enter-active,\n.page-leave-active {\n  transition: all 0.4s;\n}\n.page-enter {\n  opacity: 0;\n  transform: translateX(-10%);\n}\n.page-leave-to {\n  opacity: 0;\n  transform: translateX(10%);\n}\n.page-enter-active,\n.page-leave-active {\n  transition: all 0.4s;\n}\n.page-enter {\n  opacity: 0;\n  transform: translateX(-10%);\n}\n", ""]);
 
 // exports
 
@@ -32645,6 +32662,133 @@ module.exports = function listToStyles (parentId, list) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: () => ({
+        drawer: false,
+        searchToggle: false
+    }),
+    computed: {
+        username() {
+            return this.$root.user.username.length ? this.$root.user.username.split('@', 1)[0] : ''
+        }
+    },
+    methods: {
+        errHandler (e) {
+            console.log(e.message)
+        },
+        logout: function() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/logout')
+                .then(response => {
+                    if (response.data.stat) {
+                        window.location.href = '/main'
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        setLanguage(language) {
+            this.$i18n.locale = language
+        }
+    }
+});
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -32653,13 +32797,479 @@ var render = function() {
     "v-app",
     { attrs: { id: "app", light: "light" } },
     [
-      _c("navbar"),
+      _c(
+        "v-navigation-drawer",
+        {
+          staticClass: "hidden-md-and-up",
+          attrs: { fixed: "fixed" },
+          model: {
+            value: _vm.drawer,
+            callback: function($$v) {
+              _vm.drawer = $$v
+            },
+            expression: "drawer"
+          }
+        },
+        [
+          _c(
+            "v-list",
+            { attrs: { dense: "dense" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "no-decoration",
+                  attrs: { to: { name: "User" } }
+                },
+                [
+                  _c(
+                    "v-list-tile",
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v("home")])],
+                        1
+                      ),
+                      _c(
+                        "v-list-tile-content",
+                        [
+                          _c("v-list-tile-title", [
+                            _vm._v(_vm._s(_vm.$t("user.title")))
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm.$root.user.userType === 1
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "no-decoration",
+                      attrs: { to: { name: "ResumeShow" } }
+                    },
+                    [
+                      _c(
+                        "v-list-tile",
+                        [
+                          _c(
+                            "v-list-tile-action",
+                            [_c("v-icon", [_vm._v("recent_actors")])],
+                            1
+                          ),
+                          _c(
+                            "v-list-tile-content",
+                            [
+                              _c("v-list-tile-title", [
+                                _vm._v(_vm._s(_vm.$t("resume.title")))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm.$root.user.userType === 1
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "no-decoration",
+                      attrs: { to: { name: "ResumeMatch" } }
+                    },
+                    [
+                      _c(
+                        "v-list-tile",
+                        [
+                          _c(
+                            "v-list-tile-action",
+                            [_c("v-icon", [_vm._v("touch_app")])],
+                            1
+                          ),
+                          _c(
+                            "v-list-tile-content",
+                            [
+                              _c("v-list-tile-title", [
+                                _vm._v(_vm._s(_vm.$t("resume.match")))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm.$root.user.userType === 2
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "no-decoration",
+                      attrs: { to: { name: "Recruit" } }
+                    },
+                    [
+                      _c(
+                        "v-list-tile",
+                        [
+                          _c(
+                            "v-list-tile-action",
+                            [_c("v-icon", [_vm._v("terrain")])],
+                            1
+                          ),
+                          _c(
+                            "v-list-tile-content",
+                            [
+                              _c("v-list-tile-title", [
+                                _vm._v(_vm._s(_vm.$t("recruit.title")))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _c("v-divider"),
+              _c(
+                "v-list-tile",
+                { on: { click: _vm.logout } },
+                [
+                  _c(
+                    "v-list-tile-content",
+                    [
+                      _c("v-list-tile-title", [
+                        _vm._v(_vm._s(_vm.$t("common.logout")))
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "v-toolbar",
+        {
+          staticClass: "primary",
+          attrs: {
+            color: "blue darken-3",
+            dark: "dark",
+            app: "app",
+            "clipped-left": "clipped-left",
+            fixed: "fixed"
+          }
+        },
+        [
+          !_vm.searchToggle
+            ? _c("v-toolbar-side-icon", {
+                staticClass: "hidden-md-and-up",
+                on: {
+                  click: function($event) {
+                    $event.stopPropagation()
+                    _vm.drawer = !_vm.drawer
+                  }
+                }
+              })
+            : _vm._e(),
+          !_vm.searchToggle
+            ? _c(
+                "router-link",
+                {
+                  staticClass: "no-decoration",
+                  attrs: { to: { name: "Main" } }
+                },
+                [
+                  _c("v-toolbar-title", { staticClass: "f27" }, [
+                    _vm._v("iTalent")
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
+          _c("v-spacer"),
+          _c("v-text-field", {
+            staticClass: "hidden-sm-and-down",
+            staticStyle: { "max-width": "500px", "min-width": "300px" },
+            attrs: {
+              light: "light",
+              solo: "solo",
+              "prepend-icon": "search",
+              placeholder: "Search"
+            }
+          }),
+          _vm.searchToggle
+            ? _c("v-text-field", {
+                staticClass: "hidden-md-and-up",
+                staticStyle: { "max-width": "300px", "min-width": "300px" },
+                attrs: {
+                  light: "light",
+                  solo: "solo",
+                  "prepend-icon": "search",
+                  placeholder: "Search"
+                },
+                on: {
+                  blur: function($event) {
+                    _vm.searchToggle = false
+                  }
+                }
+              })
+            : _vm._e(),
+          _c("v-spacer"),
+          !_vm.searchToggle
+            ? _c(
+                "v-btn",
+                {
+                  staticClass: "hidden-md-and-up",
+                  attrs: { flat: "flat", icon: "icon", datk: "datk" },
+                  on: {
+                    click: function($event) {
+                      _vm.searchToggle = !_vm.searchToggle
+                    }
+                  }
+                },
+                [_c("v-icon", [_vm._v("search")])],
+                1
+              )
+            : _vm._e(),
+          !_vm.$root.user.username.length
+            ? _c(
+                "div",
+                {
+                  staticClass: "d-flex",
+                  staticStyle: { "margin-left": "auto" },
+                  attrs: { "align-center": "align-center" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "no-decoration",
+                      attrs: { to: { name: "Login" } }
+                    },
+                    [
+                      _c("v-btn", [
+                        _vm._v(
+                          _vm._s(_vm.$t("common.login")) +
+                            "/" +
+                            _vm._s(_vm.$t("common.register"))
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          !_vm.searchToggle
+            ? _c(
+                "v-menu",
+                { attrs: { "offset-y": "offset-y" } },
+                [
+                  _c(
+                    "v-btn",
+                    { attrs: { slot: "activator" }, slot: "activator" },
+                    [
+                      _c(
+                        "v-icon",
+                        { attrs: { flat: "flat", icon: "icon", dark: "dark" } },
+                        [_vm._v("public")]
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "v-list",
+                    [
+                      _c(
+                        "v-list-tile",
+                        {
+                          staticClass: "list__tile--link",
+                          on: {
+                            click: function($event) {
+                              _vm.setLanguage("en")
+                            }
+                          }
+                        },
+                        [_c("v-list-tile-title", [_vm._v("EN")])],
+                        1
+                      ),
+                      _c(
+                        "v-list-tile",
+                        {
+                          staticClass: "list__tile--link",
+                          on: {
+                            click: function($event) {
+                              _vm.setLanguage("zh")
+                            }
+                          }
+                        },
+                        [_c("v-list-tile-title", [_vm._v("中文")])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm.$root.user.username.length && !_vm.searchToggle
+            ? _c(
+                "v-menu",
+                {
+                  staticClass: "hidden-sm-and-down",
+                  attrs: { "offset-y": "offset-y" }
+                },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "mr-5",
+                      attrs: { slot: "activator" },
+                      slot: "activator"
+                    },
+                    [_vm._v(_vm._s(_vm.username))]
+                  ),
+                  _c(
+                    "v-list",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "no-decoration",
+                          attrs: { to: { name: "User" } }
+                        },
+                        [
+                          _c(
+                            "v-list-tile",
+                            { staticClass: "list__tile--link" },
+                            [
+                              _c("v-list-tile-title", [
+                                _vm._v(_vm._s(_vm.$t("user.title")))
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm.$root.user.userType === 1
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "no-decoration",
+                              attrs: { to: { name: "ResumeShow" } }
+                            },
+                            [
+                              _c(
+                                "v-list-tile",
+                                { staticClass: "list__tile--link" },
+                                [
+                                  _c("v-list-tile-title", [
+                                    _vm._v(_vm._s(_vm.$t("resume.title")))
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm.$root.user.userType === 1
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "no-decoration",
+                              attrs: { to: { name: "ResumeMatch" } }
+                            },
+                            [
+                              _c(
+                                "v-list-tile",
+                                { staticClass: "list__tile--link" },
+                                [
+                                  _c("v-list-tile-title", [
+                                    _vm._v(_vm._s(_vm.$t("resume.match")))
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm.$root.user.userType === 2
+                        ? _c(
+                            "router-link",
+                            {
+                              staticClass: "no-decoration",
+                              attrs: { to: { name: "Recruit" } }
+                            },
+                            [
+                              _c(
+                                "v-list-tile",
+                                { staticClass: "list__tile--link" },
+                                [
+                                  _c("v-list-tile-title", [
+                                    _vm._v(_vm._s(_vm.$t("recruit.title")))
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _c("v-divider"),
+                      _c(
+                        "v-list-tile",
+                        {
+                          staticClass: "list__tile--link",
+                          on: { click: _vm.logout }
+                        },
+                        [
+                          _c("v-list-tile-title", [
+                            _vm._v(_vm._s(_vm.$t("common.logout")))
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      ),
       _c(
         "transition",
         { attrs: { name: "page", mode: "out-in" } },
         [_c("keep-alive", [_c("router-view")], 1)],
         1
       ),
+      ["Login", "Register"].indexOf(_vm.$route.name) === -1
+        ? _c("p-footer")
+        : _vm._e(),
       _c("v-dialog")
     ],
     1
@@ -32677,12 +33287,12 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Nav_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5f8454d4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Nav_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Nav_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5f8454d4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Nav_vue__ = __webpack_require__(49);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -32728,7 +33338,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32772,12 +33382,19 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        loggedIn: false,
         searchToggle: false
     }),
     computed: {
@@ -32797,13 +33414,18 @@ if (false) {(function () {
                     }
                 })
                 .catch(e => this.errHandler(e))
+        },
+        setLanguage(language) {
+            this.$i18n.locale = language
+        },
+        toggleDrawer() {
         }
     }
 });
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32835,23 +33457,20 @@ var render = function() {
           )
         : _vm._e(),
       _c("v-spacer"),
-      _vm.searchToggle
-        ? _c(
-            "v-btn",
-            {
-              on: {
-                click: function($event) {
-                  _vm.searchToggle = !_vm.searchToggle
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("search")])],
-            1
-          )
-        : _vm._e(),
+      _c("v-text-field", {
+        staticClass: "hidden-sm-and-down",
+        staticStyle: { "max-width": "500px", "min-width": "300px" },
+        attrs: {
+          light: "light",
+          solo: "solo",
+          "prepend-icon": "search",
+          placeholder: "Search"
+        }
+      }),
       _vm.searchToggle
         ? _c("v-text-field", {
-            staticStyle: { "max-width": "300px", "min-width": "128px" },
+            staticClass: "hidden-md-and-up",
+            staticStyle: { "max-width": "300px", "min-width": "300px" },
             attrs: {
               light: "light",
               solo: "solo",
@@ -32866,6 +33485,22 @@ var render = function() {
           })
         : _vm._e(),
       _c("v-spacer"),
+      !_vm.searchToggle
+        ? _c(
+            "v-btn",
+            {
+              staticClass: "hidden-md-and-up",
+              attrs: { flat: "flat", icon: "icon", datk: "datk" },
+              on: {
+                click: function($event) {
+                  _vm.searchToggle = !_vm.searchToggle
+                }
+              }
+            },
+            [_c("v-icon", [_vm._v("search")])],
+            1
+          )
+        : _vm._e(),
       !_vm.$root.user.username.length
         ? _c(
             "div",
@@ -32896,22 +33531,71 @@ var render = function() {
             1
           )
         : _vm._e(),
-      _vm.$root.user.username.length
+      _c(
+        "v-menu",
+        { attrs: { "offset-y": "offset-y" } },
+        [
+          _c(
+            "v-btn",
+            { attrs: { slot: "activator" }, slot: "activator" },
+            [
+              _c(
+                "v-icon",
+                { attrs: { flat: "flat", icon: "icon", dark: "dark" } },
+                [_vm._v("public")]
+              )
+            ],
+            1
+          ),
+          _c(
+            "v-list",
+            [
+              _c(
+                "v-list-tile",
+                {
+                  staticClass: "list__tile--link",
+                  on: {
+                    click: function($event) {
+                      _vm.setLanguage("en")
+                    }
+                  }
+                },
+                [_c("v-list-tile-title", [_vm._v("EN")])],
+                1
+              ),
+              _c(
+                "v-list-tile",
+                {
+                  staticClass: "list__tile--link",
+                  on: {
+                    click: function($event) {
+                      _vm.setLanguage("zh")
+                    }
+                  }
+                },
+                [_c("v-list-tile-title", [_vm._v("中文")])],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm.$root.user.username.length && !_vm.searchToggle
         ? _c(
             "v-menu",
             { attrs: { "offset-y": "offset-y" } },
             [
-              !_vm.searchToggle
-                ? _c(
-                    "v-btn",
-                    {
-                      staticClass: "mr-5",
-                      attrs: { slot: "activator" },
-                      slot: "activator"
-                    },
-                    [_vm._v(_vm._s(_vm.username))]
-                  )
-                : _vm._e(),
+              _c(
+                "v-btn",
+                {
+                  staticClass: "mr-5",
+                  attrs: { slot: "activator" },
+                  slot: "activator"
+                },
+                [_vm._v(_vm._s(_vm.username))]
+              ),
               _c(
                 "v-list",
                 [
@@ -32962,29 +33646,7 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "no-decoration",
-                          attrs: { to: { name: "ResumeHistory" } }
-                        },
-                        [
-                          _c(
-                            "v-list-tile",
-                            { staticClass: "list__tile--link" },
-                            [
-                              _c("v-list-tile-title", [
-                                _vm._v(_vm._s(_vm.$t("resume.history")))
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm.$root.user.userType === 1
-                    ? _c(
-                        "router-link",
-                        {
-                          staticClass: "no-decoration",
-                          attrs: { to: { name: "StdMatch" } }
+                          attrs: { to: { name: "ResumeMatch" } }
                         },
                         [
                           _c(
@@ -33060,11 +33722,11 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64862d7a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Footer_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64862d7a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Footer_vue__ = __webpack_require__(51);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -33110,7 +33772,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33137,12 +33799,12 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_User_vue__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6bbe077c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_User_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_User_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6bbe077c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_User_vue__ = __webpack_require__(54);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -33188,7 +33850,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33298,7 +33960,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33346,7 +34008,7 @@ var render = function() {
                               },
                               on: { click: _vm.save }
                             },
-                            [_vm._v("保存")]
+                            [_vm._v(_vm._s(_vm.$t("common.save")))]
                           )
                         ],
                         1
@@ -33564,12 +34226,12 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Main_vue__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4cfb21a0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Main_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Main_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4cfb21a0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Main_vue__ = __webpack_require__(57);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -33615,12 +34277,10 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
-//
 //
 //
 //
@@ -33689,7 +34349,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33697,289 +34357,268 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "v-content",
-        [
-          _c(
-            "section",
-            [
-              _c(
-                "v-parallax",
-                {
-                  attrs: {
-                    src: "https://i.imgur.com/zhgtd7S.jpg",
-                    height: "600"
-                  }
-                },
-                [
-                  _c(
-                    "v-layout",
-                    {
-                      staticClass: "white--text",
-                      attrs: {
-                        column: "column",
-                        "align-center": "align-center",
-                        "justify-center": "justify-center"
-                      }
-                    },
-                    [
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "white--text mb-2 display-1 text-xs-center"
-                        },
-                        [_vm._v("國際人才資料庫")]
-                      ),
-                      _c(
-                        "div",
-                        { staticClass: "subheading mb-3 text-xs-center" },
-                        [_vm._v("International learnTsai database")]
-                      ),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "no-decoration",
-                          attrs: { to: { name: "ResumeShow" } }
-                        },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "green lighten-2 mt-5",
-                              attrs: { dark: "dark", large: "large" }
-                            },
-                            [_vm._v("開始使用")]
+  return _c("v-content", [
+    _c(
+      "section",
+      [
+        _c(
+          "v-parallax",
+          { attrs: { src: "https://i.imgur.com/zhgtd7S.jpg", height: "600" } },
+          [
+            _c(
+              "v-layout",
+              {
+                staticClass: "white--text",
+                attrs: {
+                  column: "column",
+                  "align-center": "align-center",
+                  "justify-center": "justify-center"
+                }
+              },
+              [
+                _c(
+                  "h1",
+                  { staticClass: "white--text mb-2 display-1 text-xs-center" },
+                  [_vm._v("國際人才資料庫")]
+                ),
+                _c("div", { staticClass: "subheading mb-3 text-xs-center" }, [
+                  _vm._v("International learnTsai database")
+                ]),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "no-decoration",
+                    attrs: { to: { name: "ResumeShow" } }
+                  },
+                  [
+                    _c(
+                      "v-btn",
+                      {
+                        staticClass: "green lighten-2 mt-5",
+                        attrs: { dark: "dark", large: "large" }
+                      },
+                      [_vm._v("開始使用")]
+                    )
+                  ],
+                  1
+                ),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "no-decoration",
+                    attrs: { to: { name: "Recruit" } }
+                  },
+                  [
+                    _c(
+                      "v-btn",
+                      {
+                        staticClass: "blue lighten-2 mt-5",
+                        attrs: { dark: "dark", large: "large" }
+                      },
+                      [_vm._v("開始使用")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    ),
+    _c(
+      "section",
+      [
+        _c(
+          "v-container",
+          { attrs: { "grid-list-xl": "grid-list-xl" } },
+          [
+            _c(
+              "v-layout",
+              {
+                staticClass: "my-5",
+                attrs: {
+                  row: "row",
+                  wrap: "wrap",
+                  "justify-center": "justify-center"
+                }
+              },
+              [
+                _c(
+                  "v-flex",
+                  { attrs: { xs12: "xs12", sm4: "sm4" } },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "elevation-0 transparent" },
+                      [
+                        _c(
+                          "v-card-title",
+                          {
+                            staticClass: "layout justify-center",
+                            attrs: { "primary-title": "primary-title" }
+                          },
+                          [
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("平台介紹")
+                            ])
+                          ]
+                        ),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti."
                           )
-                        ],
-                        1
-                      ),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "no-decoration",
-                          attrs: { to: { name: "Recruit" } }
-                        },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "blue lighten-2 mt-5",
-                              attrs: { dark: "dark", large: "large" }
-                            },
-                            [_vm._v("開始使用")]
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _c(
+                  "v-flex",
+                  {
+                    attrs: {
+                      xs12: "xs12",
+                      sm4: "sm4",
+                      "offset-sm1": "offset-sm1"
+                    }
+                  },
+                  [
+                    _c(
+                      "v-card",
+                      { staticClass: "elevation-0 transparent" },
+                      [
+                        _c(
+                          "v-card-title",
+                          {
+                            staticClass: "layout justify-center",
+                            attrs: { "primary-title": "primary-title" }
+                          },
+                          [
+                            _c("div", { staticClass: "headline" }, [
+                              _vm._v("Contact us")
+                            ])
+                          ]
+                        ),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare."
                           )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "section",
-            [
-              _c(
-                "v-container",
-                { attrs: { "grid-list-xl": "grid-list-xl" } },
-                [
-                  _c(
-                    "v-layout",
-                    {
-                      staticClass: "my-5",
-                      attrs: {
-                        row: "row",
-                        wrap: "wrap",
-                        "justify-center": "justify-center"
-                      }
-                    },
-                    [
-                      _c(
-                        "v-flex",
-                        { attrs: { xs12: "xs12", sm4: "sm4" } },
-                        [
-                          _c(
-                            "v-card",
-                            { staticClass: "elevation-0 transparent" },
-                            [
-                              _c(
-                                "v-card-title",
-                                {
-                                  staticClass: "layout justify-center",
-                                  attrs: { "primary-title": "primary-title" }
-                                },
-                                [
-                                  _c("div", { staticClass: "headline" }, [
-                                    _vm._v("平台介紹")
-                                  ])
-                                ]
-                              ),
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\nNullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti."
+                        ]),
+                        _c(
+                          "v-list",
+                          { staticClass: "transparent" },
+                          [
+                            _c(
+                              "v-list-tile",
+                              [
+                                _c(
+                                  "v-list-tile-action",
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass:
+                                          "blue--text text--lighten-2"
+                                      },
+                                      [_vm._v("phone")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("777-867-5309")
+                                    ])
+                                  ],
+                                  1
                                 )
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _c(
-                        "v-flex",
-                        {
-                          attrs: {
-                            xs12: "xs12",
-                            sm4: "sm4",
-                            "offset-sm1": "offset-sm1"
-                          }
-                        },
-                        [
-                          _c(
-                            "v-card",
-                            { staticClass: "elevation-0 transparent" },
-                            [
-                              _c(
-                                "v-card-title",
-                                {
-                                  staticClass: "layout justify-center",
-                                  attrs: { "primary-title": "primary-title" }
-                                },
-                                [
-                                  _c("div", { staticClass: "headline" }, [
-                                    _vm._v("Contact us")
-                                  ])
-                                ]
-                              ),
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare."
+                              ],
+                              1
+                            ),
+                            _c(
+                              "v-list-tile",
+                              [
+                                _c(
+                                  "v-list-tile-action",
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass:
+                                          "blue--text text--lighten-2"
+                                      },
+                                      [_vm._v("place")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("Chayi, Taiwan")
+                                    ])
+                                  ],
+                                  1
                                 )
-                              ]),
-                              _c(
-                                "v-list",
-                                { staticClass: "transparent" },
-                                [
-                                  _c(
-                                    "v-list-tile",
-                                    [
-                                      _c(
-                                        "v-list-tile-action",
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            {
-                                              staticClass:
-                                                "blue--text text--lighten-2"
-                                            },
-                                            [_vm._v("phone")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _c(
-                                        "v-list-tile-content",
-                                        [
-                                          _c("v-list-tile-title", [
-                                            _vm._v("777-867-5309")
-                                          ])
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _c(
-                                    "v-list-tile",
-                                    [
-                                      _c(
-                                        "v-list-tile-action",
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            {
-                                              staticClass:
-                                                "blue--text text--lighten-2"
-                                            },
-                                            [_vm._v("place")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _c(
-                                        "v-list-tile-content",
-                                        [
-                                          _c("v-list-tile-title", [
-                                            _vm._v("Chayi, Taiwan")
-                                          ])
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _c(
-                                    "v-list-tile",
-                                    [
-                                      _c(
-                                        "v-list-tile-action",
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            {
-                                              staticClass:
-                                                "blue--text text--lighten-2"
-                                            },
-                                            [_vm._v("email")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _c(
-                                        "v-list-tile-content",
-                                        [
-                                          _c("v-list-tile-title", [
-                                            _vm._v("test@google.com")
-                                          ])
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c("p-footer")
-        ],
-        1
-      )
-    ],
-    1
-  )
+                              ],
+                              1
+                            ),
+                            _c(
+                              "v-list-tile",
+                              [
+                                _c(
+                                  "v-list-tile-action",
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        staticClass:
+                                          "blue--text text--lighten-2"
+                                      },
+                                      [_vm._v("email")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _c(
+                                  "v-list-tile-content",
+                                  [
+                                    _c("v-list-tile-title", [
+                                      _vm._v("test@google.com")
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33993,12 +34632,12 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Login_vue__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_01e7f602_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Login_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Login_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_01e7f602_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Login_vue__ = __webpack_require__(60);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -34044,7 +34683,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34130,7 +34769,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34244,7 +34883,7 @@ var render = function() {
                                   staticClass: "text-xs-center mb-3",
                                   staticStyle: { "font-size": "20px" }
                                 },
-                                [_vm._v(_vm._s(_vm.$t("common.register")))]
+                                [_vm._v(_vm._s(_vm.$t("common.login")))]
                               ),
                               _c("v-text-field", {
                                 attrs: {
@@ -34266,7 +34905,7 @@ var render = function() {
                                 attrs: {
                                   type: "password",
                                   name: "password",
-                                  label: _vm.$t("common.password"),
+                                  label: _vm.$t("login.password"),
                                   dark: "dark"
                                 },
                                 on: {
@@ -34362,12 +35001,12 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Register_vue__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e24368cc_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Register_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Register_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e24368cc_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Register_vue__ = __webpack_require__(63);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -34413,7 +35052,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34515,7 +35154,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34651,7 +35290,7 @@ var render = function() {
                                 attrs: {
                                   type: "password",
                                   name: "password",
-                                  label: _vm.$t("common.password"),
+                                  label: _vm.$t("login.password"),
                                   dark: "dark"
                                 },
                                 on: {
@@ -34752,12 +35391,12 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeShow_vue__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4dd06e81_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeShow_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeShow_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4dd06e81_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeShow_vue__ = __webpack_require__(66);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -34803,7 +35442,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34868,26 +35507,8 @@ if (false) {(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        resume: {
-            firstName: '',
-            lastName: '',
-            gender: null,
-            birth: null,
-            nation: '',
-            email: '',
-            phone: '',
-
-            expectedJobName: '',
-            salaryFrom: null,
-            salaryTo: null,
-
-            background: '',
-            language: null,
-            skill: '',
-            certificate: '',
-            bio: ''
-        },
-        genderList: ['', '男', '女', '其他'],
+        resume: null,
+        genderList: [],
         langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
         langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
         langLevel: ['D', 'C', 'B', 'A', 'S'],
@@ -34935,19 +35556,24 @@ if (false) {(function () {
             let url = this.$route.params.id ? this.$route.params.id : ''
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume/${url}`)
                 .then(response => {
-                    console.log(response.data)
+                    console.log('ResumeInfo', response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
                         this.resume.language = response.data.language
+                    } else {
+                        this.showDialog(this.$t('resume.notExist'))
                     }
                 })
                 .catch(e => this.errHandler(e))
         },
         invite() {
             this.loading = true
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/invite/${this.$route.params.id}`)
+            if (!this.$route.query.rid) return this.showDialog('沒有RID~')
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/invite/${this.$route.params.id}`, {rid: this.$route.query.rid})
                 .then(response => {
                     console.log(response.data)
+                    let msg = response.data.stat ? this.$t('alert.submitSuccess') : this.$t('alert.submitFail')
+                    this.showDialog(msg)
                     if (response.data.stat) {
                         this.resume.language = response.data.language
                     }
@@ -34959,7 +35585,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34968,10 +35594,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
     [
       _c(
-        "v-content",
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
             "v-layout",
@@ -34984,193 +35611,253 @@ var render = function() {
             [
               _c("v-flex", { attrs: { xs: "xs" } }),
               _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
-                _c("section", [
-                  _c(
-                    "p",
-                    { staticClass: "page-title" },
-                    [
-                      _vm._v("履歷"),
+                _vm.resume
+                  ? _c("section", [
                       _c(
-                        "router-link",
-                        {
-                          staticClass: "no-decoration",
-                          attrs: { to: { name: "ResumeEdit" } }
-                        },
+                        "p",
+                        { staticClass: "page-title" },
                         [
-                          !_vm.$route.params.id
+                          _vm._v(_vm._s(_vm.$t("resume.resume"))),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "no-decoration",
+                              attrs: { to: { name: "ResumeEdit" } }
+                            },
+                            [
+                              !_vm.$route.params.id
+                                ? _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "hide ml-4",
+                                      attrs: { color: "primary" }
+                                    },
+                                    [
+                                      _c("v-icon", [_vm._v("edit")]),
+                                      _vm._v(
+                                        " " + _vm._s(_vm.$t("common.edit"))
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm.$route.params.id
                             ? _c(
                                 "v-btn",
                                 {
-                                  staticClass: "hide ml-4",
-                                  attrs: { color: "primary" }
+                                  staticClass: "ml-4",
+                                  attrs: { large: "large", color: "yellow" },
+                                  on: { click: _vm.invite }
                                 },
-                                [_c("v-icon", [_vm._v("edit")]), _vm._v("編輯")],
+                                [
+                                  _c("v-icon", [_vm._v("card_giftcard")]),
+                                  _vm._v(
+                                    " " + _vm._s(_vm.$t("resume.sendInvite"))
+                                  )
+                                ],
                                 1
                               )
                             : _vm._e()
                         ],
                         1
                       ),
-                      _vm.$route.params.id
-                        ? _c(
-                            "v-btn",
-                            {
-                              staticClass: "ml-4",
-                              attrs: { large: "large", color: "yellow" },
-                              on: { click: _vm.invite }
-                            },
-                            [
-                              _c("v-icon", [_vm._v("card_giftcard")]),
-                              _vm._v(" 寄出邀請")
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v("基本資料")
-                  ]),
-                  _c(
-                    "div",
-                    { staticClass: "recruit-edit-field" },
-                    [
-                      _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.name")) +
-                              ": " +
-                              _vm._s(_vm.resume.lastName) +
-                              " " +
-                              _vm._s(_vm.resume.firstName)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.gender")) +
-                              ": " +
-                              _vm._s(_vm.gender)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.birth")) +
-                              ": " +
-                              _vm._s(_vm.resume.birth)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.nation")) +
-                              ": " +
-                              _vm._s(_vm.resume.nation)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.email")) +
-                              ": " +
-                              _vm._s(_vm.resume.email)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.phone")) +
-                              ": " +
-                              _vm._s(_vm.resume.phone)
-                          )
-                        ])
-                      ])
-                    ],
-                    1
-                  ),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.jobInfo")))
-                  ]),
-                  _c(
-                    "div",
-                    { staticClass: "recruit-edit-field" },
-                    [
-                      _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.expectedJobName")) +
-                              ": " +
-                              _vm._s(_vm.resume.expectedJobName)
-                          )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("resume.salaryRequest")) +
-                              ": " +
-                              _vm._s(_vm.resume.salaryFrom) +
-                              " ~ " +
-                              _vm._s(_vm.resume.salaryTo)
-                          )
-                        ])
-                      ])
-                    ],
-                    1
-                  ),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.language")))
-                  ]),
-                  _c(
-                    "div",
-                    { staticClass: "language-show" },
-                    _vm._l(_vm.resume.language, function(value, key) {
-                      return _c(
-                        "v-chip",
-                        { key: key },
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.basic")))
+                      ]),
+                      _c(
+                        "div",
+                        { staticClass: "recruit-edit-field" },
                         [
-                          _c("v-avatar", { class: _vm.langColor[value] }, [
-                            _c(
-                              "span",
-                              { staticClass: "white--text headline" },
-                              [_vm._v(_vm._s(_vm.langLevel[value]))]
-                            )
-                          ]),
-                          _vm._v(_vm._s(_vm.langMap[key]))
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            [
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.name")) +
+                                    ": " +
+                                    _vm._s(_vm.resume.lastName) +
+                                    _vm._s(
+                                      _vm.resume.firstName ||
+                                        _vm.$t("common.notFill")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.gender")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.gender || _vm.$t("common.notFill")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.birth")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.resume.birth ||
+                                        _vm.$t("common.notFill")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.nation")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.resume.nation ||
+                                        _vm.$t("common.notFill")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.email")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.resume.email ||
+                                        _vm.$t("common.notFill")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.phone")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.resume.phone ||
+                                        _vm.$t("common.notFill")
+                                    )
+                                )
+                              ])
+                            ]
+                          )
                         ],
                         1
-                      )
-                    })
-                  ),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.background")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: { innerHTML: _vm._s(_vm.resume.background) }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.skill")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: { innerHTML: _vm._s(_vm.resume.skill) }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.certificate")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: { innerHTML: _vm._s(_vm.resume.certificate) }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("resume.bio")) + "自傳")
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: { innerHTML: _vm._s(_vm.resume.bio) }
-                  }),
-                  _c("p")
-                ])
+                      ),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.jobInfo")))
+                      ]),
+                      _c(
+                        "div",
+                        { staticClass: "recruit-edit-field" },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            [
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.expectedJobName")) +
+                                    ": " +
+                                    _vm._s(_vm.resume.expectedJobName)
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("resume.salaryRequest")) +
+                                    ": " +
+                                    _vm._s(_vm.resume.salaryFrom) +
+                                    " ~ " +
+                                    _vm._s(_vm.resume.salaryTo)
+                                )
+                              ])
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.language")))
+                      ]),
+                      _vm.resume.language
+                        ? _c(
+                            "div",
+                            { staticClass: "language-show" },
+                            _vm._l(_vm.resume.language, function(value, key) {
+                              return _c(
+                                "v-chip",
+                                { key: key },
+                                [
+                                  _c(
+                                    "v-avatar",
+                                    { class: _vm.langColor[value] },
+                                    [
+                                      _c(
+                                        "span",
+                                        { staticClass: "white--text headline" },
+                                        [_vm._v(_vm._s(_vm.langLevel[value]))]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(_vm._s(_vm.langMap[key]))
+                                ],
+                                1
+                              )
+                            })
+                          )
+                        : _vm._e(),
+                      !_vm.resume.language
+                        ? _c("span", [
+                            _vm._v(" " + _vm._s(_vm.$t("common.notFill")))
+                          ])
+                        : _vm._e(),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.background")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.resume.background || _vm.$t("common.notFill")
+                          )
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.skill")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.resume.skill || _vm.$t("common.notFill")
+                          )
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.certificate")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.resume.certificate || _vm.$t("common.notFill")
+                          )
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("resume.bio")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.resume.bio || _vm.$t("common.notFill")
+                          )
+                        }
+                      }),
+                      _c("p")
+                    ])
+                  : _vm._e()
               ]),
               _c("v-flex", { attrs: { xs0: "xs0" } })
             ],
@@ -35178,8 +35865,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _c("p-footer")
+      )
     ],
     1
   )
@@ -35196,12 +35882,12 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeEdit_vue__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d0099e4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeEdit_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeEdit_vue__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7d0099e4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeEdit_vue__ = __webpack_require__(74);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -35247,7 +35933,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35255,6 +35941,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__);
+//
 //
 //
 //
@@ -35401,38 +36088,21 @@ if (false) {(function () {
         quillEditor: __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__["quillEditor"]
     },
     data: () => ({
-        items: [
-            {title: '基本資料', icon: 'dashboard'},
-            {title: '學歷經驗', icon: 'dashboard'},
-            {title: '求職條件 / 語言能力', icon: 'dashboard'},
-            {title: '技能與證照 ', icon: 'dashboard'},
-            {title: '自傳', icon: 'dashboard'}
-        ],
+        items: [],
         menu: false,
         tabIndex: 0,
-        resume: {
-            firstName: '',
-            lastName: '',
-            gender: null,
-            birth: null,
-            nation: '',
-            email: '',
-            phone: '',
-
-            expectedJobName: '',
-            salaryFrom: null,
-            salaryTo: null,
-
-            background: '',
-            language: null,
-            skill: '',
-            certificate: '',
-            bio: ''
-        },
+        resume: null,
         dataList: {
             basic: ['firstName', 'lastName', 'gender', 'birth', 'nation', 'email', 'phone'],
             condition: ['expectedJobName', 'salaryFrom', 'salaryTo']
         },
+        jobList: [
+            {text: '網頁工程師', value: '網頁工程師'},
+            {text: '電機工程技術員', value: '電機工程技術員'},
+            {text: '心理學研究人員', value: '心理學研究人員'},
+            {text: '會計師', value: '會計師'},
+            {text: '金融營業員', value: '金融營業員'}
+        ],
         languageOpt: [
             {text: '英語', value: 'en'},
             {text: '中文', value: 'ch'},
@@ -35476,6 +36146,13 @@ if (false) {(function () {
         },
         loading: false
     }),
+    created() {
+        this.items.push(this.$t('resume.basic'))
+        this.items.push(this.$t('resume.background'))
+        this.items.push(`${this.$t('resume.condition')} / ${this.$t('resume.language')}`)
+        this.items.push(`${this.$t('resume.skill')} / ${this.$t('resume.certificate')}`)
+        this.items.push(this.$t('resume.bio'))
+    },
     activated() {
         this.getResumeInfo()
     },
@@ -35508,7 +36185,7 @@ if (false) {(function () {
             if (this.checkPermission()) return
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(`/api/resume`)
                 .then(response => {
-                    console.log(response.data)
+                    console.log('ResumeInfo', response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
                         this.resume.gender = this.resume.gender.toString()
@@ -35537,7 +36214,6 @@ if (false) {(function () {
         saveLanguage() {
             let langData = {}
             this.lang.list.forEach(element => {
-                console.log(element)
                 if (element.stat) langData[element.language] = element.ability
             })
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/language`, {data: langData})
@@ -35576,7 +36252,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*!
@@ -46928,10 +47604,10 @@ module.exports = __webpack_require__(63);
 /***/ })
 /******/ ])["default"];
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70).Buffer))
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46945,9 +47621,9 @@ module.exports = __webpack_require__(63);
 
 
 
-var base64 = __webpack_require__(70)
-var ieee754 = __webpack_require__(71)
-var isArray = __webpack_require__(72)
+var base64 = __webpack_require__(71)
+var ieee754 = __webpack_require__(72)
+var isArray = __webpack_require__(73)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -48728,7 +49404,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48849,7 +49525,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -48939,7 +49615,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -48950,7 +49626,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48962,785 +49638,611 @@ var render = function() {
     "v-content",
     [
       _c(
-        "v-layout",
-        {
-          attrs: {
-            row: "row",
-            "justify-space-between": "justify-space-between"
-          }
-        },
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
-            "v-flex",
-            { attrs: { xs4: "xs4" } },
+            "v-layout",
+            {
+              attrs: {
+                row: "row",
+                "justify-space-between": "justify-space-between"
+              }
+            },
             [
               _c(
-                "v-navigation-drawer",
-                { attrs: { permanent: "permanent", light: "light" } },
+                "v-flex",
+                { attrs: { xs4: "xs4" } },
                 [
                   _c(
-                    "v-toolbar",
-                    { attrs: { flat: "flat" } },
+                    "v-navigation-drawer",
+                    {
+                      staticClass: "side-resume-menu shadow",
+                      attrs: { permanent: "permanent", light: "light" }
+                    },
                     [
                       _c(
-                        "v-list",
+                        "v-toolbar",
+                        { attrs: { flat: "flat" } },
                         [
                           _c(
-                            "v-list-tile",
+                            "v-list",
                             [
                               _c(
-                                "v-list-tile-title",
-                                { staticClass: "title" },
-                                [_vm._v("類別")]
+                                "v-list-tile",
+                                [
+                                  _c(
+                                    "v-list-tile-title",
+                                    { staticClass: "title" },
+                                    [_vm._v(_vm._s(_vm.$t("resume.type")))]
+                                  )
+                                ],
+                                1
                               )
                             ],
                             1
                           )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _c("v-divider"),
-                  _c(
-                    "v-list",
-                    { staticClass: "pt-0", attrs: { dense: "dense" } },
-                    _vm._l(_vm.items, function(item, key) {
-                      return _c(
-                        "v-list-tile",
-                        {
-                          key: item.title,
-                          on: {
-                            click: function($event) {
-                              _vm.toggleTab(key)
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                            1
-                          ),
-                          _c(
-                            "v-list-tile-content",
+                      ),
+                      _c("v-divider"),
+                      _c(
+                        "v-list",
+                        { staticClass: "pt-0", attrs: { dense: "dense" } },
+                        _vm._l(_vm.items, function(item, key) {
+                          return _c(
+                            "v-list-tile",
+                            {
+                              key: item,
+                              on: {
+                                click: function($event) {
+                                  _vm.toggleTab(key)
+                                }
+                              }
+                            },
                             [
-                              _c("v-list-tile-title", [
-                                _vm._v(_vm._s(item.title))
-                              ])
+                              _c(
+                                "v-list-tile-action",
+                                [_c("v-icon", [_vm._v("dashboard")])],
+                                1
+                              ),
+                              _c(
+                                "v-list-tile-content",
+                                [
+                                  _c("v-list-tile-title", [
+                                    _vm._v(_vm._s(item))
+                                  ])
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
-                        ],
-                        1
+                        })
                       )
-                    })
+                    ],
+                    1
                   )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
-            _c(
-              "section",
-              [
-                _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
-                  _c(
-                    "p",
-                    { staticClass: "page-title" },
-                    [
-                      _vm._v("修改履歷"),
-                      _c(
-                        "v-btn",
-                        {
-                          staticClass: "right",
-                          attrs: { color: "primary" },
-                          on: {
-                            click: function($event) {
-                              _vm.$router.push({ name: "ResumeShow" })
-                            }
-                          }
-                        },
-                        [_vm._v("返回")]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _c("div", { staticClass: "recruit-edit-field" }),
-                _vm._l(_vm.dataList, function(item, key) {
-                  return _c("div", { key: item.title })
-                }),
-                _vm.tabIndex === 0
-                  ? _c("div", [
+              ),
+              _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
+                _c(
+                  "section",
+                  [
+                    _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
                       _c(
                         "p",
-                        { staticClass: "recruit-edit-title" },
+                        { staticClass: "page-title" },
                         [
-                          _vm._v("基本資料"),
+                          _vm._v(_vm._s(_vm.$t("resume.editTitle"))),
                           _c(
                             "v-btn",
                             {
-                              staticClass: "ml-4",
-                              attrs: {
-                                color: "green",
-                                loading: _vm.loading,
-                                disabled: _vm.loading,
-                                dark: "dark"
-                              },
+                              staticClass: "right",
+                              attrs: { color: "primary" },
                               on: {
                                 click: function($event) {
-                                  _vm.save("basic")
+                                  _vm.$router.push({ name: "ResumeShow" })
                                 }
                               }
                             },
-                            [_vm._v("保存")]
+                            [_vm._v(_vm._s(_vm.$t("common.back")))]
                           )
                         ],
                         1
-                      ),
-                      _c(
-                        "div",
-                        { staticClass: "recruit-edit-field" },
-                        [
+                      )
+                    ]),
+                    _c("div", { staticClass: "recruit-edit-field" }),
+                    _vm._l(_vm.dataList, function(item, key) {
+                      return _c("div", { key: item.title })
+                    }),
+                    _vm.tabIndex === 0 && _vm.resume
+                      ? _c("div", [
                           _c(
-                            "v-flex",
-                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            "p",
+                            { staticClass: "recruit-edit-title" },
                             [
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "姓氏" },
-                                model: {
-                                  value: _vm.resume.lastName,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "lastName",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.lastName"
-                                }
-                              }),
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "名字" },
-                                model: {
-                                  value: _vm.resume.firstName,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "firstName",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.firstName"
-                                }
-                              }),
+                              _vm._v(_vm._s(_vm.$t("resume.basic"))),
                               _c(
-                                "v-radio-group",
+                                "v-btn",
                                 {
-                                  attrs: { row: "row" },
-                                  model: {
-                                    value: _vm.resume.gender,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.resume, "gender", $$v)
-                                    },
-                                    expression: "resume.gender"
-                                  }
-                                },
-                                [
-                                  _c("v-radio", {
-                                    attrs: { label: "男", value: "1" }
-                                  }),
-                                  _c("v-radio", {
-                                    attrs: { label: "女", value: "2" }
-                                  }),
-                                  _c("v-radio", {
-                                    attrs: { label: "其他", value: "3" }
-                                  })
-                                ],
-                                1
-                              ),
-                              _c(
-                                "v-menu",
-                                {
+                                  staticClass: "ml-4",
                                   attrs: {
-                                    lazy: "lazy",
-                                    "close-on-content-click": false,
-                                    transition: "scale-transition",
-                                    "offset-y": "offset-y",
-                                    "full-width": "full-width",
-                                    "nudge-right": 40,
-                                    "max-width": "290px",
-                                    "min-width": "290px"
+                                    color: "green",
+                                    loading: _vm.loading,
+                                    disabled: _vm.loading,
+                                    dark: "dark"
                                   },
-                                  model: {
-                                    value: _vm.menu,
-                                    callback: function($$v) {
-                                      _vm.menu = $$v
-                                    },
-                                    expression: "menu"
+                                  on: {
+                                    click: function($event) {
+                                      _vm.save("basic")
+                                    }
                                   }
                                 },
+                                [_vm._v(_vm._s(_vm.$t("common.save")))]
+                              )
+                            ],
+                            1
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: "recruit-edit-field" },
+                            [
+                              _c(
+                                "v-flex",
+                                { attrs: { xs12: "xs12", md6: "md6" } },
                                 [
                                   _c("v-text-field", {
                                     attrs: {
-                                      slot: "activator",
-                                      label: "生日",
-                                      "prepend-icon": "event",
-                                      readonly: "readonly"
+                                      type: "text",
+                                      label: _vm.$t("resume.lastName")
                                     },
-                                    slot: "activator",
                                     model: {
-                                      value: _vm.resume.birth,
+                                      value: _vm.resume.lastName,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.resume, "birth", $$v)
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "lastName",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
                                       },
-                                      expression: "resume.birth"
+                                      expression: "resume.lastName"
                                     }
                                   }),
-                                  _c("v-date-picker", {
+                                  _c("v-text-field", {
                                     attrs: {
-                                      scrollable: "scrollable",
-                                      actions: "actions"
+                                      type: "text",
+                                      label: _vm.$t("resume.firstName")
                                     },
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "default",
-                                        fn: function(ref) {
-                                          var save = ref.save
-                                          var cancel = ref.cancel
-                                          return [
-                                            _c(
-                                              "v-card-actions",
-                                              [
-                                                _c("v-spacer"),
-                                                _c(
-                                                  "v-btn",
-                                                  {
-                                                    attrs: {
-                                                      flat: "flat",
-                                                      color: "primary"
-                                                    },
-                                                    on: { click: cancel }
-                                                  },
-                                                  [_vm._v("Cancel")]
-                                                ),
-                                                _c(
-                                                  "v-btn",
-                                                  {
-                                                    attrs: {
-                                                      flat: "flat",
-                                                      color: "primary"
-                                                    },
-                                                    on: { click: save }
-                                                  },
-                                                  [_vm._v("OK")]
-                                                )
-                                              ],
-                                              1
-                                            )
-                                          ]
-                                        }
-                                      }
-                                    ]),
                                     model: {
-                                      value: _vm.resume.birth,
+                                      value: _vm.resume.firstName,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.resume, "birth", $$v)
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "firstName",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
                                       },
-                                      expression: "resume.birth"
+                                      expression: "resume.firstName"
+                                    }
+                                  }),
+                                  _c(
+                                    "v-radio-group",
+                                    {
+                                      attrs: { row: "row" },
+                                      model: {
+                                        value: _vm.resume.gender,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.resume, "gender", $$v)
+                                        },
+                                        expression: "resume.gender"
+                                      }
+                                    },
+                                    [
+                                      _c("v-radio", {
+                                        attrs: {
+                                          label: _vm.$t("gender.male"),
+                                          value: "1"
+                                        }
+                                      }),
+                                      _c("v-radio", {
+                                        attrs: {
+                                          label: _vm.$t("gender.female"),
+                                          value: "2"
+                                        }
+                                      }),
+                                      _c("v-radio", {
+                                        attrs: {
+                                          label: _vm.$t("gender.other"),
+                                          value: "3"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _c(
+                                    "v-menu",
+                                    {
+                                      attrs: {
+                                        lazy: "lazy",
+                                        "close-on-content-click": false,
+                                        transition: "scale-transition",
+                                        "offset-y": "offset-y",
+                                        "full-width": "full-width",
+                                        "nudge-right": 40,
+                                        "max-width": "290px",
+                                        "min-width": "290px"
+                                      },
+                                      model: {
+                                        value: _vm.menu,
+                                        callback: function($$v) {
+                                          _vm.menu = $$v
+                                        },
+                                        expression: "menu"
+                                      }
+                                    },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          slot: "activator",
+                                          label: _vm.$t("resume.birth"),
+                                          "prepend-icon": "event",
+                                          readonly: "readonly"
+                                        },
+                                        slot: "activator",
+                                        model: {
+                                          value: _vm.resume.birth,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.resume, "birth", $$v)
+                                          },
+                                          expression: "resume.birth"
+                                        }
+                                      }),
+                                      _c("v-date-picker", {
+                                        attrs: {
+                                          scrollable: "scrollable",
+                                          actions: "actions"
+                                        },
+                                        scopedSlots: _vm._u([
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var save = ref.save
+                                              var cancel = ref.cancel
+                                              return [
+                                                _c(
+                                                  "v-card-actions",
+                                                  [
+                                                    _c("v-spacer"),
+                                                    _c(
+                                                      "v-btn",
+                                                      {
+                                                        attrs: {
+                                                          flat: "flat",
+                                                          color: "primary"
+                                                        },
+                                                        on: { click: cancel }
+                                                      },
+                                                      [_vm._v("Cancel")]
+                                                    ),
+                                                    _c(
+                                                      "v-btn",
+                                                      {
+                                                        attrs: {
+                                                          flat: "flat",
+                                                          color: "primary"
+                                                        },
+                                                        on: { click: save }
+                                                      },
+                                                      [_vm._v("OK")]
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]
+                                            }
+                                          }
+                                        ]),
+                                        model: {
+                                          value: _vm.resume.birth,
+                                          callback: function($$v) {
+                                            _vm.$set(_vm.resume, "birth", $$v)
+                                          },
+                                          expression: "resume.birth"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      type: "text",
+                                      label: _vm.$t("resume.nation")
+                                    },
+                                    model: {
+                                      value: _vm.resume.nation,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "nation",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
+                                      },
+                                      expression: "resume.nation"
+                                    }
+                                  }),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      type: "text",
+                                      label: _vm.$t("resume.email")
+                                    },
+                                    model: {
+                                      value: _vm.resume.email,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "email",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
+                                      },
+                                      expression: "resume.email"
+                                    }
+                                  }),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      type: "text",
+                                      label: _vm.$t("resume.phone")
+                                    },
+                                    model: {
+                                      value: _vm.resume.phone,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "phone",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
+                                      },
+                                      expression: "resume.phone"
                                     }
                                   })
                                 ],
                                 1
-                              ),
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "國籍" },
-                                model: {
-                                  value: _vm.resume.nation,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "nation",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.nation"
-                                }
-                              }),
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "信箱" },
-                                model: {
-                                  value: _vm.resume.email,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "email",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.email"
-                                }
-                              }),
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "手機" },
-                                model: {
-                                  value: _vm.resume.phone,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "phone",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.phone"
-                                }
-                              })
+                              )
                             ],
                             1
                           )
-                        ],
-                        1
-                      )
-                    ])
-                  : _vm._e(),
-                _vm.tabIndex === 1
-                  ? _c(
-                      "div",
-                      [
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
+                        ])
+                      : _vm._e(),
+                    _vm.tabIndex === 1
+                      ? _c(
+                          "div",
                           [
-                            _vm._v("學歷經驗"),
+                            _c(
+                              "p",
+                              { staticClass: "recruit-edit-title" },
+                              [
+                                _vm._v(_vm._s(_vm.$t("resume.background"))),
+                                !_vm.edit.background
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "white--text",
+                                        attrs: {
+                                          flat: "flat",
+                                          color: "primary",
+                                          icon: "icon"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.background = true
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("edit")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.background
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "red"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.background = false
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("clear")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.background
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "green",
+                                          loading: _vm.loading,
+                                          disabled: _vm.loading
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.save("background")
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("done")])],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
                             !_vm.edit.background
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "white--text",
-                                    attrs: {
-                                      flat: "flat",
-                                      color: "primary",
-                                      icon: "icon"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.background = true
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("edit")])],
-                                  1
-                                )
+                              ? _c("p", {
+                                  staticClass: "recruit-edit-content ql-editor",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.resume.background)
+                                  }
+                                })
                               : _vm._e(),
+                            _c("p"),
                             _vm.edit.background
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "red"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.background = false
-                                      }
-                                    }
+                              ? _c("quill-editor", {
+                                  attrs: {
+                                    content: _vm.resume.background,
+                                    options: _vm.editorOption
                                   },
-                                  [_c("v-icon", [_vm._v("clear")])],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm.edit.background
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "green",
-                                      loading: _vm.loading,
-                                      disabled: _vm.loading
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.save("background")
-                                      }
+                                  on: {
+                                    change: function($event) {
+                                      _vm.onEditorChange($event, "background")
                                     }
-                                  },
-                                  [_c("v-icon", [_vm._v("done")])],
-                                  1
-                                )
+                                  }
+                                })
                               : _vm._e()
                           ],
                           1
-                        ),
-                        !_vm.edit.background
-                          ? _c("p", {
-                              staticClass: "recruit-edit-content ql-editor",
-                              domProps: {
-                                innerHTML: _vm._s(_vm.resume.background)
-                              }
-                            })
-                          : _vm._e(),
-                        _c("p"),
-                        _vm.edit.background
-                          ? _c("quill-editor", {
-                              attrs: {
-                                content: _vm.resume.background,
-                                options: _vm.editorOption
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.onEditorChange($event, "background")
-                                }
-                              }
-                            })
-                          : _vm._e()
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm.tabIndex === 2
-                  ? _c("div", [
-                      _c(
-                        "p",
-                        { staticClass: "recruit-edit-title" },
-                        [
-                          _vm._v("求職條件"),
+                        )
+                      : _vm._e(),
+                    _vm.tabIndex === 2
+                      ? _c("div", [
                           _c(
-                            "v-btn",
-                            {
-                              staticClass: "ml-4",
-                              attrs: {
-                                color: "primary",
-                                loading: _vm.loading,
-                                disabled: _vm.loading
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.save("condition")
-                                }
-                              }
-                            },
-                            [_vm._v("保存")]
-                          )
-                        ],
-                        1
-                      ),
-                      _c(
-                        "div",
-                        { staticClass: "recruit-edit-field" },
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            "p",
+                            { staticClass: "recruit-edit-title" },
                             [
-                              _c("v-text-field", {
-                                attrs: { type: "text", label: "希望職位" },
-                                model: {
-                                  value: _vm.resume.expectedJobName,
-                                  callback: function($$v) {
-                                    _vm.$set(
-                                      _vm.resume,
-                                      "expectedJobName",
-                                      typeof $$v === "string" ? $$v.trim() : $$v
-                                    )
-                                  },
-                                  expression: "resume.expectedJobName"
-                                }
-                              }),
-                              _c("p", [_vm._v("薪資條件")]),
+                              _vm._v(_vm._s(_vm.$t("resume.condition"))),
                               _c(
-                                "v-layout",
-                                { attrs: { wrap: "wrap" } },
-                                [
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs5: "xs5" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          type: "number",
-                                          label: "最低薪資"
-                                        },
-                                        model: {
-                                          value: _vm.resume.salaryFrom,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.resume,
-                                              "salaryFrom",
-                                              typeof $$v === "string"
-                                                ? $$v.trim()
-                                                : $$v
-                                            )
-                                          },
-                                          expression: "resume.salaryFrom"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _c("v-flex", { attrs: { xs0: "xs0" } }, [
-                                    _vm._v(" ~")
-                                  ]),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs5: "xs5" } },
-                                    [
-                                      _c("v-text-field", {
-                                        attrs: {
-                                          type: "number",
-                                          label: "最高薪資"
-                                        },
-                                        model: {
-                                          value: _vm.resume.salaryTo,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.resume,
-                                              "salaryTo",
-                                              typeof $$v === "string"
-                                                ? $$v.trim()
-                                                : $$v
-                                            )
-                                          },
-                                          expression: "resume.salaryTo"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _c(
-                        "p",
-                        { staticClass: "recruit-edit-title" },
-                        [
-                          _vm._v("語言能力"),
-                          !_vm.edit.language
-                            ? _c(
-                                "v-btn",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: {
-                                    flat: "flat",
-                                    icon: "icon",
-                                    color: "primary"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.edit.language = true
-                                    }
-                                  }
-                                },
-                                [_c("v-icon", [_vm._v("edit")])],
-                                1
-                              )
-                            : _vm._e(),
-                          _vm.edit.language
-                            ? _c(
                                 "v-btn",
                                 {
                                   staticClass: "ml-4",
                                   attrs: {
-                                    fab: "fab",
-                                    dark: "dark",
-                                    small: "small",
-                                    color: "red"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.edit.language = false
-                                    }
-                                  }
-                                },
-                                [_c("v-icon", [_vm._v("clear")])],
-                                1
-                              )
-                            : _vm._e(),
-                          _vm.edit.language
-                            ? _c(
-                                "v-btn",
-                                {
-                                  staticClass: "ml-4",
-                                  attrs: {
-                                    fab: "fab",
-                                    dark: "dark",
-                                    small: "small",
-                                    color: "green",
+                                    color: "primary",
                                     loading: _vm.loading,
                                     disabled: _vm.loading
                                   },
-                                  on: { click: _vm.saveLanguage }
-                                },
-                                [_c("v-icon", [_vm._v("done")])],
-                                1
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      ),
-                      !_vm.edit.language
-                        ? _c(
-                            "div",
-                            { staticClass: "language-select" },
-                            _vm._l(_vm.lang.list, function(item) {
-                              return item.stat
-                                ? _c(
-                                    "v-chip",
-                                    { key: item.id },
-                                    [
-                                      _c(
-                                        "v-avatar",
-                                        { class: _vm.langColor[item.ability] },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "white--text headline"
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(
-                                                  _vm.langLevel[item.ability]
-                                                )
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(_vm._s(_vm.langMap[item.language]))
-                                    ],
-                                    1
-                                  )
-                                : _vm._e()
-                            })
-                          )
-                        : _vm._e(),
-                      _vm.edit.language
-                        ? _c(
-                            "div",
-                            { staticClass: "language-select" },
-                            [
-                              _vm._l(_vm.lang.list, function(item) {
-                                return _c(
-                                  "v-chip",
-                                  {
-                                    key: item.id,
-                                    attrs: { close: "close" },
-                                    model: {
-                                      value: item.stat,
-                                      callback: function($$v) {
-                                        _vm.$set(item, "stat", $$v)
-                                      },
-                                      expression: "item.stat"
+                                  on: {
+                                    click: function($event) {
+                                      _vm.save("condition")
                                     }
-                                  },
-                                  [
-                                    _c(
-                                      "v-avatar",
-                                      { class: _vm.langColor[item.ability] },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass: "white--text headline"
-                                          },
-                                          [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.langLevel[item.ability]
-                                              )
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(_vm._s(_vm.langMap[item.language]))
-                                  ],
-                                  1
-                                )
-                              }),
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.$t("common.save")))]
+                              )
+                            ],
+                            1
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: "recruit-edit-field" },
+                            [
                               _c(
-                                "v-layout",
-                                { attrs: { wrap: "wrap" } },
+                                "v-flex",
+                                { attrs: { xs12: "xs12", md6: "md6" } },
                                 [
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.jobList,
+                                      label: _vm.$t("resume.expectedJobName"),
+                                      "single-line": "single-line",
+                                      bottom: "bottom"
+                                    },
+                                    model: {
+                                      value: _vm.resume.expectedJobName,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          _vm.resume,
+                                          "expectedJobName",
+                                          $$v
+                                        )
+                                      },
+                                      expression: "resume.expectedJobName"
+                                    }
+                                  }),
+                                  _c("p", [
+                                    _vm._v(
+                                      _vm._s(_vm.$t("resume.salaryRequest"))
+                                    )
+                                  ]),
                                   _c(
-                                    "v-flex",
-                                    { attrs: { xs4: "xs4" } },
-                                    [
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.languageOpt,
-                                          label: "語言",
-                                          "single-line": "single-line",
-                                          bottom: "bottom"
-                                        },
-                                        model: {
-                                          value: _vm.lang.value,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.lang, "value", $$v)
-                                          },
-                                          expression: "lang.value"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _c("v-flex", { attrs: { xs1: "xs1" } }),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs4: "xs4" } },
-                                    [
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.abilityOpt,
-                                          label: "程度",
-                                          "single-line": "single-line",
-                                          bottom: "bottom"
-                                        },
-                                        model: {
-                                          value: _vm.lang.ability,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.lang, "ability", $$v)
-                                          },
-                                          expression: "lang.ability"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _c("v-flex", { attrs: { xs1: "xs1" } }),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { xs2: "xs2" } },
+                                    "v-layout",
+                                    { attrs: { wrap: "wrap" } },
                                     [
                                       _c(
-                                        "v-btn",
-                                        {
-                                          attrs: {
-                                            color: "teal",
-                                            dark: "dark"
-                                          },
-                                          on: { click: _vm.addLanguage }
-                                        },
-                                        [_vm._v("新增")]
+                                        "v-flex",
+                                        { attrs: { xs5: "xs5" } },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              type: "number",
+                                              label: _vm.$t("resume.salaryFrom")
+                                            },
+                                            model: {
+                                              value: _vm.resume.salaryFrom,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.resume,
+                                                  "salaryFrom",
+                                                  typeof $$v === "string"
+                                                    ? $$v.trim()
+                                                    : $$v
+                                                )
+                                              },
+                                              expression: "resume.salaryFrom"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _c("v-flex", { attrs: { xs0: "xs0" } }, [
+                                        _vm._v(" ~")
+                                      ]),
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs5: "xs5" } },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              type: "number",
+                                              label: _vm.$t("resume.salaryTo")
+                                            },
+                                            model: {
+                                              value: _vm.resume.salaryTo,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.resume,
+                                                  "salaryTo",
+                                                  typeof $$v === "string"
+                                                    ? $$v.trim()
+                                                    : $$v
+                                                )
+                                              },
+                                              expression: "resume.salaryTo"
+                                            }
+                                          })
+                                        ],
+                                        1
                                       )
                                     ],
                                     1
@@ -49749,312 +50251,562 @@ var render = function() {
                                 1
                               )
                             ],
-                            2
-                          )
-                        : _vm._e(),
-                      _c("p")
-                    ])
-                  : _vm._e(),
-                _vm.tabIndex === 3
-                  ? _c(
-                      "div",
-                      [
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
+                            1
+                          ),
+                          _c(
+                            "p",
+                            { staticClass: "recruit-edit-title" },
+                            [
+                              _vm._v(_vm._s(_vm.$t("resume.language"))),
+                              !_vm.edit.language
+                                ? _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "white--text",
+                                      attrs: {
+                                        flat: "flat",
+                                        icon: "icon",
+                                        color: "primary"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.edit.language = true
+                                        }
+                                      }
+                                    },
+                                    [_c("v-icon", [_vm._v("edit")])],
+                                    1
+                                  )
+                                : _vm._e(),
+                              _vm.edit.language
+                                ? _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "ml-4",
+                                      attrs: {
+                                        fab: "fab",
+                                        dark: "dark",
+                                        small: "small",
+                                        color: "red"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.edit.language = false
+                                        }
+                                      }
+                                    },
+                                    [_c("v-icon", [_vm._v("clear")])],
+                                    1
+                                  )
+                                : _vm._e(),
+                              _vm.edit.language
+                                ? _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "ml-4",
+                                      attrs: {
+                                        fab: "fab",
+                                        dark: "dark",
+                                        small: "small",
+                                        color: "green",
+                                        loading: _vm.loading,
+                                        disabled: _vm.loading
+                                      },
+                                      on: { click: _vm.saveLanguage }
+                                    },
+                                    [_c("v-icon", [_vm._v("done")])],
+                                    1
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          !_vm.edit.language
+                            ? _c(
+                                "div",
+                                { staticClass: "language-select" },
+                                _vm._l(_vm.lang.list, function(item) {
+                                  return item.stat
+                                    ? _c(
+                                        "v-chip",
+                                        { key: item.id },
+                                        [
+                                          _c(
+                                            "v-avatar",
+                                            {
+                                              class: _vm.langColor[item.ability]
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "white--text headline"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.langLevel[
+                                                        item.ability
+                                                      ]
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(
+                                            _vm._s(_vm.langMap[item.language])
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                })
+                              )
+                            : _vm._e(),
+                          _vm.edit.language
+                            ? _c(
+                                "div",
+                                { staticClass: "language-select" },
+                                [
+                                  _vm._l(_vm.lang.list, function(item) {
+                                    return _c(
+                                      "v-chip",
+                                      {
+                                        key: item.id,
+                                        attrs: { close: "close" },
+                                        model: {
+                                          value: item.stat,
+                                          callback: function($$v) {
+                                            _vm.$set(item, "stat", $$v)
+                                          },
+                                          expression: "item.stat"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-avatar",
+                                          {
+                                            class: _vm.langColor[item.ability]
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticClass:
+                                                  "white--text headline"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.langLevel[item.ability]
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          _vm._s(_vm.langMap[item.language])
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  _c(
+                                    "v-layout",
+                                    { attrs: { wrap: "wrap" } },
+                                    [
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs4: "xs4" } },
+                                        [
+                                          _c("v-select", {
+                                            attrs: {
+                                              items: _vm.languageOpt,
+                                              label: _vm.$t("resume.lang"),
+                                              "single-line": "single-line",
+                                              bottom: "bottom"
+                                            },
+                                            model: {
+                                              value: _vm.lang.value,
+                                              callback: function($$v) {
+                                                _vm.$set(_vm.lang, "value", $$v)
+                                              },
+                                              expression: "lang.value"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _c("v-flex", { attrs: { xs1: "xs1" } }),
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs4: "xs4" } },
+                                        [
+                                          _c("v-select", {
+                                            attrs: {
+                                              items: _vm.abilityOpt,
+                                              label: _vm.$t("resume.ability"),
+                                              "single-line": "single-line",
+                                              bottom: "bottom"
+                                            },
+                                            model: {
+                                              value: _vm.lang.ability,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.lang,
+                                                  "ability",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "lang.ability"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _c("v-flex", { attrs: { xs1: "xs1" } }),
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs2: "xs2" } },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                color: "teal",
+                                                dark: "dark"
+                                              },
+                                              on: { click: _vm.addLanguage }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.$t("common.add"))
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                2
+                              )
+                            : _vm._e(),
+                          _c("p")
+                        ])
+                      : _vm._e(),
+                    _vm.tabIndex === 3
+                      ? _c(
+                          "div",
                           [
-                            _vm._v("技能"),
+                            _c(
+                              "p",
+                              { staticClass: "recruit-edit-title" },
+                              [
+                                _vm._v(_vm._s(_vm.$t("resume.skill"))),
+                                !_vm.edit.skill
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "white--text",
+                                        attrs: {
+                                          flat: "flat",
+                                          color: "primary",
+                                          icon: "icon"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.skill = true
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("edit")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.skill
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "red"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.skill = false
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("clear")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.skill
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "green",
+                                          loading: _vm.loading,
+                                          disabled: _vm.loading
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.save("skill")
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("done")])],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
                             !_vm.edit.skill
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "white--text",
-                                    attrs: {
-                                      flat: "flat",
-                                      color: "primary",
-                                      icon: "icon"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.skill = true
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("edit")])],
-                                  1
-                                )
+                              ? _c("p", {
+                                  staticClass: "recruit-edit-content ql-editor",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.resume.skill)
+                                  }
+                                })
                               : _vm._e(),
+                            _c("p"),
                             _vm.edit.skill
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "red"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.skill = false
-                                      }
-                                    }
+                              ? _c("quill-editor", {
+                                  attrs: {
+                                    content: _vm.resume.skill,
+                                    options: _vm.editorOption
                                   },
-                                  [_c("v-icon", [_vm._v("clear")])],
-                                  1
-                                )
+                                  on: {
+                                    change: function($event) {
+                                      _vm.onEditorChange($event, "skill")
+                                    }
+                                  }
+                                })
                               : _vm._e(),
-                            _vm.edit.skill
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "green",
-                                      loading: _vm.loading,
-                                      disabled: _vm.loading
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.save("skill")
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("done")])],
-                                  1
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        !_vm.edit.skill
-                          ? _c("p", {
-                              staticClass: "recruit-edit-content ql-editor",
-                              domProps: { innerHTML: _vm._s(_vm.resume.skill) }
-                            })
-                          : _vm._e(),
-                        _c("p"),
-                        _vm.edit.skill
-                          ? _c("quill-editor", {
-                              attrs: {
-                                content: _vm.resume.skill,
-                                options: _vm.editorOption
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.onEditorChange($event, "skill")
-                                }
-                              }
-                            })
-                          : _vm._e(),
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
-                          [
-                            _vm._v("證照"),
+                            _c(
+                              "p",
+                              { staticClass: "recruit-edit-title" },
+                              [
+                                _vm._v(_vm._s(_vm.$t("resume.certificate"))),
+                                !_vm.edit.certificate
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "white--text",
+                                        attrs: {
+                                          flat: "flat",
+                                          color: "primary",
+                                          icon: "icon"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.certificate = true
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("edit")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.certificate
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "red"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.certificate = false
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("clear")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.certificate
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "green",
+                                          loading: _vm.loading,
+                                          disabled: _vm.loading
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.save("certificate")
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("done")])],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
                             !_vm.edit.certificate
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "white--text",
-                                    attrs: {
-                                      flat: "flat",
-                                      color: "primary",
-                                      icon: "icon"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.certificate = true
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("edit")])],
-                                  1
-                                )
+                              ? _c("p", {
+                                  staticClass: "recruit-edit-content ql-editor",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.resume.certificate)
+                                  }
+                                })
                               : _vm._e(),
+                            _c("p"),
                             _vm.edit.certificate
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "red"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.certificate = false
-                                      }
-                                    }
+                              ? _c("quill-editor", {
+                                  attrs: {
+                                    content: _vm.resume.certificate,
+                                    options: _vm.editorOption
                                   },
-                                  [_c("v-icon", [_vm._v("clear")])],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm.edit.certificate
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "green",
-                                      loading: _vm.loading,
-                                      disabled: _vm.loading
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.save("certificate")
-                                      }
+                                  on: {
+                                    change: function($event) {
+                                      _vm.onEditorChange($event, "certificate")
                                     }
-                                  },
-                                  [_c("v-icon", [_vm._v("done")])],
-                                  1
-                                )
+                                  }
+                                })
                               : _vm._e()
                           ],
                           1
-                        ),
-                        !_vm.edit.certificate
-                          ? _c("p", {
-                              staticClass: "recruit-edit-content ql-editor",
-                              domProps: {
-                                innerHTML: _vm._s(_vm.resume.certificate)
-                              }
-                            })
-                          : _vm._e(),
-                        _c("p"),
-                        _vm.edit.certificate
-                          ? _c("quill-editor", {
-                              attrs: {
-                                content: _vm.resume.certificate,
-                                options: _vm.editorOption
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.onEditorChange($event, "certificate")
-                                }
-                              }
-                            })
-                          : _vm._e()
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _vm.tabIndex === 4
-                  ? _c(
-                      "div",
-                      [
-                        _c(
-                          "p",
-                          { staticClass: "recruit-edit-title" },
+                        )
+                      : _vm._e(),
+                    _vm.tabIndex === 4
+                      ? _c(
+                          "div",
                           [
-                            _vm._v("自傳"),
+                            _c(
+                              "p",
+                              { staticClass: "recruit-edit-title" },
+                              [
+                                _vm._v(_vm._s(_vm.$t("resume.bio"))),
+                                !_vm.edit.bio
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "white--text",
+                                        attrs: {
+                                          flat: "flat",
+                                          dark: "dark",
+                                          color: "primary",
+                                          icon: "icon"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.bio = true
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("edit")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.bio
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "red"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.edit.bio = false
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("clear")])],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm.edit.bio
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "ml-4",
+                                        attrs: {
+                                          fab: "fab",
+                                          dark: "dark",
+                                          small: "small",
+                                          color: "green",
+                                          loading: _vm.loading,
+                                          disabled: _vm.loading
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.save("bio")
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("done")])],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
                             !_vm.edit.bio
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "white--text",
-                                    attrs: {
-                                      flat: "flat",
-                                      dark: "dark",
-                                      color: "primary",
-                                      icon: "icon"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.bio = true
-                                      }
-                                    }
-                                  },
-                                  [_c("v-icon", [_vm._v("edit")])],
-                                  1
-                                )
+                              ? _c("p", {
+                                  staticClass: "recruit-edit-content ql-editor",
+                                  domProps: {
+                                    innerHTML: _vm._s(_vm.resume.bio)
+                                  }
+                                })
                               : _vm._e(),
+                            _c("p"),
                             _vm.edit.bio
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "red"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.edit.bio = false
-                                      }
-                                    }
+                              ? _c("quill-editor", {
+                                  attrs: {
+                                    content: _vm.resume.bio,
+                                    options: _vm.editorOption
                                   },
-                                  [_c("v-icon", [_vm._v("clear")])],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm.edit.bio
-                              ? _c(
-                                  "v-btn",
-                                  {
-                                    staticClass: "ml-4",
-                                    attrs: {
-                                      fab: "fab",
-                                      dark: "dark",
-                                      small: "small",
-                                      color: "green",
-                                      loading: _vm.loading,
-                                      disabled: _vm.loading
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.save("bio")
-                                      }
+                                  on: {
+                                    change: function($event) {
+                                      _vm.onEditorChange($event, "bio")
                                     }
-                                  },
-                                  [_c("v-icon", [_vm._v("done")])],
-                                  1
-                                )
+                                  }
+                                })
                               : _vm._e()
                           ],
                           1
-                        ),
-                        !_vm.edit.bio
-                          ? _c("p", {
-                              staticClass: "recruit-edit-content ql-editor",
-                              domProps: { innerHTML: _vm._s(_vm.resume.bio) }
-                            })
-                          : _vm._e(),
-                        _c("p"),
-                        _vm.edit.bio
-                          ? _c("quill-editor", {
-                              attrs: {
-                                content: _vm.resume.bio,
-                                options: _vm.editorOption
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.onEditorChange($event, "bio")
-                                }
-                              }
-                            })
-                          : _vm._e()
-                      ],
-                      1
-                    )
-                  : _vm._e()
-              ],
-              2
-            )
-          ]),
-          _c("v-flex", { attrs: { xs0: "xs0" } })
+                        )
+                      : _vm._e()
+                  ],
+                  2
+                )
+              ]),
+              _c("v-flex", { attrs: { xs0: "xs0" } })
+            ],
+            1
+          )
         ],
         1
       )
@@ -50074,12 +50826,12 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeHistory_vue__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_62123e40_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeHistory_vue__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeMatch_vue__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_04e967f1_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeMatch_vue__ = __webpack_require__(77);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -50095,14 +50847,14 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeHistory_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_62123e40_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeHistory_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_ResumeMatch_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_04e967f1_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_ResumeMatch_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\ResumeHistory.vue"
+Component.options.__file = "resources\\assets\\js\\components\\ResumeMatch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -50112,9 +50864,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-62123e40", Component.options)
+    hotAPI.createRecord("data-v-04e967f1", Component.options)
   } else {
-    hotAPI.reload("data-v-62123e40", Component.options)
+    hotAPI.reload("data-v-04e967f1", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -50125,7 +50877,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50154,16 +50906,54 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        items: [],
+        items: null,
+        matches: null,
+        showMatchBtn: true,
+        headers: [
+            {text: '標題', value: 'title', align: 'left'},
+            {text: '職位', value: 'jobname', align: 'left'},
+            {text: '薪資', value: 'dpay', align: 'left'},
+            {text: '狀態', value: 'stat', align: 'left'},
+            {text: '操作紀錄', value: 'updated_at', align: 'left'},
+            {text: '動作', sortable: false, align: 'left'}
+        ],
         loading: false
     }),
     activated() {
-        this.getMatchResult()
+        this.getHistory()
+    },
+    computed: {
     },
     methods: {
         errHandler (e) {
@@ -50182,23 +50972,98 @@ if (false) {(function () {
                 this.$router.push({name: 'Main'})
             }
         },
-        getMatchResult() {
+        getHistory() {
             this.checkPermission()
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/resume/history', {})
                 .then(response => {
-                    console.log('Match History', response.data)
+                    console.log('History', response.data)
                     if (response.data.stat) {
                         this.items = response.data.data
+                        this.items.forEach(element => {
+                            element.updated_at = this.getDateDiff(element.updated_at)
+                            if (element.employeeCheck === 1 && element.employerCheck === 1) element.stat = '履歷已送出'
+                            else if (element.employeeCheck === 0 && element.employerCheck === 1) element.stat = '已婉拒邀約'
+                            else if (element.employeeCheck === -1 && element.employerCheck === 1) {
+                                element.gotInvite = true
+                                element.stat = '收到廠商邀請'
+                            }
+                        })
                     }
                 })
                 .catch(e => this.errHandler(e))
+        },
+        getMatchResult() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/resume/match', {})
+                .then(response => {
+                    console.log('Match Result', response.data)
+                    if (response.data.stat) {
+                        this.showMatchBtn = false
+                        this.matches = response.data.data
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        acceptInvite(index, id) {
+            if (!confirm(this.$t('alert.sureAccept'))) return
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/throw`, {rid: id})
+                .then(response => {
+                    console.log('acceptInvite', response.data)
+                    let msg = response.data.stat ? this.$t('alert.acceptInviteSuccess') : this.$t('alert.acceptInviteFail')
+                    this.showDialog(msg)
+                    if (response.data.stat) {
+                        this.items[index].gotInvite = false
+                        this.items[index].stat = '履歷已送出'
+                        this.$forceUpdate()
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        refuseInvite(index, id) {
+            if (!confirm(this.$t('alert.sureRefuse'))) return
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/refuse`, {rid: id})
+                .then(response => {
+                    console.log('refuseInvite', response.data)
+                    let msg = response.data.stat ? this.$t('alert.refuseInviteSuccess') : this.$t('alert.refuseInviteFail')
+                    this.showDialog(msg)
+                    if (response.data.stat) {
+                        this.items[index].gotInvite = false
+                        this.items[index].stat = '已婉拒邀約'
+                        this.$forceUpdate()
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        getDateDiff(dateTimeStamp) {
+            let minute = 60000
+            let hour = minute * 60
+            let day = hour * 24
+            let month = day * 30
+            let now = new Date().getTime()
+            dateTimeStamp = new Date(dateTimeStamp).getTime()
+            let diffValue = now - dateTimeStamp
+            if (diffValue < 0) return
+
+            let monthC = diffValue / month
+            let weekC = diffValue / (7 * day)
+            let dayC = diffValue / day
+            let hourC = diffValue / hour
+            let minC = diffValue / minute
+            let result = ''
+            if (monthC >= 1) result = '' + parseInt(monthC) + '月前'
+            else if (weekC >= 1) result = '' + parseInt(weekC) + '周前'
+            else if (dayC >= 1) result = '' + parseInt(dayC) + '天前'
+            else if (hourC >= 1) result = '' + parseInt(hourC) + '小時前'
+            else if (minC >= 1) result = '' + parseInt(minC) + '分鐘前'
+            else result = '刚刚'
+
+            return result
         }
     }
 });
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50207,10 +51072,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
     [
       _c(
-        "v-content",
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
             "v-layout",
@@ -50221,80 +51087,293 @@ var render = function() {
                 _c(
                   "section",
                   [
-                    _c("div", { staticClass: "page-title" }, [_vm._v("投遞紀錄")]),
-                    _c(
-                      "v-card",
-                      [
-                        _c(
-                          "v-list",
-                          { attrs: { "two-line": "" } },
+                    _c("div", { staticClass: "page-title" }, [
+                      _vm._v(_vm._s(_vm.$t("resume.match")))
+                    ]),
+                    _vm.showMatchBtn
+                      ? _c(
+                          "v-btn",
+                          {
+                            attrs: { color: "yellow" },
+                            on: { click: _vm.getMatchResult }
+                          },
                           [
-                            _vm._l(_vm.items, function(item, index) {
-                              return [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "no-decoration",
-                                    attrs: {
-                                      to: { path: "recruit/" + item.rid }
-                                    }
-                                  },
-                                  [
+                            _c("v-icon", [_vm._v("done")]),
+                            _vm._v(_vm._s(_vm.$t("resume.showMatch")))
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.matches
+                      ? _c(
+                          "v-card",
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { "two-line": "" } },
+                              [
+                                _vm._l(_vm.matches, function(item, index) {
+                                  return [
                                     _c(
-                                      "v-list-tile",
+                                      "router-link",
                                       {
-                                        key: item.title,
-                                        attrs: { avatar: "", ripple: "" }
+                                        staticClass: "no-decoration",
+                                        attrs: {
+                                          to: { path: "recruit/" + item.rid }
+                                        }
                                       },
                                       [
                                         _c(
-                                          "v-list-tile-content",
+                                          "v-list-tile",
+                                          {
+                                            key: item.title,
+                                            attrs: { avatar: "", ripple: "" }
+                                          },
                                           [
-                                            _c("v-list-tile-title", [
-                                              _vm._v(
-                                                _vm._s(item.title || "尚未填寫")
-                                              )
-                                            ]),
                                             _c(
-                                              "v-list-tile-sub-title",
-                                              {
-                                                staticClass:
-                                                  "grey--text text--darken-4"
-                                              },
+                                              "v-list-tile-content",
                                               [
-                                                _vm._v(
-                                                  _vm._s(item.jobname || "尚未填寫")
-                                                )
-                                              ]
-                                            ),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "薪資: " +
-                                                  _vm._s(item.dpay || "0") +
-                                                  " ~ " +
-                                                  _vm._s(item.upay || "0")
-                                              )
-                                            ])
+                                                _c("v-list-tile-title", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      item.title ||
+                                                        _vm.$t("common.notFill")
+                                                    )
+                                                  )
+                                                ]),
+                                                _c(
+                                                  "v-list-tile-sub-title",
+                                                  {
+                                                    staticClass:
+                                                      "grey--text text--darken-4"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.jobname ||
+                                                          _vm.$t(
+                                                            "common.notFill"
+                                                          )
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _c("v-list-tile-sub-title", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.$t("resume.pay")
+                                                    ) +
+                                                      ": " +
+                                                      _vm._s(item.dpay || "0") +
+                                                      " ~ " +
+                                                      _vm._s(item.upay || "0")
+                                                  )
+                                                ])
+                                              ],
+                                              1
+                                            )
                                           ],
                                           1
-                                        )
+                                        ),
+                                        index + 1 < _vm.matches.length
+                                          ? _c("v-divider", { key: item.id })
+                                          : _vm._e()
                                       ],
                                       1
-                                    ),
-                                    index + 1 < _vm.items.length
-                                      ? _c("v-divider", { key: item.id })
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            })
+                                    )
+                                  ]
+                                })
+                              ],
+                              2
+                            )
                           ],
-                          2
+                          1
                         )
-                      ],
-                      1
-                    )
+                      : _vm._e(),
+                    _c("div", { staticClass: "page-title" }, [
+                      _vm._v(_vm._s(_vm.$t("resume.manageRecord")))
+                    ]),
+                    _vm.items
+                      ? _c("v-data-table", {
+                          staticClass: "elevation-1",
+                          attrs: {
+                            headers: _vm.headers,
+                            items: _vm.items,
+                            "hide-actions": "hide-actions"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "items",
+                              fn: function(props) {
+                                return [
+                                  _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(_vm._s(props.item.title))
+                                  ]),
+                                  _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(_vm._s(props.item.jobname))
+                                  ]),
+                                  _c("td", {
+                                    staticClass: "text-xs-left",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        props.item.dpay +
+                                          "<br>&nbsp;~&nbsp;<br>" +
+                                          props.item.upay
+                                      )
+                                    }
+                                  }),
+                                  _c(
+                                    "td",
+                                    { staticClass: "text-xs-left green--text" },
+                                    [_vm._v(_vm._s(props.item.stat))]
+                                  ),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "text-xs-left red--text text--darken-4"
+                                    },
+                                    [_vm._v(_vm._s(props.item.updated_at))]
+                                  ),
+                                  _c(
+                                    "td",
+                                    { staticClass: "text-xs-left" },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass: "no-decoration",
+                                          attrs: {
+                                            to: {
+                                              path: "/recruit/" + props.item.rid
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-tooltip",
+                                            { attrs: { top: "top" } },
+                                            [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: {
+                                                    slot: "activator",
+                                                    flat: "flat",
+                                                    icon: "icon",
+                                                    color: "primary"
+                                                  },
+                                                  slot: "activator"
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("visibility")
+                                                  ])
+                                                ],
+                                                1
+                                              ),
+                                              _c("span", [
+                                                _vm._v(
+                                                  _vm._s(_vm.$t("common.see"))
+                                                )
+                                              ])
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _c(
+                                        "v-tooltip",
+                                        { attrs: { top: "top" } },
+                                        [
+                                          props.item.gotInvite
+                                            ? _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: {
+                                                    slot: "activator",
+                                                    icon: "icon",
+                                                    dark: "dark",
+                                                    color: "green"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.acceptInvite(
+                                                        props.index,
+                                                        props.item.rid
+                                                      )
+                                                    }
+                                                  },
+                                                  slot: "activator"
+                                                },
+                                                [
+                                                  _c("v-icon", [_vm._v("done")])
+                                                ],
+                                                1
+                                              )
+                                            : _vm._e(),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.$t("resume.acceptInvite")
+                                              )
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      ),
+                                      _c(
+                                        "v-tooltip",
+                                        { attrs: { top: "top" } },
+                                        [
+                                          props.item.gotInvite
+                                            ? _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: {
+                                                    slot: "activator",
+                                                    icon: "icon",
+                                                    dark: "dark",
+                                                    color: "red"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.refuseInvite(
+                                                        props.index,
+                                                        props.item.rid
+                                                      )
+                                                    }
+                                                  },
+                                                  slot: "activator"
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("clear")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            : _vm._e(),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.$t("resume.refuseInvite")
+                                              )
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ])
+                        })
+                      : _vm._e()
                   ],
                   1
                 )
@@ -50305,7 +51384,8 @@ var render = function() {
           )
         ],
         1
-      )
+      ),
+      _c("p-footer")
     ],
     1
   )
@@ -50317,17 +51397,17 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-62123e40", esExports)
+    require("vue-hot-reload-api")      .rerender("data-v-04e967f1", esExports)
   }
 }
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Recruit_vue__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46d67f17_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Recruit_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_Recruit_vue__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_46d67f17_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_Recruit_vue__ = __webpack_require__(80);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -50373,7 +51453,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50413,18 +51493,12 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        items: [],
+        items: null,
         loading: false
     }),
     activated() {
@@ -50470,6 +51544,7 @@ if (false) {(function () {
                 .catch(e => this.errHandler(e))
         },
         deleteRecruit(id) {
+            if (!confirm(this.$t('alert.sureDelete'))) return
             this.loading = true
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/api/recruit/delete/${id}`, {})
                 .then(response => {
@@ -50484,7 +51559,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50493,10 +51568,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
     [
       _c(
-        "v-content",
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
             "v-layout",
@@ -50528,191 +51604,150 @@ var render = function() {
                       ],
                       1
                     ),
-                    _c(
-                      "v-card",
-                      [
-                        _c(
-                          "v-list",
-                          { attrs: { "two-line": "" } },
+                    _vm.items
+                      ? _c(
+                          "v-card",
                           [
-                            _vm._l(_vm.items, function(item, index) {
-                              return [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "no-decoration",
-                                    attrs: {
-                                      to: { path: "recruit/edit/" + item.id }
-                                    }
-                                  },
-                                  [
+                            _c(
+                              "v-list",
+                              { attrs: { "two-line": "" } },
+                              [
+                                _vm._l(_vm.items, function(item, index) {
+                                  return [
                                     _c(
-                                      "v-list-tile",
+                                      "router-link",
                                       {
-                                        key: item.title,
-                                        attrs: { avatar: "", ripple: "" }
+                                        staticClass: "no-decoration",
+                                        attrs: {
+                                          to: {
+                                            path: "recruit/edit/" + item.id
+                                          }
+                                        }
                                       },
                                       [
                                         _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  item.title ||
-                                                    _vm.$t(
-                                                      "recruit.notCompleted"
-                                                    )
-                                                )
-                                              )
-                                            ]),
-                                            _c(
-                                              "v-list-tile-sub-title",
-                                              {
-                                                staticClass:
-                                                  "grey--text text--darken-4"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    item.jobname ||
-                                                      _vm.$t(
-                                                        "recruit.notCompleted"
-                                                      )
-                                                  )
-                                                )
-                                              ]
-                                            ),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  _vm.$t("recruit.salary")
-                                                ) +
-                                                  ": " +
-                                                  _vm._s(item.dpay || "0") +
-                                                  " ~ " +
-                                                  _vm._s(item.upay || "0")
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        ),
-                                        _c(
-                                          "v-list-tile-action",
+                                          "v-list-tile",
+                                          {
+                                            key: item.title,
+                                            attrs: { avatar: "", ripple: "" }
+                                          },
                                           [
                                             _c(
-                                              "router-link",
-                                              {
-                                                staticClass: "no-decoration",
-                                                attrs: {
-                                                  to: {
-                                                    path:
-                                                      "recruit/match/" + item.id
-                                                  }
-                                                }
-                                              },
+                                              "v-list-tile-content",
                                               [
-                                                _c(
-                                                  "v-tooltip",
-                                                  { attrs: { top: "top" } },
-                                                  [
-                                                    _c(
-                                                      "v-btn",
-                                                      {
-                                                        attrs: {
-                                                          slot: "activator",
-                                                          flat: "flat",
-                                                          icon: "icon",
-                                                          dark: "dark",
-                                                          color: "primary"
-                                                        },
-                                                        slot: "activator"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "v-icon",
-                                                          {
-                                                            attrs: {
-                                                              color: item.active
-                                                                ? "teal"
-                                                                : "grey"
-                                                            }
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "chat_bubble"
-                                                            )
-                                                          ]
-                                                        )
-                                                      ],
-                                                      1
-                                                    ),
-                                                    _c("span", [
-                                                      _vm._v("配對結果 / 新進履歷")
-                                                    ])
-                                                  ],
-                                                  1
-                                                )
-                                              ],
-                                              1
-                                            ),
-                                            _c(
-                                              "v-tooltip",
-                                              { attrs: { top: "top" } },
-                                              [
-                                                _c(
-                                                  "v-btn",
-                                                  {
-                                                    attrs: {
-                                                      slot: "activator",
-                                                      flat: "flat",
-                                                      icon: "icon",
-                                                      dark: "dark",
-                                                      color: "red"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        _vm.deleteRecruit(
-                                                          item.id
-                                                        )
-                                                      }
-                                                    },
-                                                    slot: "activator"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "v-icon",
-                                                      {
-                                                        attrs: { color: "red" }
-                                                      },
-                                                      [_vm._v("delete")]
-                                                    )
-                                                  ],
-                                                  1
-                                                ),
-                                                _c("span", [
+                                                _c("v-list-tile-title", [
                                                   _vm._v(
                                                     _vm._s(
-                                                      _vm.$t("common.delete")
+                                                      item.title ||
+                                                        _vm.$t(
+                                                          "recruit.notCompleted"
+                                                        )
                                                     )
+                                                  )
+                                                ]),
+                                                _c(
+                                                  "v-list-tile-sub-title",
+                                                  {
+                                                    staticClass:
+                                                      "grey--text text--darken-4"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.jobname ||
+                                                          _vm.$t(
+                                                            "recruit.notCompleted"
+                                                          )
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _c("v-list-tile-sub-title", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.$t("recruit.salary")
+                                                    ) +
+                                                      ": " +
+                                                      _vm._s(item.dpay || "0") +
+                                                      " ~ " +
+                                                      _vm._s(item.upay || "0")
                                                   )
                                                 ])
                                               ],
                                               1
                                             ),
                                             _c(
-                                              "router-link",
-                                              {
-                                                staticClass: "no-decoration",
-                                                attrs: {
-                                                  to: {
-                                                    path:
-                                                      "recruit/history/" +
-                                                      item.id
-                                                  }
-                                                }
-                                              },
+                                              "v-list-tile-action",
                                               [
+                                                _c(
+                                                  "router-link",
+                                                  {
+                                                    staticClass:
+                                                      "no-decoration",
+                                                    attrs: {
+                                                      to: {
+                                                        name: "RecruitMatch",
+                                                        params: { id: item.id }
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "v-tooltip",
+                                                      { attrs: { top: "top" } },
+                                                      [
+                                                        _c(
+                                                          "v-btn",
+                                                          {
+                                                            attrs: {
+                                                              slot: "activator",
+                                                              flat: "flat",
+                                                              icon: "icon",
+                                                              dark: "dark",
+                                                              color: "primary"
+                                                            },
+                                                            slot: "activator"
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "v-icon",
+                                                              {
+                                                                attrs: {
+                                                                  color: item.active
+                                                                    ? "teal"
+                                                                    : "grey"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "chat_bubble"
+                                                                )
+                                                              ]
+                                                            )
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              _vm.$t(
+                                                                "recruit.match"
+                                                              )
+                                                            ) +
+                                                              " / " +
+                                                              _vm._s(
+                                                                _vm.$t(
+                                                                  "recruit.manageRecord"
+                                                                )
+                                                              )
+                                                          )
+                                                        ])
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                ),
                                                 _c(
                                                   "v-tooltip",
                                                   { attrs: { top: "top" } },
@@ -50727,6 +51762,15 @@ var render = function() {
                                                           dark: "dark",
                                                           color: "red"
                                                         },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            _vm.deleteRecruit(
+                                                              item.id
+                                                            )
+                                                          }
+                                                        },
                                                         slot: "activator"
                                                       },
                                                       [
@@ -50737,12 +51781,20 @@ var render = function() {
                                                               color: "red"
                                                             }
                                                           },
-                                                          [_vm._v("check")]
+                                                          [_vm._v("delete")]
                                                         )
                                                       ],
                                                       1
                                                     ),
-                                                    _c("span", [_vm._v("歷史紀錄")])
+                                                    _c("span", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.$t(
+                                                            "common.delete"
+                                                          )
+                                                        )
+                                                      )
+                                                    ])
                                                   ],
                                                   1
                                                 )
@@ -50751,24 +51803,22 @@ var render = function() {
                                             )
                                           ],
                                           1
-                                        )
+                                        ),
+                                        index + 1 < _vm.items.length
+                                          ? _c("v-divider", { key: item.id })
+                                          : _vm._e()
                                       ],
                                       1
-                                    ),
-                                    index + 1 < _vm.items.length
-                                      ? _c("v-divider", { key: item.id })
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            })
+                                    )
+                                  ]
+                                })
+                              ],
+                              2
+                            )
                           ],
-                          2
+                          1
                         )
-                      ],
-                      1
-                    )
+                      : _vm._e()
                   ],
                   1
                 )
@@ -50796,12 +51846,12 @@ if (false) {
 }
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitShow_vue__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_008ea034_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitShow_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitShow_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_008ea034_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitShow_vue__ = __webpack_require__(83);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -50847,7 +51897,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50889,25 +51939,12 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        recruit: {
-            title: '',
-            jobname: '',
-            jobtype: '',
-            lang: '',
-            upay: null,
-            dpay: null,
-            jobinfo: '',
-            jobrequire: '',
-            benefits: '',
-            contact: '',
-            is_complete: ''
-        },
+        recruit: null,
         loading: false
     }),
     activated() {
@@ -50931,6 +51968,8 @@ if (false) {(function () {
                     console.log(response.data)
                     if (response.data.stat) {
                         this.recruit = response.data.data
+                    } else {
+                        this.showDialog(this.$t('recruit.notExist'))
                     }
                 })
                 .catch(e => this.errHandler(e))
@@ -50939,7 +51978,7 @@ if (false) {(function () {
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/throw`, {rid: this.$route.params.id})
                 .then(response => {
                     console.log('Throw Result', response.data)
-                    let msg = response.data.stat ? this.$t('recruit.throwSuccess') : this.$t('recruit.throwFail')
+                    let msg = response.data.stat ? this.$t('alert.submitSuccess') : this.$t('alert.submitFail')
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))
@@ -50949,7 +51988,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50958,10 +51997,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
     [
       _c(
-        "v-content",
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
             "v-layout",
@@ -50974,139 +52014,156 @@ var render = function() {
             [
               _c("v-flex", { attrs: { xs0: "xs0" } }),
               _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
-                _c("section", [
-                  _c(
-                    "p",
-                    { staticClass: "page-title" },
-                    [
-                      _vm._v(_vm._s(_vm.recruit.title)),
+                _vm.recruit
+                  ? _c("section", [
                       _c(
-                        "v-btn",
-                        {
-                          staticClass: "hidden right hide",
-                          attrs: {
-                            color: "primary",
-                            loading: _vm.loading,
-                            disabled: _vm.loading
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.$router.push({ name: "Recruit" })
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("common.back")))]
-                      ),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { large: "large", color: "yellow" },
-                          on: { click: _vm.throwResume }
-                        },
-                        [_c("v-icon", [_vm._v("receipt")]), _vm._v(" 投履歷")],
+                        "p",
+                        { staticClass: "page-title" },
+                        [
+                          _vm._v(_vm._s(_vm.recruit.title)),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "hidden right hide",
+                              attrs: {
+                                color: "primary",
+                                loading: _vm.loading,
+                                disabled: _vm.loading
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.$router.push({ name: "Recruit" })
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.$t("common.back")))]
+                          ),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { large: "large", color: "yellow" },
+                              on: { click: _vm.throwResume }
+                            },
+                            [
+                              _c("v-icon", [_vm._v("receipt")]),
+                              _vm._v(" " + _vm._s(_vm.$t("recruit.throw")))
+                            ],
+                            1
+                          )
+                        ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _c("div", { staticClass: "recruit-edit-field" }),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("recruit.JobOpening")))
-                  ]),
-                  _c(
-                    "div",
-                    { staticClass: "recruit-edit-field" },
-                    [
-                      _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("recruit.jobName")) +
-                              ": " +
-                              _vm._s(
-                                _vm.recruit.jobname ||
-                                  _vm.$t("recruit.notCompleted")
-                              )
+                      ),
+                      _c("div", { staticClass: "recruit-edit-field" }),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("recruit.JobOpening")))
+                      ]),
+                      _c(
+                        "div",
+                        { staticClass: "recruit-edit-field" },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs12: "xs12", md6: "md6" } },
+                            [
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("recruit.jobName")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.recruit.jobname ||
+                                        _vm.$t("recruit.notCompleted")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("recruit.jobType")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.recruit.jobtype === 0
+                                        ? _vm.$t("recruit.partTime")
+                                        : _vm.$t("recruit.fullTime")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("recruit.requireLanguage")) +
+                                    ": " +
+                                    _vm._s(
+                                      _vm.recruit.lang ||
+                                        _vm.$t("recruit.notCompleted")
+                                    )
+                                )
+                              ]),
+                              _c("p", { staticClass: "recruit-show-info" }, [
+                                _vm._v(
+                                  _vm._s(_vm.$t("recruit.salary")) +
+                                    ": " +
+                                    _vm._s(_vm.recruit.dpay) +
+                                    " ~ " +
+                                    _vm._s(_vm.recruit.upay)
+                                )
+                              ])
+                            ]
                           )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("recruit.jobType")) +
-                              ": " +
-                              _vm._s(
-                                _vm.recruit.jobtype === 0
-                                  ? _vm.$t("recruit.partTime")
-                                  : _vm.$t("recruit.fullTime")
-                              )
+                        ],
+                        1
+                      ),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("recruit.jobDescription")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.recruit.jobinfo ||
+                              _vm.$t("recruit.notCompleted")
                           )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("recruit.requireLanguage")) +
-                              ": " +
-                              _vm._s(
-                                _vm.recruit.lang ||
-                                  _vm.$t("recruit.notCompleted")
-                              )
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("recruit.jobRequire")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.recruit.jobrequire ||
+                              _vm.$t("recruit.notCompleted")
                           )
-                        ]),
-                        _c("p", { staticClass: "recruit-show-info" }, [
-                          _vm._v(
-                            _vm._s(_vm.$t("recruit.salary")) +
-                              ": " +
-                              _vm._s(_vm.recruit.dpay) +
-                              " ~ " +
-                              _vm._s(_vm.recruit.upay)
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("recruit.benefits")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.recruit.benefits ||
+                              _vm.$t("recruit.notCompleted")
                           )
-                        ])
-                      ])
-                    ],
-                    1
-                  ),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("recruit.jobDescription")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: { innerHTML: _vm._s(_vm.recruit.jobinfo) }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("recruit.jobRequire")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: {
-                      innerHTML: _vm._s(
-                        _vm.recruit.jobrequire || _vm.$t("recruit.notCompleted")
-                      )
-                    }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("recruit.benefits")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: {
-                      innerHTML: _vm._s(
-                        _vm.recruit.benefits || _vm.$t("recruit.notCompleted")
-                      )
-                    }
-                  }),
-                  _c("p"),
-                  _c("p", { staticClass: "recruit-show-title" }, [
-                    _vm._v(_vm._s(_vm.$t("recruit.contact")))
-                  ]),
-                  _c("p", {
-                    staticClass: "recruit-edit-content ql-editor",
-                    domProps: {
-                      innerHTML: _vm._s(
-                        _vm.recruit.contact || _vm.$t("recruit.notCompleted")
-                      )
-                    }
-                  }),
-                  _c("p")
-                ])
+                        }
+                      }),
+                      _c("p"),
+                      _c("p", { staticClass: "recruit-show-title" }, [
+                        _vm._v(_vm._s(_vm.$t("recruit.contact")))
+                      ]),
+                      _c("p", {
+                        staticClass: "recruit-edit-content ql-editor",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.recruit.contact ||
+                              _vm.$t("recruit.notCompleted")
+                          )
+                        }
+                      }),
+                      _c("p")
+                    ])
+                  : _vm._e()
               ]),
               _c("v-flex", { attrs: { xs0: "xs0" } })
             ],
@@ -51114,8 +52171,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _c("p-footer")
+      )
     ],
     1
   )
@@ -51132,12 +52188,12 @@ if (false) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitEdit_vue__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_743de4c1_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitEdit_vue__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitEdit_vue__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_743de4c1_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitEdit_vue__ = __webpack_require__(86);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -51183,7 +52239,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51305,6 +52361,13 @@ if (false) {(function () {
             contact: '',
             is_complete: ''
         },
+        jobList: [
+            {text: '網頁工程師', value: '網頁工程師'},
+            {text: '電機工程技術員', value: '電機工程技術員'},
+            {text: '心理學研究人員', value: '心理學研究人員'},
+            {text: '會計師', value: '會計師'},
+            {text: '金融營業員', value: '金融營業員'}
+        ],
         edit: {
             field: false,
             jobinfo: false,
@@ -51389,7 +52452,7 @@ if (false) {(function () {
                     let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = this.$t('recruit.dataCompleted')
+                        if (response.data.is_complete) msg = this.$t('alert.dataCompleted')
                     }
                     this.showDialog(msg)
                 })
@@ -51400,7 +52463,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51412,298 +52475,325 @@ var render = function() {
     "v-content",
     [
       _c(
-        "v-layout",
-        {
-          attrs: {
-            row: "row",
-            "justify-space-between": "justify-space-between"
-          }
-        },
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
-          _c("v-flex", { attrs: { xs0: "xs0" } }),
-          _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
-            _c(
-              "section",
-              { staticClass: "mb-5" },
-              [
+          _c(
+            "v-layout",
+            {
+              attrs: {
+                row: "row",
+                "justify-space-between": "justify-space-between"
+              }
+            },
+            [
+              _c("v-flex", { attrs: { xs0: "xs0" } }),
+              _c("v-flex", { attrs: { xs10: "xs10", lg6: "lg6" } }, [
                 _c(
-                  "v-breadcrumbs",
-                  { attrs: { divider: "/" } },
-                  _vm._l(_vm.footprint, function(item) {
-                    return _c(
-                      "v-breadcrumbs-item",
-                      { key: item.text, attrs: { disabled: item.disabled } },
-                      [_vm._v(_vm._s(item.text))]
-                    )
-                  })
-                ),
-                _c(
-                  "p",
-                  { staticClass: "page-title" },
+                  "section",
+                  { staticClass: "mb-5" },
                   [
-                    _vm._v(
-                      _vm._s(_vm.$t("recruit.JobOpening")) +
-                        " (" +
-                        _vm._s(_vm.$t("recruit.completeness")) +
-                        " " +
-                        _vm._s(_vm.recruit.is_complete ? "O" : "X") +
-                        ")"
+                    _c(
+                      "v-breadcrumbs",
+                      { attrs: { divider: "/" } },
+                      _vm._l(_vm.footprint, function(item) {
+                        return _c(
+                          "v-breadcrumbs-item",
+                          {
+                            key: item.text,
+                            attrs: { disabled: item.disabled }
+                          },
+                          [_vm._v(_vm._s(item.text))]
+                        )
+                      })
                     ),
                     _c(
-                      "v-btn",
-                      {
-                        staticClass: "right",
-                        attrs: { color: "primary" },
-                        on: {
-                          click: function($event) {
-                            _vm.$router.push({ name: "Recruit" })
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("common.back")))]
-                    )
-                  ],
-                  1
-                ),
-                _c(
-                  "p",
-                  { staticClass: "recruit-edit-title" },
-                  [
-                    _vm._v(_vm._s(_vm.$t("recruit.JobOpening"))),
-                    !_vm.edit.field
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "white--text",
-                            attrs: {
-                              flat: "flat",
-                              icon: "icon",
-                              color: "primary"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.field = true
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("edit")])],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm.edit.field
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "red"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.field = false
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("clear")])],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm.edit.field
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "green",
-                              loading: _vm.loading,
-                              disabled: _vm.loading
-                            },
-                            on: { click: _vm.saveField }
-                          },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                !_vm.edit.field
-                  ? _c(
-                      "div",
-                      { staticClass: "recruit-edit-field" },
+                      "p",
+                      { staticClass: "page-title" },
                       [
-                        _c("v-flex", { attrs: { xs12: "xs12", md6: "md6" } }, [
-                          _c("p", { staticClass: "recruit-show-info" }, [
-                            _vm._v(
-                              _vm._s(_vm.$t("recruit.jobTitle")) +
-                                ": " +
-                                _vm._s(
-                                  _vm.recruit.title ||
-                                    _vm.$t("recruit.notCompleted")
-                                )
-                            )
-                          ]),
-                          _c("p", { staticClass: "recruit-show-info" }, [
-                            _vm._v(
-                              _vm._s(_vm.$t("recruit.jobName")) +
-                                ": " +
-                                _vm._s(
-                                  _vm.recruit.jobname ||
-                                    _vm.$t("recruit.notCompleted")
-                                )
-                            )
-                          ]),
-                          _c("p", { staticClass: "recruit-show-info" }, [
-                            _vm._v(
-                              _vm._s(_vm.$t("recruit.jobType")) +
-                                ": " +
-                                _vm._s(
-                                  _vm.recruit.jobtype === 0
-                                    ? _vm.$t("recruit.partTime")
-                                    : _vm.$t("recruit.fullTime")
-                                )
-                            )
-                          ]),
-                          _c("p", { staticClass: "recruit-show-info" }, [
-                            _vm._v(
-                              _vm._s(_vm.$t("recruit.requireLanguage")) +
-                                ": " +
-                                _vm._s(
-                                  _vm.recruit.lang ||
-                                    _vm.$t("recruit.notCompleted")
-                                )
-                            )
-                          ]),
-                          _c("p", { staticClass: "recruit-show-info" }, [
-                            _vm._v(
-                              _vm._s(_vm.$t("recruit.salary")) +
-                                ": " +
-                                _vm._s(_vm.recruit.dpay) +
-                                " ~ " +
-                                _vm._s(_vm.recruit.upay)
-                            )
-                          ])
-                        ])
+                        _vm._v(
+                          _vm._s(_vm.$t("recruit.JobOpening")) +
+                            " (" +
+                            _vm._s(_vm.$t("recruit.completeness")) +
+                            " " +
+                            _vm._s(_vm.recruit.is_complete ? "O" : "X") +
+                            ")"
+                        ),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "right",
+                            attrs: { color: "primary" },
+                            on: {
+                              click: function($event) {
+                                _vm.$router.push({ name: "Recruit" })
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("common.back")))]
+                        )
                       ],
                       1
-                    )
-                  : _vm._e(),
-                _vm.edit.field
-                  ? _c(
-                      "div",
-                      { staticClass: "recruit-edit-field" },
+                    ),
+                    _c(
+                      "p",
+                      { staticClass: "recruit-edit-title" },
                       [
-                        _c(
-                          "v-flex",
-                          { attrs: { xs12: "xs12", md6: "md6" } },
+                        _vm._v(_vm._s(_vm.$t("recruit.JobOpening"))),
+                        !_vm.edit.field
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "white--text",
+                                attrs: {
+                                  flat: "flat",
+                                  icon: "icon",
+                                  color: "primary"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.field = true
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("edit")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.field
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "red"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.field = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("clear")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.field
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "green",
+                                  loading: _vm.loading,
+                                  disabled: _vm.loading
+                                },
+                                on: { click: _vm.saveField }
+                              },
+                              [_c("v-icon", [_vm._v("done")])],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    !_vm.edit.field
+                      ? _c(
+                          "div",
+                          { staticClass: "recruit-edit-field" },
                           [
-                            _c("v-text-field", {
-                              attrs: {
-                                type: "text",
-                                label: '$t("recruit.jobTitle")'
-                              },
-                              model: {
-                                value: _vm.recruit.title,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.recruit,
-                                    "title",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "recruit.title"
-                              }
-                            }),
-                            _c("v-text-field", {
-                              attrs: {
-                                type: "text",
-                                label: '$t("recruit.jobName")'
-                              },
-                              model: {
-                                value: _vm.recruit.jobname,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.recruit,
-                                    "jobname",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "recruit.jobname"
-                              }
-                            }),
-                            _c("v-text-field", {
-                              attrs: {
-                                type: "text",
-                                label: '$t("recruit.requireLanguage")'
-                              },
-                              model: {
-                                value: _vm.recruit.lang,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.recruit,
-                                    "lang",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "recruit.lang"
-                              }
-                            }),
                             _c(
-                              "v-layout",
-                              { attrs: { wrap: "wrap" } },
+                              "v-flex",
+                              { attrs: { xs12: "xs12", md6: "md6" } },
                               [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs5: "xs5" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: { type: "number", label: "最低薪資" },
-                                      model: {
-                                        value: _vm.recruit.dpay,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.recruit,
-                                            "dpay",
-                                            typeof $$v === "string"
-                                              ? $$v.trim()
-                                              : $$v
-                                          )
-                                        },
-                                        expression: "recruit.dpay"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _c("v-flex", { attrs: { xs0: "xs0" } }, [
-                                  _vm._v("~")
+                                _c("p", { staticClass: "recruit-show-info" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$t("recruit.jobTitle")) +
+                                      ": " +
+                                      _vm._s(
+                                        _vm.recruit.title ||
+                                          _vm.$t("recruit.notCompleted")
+                                      )
+                                  )
                                 ]),
+                                _c("p", { staticClass: "recruit-show-info" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$t("recruit.jobName")) +
+                                      ": " +
+                                      _vm._s(
+                                        _vm.recruit.jobname ||
+                                          _vm.$t("recruit.notCompleted")
+                                      )
+                                  )
+                                ]),
+                                _c("p", { staticClass: "recruit-show-info" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$t("recruit.jobType")) +
+                                      ": " +
+                                      _vm._s(
+                                        _vm.recruit.jobtype === 0
+                                          ? _vm.$t("recruit.partTime")
+                                          : _vm.$t("recruit.fullTime")
+                                      )
+                                  )
+                                ]),
+                                _c("p", { staticClass: "recruit-show-info" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$t("recruit.requireLanguage")) +
+                                      ": " +
+                                      _vm._s(
+                                        _vm.recruit.lang ||
+                                          _vm.$t("recruit.notCompleted")
+                                      )
+                                  )
+                                ]),
+                                _c("p", { staticClass: "recruit-show-info" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.$t("recruit.salary")) +
+                                      ": " +
+                                      _vm._s(_vm.recruit.dpay) +
+                                      " ~ " +
+                                      _vm._s(_vm.recruit.upay)
+                                  )
+                                ])
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.edit.field
+                      ? _c(
+                          "div",
+                          { staticClass: "recruit-edit-field" },
+                          [
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "xs12", md6: "md6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "text",
+                                    label: '$t("recruit.jobTitle")'
+                                  },
+                                  model: {
+                                    value: _vm.recruit.title,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.recruit,
+                                        "title",
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "recruit.title"
+                                  }
+                                }),
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.jobList,
+                                    label: _vm.$t("recruit.jobName"),
+                                    "single-line": "single-line",
+                                    bottom: "bottom"
+                                  },
+                                  model: {
+                                    value: _vm.recruit.jobname,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.recruit, "jobname", $$v)
+                                    },
+                                    expression: "recruit.jobname"
+                                  }
+                                }),
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "text",
+                                    label: '$t("recruit.requireLanguage")'
+                                  },
+                                  model: {
+                                    value: _vm.recruit.lang,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.recruit,
+                                        "lang",
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "recruit.lang"
+                                  }
+                                }),
                                 _c(
-                                  "v-flex",
-                                  { attrs: { xs5: "xs5" } },
+                                  "v-layout",
+                                  { attrs: { wrap: "wrap" } },
                                   [
-                                    _c("v-text-field", {
-                                      attrs: { type: "number", label: "最高薪資" },
-                                      model: {
-                                        value: _vm.recruit.upay,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.recruit,
-                                            "upay",
-                                            typeof $$v === "string"
-                                              ? $$v.trim()
-                                              : $$v
-                                          )
-                                        },
-                                        expression: "recruit.upay"
-                                      }
-                                    })
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs5: "xs5" } },
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            type: "number",
+                                            label: _vm.$t("recruit.dpay")
+                                          },
+                                          model: {
+                                            value: _vm.recruit.dpay,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.recruit,
+                                                "dpay",
+                                                typeof $$v === "string"
+                                                  ? $$v.trim()
+                                                  : $$v
+                                              )
+                                            },
+                                            expression: "recruit.dpay"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _c(
+                                      "v-flex",
+                                      {
+                                        staticStyle: {},
+                                        attrs: { xs0: "xs0" }
+                                      },
+                                      [_vm._v("~")]
+                                    ),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs5: "xs5" } },
+                                      [
+                                        _c("v-text-field", {
+                                          attrs: {
+                                            type: "number",
+                                            label: _vm.$t("recruit.upay")
+                                          },
+                                          model: {
+                                            value: _vm.recruit.upay,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                _vm.recruit,
+                                                "upay",
+                                                typeof $$v === "string"
+                                                  ? $$v.trim()
+                                                  : $$v
+                                              )
+                                            },
+                                            expression: "recruit.upay"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
@@ -51713,383 +52803,385 @@ var render = function() {
                           ],
                           1
                         )
+                      : _vm._e(),
+                    _c(
+                      "p",
+                      { staticClass: "recruit-edit-title" },
+                      [
+                        _vm._v(_vm._s(_vm.$t("recruit.jobinfo"))),
+                        !_vm.edit.jobinfo
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "white--text",
+                                attrs: {
+                                  flat: "flat",
+                                  icon: "icon",
+                                  color: "primary"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.jobinfo = true
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("edit")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.jobinfo
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "red"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.jobinfo = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("clear")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.jobinfo
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "green",
+                                  loading: _vm.loading,
+                                  disabled: _vm.loading
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.save("jobinfo")
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("done")])],
+                              1
+                            )
+                          : _vm._e()
                       ],
                       1
-                    )
-                  : _vm._e(),
-                _c(
-                  "p",
-                  { staticClass: "recruit-edit-title" },
-                  [
-                    _vm._v(_vm._s(_vm.$t("recruit.jobDescription"))),
+                    ),
                     !_vm.edit.jobinfo
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "white--text",
-                            attrs: {
-                              flat: "flat",
-                              icon: "icon",
-                              color: "primary"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.jobinfo = true
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("edit")])],
-                          1
-                        )
+                      ? _c("p", {
+                          staticClass: "recruit-edit-content ql-editor",
+                          domProps: { innerHTML: _vm._s(_vm.recruit.jobinfo) }
+                        })
                       : _vm._e(),
+                    _c("p"),
                     _vm.edit.jobinfo
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "red"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.jobinfo = false
-                              }
-                            }
+                      ? _c("quill-editor", {
+                          attrs: {
+                            content: _vm.recruit.jobinfo,
+                            options: _vm.editorOption
                           },
-                          [_c("v-icon", [_vm._v("clear")])],
-                          1
-                        )
+                          on: {
+                            change: function($event) {
+                              _vm.onEditorChange($event, "jobinfo")
+                            }
+                          }
+                        })
                       : _vm._e(),
-                    _vm.edit.jobinfo
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "green",
-                              loading: _vm.loading,
-                              disabled: _vm.loading
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.save("jobinfo")
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                !_vm.edit.jobinfo
-                  ? _c("p", {
-                      staticClass: "recruit-edit-content ql-editor",
-                      domProps: { innerHTML: _vm._s(_vm.recruit.jobinfo) }
-                    })
-                  : _vm._e(),
-                _c("p"),
-                _vm.edit.jobinfo
-                  ? _c("quill-editor", {
-                      attrs: {
-                        content: _vm.recruit.jobinfo,
-                        options: _vm.editorOption
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.onEditorChange($event, "jobinfo")
-                        }
-                      }
-                    })
-                  : _vm._e(),
-                _c(
-                  "p",
-                  { staticClass: "recruit-edit-title" },
-                  [
-                    _vm._v(_vm._s(_vm.$t("recruit.qualifications"))),
+                    _c(
+                      "p",
+                      { staticClass: "recruit-edit-title" },
+                      [
+                        _vm._v(_vm._s(_vm.$t("recruit.jobRequire"))),
+                        !_vm.edit.jobrequire
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "white--text",
+                                attrs: {
+                                  flat: "flat",
+                                  icon: "icon",
+                                  color: "primary"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.jobrequire = true
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("edit")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.jobrequire
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "red"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.jobrequire = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("clear")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.jobrequire
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "green",
+                                  loading: _vm.loading,
+                                  disabled: _vm.loading
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.save("jobrequire")
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("done")])],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    ),
                     !_vm.edit.jobrequire
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "white--text",
-                            attrs: {
-                              flat: "flat",
-                              icon: "icon",
-                              color: "primary"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.jobrequire = true
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("edit")])],
-                          1
-                        )
+                      ? _c("p", {
+                          staticClass: "recruit-edit-content ql-editor",
+                          domProps: {
+                            innerHTML: _vm._s(_vm.recruit.jobrequire)
+                          }
+                        })
                       : _vm._e(),
+                    _c("p"),
                     _vm.edit.jobrequire
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "red"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.jobrequire = false
-                              }
-                            }
+                      ? _c("quill-editor", {
+                          attrs: {
+                            content: _vm.recruit.jobrequire,
+                            options: _vm.editorOption
                           },
-                          [_c("v-icon", [_vm._v("clear")])],
-                          1
-                        )
+                          on: {
+                            change: function($event) {
+                              _vm.onEditorChange($event, "jobrequire")
+                            }
+                          }
+                        })
                       : _vm._e(),
-                    _vm.edit.jobrequire
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "green",
-                              loading: _vm.loading,
-                              disabled: _vm.loading
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.save("jobrequire")
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                !_vm.edit.jobrequire
-                  ? _c("p", {
-                      staticClass: "recruit-edit-content ql-editor",
-                      domProps: { innerHTML: _vm._s(_vm.recruit.jobrequire) }
-                    })
-                  : _vm._e(),
-                _c("p"),
-                _vm.edit.jobrequire
-                  ? _c("quill-editor", {
-                      attrs: {
-                        content: _vm.recruit.jobrequire,
-                        options: _vm.editorOption
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.onEditorChange($event, "jobrequire")
-                        }
-                      }
-                    })
-                  : _vm._e(),
-                _c(
-                  "p",
-                  { staticClass: "recruit-edit-title" },
-                  [
-                    _vm._v(_vm._s(_vm.$t("recruit.companyBenefits"))),
+                    _c(
+                      "p",
+                      { staticClass: "recruit-edit-title" },
+                      [
+                        _vm._v(_vm._s(_vm.$t("recruit.benefits"))),
+                        !_vm.edit.benefits
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "white--text",
+                                attrs: {
+                                  flat: "flat",
+                                  icon: "icon",
+                                  color: "primary"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.benefits = true
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("edit")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.benefits
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "red"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.benefits = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("clear")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.benefits
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "green",
+                                  loading: _vm.loading,
+                                  disabled: _vm.loading
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.save("benefits")
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("done")])],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    ),
                     !_vm.edit.benefits
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "white--text",
-                            attrs: {
-                              flat: "flat",
-                              icon: "icon",
-                              color: "primary"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.benefits = true
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("edit")])],
-                          1
-                        )
+                      ? _c("p", {
+                          staticClass: "recruit-edit-content ql-editor",
+                          domProps: { innerHTML: _vm._s(_vm.recruit.benefits) }
+                        })
                       : _vm._e(),
+                    _c("p"),
                     _vm.edit.benefits
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "red"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.benefits = false
-                              }
-                            }
+                      ? _c("quill-editor", {
+                          attrs: {
+                            content: _vm.recruit.benefits,
+                            options: _vm.editorOption
                           },
-                          [_c("v-icon", [_vm._v("clear")])],
-                          1
-                        )
+                          on: {
+                            change: function($event) {
+                              _vm.onEditorChange($event, "benefits")
+                            }
+                          }
+                        })
                       : _vm._e(),
-                    _vm.edit.benefits
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "green",
-                              loading: _vm.loading,
-                              disabled: _vm.loading
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.save("benefits")
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                !_vm.edit.benefits
-                  ? _c("p", {
-                      staticClass: "recruit-edit-content ql-editor",
-                      domProps: { innerHTML: _vm._s(_vm.recruit.benefits) }
-                    })
-                  : _vm._e(),
-                _c("p"),
-                _vm.edit.benefits
-                  ? _c("quill-editor", {
-                      attrs: {
-                        content: _vm.recruit.benefits,
-                        options: _vm.editorOption
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.onEditorChange($event, "benefits")
-                        }
-                      }
-                    })
-                  : _vm._e(),
-                _c(
-                  "p",
-                  { staticClass: "recruit-edit-title" },
-                  [
-                    _vm._v(_vm._s(_vm.$t("recruit.contactInform"))),
+                    _c(
+                      "p",
+                      { staticClass: "recruit-edit-title" },
+                      [
+                        _vm._v(_vm._s(_vm.$t("recruit.contact"))),
+                        !_vm.edit.contact
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "white--text",
+                                attrs: {
+                                  flat: "flat",
+                                  icon: "icon",
+                                  color: "primary"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.contact = true
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("edit")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.contact
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "red"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.edit.contact = false
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("clear")])],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm.edit.contact
+                          ? _c(
+                              "v-btn",
+                              {
+                                staticClass: "ml-4",
+                                attrs: {
+                                  fab: "fab",
+                                  dark: "dark",
+                                  small: "small",
+                                  color: "green",
+                                  loading: _vm.loading,
+                                  disabled: _vm.loading
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.save("contact")
+                                  }
+                                }
+                              },
+                              [_c("v-icon", [_vm._v("done")])],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    ),
                     !_vm.edit.contact
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "white--text",
-                            attrs: {
-                              flat: "flat",
-                              icon: "icon",
-                              color: "primary"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.contact = true
-                              }
-                            }
-                          },
-                          [_c("v-icon", [_vm._v("edit")])],
-                          1
-                        )
+                      ? _c("p", {
+                          staticClass: "recruit-edit-content ql-editor",
+                          domProps: { innerHTML: _vm._s(_vm.recruit.contact) }
+                        })
                       : _vm._e(),
+                    _c("p"),
                     _vm.edit.contact
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "red"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.edit.contact = false
-                              }
-                            }
+                      ? _c("quill-editor", {
+                          attrs: {
+                            content: _vm.recruit.contact,
+                            options: _vm.editorOption
                           },
-                          [_c("v-icon", [_vm._v("clear")])],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm.edit.contact
-                      ? _c(
-                          "v-btn",
-                          {
-                            staticClass: "ml-4",
-                            attrs: {
-                              fab: "fab",
-                              dark: "dark",
-                              small: "small",
-                              color: "green",
-                              loading: _vm.loading,
-                              disabled: _vm.loading
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.save("contact")
-                              }
+                          on: {
+                            change: function($event) {
+                              _vm.onEditorChange($event, "contact")
                             }
-                          },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        )
+                          }
+                        })
                       : _vm._e()
                   ],
                   1
-                ),
-                !_vm.edit.contact
-                  ? _c("p", {
-                      staticClass: "recruit-edit-content ql-editor",
-                      domProps: { innerHTML: _vm._s(_vm.recruit.contact) }
-                    })
-                  : _vm._e(),
-                _c("p"),
-                _vm.edit.contact
-                  ? _c("quill-editor", {
-                      attrs: {
-                        content: _vm.recruit.contact,
-                        options: _vm.editorOption
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.onEditorChange($event, "contact")
-                        }
-                      }
-                    })
-                  : _vm._e()
-              ],
-              1
-            )
-          ]),
-          _c("v-flex", { attrs: { xs0: "xs0" } })
+                )
+              ]),
+              _c("v-flex", { attrs: { xs0: "xs0" } })
+            ],
+            1
+          )
         ],
         1
       )
@@ -52109,12 +53201,12 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitHistory_vue__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_35a868a6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitHistory_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitMatch_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ac1d26c4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitMatch_vue__ = __webpack_require__(89);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -52130,14 +53222,14 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitHistory_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_35a868a6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitHistory_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_RecruitMatch_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ac1d26c4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_RecruitMatch_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\RecruitHistory.vue"
+Component.options.__file = "resources\\assets\\js\\components\\RecruitMatch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -52147,9 +53239,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-35a868a6", Component.options)
+    hotAPI.createRecord("data-v-ac1d26c4", Component.options)
   } else {
-    hotAPI.reload("data-v-35a868a6", Component.options)
+    hotAPI.reload("data-v-ac1d26c4", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52157,79 +53249,6 @@ if (false) {(function () {
 })()}
 
 /* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data: () => ({
-        items: [],
-        loading: false
-    }),
-    activated() {
-        this.getMatchResult()
-    },
-    methods: {
-        errHandler (e) {
-            console.log(e.message)
-            this.loading = false
-        },
-        showDialog(msg) {
-            this.$modal.show('dialog', {
-                title: this.$t('common.hint'),
-                text: msg,
-                buttons: [{ title: this.$t('common.close') }]
-            })
-        },
-        checkPermission() {
-            if (this.$root.user.userType !== 2 || !this.$root.user.emailState || !this.$root.user.verify) {
-                this.$router.push({name: 'Main'})
-            }
-        },
-        getMatchResult() {
-            this.checkPermission()
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/recruit/history', {rid: this.$route.params.id})
-                .then(response => {
-                    console.log('Match History', response.data)
-                    if (response.data.stat) {
-                        this.items = response.data.data
-                    }
-                })
-                .catch(e => this.errHandler(e))
-        }
-    }
-});
 
 
 /***/ }),
@@ -52237,189 +53256,24 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "v-content",
-        [
-          _c(
-            "v-layout",
-            { attrs: { row: "", "justify-space-between": "" } },
-            [
-              _c("v-flex", { attrs: { xs0: "" } }),
-              _c("v-flex", { attrs: { xs6: "" } }, [
-                _c(
-                  "section",
-                  [
-                    _c("div", { staticClass: "page-title" }, [_vm._v("投遞紀錄")]),
-                    _c(
-                      "v-card",
-                      [
-                        _c(
-                          "v-list",
-                          { attrs: { "two-line": "" } },
-                          [
-                            _vm._l(_vm.items, function(item, index) {
-                              return [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "no-decoration",
-                                    attrs: {
-                                      to: {
-                                        path:
-                                          "resume/" +
-                                          item.uid +
-                                          "?rid=" +
-                                          item.rid
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-tile",
-                                      {
-                                        key: item.title,
-                                        attrs: { avatar: "", ripple: "" }
-                                      },
-                                      [
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v(
-                                                _vm._s(item.title || "尚未填寫")
-                                              )
-                                            ]),
-                                            _c(
-                                              "v-list-tile-sub-title",
-                                              {
-                                                staticClass:
-                                                  "grey--text text--darken-4"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(item.jobname || "尚未填寫")
-                                                )
-                                              ]
-                                            ),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "薪資: " +
-                                                  _vm._s(item.dpay || "0") +
-                                                  " ~ " +
-                                                  _vm._s(item.upay || "0")
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    index + 1 < _vm.items.length
-                                      ? _c("v-divider", { key: item.id })
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            })
-                          ],
-                          2
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ]),
-              _c("v-flex", { attrs: { xs0: "" } })
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-35a868a6", esExports)
-  }
-}
-
-/***/ }),
-/* 89 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_stdMatch_vue__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3ff24a8e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_stdMatch_vue__ = __webpack_require__(91);
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-
-/* template */
-
-/* template functional */
-  var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_stdMatch_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3ff24a8e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_stdMatch_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\stdMatch.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ff24a8e", Component.options)
-  } else {
-    hotAPI.reload("data-v-3ff24a8e", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 90 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52449,267 +53303,18 @@ if (false) {(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
-        items: [],
-        loading: false
-    }),
-    activated() {
-        this.getMatchResult()
-    },
-    methods: {
-        errHandler (e) {
-            console.log(e.message)
-            this.loading = false
-        },
-        showDialog(msg) {
-            this.$modal.show('dialog', {
-                title: this.$t('common.hint'),
-                text: msg,
-                buttons: [{ title: this.$t('common.close') }]
-            })
-        },
-        checkPermission() {
-            if (this.$root.user.userType !== 1 || !this.$root.user.emailState) {
-                this.$router.push({name: 'Main'})
-            }
-        },
-        getMatchResult() {
-            this.checkPermission()
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/resume/match', {})
-                .then(response => {
-                    console.log('Match Result', response.data)
-                    if (response.data.stat) {
-                        this.items = response.data.data
-                    }
-                })
-                .catch(e => this.errHandler(e))
-        },
-        postNewRecruit() {
-            this.loading = true
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/recruit', {})
-                .then(response => {
-                    this.loading = false
-                    if (response.data.stat) {
-                        this.$router.push(`recruit/edit/${response.data.rid}`)
-                    }
-                })
-                .catch(e => this.errHandler(e))
-        }
-    }
-});
-
-
-/***/ }),
-/* 91 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "v-content",
-        [
-          _c(
-            "v-layout",
-            { attrs: { row: "", "justify-space-between": "" } },
-            [
-              _c("v-flex", { attrs: { xs0: "" } }),
-              _c("v-flex", { attrs: { xs6: "" } }, [
-                _c(
-                  "section",
-                  [
-                    _c("div", { staticClass: "page-title" }, [_vm._v("配對結果")]),
-                    _c(
-                      "v-card",
-                      [
-                        _c(
-                          "v-list",
-                          { attrs: { "two-line": "" } },
-                          [
-                            _vm._l(_vm.items, function(item, index) {
-                              return [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "no-decoration",
-                                    attrs: {
-                                      to: { path: "recruit/" + item.rid }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-tile",
-                                      {
-                                        key: item.title,
-                                        attrs: { avatar: "", ripple: "" }
-                                      },
-                                      [
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v(
-                                                _vm._s(item.title || "尚未填寫")
-                                              )
-                                            ]),
-                                            _c(
-                                              "v-list-tile-sub-title",
-                                              {
-                                                staticClass:
-                                                  "grey--text text--darken-4"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(item.jobname || "尚未填寫")
-                                                )
-                                              ]
-                                            ),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "薪資: " +
-                                                  _vm._s(item.dpay || "0") +
-                                                  " ~ " +
-                                                  _vm._s(item.upay || "0")
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    index + 1 < _vm.items.length
-                                      ? _c("v-divider", { key: item.id })
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            })
-                          ],
-                          2
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ]),
-              _c("v-flex", { attrs: { xs0: "" } })
-            ],
-            1
-          )
+        items: null,
+        matches: null,
+        showMatchBtn: true,
+        headers: [
+            {text: '求職者', value: 'name', align: 'left'},
+            {text: '性別', value: 'gender', align: 'left'},
+            {text: '年紀', value: 'age', align: 'left'},
+            {text: '背景', value: 'background', align: 'left'},
+            {text: '狀態', value: 'stat', align: 'left'},
+            {text: '操作紀錄', value: 'updated_at', align: 'left'},
+            {text: '動作', sortable: false, align: 'left'}
         ],
-        1
-      ),
-      _c("p-footer")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3ff24a8e", esExports)
-  }
-}
-
-/***/ }),
-/* 92 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_comMatch_vue__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_130a011b_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_comMatch_vue__ = __webpack_require__(94);
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-
-/* template */
-
-/* template functional */
-  var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_comMatch_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_130a011b_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_comMatch_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\comMatch.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-130a011b", Component.options)
-  } else {
-    hotAPI.reload("data-v-130a011b", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 93 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    data: () => ({
-        items: [],
         genderList: [],
         loading: false
     }),
@@ -52720,7 +53325,9 @@ if (false) {(function () {
         this.genderList.push(this.$t('gender.other'))
     },
     activated() {
-        this.getMatchResult()
+        this.getHistory()
+    },
+    computed: {
     },
     methods: {
         errHandler (e) {
@@ -52739,23 +53346,65 @@ if (false) {(function () {
                 this.$router.push({name: 'Main'})
             }
         },
-        getMatchResult() {
+        getHistory() {
             this.checkPermission()
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/recruit/history', {rid: this.$route.params.id})
+                .then(response => {
+                    console.log('History', response.data)
+                    if (response.data.stat) {
+                        this.items = response.data.data
+                        this.items.forEach(element => {
+                            element.updated_at = this.getDateDiff(element.updated_at)
+                            if (element.employeeCheck === 1 && element.employerCheck === 1) element.stat = '邀請已收到履歷回覆'
+                            else if (element.employeeCheck === -1 && element.employerCheck === 1) element.stat = '等待對方回應中'
+                            else if (element.employeeCheck === 0 && element.employerCheck === 1) element.stat = '尷尬'
+                        })
+                    }
+                })
+                .catch(e => this.errHandler(e))
+        },
+        getMatchResult() {
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/recruit/match', {rid: this.$route.params.id})
                 .then(response => {
                     console.log('Match Result', response.data)
                     if (response.data.stat) {
-                        this.items = response.data.data
+                        this.showMatchBtn = false
+                        this.matches = response.data.data
                     }
                 })
                 .catch(e => this.errHandler(e))
+        },
+        getDateDiff(dateTimeStamp) {
+            let minute = 60000
+            let hour = minute * 60
+            let day = hour * 24
+            let month = day * 30
+            let now = new Date().getTime()
+            dateTimeStamp = new Date(dateTimeStamp).getTime()
+            let diffValue = now - dateTimeStamp
+            if (diffValue < 0) return
+
+            let monthC = diffValue / month
+            let weekC = diffValue / (7 * day)
+            let dayC = diffValue / day
+            let hourC = diffValue / hour
+            let minC = diffValue / minute
+            let result = ''
+            if (monthC >= 1) result = '' + parseInt(monthC) + '月前'
+            else if (weekC >= 1) result = '' + parseInt(weekC) + '周前'
+            else if (dayC >= 1) result = '' + parseInt(dayC) + '天前'
+            else if (hourC >= 1) result = '' + parseInt(hourC) + '小时前'
+            else if (minC >= 1) result = '' + parseInt(minC) + '分钟前'
+            else result = '刚刚'
+
+            return result
         }
     }
 });
 
 
 /***/ }),
-/* 94 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52764,10 +53413,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-content",
     [
       _c(
-        "v-content",
+        "v-container",
+        { attrs: { fluid: "fluid", "fill-height": "fill-height" } },
         [
           _c(
             "v-layout",
@@ -52778,92 +53428,205 @@ var render = function() {
                 _c(
                   "section",
                   [
-                    _c("div", { staticClass: "page-title" }, [_vm._v("配對結果")]),
-                    _c(
-                      "v-card",
-                      [
-                        _c(
-                          "v-list",
-                          { attrs: { "two-line": "" } },
+                    _c("div", { staticClass: "page-title" }, [
+                      _vm._v(_vm._s(_vm.$t("recruit.match")))
+                    ]),
+                    _vm.showMatchBtn
+                      ? _c(
+                          "v-btn",
+                          {
+                            attrs: { color: "yellow" },
+                            on: { click: _vm.getMatchResult }
+                          },
                           [
-                            _vm._l(_vm.items, function(item, index) {
-                              return [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "no-decoration",
-                                    attrs: {
-                                      to: {
-                                        path:
-                                          "/resume/" +
-                                          item.uid +
-                                          "?rid" +
-                                          _vm.$router.params.id
-                                      }
-                                    }
-                                  },
-                                  [
+                            _c("v-icon", [_vm._v("done")]),
+                            _vm._v(_vm._s(_vm.$t("recruit.showMatch")))
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm.matches
+                      ? _c(
+                          "v-card",
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { "two-line": "" } },
+                              [
+                                _vm._l(_vm.matches, function(item, index) {
+                                  return [
                                     _c(
-                                      "v-list-tile",
+                                      "router-link",
                                       {
-                                        key: item.title,
-                                        attrs: { avatar: "", ripple: "" }
+                                        staticClass: "no-decoration",
+                                        attrs: {
+                                          to: {
+                                            path:
+                                              "/resume/" +
+                                              item.uid +
+                                              "?rid=" +
+                                              _vm.$route.params.id
+                                          }
+                                        }
                                       },
                                       [
                                         _c(
-                                          "v-list-tile-content",
+                                          "v-list-tile",
+                                          {
+                                            key: item.title,
+                                            attrs: { avatar: "", ripple: "" }
+                                          },
                                           [
-                                            _c("v-list-tile-title", [
-                                              _vm._v(
-                                                _vm._s(item.lastName) +
-                                                  "** · " +
-                                                  _vm._s(
-                                                    _vm.genderList[item.gender]
-                                                  ) +
-                                                  " · " +
-                                                  _vm._s(item.nation)
-                                              )
-                                            ]),
                                             _c(
-                                              "v-list-tile-sub-title",
-                                              {
-                                                staticClass:
-                                                  "grey--text text--darken-4"
-                                              },
+                                              "v-list-tile-content",
                                               [
-                                                _vm._v(
-                                                  _vm._s(item.birth) +
-                                                    _vm._s(
-                                                      _vm.$t("recruit.yearsOld")
+                                                _c("v-list-tile-title", [
+                                                  _vm._v(
+                                                    _vm._s(item.lastName) +
+                                                      "** · " +
+                                                      _vm._s(
+                                                        _vm.genderList[
+                                                          item.gender
+                                                        ]
+                                                      ) +
+                                                      " · " +
+                                                      _vm._s(item.nation)
+                                                  )
+                                                ]),
+                                                _c(
+                                                  "v-list-tile-sub-title",
+                                                  {
+                                                    staticClass:
+                                                      "grey--text text--darken-4"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(item.birth) +
+                                                        _vm._s(
+                                                          _vm.$t(
+                                                            "recruit.yearsOld"
+                                                          )
+                                                        )
                                                     )
-                                                )
-                                              ]
-                                            ),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                " " + _vm._s(item.background)
-                                              )
-                                            ])
+                                                  ]
+                                                ),
+                                                _c("v-list-tile-sub-title", [
+                                                  _vm._v(
+                                                    " " +
+                                                      _vm._s(item.background)
+                                                  )
+                                                ])
+                                              ],
+                                              1
+                                            )
                                           ],
                                           1
-                                        )
+                                        ),
+                                        index + 1 < _vm.matches.length
+                                          ? _c("v-divider", { key: item.id })
+                                          : _vm._e()
                                       ],
                                       1
-                                    ),
-                                    index + 1 < _vm.items.length
-                                      ? _c("v-divider", { key: item.id })
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            })
+                                    )
+                                  ]
+                                })
+                              ],
+                              2
+                            )
                           ],
-                          2
+                          1
                         )
-                      ],
-                      1
-                    )
+                      : _vm._e(),
+                    _c("div", { staticClass: "page-title" }, [
+                      _vm._v("徵才記錄管理")
+                    ]),
+                    _vm.items
+                      ? _c("v-data-table", {
+                          staticClass: "elevation-1",
+                          attrs: {
+                            headers: _vm.headers,
+                            items: _vm.items,
+                            "hide-actions": "hide-actions"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "items",
+                              fn: function(props) {
+                                return [
+                                  _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(_vm._s(props.item.lastName) + "**")
+                                  ]),
+                                  _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.genderList[props.item.gender])
+                                    )
+                                  ]),
+                                  _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(
+                                      _vm._s(props.item.birth) +
+                                        _vm._s(_vm.$t("recruit.yearsOld"))
+                                    )
+                                  ]),
+                                  _c("td", {
+                                    staticClass: "text-xs-left",
+                                    domProps: {
+                                      innerHTML: _vm._s(props.item.background)
+                                    }
+                                  }),
+                                  _c(
+                                    "td",
+                                    { staticClass: "text-xs-left green--text" },
+                                    [_vm._v(_vm._s(props.item.stat))]
+                                  ),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass:
+                                        "text-xs-left red--text text--darken-4"
+                                    },
+                                    [_vm._v(_vm._s(props.item.updated_at))]
+                                  ),
+                                  _c(
+                                    "td",
+                                    { staticClass: "text-xs-left" },
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass: "no-decoration",
+                                          attrs: {
+                                            to: {
+                                              path: "/resume/" + props.item.uid
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                dark: "dark",
+                                                color: "primary"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.$t("common.see"))
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ])
+                        })
+                      : _vm._e()
                   ],
                   1
                 )
@@ -52886,21 +53649,21 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-130a011b", esExports)
+    require("vue-hot-reload-api")      .rerender("data-v-ac1d26c4", esExports)
   }
 }
 
 /***/ }),
-/* 95 */
+/* 90 */
 /***/ (function(module, exports) {
 
-module.exports = {"common":{"login":"Login","register":"Register","student":"Student","company":"Company","email":"Email","password":"password","submit":"Submit","hint":"Hint","close":"Close","back":"Previous page","delete":"Delete","notCompleted":"Not completed","contactInform":"Contact information","allRecruit":"All recruit","JobOpening":"Job opening","completeness":"completeness","postJob":"Post job","salary":"Salary","jogTitle":"Job title","jobName":"position","jobType":"Job type","partTime":"part-time","fullTime":"full-time","requireLanguage":"Requirement language","jobDescription":"Job description","qualifications":"qualifications","companyBenefits":"company benefits","saveSucess":"Saved sucessfully","saveFail":"Saved failed, try again!","dataCompleted":"所有資訊已填寫完整! 徵才訊息將很快公開","type":"類別","editResume":"修改履歷","personalInformation":"基本資料","lastName":"姓氏","firstName":"名字","male":"男","female":"女","other":"其他","birthday":"生日","nation":"國籍","skill":"技能","background":"學歷經驗","certification":"證照","autobiography":"自傳"},"login":{"chooseIdentify":"- Choose your Identify -","alreadyHaveAcc":"Already have an account? Login now!","forgetAccount":"I forget my Email or password.","registerNow":"Register now!","wrongAccount":"Wrong Email and password combination."}}
+module.exports = {"common":{"login":"Login","register":"Register","logout":"Logout","student":"Student","company":"Company","submit":"Submit","hint":"Hint","close":"close","add":"Add","edit":"Edit","save":"Save","delete":"Delete","see":"Check","back":"Back","notFill":"Not fill"},"login":{"chooseIdentify":"- Choose your Identify -","alreadyHaveAcc":"Already have an account? Login now!","email":"Email","password":"Password","forgetAccount":"I forget my Email or password.","registerNow":"Register now!","wrongAccount":"Wrong Email and password combination."},"main":{},"recruit":{"title":"Talents List","throw":"cast resume","match":"active pairing","showMatch":"View Pairing Results","manageRecord":"Record Management","history":"Invitation Record","editResume":"edit history","yearsOld":"year","deleteSuccess":"successfully deleted!","deleteFail":"delete failed! Please try again after refreshing","throwSuccess":"Resume successful delivery!","throwFail":"delivery failed! Please try again after reorganization","allRecruit":"Overview of Recruitment","JobOpening":"Recruitment Information","completeness":"degree of completion","postJob":"Add Call for Proposals","salary":"salary","dpay":"minimum wage","upay":"highest salary","jobTitle":"title","jobName":"job title","jobType":"job type","partTime":"part-time","fullTime":"full time","requireLanguage":"Language Requirements","jobinfo":"job content","jobRequire":"conditional requirements","benefits":"company benefits","notCompleted":"Not yet completed","contact":"Contact Information","notExist":"Candidate list does not exist or has been deleted"},"resume":{"title":"CV","resume":"resume data","editTitle":"Biographical Edit","sendInvite":"send an invitation","match":"match results","showMatch":"View Pairing Results","manageRecord":"Record Management","type":"category","history":"delivery record","basic":"basic information","name":"name","lastName":"last name","firstName":"name","gender":"gender","birth":"birthday","nation":"nationality","email":"Mailbox","phone":"phone","background":"academic experience","condition":"job search conditions","jobInfo":"career information","expectedJobName":"hope job title","pay":"salary","salaryRequest":"Salary Conditions","salaryFrom":"minimum wage","salaryTo":"highest salary","language":"language ability","lang":"language","ability":"ability","skill":"with skills","certificate":"Certificate Capacity","bio":"autobiography","notExist":"CV does not exist or has been deleted","acceptInvite":"accept the invitation","refuseInvite":"declined invitation"},"user":{"title":"member center","personalInformation":"Basic Information"},"alert":{"saveSuccess":"Save successfully","saveFail":"Save failed, try again","submitSuccess":"sent successfully!","SubmitFail":"Failed to send out! Please try again and try again. If it has been delivered, it will fail.","sureDelete":"Are you sure you want to delete?","sureAccept":"After accepting the invitation, the full resume will be sent to the manufacturer, whether to continue?","acceptInviteSuccess":"accept the invitation success! Your CV has been sent to the manufacturer for further review.","acceptInviteFail":"Accept the invitation failed! Please try again after reorganization","sureRefuse":"Decided to decline?","refuseInviteSuccess":"Successfully declined the offer!","refuseInviteFail":"declined to accept the invitation! Please try again after reorganization","dataCompleted":"All information has been completed! Call information will be made public soon"},"gender":{"male":"male","female":"female","other":"Other"}}
 
 /***/ }),
-/* 96 */
+/* 91 */
 /***/ (function(module, exports) {
 
-module.exports = {"common":{"login":"登入","register":"註冊","logout":"登出","student":"學生","company":"廠商","email":"信箱","password":"密碼","submit":"送出","hint":"提示","close":"關閉","back":"返回","delete":"刪除","saveSucess":"保存成功","saveFail":"保存失敗, 再試一次","type":"類別","personalInformation":"基本資料"},"login":{"chooseIdentify":"- 選擇您的身分 -","alreadyHaveAcc":"已經有帳號? 立刻登入","forgetAccount":"忘記密碼？","registerNow":"立刻註冊","wrongAccount":"帳號密碼組合錯誤"},"register":{},"main":{},"recruit":{"title":"徵才列表","match":"配對結果","history":"邀請紀錄","editResume":"修改履歷","yearsOld":"歲","deleteSuccess":"成功刪除!","deleteFail":"刪除失敗! 請重新整理後再試一次","throwSuccess":"履歷投遞成功!","throwFail":"投遞失敗! 請重新整理後再試一次","allRecruit":"徵才總覽","JobOpening":"徵才資訊","completeness":"完成度","postJob":"新增徵才訊息","salary":"薪資","jobTitle":"標題","jobName":"職務名稱","jobType":"工作類型","partTime":"兼職","fullTime":"全職","requireLanguage":"語言需求","jobDescription":"工作內容","jobRequire":"條件需求","benefits":"公司福利","notCompleted":"尚未填寫","contact":"聯絡資訊","dataCompleted":"所有資訊已填寫完整! 徵才訊息將很快公開"},"resume":{"title":"個人履歷","match":"配對結果","history":"投遞紀錄","name":"姓名","lastName":"姓氏","firstName":"名字","gender":"性別","birth":"生日","nation":"國籍","email":"信箱","phone":"手機","jobInfo":"職業資訊","expectedJobName":"希望職務名稱","salaryRequest":"薪資條件","language":"語言能力","skill":"具備技能","background":"學歷經驗","certificate":"證照能力","bio":"自傳"},"user":{"title":"會員中心"},"gender":{"male":"男","female":"女","other":"其他"}}
+module.exports = {"common":{"login":"登入","register":"註冊","logout":"登出","student":"學生","company":"廠商","submit":"送出","hint":"提示","close":"關閉","add":"新增","edit":"修改","save":"保存","delete":"刪除","see":"查看","back":"返回","notFill":"尚未填寫"},"login":{"chooseIdentify":"- 選擇您的身分 -","alreadyHaveAcc":"已經有帳號? 立刻登入","email":"信箱","password":"密碼","forgetAccount":"忘記密碼？","registerNow":"立刻註冊","wrongAccount":"帳號密碼組合錯誤"},"main":{},"recruit":{"title":"徵才列表","throw":"投履歷","match":"主動配對","showMatch":"查看配對結果","manageRecord":"記錄管理","history":"邀請紀錄","editResume":"修改履歷","yearsOld":"歲","deleteSuccess":"成功刪除!","deleteFail":"刪除失敗! 請重新整理後再試一次","throwSuccess":"履歷投遞成功!","throwFail":"投遞失敗! 請重新整理後再試一次","allRecruit":"徵才總覽","JobOpening":"徵才資訊","completeness":"完成度","postJob":"新增徵才訊息","salary":"薪資","dpay":"最低薪資","upay":"最高薪資","jobTitle":"標題","jobName":"職務名稱","jobType":"工作類型","partTime":"兼職","fullTime":"全職","requireLanguage":"語言需求","jobinfo":"工作內容","jobRequire":"條件需求","benefits":"公司福利","notCompleted":"尚未填寫","contact":"聯絡資訊","notExist":"徵才表不存在或已被刪除"},"resume":{"title":"個人履歷","resume":"履歷資料","editTitle":"履歷編輯","sendInvite":"寄出邀請","match":"配對結果","showMatch":"查看配對結果","manageRecord":"記錄管理","type":"類別","history":"投遞紀錄","basic":"基本資料","name":"姓名","lastName":"姓氏","firstName":"名字","gender":"性別","birth":"生日","nation":"國籍","email":"信箱","phone":"手機","background":"學歷經驗","condition":"求職條件","jobInfo":"職業資訊","expectedJobName":"希望職務名稱","pay":"薪資","salaryRequest":"薪資條件","salaryFrom":"最低薪資","salaryTo":"最高薪資","language":"語言能力","lang":"語言","ability":"能力","skill":"具備技能","certificate":"證照能力","bio":"自傳","notExist":"履歷表不存在或已被刪除","acceptInvite":"接受邀請","refuseInvite":"婉拒邀請"},"user":{"title":"會員中心","personalInformation":"基本資料"},"alert":{"saveSuccess":"保存成功","saveFail":"保存失敗, 再試一次","submitSuccess":"送出成功!","submitFail":"送出失敗! 請檢查後再試一次，若已投遞過亦會失敗","sureDelete":"確定要刪除?","sureAccept":"接受邀請後會將完整履歷傳送給廠商，是否繼續?","acceptInviteSuccess":"接受邀約成功! 已將您的履歷發送給廠商進一步查看","acceptInviteFail":"接受邀約失敗! 請重新整理後再試一次","sureRefuse":"確定要婉拒?","refuseInviteSuccess":"已成功婉拒邀約!","refuseInviteFail":"婉拒邀約失敗! 請重新整理後再試一次","dataCompleted":"所有資訊已填寫完整! 徵才訊息將很快公開"},"gender":{"male":"男","female":"女","other":"其他"}}
 
 /***/ })
 /******/ ]);

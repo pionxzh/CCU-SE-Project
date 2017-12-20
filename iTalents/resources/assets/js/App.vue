@@ -1,6 +1,6 @@
 <template lang="pug">
     v-app#app(light)
-        v-navigation-drawer(fixed v-model='drawer' app)
+        v-navigation-drawer.hidden-md-and-up(fixed v-model='drawer')
             v-list(dense)
                 router-link.no-decoration(:to="{name: 'User'}")
                     v-list-tile
