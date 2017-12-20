@@ -19,8 +19,8 @@ class Matching extends Migration
             $table ->integer('cid');
             $table ->integer('rid');
             $table ->integer('uid');
-            $table ->boolean('employeeCheck') ->default(false);
-            $table ->boolean('employerCheck') ->default(false);
+            $table ->integer('employeeCheck') ->default(-1);
+            $table ->integer('employerCheck') ->default(-1);
             $table ->timestamps();
         }
         );

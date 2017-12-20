@@ -86,6 +86,8 @@ Route::post('/resume/bio', 'EmployeeController@updateBio');
 Route::post('/api/resume/match', 'EmployeeController@getResumeMatch');
 // 投出履歷表
 Route::post('throw', 'EmployeeController@throwThisRecruitment');
+// 拒絕邀請
+Route::post('/refuse', 'EmployeeController@refuseThisInvitation');
 // 回傳所有該使用者投過的徵才表、廠商邀請
 Route::post('api/resume/history', 'EmployeeController@getResumeHistory');
 

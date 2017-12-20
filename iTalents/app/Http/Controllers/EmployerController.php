@@ -307,13 +307,13 @@ class EmployerController extends Controller
     /************
      * 寄送邀請 *
      ************/
-    public function inviteThisEmployee()
+    public function inviteThisEmployee($uid)
     {
         // given $uid & $rid
         $ret = new \stdClass();
         $ret ->stat = 0;
         $thisRecruit = Recruitment::find(Input::get('rid'));
-        if(Auth::check() and isset($thisRecruit) and Auth::User() ->id === $thisRecruit ->uid and Employee::where('uid', '=', Input::get('uid')) ->exists()
+        if(Auth::check() and isset($thisRecruit) and Auth::User() ->id === $thisRecruit ->uid and Employee::where('uid', '=', $uid) ->exists()
             and $this ->checkIfActive())
         {
             $ret ->stat = 1;
@@ -322,7 +322,7 @@ class EmployerController extends Controller
                 $newMatching = new Matching;
                 $newMatching ->cid = Auth::User() ->id;
                 $newMatching ->rid = Input::get('rid');
-                $newMatching ->uid = Input::get('uid');
+                $newMatching ->uid = $uid;
                 $newMatching ->employerCheck = 1;
                 $newMatching ->save();
             }
@@ -344,7 +344,19 @@ class EmployerController extends Controller
         if(Auth::check() and isset($thisRecruit) and $thisRecruit ->uid === Auth::User() ->id and $this ->checkIfActive())
         {
             $ret ->stat = 1;
-            $ret ->data = Matching::where('rid', '=', Input::get('rid'));
+            $ret ->data = Matching::select('uid', 'employeeCheck', 'employerCheck', 'updated_at') ->where('rid', '=', Input::get('rid')) ->get();
+            foreach($ret ->data as $key => $value)
+            {
+                $thisResume = Resume::where('uid', '=', $value ->uid) ->first();
+                if(isset($thisResume)) 
+                {
+                    ($ret ->data)[$key] ->lastName = $thisResume ->lastName;
+                    ($ret ->data)[$key] ->nation = $thisResume ->nation;
+                    ($ret ->data)[$key] ->background = $thisResume ->background;
+                    ($ret ->data)[$key] ->birth =  floor((time() - strtotime($thisResume ->birth)) / 31556926);
+                    ($ret ->data)[$key] ->gender = $thisResume ->gender;
+                }
+            }
         }
         return json_encode($ret);
     }

@@ -294,5 +294,19 @@ class EmployeeController extends Controller
         return json_encode($ret);
     }
 
+    public function refuseThisInvitation()
+    {
+        // given $rid;
+        $ret = new \stdClass();
+        $ret ->stat = 0;
+        $thisMatch = Matching::where([['uid', '=', Auth::User() ->id], ['rid', '=', Input::get('rid')]]) ->first();
+        if(isset($thisMatch) and $thisMatch ->employeeCheck === -1 and $thisMatch ->employerCheck === 1)
+        {
+            $ret ->stat =1;
+            $thisMatch ->employeeCheck = 0;
+            $thisMatch ->save();
+        }
+        return json_encode($ret);        
+    }
 
 }
