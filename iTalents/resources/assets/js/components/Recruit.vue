@@ -1,14 +1,13 @@
-notCompleted<template lang='pug'>
-    div
-        v-content
+<template lang='pug'>
+    v-content
+        v-container(fluid fill-height)
             v-layout(row='' justify-space-between='')
-
                     v-flex(xs0='')
                     v-flex(xs6='')
                         section
                             .page-title {{ $t('recruit.allRecruit') }}
                                 v-btn.right(color='primary' @click='askNewRecruit' :loading='loading' :disabled='loading') {{ $t('recruit.postJob') }}
-                            v-card
+                            v-card(v-if='items')
                                 v-list(two-line='')
                                     template(v-for='(item, index) in items')
                                         router-link.no-decoration(:to="{path: 'recruit/edit/' + item.id}")
@@ -18,20 +17,15 @@ notCompleted<template lang='pug'>
                                                     v-list-tile-sub-title.grey--text.text--darken-4 {{ item.jobname || $t('recruit.notCompleted') }}
                                                     v-list-tile-sub-title {{ $t('recruit.salary') }}: {{ item.dpay || '0' }}&nbsp;~&nbsp;{{ item.upay || '0' }}
                                                 v-list-tile-action
-                                                    router-link.no-decoration(:to="{path: 'recruit/match/' + item.id}")
+                                                    router-link.no-decoration(:to="{name: 'RecruitMatch', params: {id: item.id}}")
                                                         v-tooltip(top)
                                                             v-btn(flat icon dark color='primary' slot='activator')
                                                                 v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
-                                                            span 配對結果 / 新進履歷
+                                                            span {{ $t('recruit.match') }} / {{ $t('recruit.manageRecord') }}
                                                     v-tooltip(top)
                                                         v-btn(flat icon dark color='red' slot='activator' @click='deleteRecruit(item.id)')
                                                             v-icon(color='red') delete
                                                         span {{ $t('common.delete') }}
-                                                    router-link.no-decoration(:to="{path: 'recruit/history/' + item.id}")
-                                                        v-tooltip(top)
-                                                            v-btn(flat icon dark color='red' slot='activator')
-                                                                v-icon(color='red') check
-                                                            span 歷史紀錄
 
                                             v-divider(v-if='index + 1 < items.length', :key='item.id')
                     v-flex(xs0='')
@@ -43,7 +37,7 @@ import axios from 'axios'
 
 export default {
     data: () => ({
-        items: [],
+        items: null,
         loading: false
     }),
     activated() {
@@ -89,6 +83,7 @@ export default {
                 .catch(e => this.errHandler(e))
         },
         deleteRecruit(id) {
+            if (!confirm(this.$t('alert.sureDelete'))) return
             this.loading = true
             axios.post(`/api/recruit/delete/${id}`, {})
                 .then(response => {

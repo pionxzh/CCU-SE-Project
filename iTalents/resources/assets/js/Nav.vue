@@ -1,17 +1,28 @@
 <template lang='pug'>
     v-toolbar.primary(color='blue darken-3' dark app clipped-left fixed)
+        //v-toolbar-side-icon.hiden-md-and-up(@click.stop="toggleDrawer")
         router-link.no-decoration(:to="{name: 'Main'}" v-if='!searchToggle')
             v-toolbar-title.f27 iTalent
         v-spacer
-        v-btn(@click='searchToggle = !searchToggle' v-if='searchToggle')
-            v-icon search
-        v-text-field(light solo prepend-icon='search' placeholder='Search' style='max-width: 300px; min-width: 128px' v-if='searchToggle' @blur='searchToggle = false')
+        v-text-field.hidden-sm-and-down(light solo prepend-icon='search' placeholder='Search' style='max-width: 500px; min-width: 300px')
+        v-text-field.hidden-md-and-up(light solo prepend-icon='search' placeholder='Search' style='max-width: 300px; min-width: 300px' v-if='searchToggle' @blur='searchToggle = false')
         v-spacer
+        v-btn.hidden-md-and-up(flat icon datk @click='searchToggle = !searchToggle' v-if='!searchToggle')
+            v-icon search
         .d-flex(align-center style='margin-left: auto' v-if='!$root.user.username.length')
             router-link.no-decoration(:to="{name: 'Login'}")
                 v-btn {{ $t('common.login') }}/{{ $t('common.register') }}
-        v-menu(v-if='$root.user.username.length' offset-y)
-            v-btn.mr-5(slot='activator' v-if='!searchToggle') {{ username }}
+        v-menu(offset-y)
+            v-btn(slot='activator')
+                v-icon(flat icon dark) public
+            v-list
+                v-list-tile.list__tile--link(@click='setLanguage("en")')
+                    v-list-tile-title EN
+                v-list-tile.list__tile--link(@click='setLanguage("zh")')
+                    v-list-tile-title 中文
+
+        v-menu(v-if='$root.user.username.length && !searchToggle' offset-y)
+            v-btn.mr-5(slot='activator') {{ username }}
             v-list
                 router-link.no-decoration(:to="{name: 'User'}")
                     v-list-tile.list__tile--link
@@ -19,10 +30,7 @@
                 router-link.no-decoration(:to="{name: 'ResumeShow'}" v-if='$root.user.userType === 1')
                     v-list-tile.list__tile--link
                         v-list-tile-title {{ $t('resume.title') }}
-                router-link.no-decoration(:to="{name: 'ResumeHistory'}" v-if='$root.user.userType === 1')
-                    v-list-tile.list__tile--link
-                        v-list-tile-title {{ $t('resume.history') }}
-                router-link.no-decoration(:to="{name: 'StdMatch'}" v-if='$root.user.userType === 1')
+                router-link.no-decoration(:to="{name: 'ResumeMatch'}" v-if='$root.user.userType === 1')
                     v-list-tile.list__tile--link
                         v-list-tile-title {{ $t('resume.match') }}
 
@@ -41,7 +49,6 @@ import axios from 'axios'
 
 export default {
     data: () => ({
-        loggedIn: false,
         searchToggle: false
     }),
     computed: {
@@ -61,6 +68,11 @@ export default {
                     }
                 })
                 .catch(e => this.errHandler(e))
+        },
+        setLanguage(language) {
+            this.$i18n.locale = language
+        },
+        toggleDrawer() {
         }
     }
 }

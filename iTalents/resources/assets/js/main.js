@@ -13,15 +13,15 @@ import User from './components/User.vue'
 import Main from './components/Main.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
+
 import ResumeShow from './components/ResumeShow.vue'
 import ResumeEdit from './components/ResumeEdit.vue'
-import ResumeHistory from './components/ResumeHistory.vue'
+import ResumeMatch from './components/ResumeMatch.vue'
+
 import Recruit from './components/Recruit.vue'
 import RecruitShow from './components/RecruitShow.vue'
 import RecruitEdit from './components/RecruitEdit.vue'
-import RecruitHistory from './components/RecruitHistory.vue'
-import StdMatch from './components/stdMatch.vue'
-import ComMatch from './components/comMatch.vue'
+import RecruitMatch from './components/RecruitMatch.vue'
 
 Vue.component('navbar', Nav)
 Vue.component('p-footer', Footer)
@@ -72,13 +72,9 @@ const router = new Router({
         path: '/resume/edit',
         component: ResumeEdit
     }, {
-        name: 'StdMatch',
+        name: 'ResumeMatch',
         path: '/resume/match',
-        component: StdMatch
-    }, {
-        name: 'ResumeHistory',
-        path: '/resume/history',
-        component: ResumeHistory
+        component: ResumeMatch
     }, {
         name: 'ResumeShow',
         path: '/resume',
@@ -95,13 +91,9 @@ const router = new Router({
         path: '/recruit/:id',
         component: RecruitShow
     }, {
-        name: 'ComMatch',
+        name: 'RecruitMatch',
         path: '/recruit/match/:id',
-        component: ComMatch
-    }, {
-        name: 'RecruitHistory',
-        path: '/recruit/history/:id',
-        component: RecruitHistory
+        component: RecruitMatch
     }, {
         name: 'RecruitEdit',
         path: '/recruit/edit/:id',
@@ -114,7 +106,7 @@ const router = new Router({
 
 axios.get('/api/user')
     .then(response => {
-        console.log(response.data)
+        console.log('User: ', response.data)
         Vue.prototype.user = {username: ''}
         if (response.data.stat) Vue.prototype.user = response.data
 
@@ -126,3 +118,29 @@ axios.get('/api/user')
         })
     })
     .catch(err => console.log(err))
+
+/*
+ *         ┌─┐       ┌─┐
+ *      ┌──┘ ┴───────┘ ┴──┐
+ *      │                 │
+ *      │       ───       │
+ *      │  ─┬┘       └┬─  │
+ *      │                 │
+ *      │       ─┴─       │
+ *      │                 │
+ *      └───┐         ┌───┘
+ *          │         │
+ *          │         │
+ *          │         │
+ *          │         └──────────────┐
+ *          │                        │
+ *          │                        ├─┐
+ *          │                        ┌─┘
+ *          │                        │
+ *          └─┐  ┐  ┌───────┬──┐  ┌──┘
+ *            │ ─┤ ─┤       │ ─┤ ─┤
+ *            └──┴──┘       └──┴──┘
+ *                神兽保佑
+ *                程式码无BUG!
+ *
+ */

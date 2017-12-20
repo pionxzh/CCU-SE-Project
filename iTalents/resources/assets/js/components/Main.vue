@@ -1,5 +1,4 @@
 <template lang="pug">
-    div    
         v-content
             section
                 v-parallax(src='https://i.imgur.com/zhgtd7S.jpg' height='600')
@@ -42,7 +41,6 @@
                                             v-icon.blue--text.text--lighten-2 email
                                         v-list-tile-content
                                             v-list-tile-title test@google.com
-            p-footer
 
 </template>
 

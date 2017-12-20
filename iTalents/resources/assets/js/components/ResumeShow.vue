@@ -1,28 +1,28 @@
 <template lang="pug">
-    div
-        v-content
+    v-content
+        v-container(fluid fill-height)
             v-layout(row justify-space-between)
                     v-flex(xs)
                     v-flex(xs10 lg6)
-                        section
-                            p.page-title 履歷
+                        section(v-if='resume')
+                            p.page-title {{ $t('resume.resume') }}
                                 router-link.no-decoration(:to="{name: 'ResumeEdit'}")
                                     v-btn.hide.ml-4(color='primary' v-if='!$route.params.id')
                                         v-icon edit
-                                        | 編輯
+                                        | &nbsp;{{ $t('common.edit') }}
                                 v-btn.ml-4(large color='yellow' v-if='$route.params.id' @click='invite')
                                     v-icon card_giftcard
-                                    | &nbsp;寄出邀請
+                                    | &nbsp;{{ $t('resume.sendInvite') }}
 
-                            p.recruit-show-title 基本資料
+                            p.recruit-show-title {{ $t('resume.basic') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
-                                    p.recruit-show-info {{ $t('resume.name') }}: {{ resume.lastName }} {{ resume.firstName }}
-                                    p.recruit-show-info {{ $t('resume.gender') }}: {{ gender }}
-                                    p.recruit-show-info {{ $t('resume.birth') }}: {{ resume.birth }}
-                                    p.recruit-show-info {{ $t('resume.nation') }}: {{ resume.nation }}
-                                    p.recruit-show-info {{ $t('resume.email') }}: {{ resume.email }}
-                                    p.recruit-show-info {{ $t('resume.phone') }}: {{ resume.phone }}
+                                    p.recruit-show-info {{ $t('resume.name') }}: {{ resume.lastName }}{{ resume.firstName || $t("common.notFill") }}
+                                    p.recruit-show-info {{ $t('resume.gender') }}: {{ gender || $t("common.notFill") }}
+                                    p.recruit-show-info {{ $t('resume.birth') }}: {{ resume.birth || $t("common.notFill") }}
+                                    p.recruit-show-info {{ $t('resume.nation') }}: {{ resume.nation || $t("common.notFill") }}
+                                    p.recruit-show-info {{ $t('resume.email') }}: {{ resume.email || $t("common.notFill") }}
+                                    p.recruit-show-info {{ $t('resume.phone') }}: {{ resume.phone || $t("common.notFill") }}
                             p.recruit-show-title {{ $t('resume.jobInfo') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
@@ -30,25 +30,25 @@
                                     p.recruit-show-info {{ $t('resume.salaryRequest') }}: {{ resume.salaryFrom }}&nbsp;~&nbsp;{{ resume.salaryTo }}
 
                             p.recruit-show-title {{ $t('resume.language') }}
-                                div.language-show
+                                div.language-show(v-if='resume.language')
                                         v-chip(v-for="(value, key) in resume.language" :key='key')
                                             v-avatar(:class='langColor[value]')
                                                 span.white--text.headline {{langLevel[value]}}
                                             | {{langMap[key]}}
+                                span(v-if='!resume.language')  {{ $t("common.notFill") }}
 
                             p.recruit-show-title {{ $t('resume.background') }}
-                                p.recruit-edit-content.ql-editor(v-html='resume.background')
+                                p.recruit-edit-content.ql-editor(v-html='resume.background || $t("common.notFill")')
 
                             p.recruit-show-title {{ $t('resume.skill') }}
-                                p.recruit-edit-content.ql-editor(v-html='resume.skill')
+                                p.recruit-edit-content.ql-editor(v-html='resume.skill || $t("common.notFill")')
 
                             p.recruit-show-title {{ $t('resume.certificate') }}
-                                p.recruit-edit-content.ql-editor(v-html='resume.certificate')
+                                p.recruit-edit-content.ql-editor(v-html='resume.certificate || $t("common.notFill")')
 
-                            p.recruit-show-title {{ $t('resume.bio') }}自傳
-                                p.recruit-edit-content.ql-editor(v-html='resume.bio')
+                            p.recruit-show-title {{ $t('resume.bio') }}
+                                p.recruit-edit-content.ql-editor(v-html='resume.bio || $t("common.notFill")')
                     v-flex(xs0)
-        p-footer
 
 </template>
 
@@ -57,26 +57,8 @@ import axios from 'axios'
 
 export default {
     data: () => ({
-        resume: {
-            firstName: '',
-            lastName: '',
-            gender: null,
-            birth: null,
-            nation: '',
-            email: '',
-            phone: '',
-
-            expectedJobName: '',
-            salaryFrom: null,
-            salaryTo: null,
-
-            background: '',
-            language: null,
-            skill: '',
-            certificate: '',
-            bio: ''
-        },
-        genderList: ['', '男', '女', '其他'],
+        resume: null,
+        genderList: [],
         langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
         langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
         langLevel: ['D', 'C', 'B', 'A', 'S'],
@@ -124,19 +106,24 @@ export default {
             let url = this.$route.params.id ? this.$route.params.id : ''
             axios.get(`/api/resume/${url}`)
                 .then(response => {
-                    console.log(response.data)
+                    console.log('ResumeInfo', response.data)
                     if (response.data.stat) {
                         this.resume = response.data.data
                         this.resume.language = response.data.language
+                    } else {
+                        this.showDialog(this.$t('resume.notExist'))
                     }
                 })
                 .catch(e => this.errHandler(e))
         },
         invite() {
             this.loading = true
-            axios.post(`/invite/${this.$route.params.id}`)
+            if (!this.$route.query.rid) return this.showDialog('沒有RID~')
+            axios.post(`/invite/${this.$route.params.id}`, {rid: this.$route.query.rid})
                 .then(response => {
                     console.log(response.data)
+                    let msg = response.data.stat ? this.$t('alert.submitSuccess') : this.$t('alert.submitFail')
+                    this.showDialog(msg)
                     if (response.data.stat) {
                         this.resume.language = response.data.language
                     }

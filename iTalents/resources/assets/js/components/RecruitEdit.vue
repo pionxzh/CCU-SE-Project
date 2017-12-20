@@ -1,5 +1,6 @@
 <template lang="pug">
     v-content
+        v-container(fluid fill-height)
             v-layout(row justify-space-between)
                     v-flex(xs0)
                     v-flex(xs10 lg6)
@@ -26,17 +27,16 @@
                             .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
                                     v-text-field(type='text' label='$t("recruit.jobTitle")' v-model.trim='recruit.title')
-                                    v-text-field(type='text' label='$t("recruit.jobName")' v-model.trim='recruit.jobname')
+                                    v-select(v-bind:items="jobList" v-model='recruit.jobname' :label='$t("recruit.jobName")' single-line bottom)
                                     v-text-field(type='text' label='$t("recruit.requireLanguage")' v-model.trim='recruit.lang')
                                     v-layout(wrap)
                                         v-flex(xs5)
-                                            v-text-field(type='number' label='最低薪資' v-model.trim='recruit.dpay')
-                                        v-flex(xs0)
-                                            | ~
+                                            v-text-field(type='number' :label='$t("recruit.dpay")' v-model.trim='recruit.dpay')
+                                        v-flex(xs0 style='margin=20px 0 0 20px;') ~
                                         v-flex(xs5)
-                                            v-text-field(type='number' label='最高薪資' v-model.trim='recruit.upay')
+                                            v-text-field(type='number' :label='$t("recruit.upay")' v-model.trim='recruit.upay')
 
-                            p.recruit-edit-title {{ $t('recruit.jobDescription') }}
+                            p.recruit-edit-title {{ $t('recruit.jobinfo') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobinfo = false' v-if='edit.jobinfo')
@@ -47,7 +47,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.jobinfo' v-html='recruit.jobinfo')
                             quill-editor(:content="recruit.jobinfo" :options="editorOption" @change="onEditorChange($event, 'jobinfo')" v-if='edit.jobinfo')
 
-                            p.recruit-edit-title {{ $t('recruit.qualifications') }}
+                            p.recruit-edit-title {{ $t('recruit.jobRequire') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobrequire = true' v-if='!edit.jobrequire')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.jobrequire = false' v-if='edit.jobrequire')
@@ -61,7 +61,7 @@
                                 @change="onEditorChange($event, 'jobrequire')"
                                 v-if='edit.jobrequire')
 
-                            p.recruit-edit-title {{ $t('recruit.companyBenefits') }}
+                            p.recruit-edit-title {{ $t('recruit.benefits') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.benefits = true' v-if='!edit.benefits')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.benefits = false' v-if='edit.benefits')
@@ -72,7 +72,7 @@
                                 p.recruit-edit-content.ql-editor(v-if='!edit.benefits' v-html='recruit.benefits')
                             quill-editor(:content="recruit.benefits" :options="editorOption" @change="onEditorChange($event, 'benefits')" v-if='edit.benefits')
 
-                            p.recruit-edit-title {{ $t('recruit.contactInform' )}}
+                            p.recruit-edit-title {{ $t('recruit.contact' )}}
                                 v-btn.white--text(flat icon color='primary' @click='edit.contact = true' v-if='!edit.contact')
                                     v-icon edit
                                 v-btn.ml-4(fab dark small color='red' @click='edit.contact = false' v-if='edit.contact')
@@ -112,6 +112,13 @@ export default {
             contact: '',
             is_complete: ''
         },
+        jobList: [
+            {text: '網頁工程師', value: '網頁工程師'},
+            {text: '電機工程技術員', value: '電機工程技術員'},
+            {text: '心理學研究人員', value: '心理學研究人員'},
+            {text: '會計師', value: '會計師'},
+            {text: '金融營業員', value: '金融營業員'}
+        ],
         edit: {
             field: false,
             jobinfo: false,
@@ -196,7 +203,7 @@ export default {
                     let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = this.$t('recruit.dataCompleted')
+                        if (response.data.is_complete) msg = this.$t('alert.dataCompleted')
                     }
                     this.showDialog(msg)
                 })

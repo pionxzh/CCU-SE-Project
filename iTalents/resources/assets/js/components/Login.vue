@@ -18,9 +18,9 @@
                             v-card-text
                                 v-avatar.center-item.mb-0(size='180')
                                     img(src='http://demo.geekslabs.com/materialize/v3.1/images/login-logo.png')
-                                p.text-xs-center.mb-3(style='font-size: 20px;') {{ $t('common.register') }}
+                                p.text-xs-center.mb-3(style='font-size: 20px;') {{ $t('common.login') }}
                                 v-text-field(type='text' name='email' label='Email' v-model.trim='email' dark)
-                                v-text-field(type='password' name='password' :label='$t("common.password")' v-model.trim='password' @keyup.enter='login' dark)
+                                v-text-field(type='password' name='password' :label='$t("login.password")' v-model.trim='password' @keyup.enter='login' dark)
 
                                 v-btn.wide-btn.mb-4(color='primary' style='margin-left: 0px;' @click.prevent='login' :loading="loading" :disabled="loading") {{ $t('common.submit') }}
                             router-link.no-decoration.mb-2(:to="{name: 'Register'}") {{ $t('login.registerNow') }}
