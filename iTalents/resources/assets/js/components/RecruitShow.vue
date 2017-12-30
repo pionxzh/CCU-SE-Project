@@ -17,7 +17,7 @@
                             v-flex(xs12 md6)
                                 p.recruit-show-info {{ $t('recruit.jobName') }}: {{ recruit.jobname || $t('recruit.notCompleted') }}
                                 p.recruit-show-info {{ $t('recruit.jobType') }}: {{recruit.jobtype === 0 ?  $t('recruit.partTime') : $t('recruit.fullTime') }}
-                                p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ recruit.lang || $t('recruit.notCompleted') }}
+                                p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ langMap[recruit.lang] || $t('recruit.notCompleted') }}
                                 p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
                         p.recruit-show-title {{ $t('recruit.jobInfo') }}
                             p.recruit-edit-content.ql-editor(v-html='recruit.jobinfo || $t("recruit.notCompleted")')
@@ -40,6 +40,7 @@ import axios from 'axios'
 export default {
     data: () => ({
         recruit: null,
+        langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
         loading: false
     }),
     activated() {
@@ -73,7 +74,7 @@ export default {
             axios.post(`/throw`, {rid: this.$route.params.id})
                 .then(response => {
                     console.log('Throw Result', response.data)
-                    let msg = response.data.stat ? this.$t('alert.submitSuccess') : this.$t('alert.submitFail')
+                    let msg = response.data.stat ? response.data.stat === 3 ? '已經投過履歷囉!' : this.$t('alert.submitSuccess') : this.$t('alert.submitFail')
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))

@@ -19,10 +19,10 @@
                                 v-flex(xs12 md6)
                                     p.recruit-show-info {{ $t('resume.name') }}: {{ resume.lastName }}{{ resume.firstName || $t("common.notFill") }}
                                     p.recruit-show-info {{ $t('resume.gender') }}: {{ gender || $t("common.notFill") }}
-                                    p.recruit-show-info {{ $t('resume.birth') }}: {{ resume.birth || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.birth') }}: {{ resume.birth || $t("common.notFill") }}
                                     p.recruit-show-info {{ $t('resume.nation') }}: {{ resume.nation || $t("common.notFill") }}
-                                    p.recruit-show-info {{ $t('resume.email') }}: {{ resume.email || $t("common.notFill") }}
-                                    p.recruit-show-info {{ $t('resume.phone') }}: {{ resume.phone || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.email') }}: {{ resume.email || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.phone') }}: {{ resume.phone || $t("common.notFill") }}
                             p.recruit-show-title {{ $t('resume.jobInfo') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
@@ -31,11 +31,11 @@
 
                             p.recruit-show-title {{ $t('resume.language') }}
                                 div.language-show(v-if='resume.language')
-                                        v-chip(v-for="(value, key) in resume.language" :key='key')
+                                        v-chip(v-for="(value, key) in resume.language" :key='key' v-if='value')
                                             v-avatar(:class='langColor[value]')
                                                 span.white--text.headline {{langLevel[value]}}
                                             | {{langMap[key]}}
-                                span(v-if='!resume.language')  {{ $t("common.notFill") }}
+                                p.recruit-edit-content.ql-editor(v-html='$t("common.notFill")' v-if='!resume.language')
 
                             p.recruit-show-title {{ $t('resume.background') }}
                                 p.recruit-edit-content.ql-editor(v-html='resume.background || $t("common.notFill")')

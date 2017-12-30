@@ -10,7 +10,7 @@
                     v-card(v-if='matches')
                         v-list(two-line='')
                             template(v-for='(item, index) in matches')
-                                router-link.no-decoration(:to="{path: 'recruit/' + item.rid}")
+                                router-link.no-decoration(:to="{path: '/recruit/' + item.id}")
                                     v-list-tile(avatar='', ripple='', :key='item.title')
                                         v-list-tile-content
                                             v-list-tile-title {{ item.title || $t("common.notFill") }}
@@ -19,7 +19,7 @@
 
                                     v-divider(v-if='index + 1 < matches.length', :key='item.id')
                     .page-title {{ $t('resume.manageRecord') }}
-                    v-data-table.elevation-1(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
+                    v-data-table.elevation-1.resume-table(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
                         template(slot="items" slot-scope="props")
                             td.text-xs-left {{ props.item.title }}
                             td.text-xs-left {{ props.item.jobname }}

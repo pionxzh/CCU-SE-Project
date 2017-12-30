@@ -7,7 +7,6 @@ import Vmodal from 'vue-js-modal'
 import VueI18nDirectives from 'vue-i18n-directives'
 
 import App from './App.vue'
-import Nav from './Nav.vue'
 import Footer from './Footer.vue'
 import User from './components/User.vue'
 import Main from './components/Main.vue'
@@ -23,7 +22,6 @@ import RecruitShow from './components/RecruitShow.vue'
 import RecruitEdit from './components/RecruitEdit.vue'
 import RecruitMatch from './components/RecruitMatch.vue'
 
-Vue.component('navbar', Nav)
 Vue.component('p-footer', Footer)
 
 Vue.use(Vuetify)

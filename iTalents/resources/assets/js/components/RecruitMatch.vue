@@ -15,24 +15,35 @@
                                         router-link.no-decoration(:to="{path: '/resume/' + item.uid + '?rid=' + $route.params.id}")
                                             v-list-tile(avatar ripple, :key='item.title')
                                                 v-list-tile-content
-                                                    v-list-tile-title {{ item.lastName }}** · {{ genderList[item.gender] }} · {{item.nation}}
+                                                    v-list-tile-title {{ item.lastName }}{{ titleList[item.gender] }} · {{item.nation}}
                                                     v-list-tile-sub-title.grey--text.text--darken-4 {{ item.birth }}{{ $t('recruit.yearsOld') }}
-                                                    v-list-tile-sub-title  {{ item.background }}
+                                                    //v-list-tile-sub-title(v-html='item.background')
 
                                             v-divider(v-if='index + 1 < matches.length' :key='item.id')
                             
                             .page-title 徵才記錄管理
-                            v-data-table.elevation-1(v-if='items' v-bind:headers="headers" :items="items" hide-actions)
-                                template(slot="items" slot-scope="props")
-                                    td.text-xs-left {{ props.item.lastName }}**
-                                    td.text-xs-left {{ genderList[props.item.gender] }}
-                                    td.text-xs-left {{ props.item.birth }}{{ $t('recruit.yearsOld') }}
-                                    td.text-xs-left(v-html='props.item.background')
-                                    td.text-xs-left.green--text {{ props.item.stat }}
-                                    td.text-xs-left.red--text.text--darken-4 {{ props.item.updated_at }}
-                                    td.text-xs-left
-                                        router-link.no-decoration(:to="{path: '/resume/' + props.item.uid}")
-                                            v-btn(dark color='primary') {{ $t('common.see') }}
+                            p.red--text ※點擊可展開顯示學歷背景相關資料
+                            v-data-table.elevation-1.recruit-table(v-if='items' :headers='headers' :items='items' hide-actions)
+                                template(slot='items' slot-scope='props')
+                                    tr(@click='props.expanded = !props.expanded')
+                                        td.text-xs-left {{ props.item.lastName }}{{ titleList[props.item.gender] }}
+                                        td.text-xs-left {{ props.item.birth }}{{ $t('recruit.yearsOld') }}
+                                        td.text-xs-left.green--text {{ props.item.stat }}
+                                        td.text-xs-left.red--text.text--darken-4.hidden-xs-only {{ props.item.updated_at }}
+                                        td.text-xs-left
+                                            router-link.no-decoration(:to="{path: '/resume/' + props.item.uid + '?rid=' + $route.params.id}")
+                                                v-btn(dark color='primary') {{ $t('common.see') }}
+                                    tr.expand(v-show='props.expanded')
+                                        td(colspan='100%')
+                                            v-expansion-panel
+                                                v-expansion-panel-content(v-model='props.expanded')
+                                                    v-card
+                                                        v-card-text
+                                                            p.recruit-show-title {{ $t('resume.background') }}
+                                                                p.recruit-edit-content.ql-editor(v-html='props.item.background')
+                                //template(slot='expand' slot-scope='props')
+                                    v-card(flat)
+                                        v-card-text 123
                             
                     v-flex(xs0)
 
@@ -48,13 +59,14 @@ export default {
         showMatchBtn: true,
         headers: [
             {text: '求職者', value: 'name', align: 'left'},
-            {text: '性別', value: 'gender', align: 'left'},
+            // {text: '性別', value: 'gender', align: 'left'},
             {text: '年紀', value: 'age', align: 'left'},
-            {text: '背景', value: 'background', align: 'left'},
+            // {text: '背景', value: 'background', align: 'left'},
             {text: '狀態', value: 'stat', align: 'left'},
             {text: '操作紀錄', value: 'updated_at', align: 'left'},
             {text: '動作', sortable: false, align: 'left'}
         ],
+        titleList: ['', '先生', '小姐', ''],
         genderList: [],
         loading: false
     }),
@@ -94,6 +106,7 @@ export default {
                     if (response.data.stat) {
                         this.items = response.data.data
                         this.items.forEach(element => {
+                            element.expanded = false
                             element.updated_at = this.getDateDiff(element.updated_at)
                             if (element.employeeCheck === 1 && element.employerCheck === 1) element.stat = '邀請已收到履歷回覆'
                             else if (element.employeeCheck === -1 && element.employerCheck === 1) element.stat = '等待對方回應中'

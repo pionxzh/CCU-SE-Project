@@ -248,6 +248,11 @@ class EmployeeController extends Controller
             $thisMatch = Matching::where([['uid', '=', Auth::User() ->id], ['rid', '=', Input::get('rid')]]) ->first();
             if(isset($thisMatch))
             {
+                if($thisMatch ->employeeCheck === 1)
+                {
+                    $ret ->stat = 3;
+                    return json_encode($ret);
+                }
                 $thisMatch ->employeeCheck = 1;
                 $thisMatch ->save();
             }

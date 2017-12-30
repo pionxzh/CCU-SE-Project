@@ -197,6 +197,18 @@ user-select(val)
     margin-top: 50px!important
     height: 380px!important
 
+tr.expand td
+    padding: 0!important
+
+@media only screen and (max-height: 1000px) {
+    .resume-table th:nth-child(2), .resume-table td:nth-child(2), .resume-table th:nth-child(5), .resume-table td:nth-child(5) {
+        display: none
+    }
+    .recruit-table th:nth-child(4), .recruit-table td:nth-child(4) {
+        display: none
+    }
+}
+
 /*    Recruit page    */
 
 .page-title button

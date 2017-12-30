@@ -7,14 +7,14 @@
         v-text-field.hidden-sm-and-down(light solo prepend-icon='search' placeholder='Search' style='max-width: 500px; min-width: 300px')
         v-text-field.hidden-md-and-up(light solo prepend-icon='search' placeholder='Search' style='max-width: 300px; min-width: 300px' v-if='searchToggle' @blur='searchToggle = false')
         v-spacer
-        v-btn.hidden-md-and-up(flat icon datk @click='searchToggle = !searchToggle' v-if='!searchToggle')
+        v-btn.hidden-md-and-up(flat icon dark @click='searchToggle = !searchToggle' v-if='!searchToggle')
             v-icon search
         .d-flex(align-center style='margin-left: auto' v-if='!$root.user.username.length')
             router-link.no-decoration(:to="{name: 'Login'}")
                 v-btn {{ $t('common.login') }}/{{ $t('common.register') }}
         v-menu(offset-y)
-            v-btn(slot='activator')
-                v-icon(flat icon dark) public
+            v-btn.hidden-sm-and-down(flat icon dark slot='activator')
+                v-icon public
             v-list
                 v-list-tile.list__tile--link(@click='setLanguage("en")')
                     v-list-tile-title EN

@@ -28,6 +28,8 @@
                             v-list-tile-title {{ $t('recruit.title') }}
                 v-divider
                 v-list-tile(@click='logout')
+                    v-list-tile-action
+                        v-icon power_settings_new
                     v-list-tile-content
                         v-list-tile-title {{ $t('common.logout') }}
 
@@ -45,8 +47,8 @@
                 router-link.no-decoration(:to="{name: 'Login'}")
                     v-btn {{ $t('common.login') }}/{{ $t('common.register') }}
             v-menu(offset-y)
-                v-btn(slot='activator')
-                    v-icon(flat icon dark) public
+                v-btn(flat icon dark slot='activator')
+                    v-icon public
                 v-list
                     v-list-tile.list__tile--link(@click='setLanguage("en")')
                         v-list-tile-title EN

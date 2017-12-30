@@ -22,13 +22,13 @@
                                     p.recruit-show-info {{ $t('recruit.jobTitle') }}: {{ recruit.title || $t('recruit.notCompleted') }}
                                     p.recruit-show-info {{ $t('recruit.jobName') }}: {{ recruit.jobname || $t('recruit.notCompleted') }}
                                     p.recruit-show-info {{ $t('recruit.jobType') }}: {{ recruit.jobtype === 0 ? $t('recruit.partTime') : $t('recruit.fullTime') }}
-                                    p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ recruit.lang || $t('recruit.notCompleted') }}
+                                    p.recruit-show-info {{ $t('recruit.requireLanguage') }}: {{ langMap[recruit.lang] || $t('recruit.notCompleted') }}
                                     p.recruit-show-info {{ $t('recruit.salary') }}: {{ recruit.dpay }} ~ {{recruit.upay}}
                             .recruit-edit-field(v-if='edit.field')
                                 v-flex(xs12 md6)
                                     v-text-field(type='text' :label='$t("recruit.jobTitle")' v-model.trim='recruit.title')
                                     v-select(v-bind:items="jobList" :label='$t("recruit.jobName")' v-model='recruit.jobname' single-line bottom)
-                                    v-text-field(type='text' :label='$t("recruit.requireLanguage")' v-model.trim='recruit.lang')
+                                    v-select(v-bind:items="languageOpt" :label='$t("recruit.requireLanguage")' v-model='recruit.lang' single-line bottom)
                                     v-layout(wrap)
                                         v-flex(xs5)
                                             v-text-field(type='number' :label='$t("recruit.dpay")' v-model.trim='recruit.dpay')
@@ -138,6 +138,14 @@ export default {
             },
             placeholder: 'Type here...'
         },
+        langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
+        languageOpt: [
+            {text: '選擇需求語言', value: ''},
+            {text: '英語', value: 'en'},
+            {text: '中文', value: 'ch'},
+            {text: '日文', value: 'jp'},
+            {text: '法語', value: 'fr'}
+        ],
         loading: false
     }),
     activated() {
@@ -180,7 +188,7 @@ export default {
                 .then(response => {
                     this.loading = false
                     this.edit[fieldName] = false
-                    let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
+                    let msg = response.data.stat ? this.$t('alert.saveSuccess') : this.$t('alert.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
                         if (response.data.is_complete) msg = this.$t('common.dataCompleted')
@@ -200,7 +208,8 @@ export default {
             })
                 .then(response => {
                     this.loading = false
-                    let msg = response.data.stat ? this.$t('common.saveSucess') : this.$t('common.saveFail')
+                    this.edit.field = false
+                    let msg = response.data.stat ? this.$t('alert.saveSuccess') : this.$t('alert.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
                         if (response.data.is_complete) msg = this.$t('alert.dataCompleted')

@@ -317,7 +317,7 @@ class EmployerController extends Controller
             and $this ->checkIfActive())
         {
             $ret ->stat = 1;
-            if(!Matching::where([['rid', '=', Input::get('rid')], ['uid', '=', Input::get('uid')]]) ->exists())
+            if(!Matching::where([['rid', '=', Input::get('rid')], ['uid', '=', $uid]]) ->exists())
             {
                 $newMatching = new Matching;
                 $newMatching ->cid = Auth::User() ->id;

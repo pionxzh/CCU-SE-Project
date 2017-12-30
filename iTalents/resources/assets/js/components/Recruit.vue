@@ -20,7 +20,7 @@
                                                     router-link.no-decoration(:to="{name: 'RecruitMatch', params: {id: item.id}}")
                                                         v-tooltip(top)
                                                             v-btn(flat icon dark color='primary' slot='activator')
-                                                                v-icon(:color="item.active ? 'teal' : 'grey'") chat_bubble
+                                                                v-icon(:color="!item.active ? 'teal' : 'grey'") chat_bubble
                                                             span {{ $t('recruit.match') }} / {{ $t('recruit.manageRecord') }}
                                                     v-tooltip(top)
                                                         v-btn(flat icon dark color='red' slot='activator' @click.stop='deleteRecruit(item.id)')
