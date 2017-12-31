@@ -87,7 +87,7 @@
                                             span.white--text.headline {{langLevel[item.ability]}}
                                         | {{langMap[item.language]}}
                                 div.language-select(v-if='edit.language')
-                                    v-chip(close v-for="item in lang.list" :key='item.id' v-model='item.stat' v-if='item.ability')
+                                    v-chip(close v-for="item in lang.list" :key='item.id' v-model='item.stat' @input='removeLang(item.language)')
                                         v-avatar(:class='langColor[item.ability]')
                                             span.white--text.headline {{langLevel[item.ability]}}
                                         | {{langMap[item.language]}}
@@ -251,7 +251,7 @@ export default {
                                 id: Math.floor(Math.random() * 10000),
                                 language: key,
                                 ability: response.data.language[key],
-                                stat: true
+                                stat: !!response.data.language[key]
                             }
                         }
                     }
@@ -259,6 +259,9 @@ export default {
                 .catch(e => this.errHandler(e))
         },
         addLanguage() {
+            if (this.lang.value === null || this.lang.ability === null) {
+                return this.showDialog('請先選擇語言以及其能力')
+            }
             let tmp = this.lang.list[this.lang.value]
             tmp.ability = this.lang.ability
             tmp.stat = true
@@ -271,6 +274,7 @@ export default {
             let langData = {}
             for (let key in this.lang.list) {
                 langData[key] = this.lang.list[key].ability
+                if (this.lang.list[key].stat === false) langData[key] = 0
             }
             axios.post(`/resume/language`, {data: langData})
                 .then(response => {
@@ -280,6 +284,12 @@ export default {
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))
+        },
+        removeLang(language) {
+            console.log('delete', language)
+            this.$set(this.lang.list[language], 'stat', false)
+            this.$set(this.lang.list[language], 'ability', 0)
+            this.$forceUpdate()
         },
         save(fieldName) {
             this.loading = true

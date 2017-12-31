@@ -35818,7 +35818,7 @@ if (false) {(function () {
                                 id: Math.floor(Math.random() * 10000),
                                 language: key,
                                 ability: response.data.language[key],
-                                stat: true
+                                stat: !!response.data.language[key]
                             }
                         }
                     }
@@ -35826,6 +35826,9 @@ if (false) {(function () {
                 .catch(e => this.errHandler(e))
         },
         addLanguage() {
+            if (this.lang.value === null || this.lang.ability === null) {
+                return this.showDialog('請先選擇語言以及其能力')
+            }
             let tmp = this.lang.list[this.lang.value]
             tmp.ability = this.lang.ability
             tmp.stat = true
@@ -35838,6 +35841,7 @@ if (false) {(function () {
             let langData = {}
             for (let key in this.lang.list) {
                 langData[key] = this.lang.list[key].ability
+                if (this.lang.list[key].stat === false) langData[key] = 0
             }
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(`/resume/language`, {data: langData})
                 .then(response => {
@@ -35847,6 +35851,12 @@ if (false) {(function () {
                     this.showDialog(msg)
                 })
                 .catch(e => this.errHandler(e))
+        },
+        removeLang(language) {
+            console.log('delete', language)
+            this.$set(this.lang.list[language], 'stat', false)
+            this.$set(this.lang.list[language], 'ability', 0)
+            this.$forceUpdate()
         },
         save(fieldName) {
             this.loading = true
@@ -49994,53 +50004,53 @@ var render = function() {
                                 { staticClass: "language-select" },
                                 [
                                   _vm._l(_vm.lang.list, function(item) {
-                                    return item.ability
-                                      ? _c(
-                                          "v-chip",
+                                    return _c(
+                                      "v-chip",
+                                      {
+                                        key: item.id,
+                                        attrs: { close: "close" },
+                                        on: {
+                                          input: function($event) {
+                                            _vm.removeLang(item.language)
+                                          }
+                                        },
+                                        model: {
+                                          value: item.stat,
+                                          callback: function($$v) {
+                                            _vm.$set(item, "stat", $$v)
+                                          },
+                                          expression: "item.stat"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-avatar",
                                           {
-                                            key: item.id,
-                                            attrs: { close: "close" },
-                                            model: {
-                                              value: item.stat,
-                                              callback: function($$v) {
-                                                _vm.$set(item, "stat", $$v)
-                                              },
-                                              expression: "item.stat"
-                                            }
+                                            class: _vm.langColor[item.ability]
                                           },
                                           [
                                             _c(
-                                              "v-avatar",
+                                              "span",
                                               {
-                                                class:
-                                                  _vm.langColor[item.ability]
+                                                staticClass:
+                                                  "white--text headline"
                                               },
                                               [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass:
-                                                      "white--text headline"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.langLevel[
-                                                          item.ability
-                                                        ]
-                                                      )
-                                                    )
-                                                  ]
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.langLevel[item.ability]
+                                                  )
                                                 )
                                               ]
-                                            ),
-                                            _vm._v(
-                                              _vm._s(_vm.langMap[item.language])
                                             )
-                                          ],
-                                          1
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          _vm._s(_vm.langMap[item.language])
                                         )
-                                      : _vm._e()
+                                      ],
+                                      1
+                                    )
                                   }),
                                   _c(
                                     "v-layout",
