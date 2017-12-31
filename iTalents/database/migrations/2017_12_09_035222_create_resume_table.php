@@ -21,7 +21,7 @@ class CreateResumeTable extends Migration
             // 基本資料
             $table->string('firstName') ->nullable() ->default(NULL);  // 英文名
             $table->string('lastName') ->nullable() ->default(NULL); // 英文姓
-            $table->integer('gender') ->nullable() ->default(NULL);  // 性別
+            $table->integer('gender') ->nullable() ->default(0);  // 性別
             $table->date('birth') ->nullable() ->default(NULL); // 生日，Ex: 1997/01/01
             $table->string('nation') ->nullable() ->default(NULL); // 國籍
             $table->string('email') ->nullable() ->default(NULL);  // 信箱
