@@ -14,7 +14,9 @@
         "delete": "Delete",
         "see": "Check",
         "back": "Back",
-        "notFill": "Not fill"
+        "notFill": "Not fill",
+        "agree": "Agree",
+        "no": "Cancel"
     },
     "login": {
         "chooseIdentify": "- Choose your Identify -",
@@ -23,9 +25,13 @@
         "password": "Password",
         "forgetAccount": "Forgot password?",
         "registerNow": "Register now!",
-        "wrongAccount": "Wrong Email and password combination."
+        "wrongAccount": "Wrong Email and password combination.",
+        "agreementTitle": "Personal Profile Authorization Agreement",
+        "agreementContent": "1. You agree to provide your personal profile (such as your name, your gender, your e-mail) to this website, and you agree that this website and the companies that use this website to recruit or a third person who has been entrusted by the companies to recruit can collect, process and utilize your personal profile.<br>2.You can choose what personal profile information you want to provide to this website. But your account may be suspended if any of your personal profile information provided is reported or discovered to be fake or stolen from other people.<br>3. This website dedicates to keep your personal profile information safe. We will not reveal, sell, or exchange any of your non-public information with a third party without your consent.<br>4. You understand that this agreement is required because certain law regulation has to be met. This agreement has the same effect as paper documents have."
     },
-    "main": {},
+    "main": {
+        "start": "Start"
+    },
     "recruit": {
         "title": "Talents List",
         "throw": "Cast Resume",

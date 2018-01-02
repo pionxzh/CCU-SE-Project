@@ -33921,6 +33921,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: () => ({
@@ -33976,44 +33979,68 @@ var render = function() {
                   [_vm._v("國際人才資料庫")]
                 ),
                 _c("div", { staticClass: "subheading mb-3 text-xs-center" }, [
-                  _vm._v("International learnTsai database")
+                  _vm._v("iTalents Database")
                 ]),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "no-decoration",
-                    attrs: { to: { name: "ResumeShow" } }
-                  },
-                  [
-                    _c(
-                      "v-btn",
+                _vm.$root.user.userType === 1
+                  ? _c(
+                      "router-link",
                       {
-                        staticClass: "green lighten-2 mt-5",
-                        attrs: { dark: "dark", large: "large" }
+                        staticClass: "no-decoration",
+                        attrs: { to: { name: "ResumeShow" } }
                       },
-                      [_vm._v("開始使用")]
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "green lighten-2 mt-5",
+                            attrs: { dark: "dark", large: "large" }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("main.start")))]
+                        )
+                      ],
+                      1
                     )
-                  ],
-                  1
-                ),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "no-decoration",
-                    attrs: { to: { name: "Recruit" } }
-                  },
-                  [
-                    _c(
-                      "v-btn",
+                  : _vm._e(),
+                _vm.$root.user.userType === 2
+                  ? _c(
+                      "router-link",
                       {
-                        staticClass: "blue lighten-2 mt-5",
-                        attrs: { dark: "dark", large: "large" }
+                        staticClass: "no-decoration",
+                        attrs: { to: { name: "Recruit" } }
                       },
-                      [_vm._v("開始使用")]
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "blue lighten-2 mt-5",
+                            attrs: { dark: "dark", large: "large" }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("main.start")))]
+                        )
+                      ],
+                      1
                     )
-                  ],
-                  1
-                )
+                  : _vm._e(),
+                !_vm.$root.user.username.length
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "no-decoration",
+                        attrs: { to: { name: "Login" } }
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "blue lighten-2 mt-5",
+                            attrs: { dark: "dark", large: "large" }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("main.start")))]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e()
               ],
               1
             )
@@ -34682,6 +34709,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -34706,13 +34734,29 @@ if (false) {(function () {
                 buttons: [{ title: this.$t('common.close') }]
             })
         },
+        showAgreemwnt() {
+            this.$modal.show('dialog', {
+                title: this.$t('login.agreementTitle'),
+                text: this.$t('login.agreementContent'),
+                buttons: [
+                    { title: this.$t('common.no') },
+                    {
+                        title: this.$t('common.agree'),
+                        handler: () => {
+                            this.agreement = true
+                            this.$modal.hide('dialog')
+                        }
+                    }
+                ]
+            })
+        },
         checkForm() {
             if (this.password.length < 6 || this.password.length > 15) {
                 this.showDialog('密碼長度須為6-15字元')
                 return true
             }
             if (!this.agreement) {
-                this.showDialog('請閱讀本站授權條款並打勾同意授權後才能註冊喔!')
+                this.showAgreemwnt()
                 return true
             }
             return false
@@ -34731,7 +34775,7 @@ if (false) {(function () {
             })
                 .then(response => {
                     this.loading = false
-                    let msg = ['資料格式錯誤', '註冊成功!請至信箱收取認證信，三秒後將自動轉向登入頁面']
+                    let msg = ['資料格式錯誤', '註冊成功!請至信箱收取認證信，三秒後將自動轉向登入頁面', '帳號已存在']
                     let modalMsg = msg[response.data.stat]
                     if (response.data.stat === 1) {
                         let that = this
@@ -34910,19 +34954,6 @@ var render = function() {
                                       typeof $$v === "string" ? $$v.trim() : $$v
                                   },
                                   expression: "password"
-                                }
-                              }),
-                              _c("v-checkbox", {
-                                attrs: {
-                                  label: "我已詳細閱讀並同意《授權條款》",
-                                  dark: "dark"
-                                },
-                                model: {
-                                  value: _vm.agreement,
-                                  callback: function($$v) {
-                                    _vm.agreement = $$v
-                                  },
-                                  expression: "agreement"
                                 }
                               }),
                               _c(
@@ -53399,13 +53430,13 @@ if (false) {
 /* 87 */
 /***/ (function(module, exports) {
 
-module.exports = {"common":{"login":"Login","register":"Register","logout":"Logout","student":"Student","company":"Company","submit":"Submit","hint":"Hint","close":"close","add":"Add","edit":"Edit","save":"Save","delete":"Delete","see":"Check","back":"Back","notFill":"Not fill"},"login":{"chooseIdentify":"- Choose your Identify -","alreadyHaveAcc":"Already have an account? Login now!","email":"Email","password":"Password","forgetAccount":"Forgot password?","registerNow":"Register now!","wrongAccount":"Wrong Email and password combination."},"main":{},"recruit":{"title":"Talents List","throw":"Cast Resume","match":"Active pairing","showMatch":"View Pairing Results","manageRecord":"Record Management","history":"Invitation Record","editResume":"Edit History","yearsOld":" years old","deleteSuccess":"Successfully deleted!","deleteFail":"Delete failed! Please try again after refreshing","throwSuccess":"Resume successful delivery!","throwFail":"delivery failed! Please try again after refreshing","allRecruit":"Recruitment List","JobOpening":"Recruitment Information","completeness":"completeness","postJob":"Add","salary":"salary","dpay":"minimum wage","upay":"highest salary","jobTitle":"title","jobName":"job title","jobType":"job type","partTime":"part-time","fullTime":"full time","requireLanguage":"Language Requirements","jobinfo":"job content","jobRequire":"conditional requirements","benefits":"company benefits","notCompleted":"Not yet completed","contact":"Contact Information","notExist":"Candidate list does not exist or has been deleted"},"resume":{"title":"Resume","resume":"Resume","editTitle":"Biographical Edit","sendInvite":"Send invitation","match":"Match Result","showMatch":"View Pairing Results","manageRecord":"Record Management","type":"category","history":"delivery record","basic":"Basic Information","name":"Name","lastName":"Last name","firstName":"Name","gender":"gender","birth":"birthday","nation":"nationality","email":"Email","phone":"phone","background":"academic experience","condition":"Expected Job Conditions","jobInfo":"career information","expectedJobName":"Expected Job Title","pay":"salary","salaryRequest":"Salary Conditions","salaryFrom":"minimum wage","salaryTo":"highest salary","language":"language ability","lang":"language","ability":"ability","skill":"Skills","certificate":"Certificate","bio":"autobiography","notExist":"Resume does not exist or has been deleted","acceptInvite":"Accept the invitation","refuseInvite":"Declined invitation"},"user":{"title":"Member Center","personalInformation":"Basic Information","editPersonal":"Edit Personal Info","studentID":"Student ID","companyName":"Company Name","companyID":"Company ID","hrEmail":"HR Email","hrPhone":"HR Phone","hrPhoneHint":"※We will contact with this number to certificate the company identification"},"alert":{"saveSuccess":"Save successfully","saveFail":"Save failed, try again","submitSuccess":"sent successfully!","SubmitFail":"Failed to send out! Please try again and try again. If it has been delivered, it will fail.","sureDelete":"Are you sure you want to delete?","sureAccept":"After accepting the invitation, the full resume will be sent to the manufacturer, whether to continue?","acceptInviteSuccess":"accept the invitation success! Your CV has been sent to the manufacturer for further review.","acceptInviteFail":"Accept the invitation failed! Please try again after reorganization","sureRefuse":"Decided to decline?","refuseInviteSuccess":"Successfully declined the offer!","refuseInviteFail":"declined to accept the invitation! Please try again after reorganization","dataCompleted":"All information has been completed! Call information will be made public soon"},"gender":{"male":"Male","female":"Female","other":"Other"}}
+module.exports = {"common":{"login":"Login","register":"Register","logout":"Logout","student":"Student","company":"Company","submit":"Submit","hint":"Hint","close":"close","add":"Add","edit":"Edit","save":"Save","delete":"Delete","see":"Check","back":"Back","notFill":"Not fill","agree":"Agree","no":"Cancel"},"login":{"chooseIdentify":"- Choose your Identify -","alreadyHaveAcc":"Already have an account? Login now!","email":"Email","password":"Password","forgetAccount":"Forgot password?","registerNow":"Register now!","wrongAccount":"Wrong Email and password combination.","agreementTitle":"Personal Profile Authorization Agreement","agreementContent":"1. You agree to provide your personal profile (such as your name, your gender, your e-mail) to this website, and you agree that this website and the companies that use this website to recruit or a third person who has been entrusted by the companies to recruit can collect, process and utilize your personal profile.<br>2.You can choose what personal profile information you want to provide to this website. But your account may be suspended if any of your personal profile information provided is reported or discovered to be fake or stolen from other people.<br>3. This website dedicates to keep your personal profile information safe. We will not reveal, sell, or exchange any of your non-public information with a third party without your consent.<br>4. You understand that this agreement is required because certain law regulation has to be met. This agreement has the same effect as paper documents have."},"main":{"start":"Start"},"recruit":{"title":"Talents List","throw":"Cast Resume","match":"Active pairing","showMatch":"View Pairing Results","manageRecord":"Record Management","history":"Invitation Record","editResume":"Edit History","yearsOld":" years old","deleteSuccess":"Successfully deleted!","deleteFail":"Delete failed! Please try again after refreshing","throwSuccess":"Resume successful delivery!","throwFail":"delivery failed! Please try again after refreshing","allRecruit":"Recruitment List","JobOpening":"Recruitment Information","completeness":"completeness","postJob":"Add","salary":"salary","dpay":"minimum wage","upay":"highest salary","jobTitle":"title","jobName":"job title","jobType":"job type","partTime":"part-time","fullTime":"full time","requireLanguage":"Language Requirements","jobinfo":"job content","jobRequire":"conditional requirements","benefits":"company benefits","notCompleted":"Not yet completed","contact":"Contact Information","notExist":"Candidate list does not exist or has been deleted"},"resume":{"title":"Resume","resume":"Resume","editTitle":"Biographical Edit","sendInvite":"Send invitation","match":"Match Result","showMatch":"View Pairing Results","manageRecord":"Record Management","type":"category","history":"delivery record","basic":"Basic Information","name":"Name","lastName":"Last name","firstName":"Name","gender":"gender","birth":"birthday","nation":"nationality","email":"Email","phone":"phone","background":"academic experience","condition":"Expected Job Conditions","jobInfo":"career information","expectedJobName":"Expected Job Title","pay":"salary","salaryRequest":"Salary Conditions","salaryFrom":"minimum wage","salaryTo":"highest salary","language":"language ability","lang":"language","ability":"ability","skill":"Skills","certificate":"Certificate","bio":"autobiography","notExist":"Resume does not exist or has been deleted","acceptInvite":"Accept the invitation","refuseInvite":"Declined invitation"},"user":{"title":"Member Center","personalInformation":"Basic Information","editPersonal":"Edit Personal Info","studentID":"Student ID","companyName":"Company Name","companyID":"Company ID","hrEmail":"HR Email","hrPhone":"HR Phone","hrPhoneHint":"※We will contact with this number to certificate the company identification"},"alert":{"saveSuccess":"Save successfully","saveFail":"Save failed, try again","submitSuccess":"sent successfully!","SubmitFail":"Failed to send out! Please try again and try again. If it has been delivered, it will fail.","sureDelete":"Are you sure you want to delete?","sureAccept":"After accepting the invitation, the full resume will be sent to the manufacturer, whether to continue?","acceptInviteSuccess":"accept the invitation success! Your CV has been sent to the manufacturer for further review.","acceptInviteFail":"Accept the invitation failed! Please try again after reorganization","sureRefuse":"Decided to decline?","refuseInviteSuccess":"Successfully declined the offer!","refuseInviteFail":"declined to accept the invitation! Please try again after reorganization","dataCompleted":"All information has been completed! Call information will be made public soon"},"gender":{"male":"Male","female":"Female","other":"Other"}}
 
 /***/ }),
 /* 88 */
 /***/ (function(module, exports) {
 
-module.exports = {"common":{"login":"登入","register":"註冊","logout":"登出","student":"學生","company":"廠商","submit":"送出","hint":"提示","close":"關閉","add":"新增","edit":"修改","save":"保存","delete":"刪除","see":"查看","back":"返回","notFill":"尚未填寫"},"login":{"chooseIdentify":"- 選擇您的身分 -","alreadyHaveAcc":"已經有帳號? 立刻登入","email":"信箱","password":"密碼","forgetAccount":"忘記密碼？","registerNow":"立刻註冊","wrongAccount":"帳號密碼組合錯誤"},"main":{},"recruit":{"title":"徵才列表","throw":"投履歷","match":"主動配對","showMatch":"查看配對結果","manageRecord":"記錄管理","history":"邀請紀錄","editResume":"修改履歷","yearsOld":"歲","deleteSuccess":"成功刪除!","deleteFail":"刪除失敗! 請重新整理後再試一次","throwSuccess":"履歷投遞成功!","throwFail":"投遞失敗! 請重新整理後再試一次","allRecruit":"徵才總覽","JobOpening":"徵才資訊","completeness":"完成度","postJob":"新增徵才訊息","salary":"薪資","dpay":"最低薪資","upay":"最高薪資","jobTitle":"標題","jobName":"職務名稱","jobType":"工作類型","partTime":"兼職","fullTime":"全職","requireLanguage":"語言需求","jobInfo":"工作內容","jobRequire":"條件需求","benefits":"公司福利","notCompleted":"尚未填寫","contact":"聯絡資訊","notExist":"徵才表不存在或已被刪除"},"resume":{"title":"個人履歷","resume":"履歷資料","editTitle":"履歷編輯","sendInvite":"寄出邀請","match":"配對結果","showMatch":"查看配對結果","manageRecord":"記錄管理","type":"類別","history":"投遞紀錄","basic":"基本資料","name":"姓名","lastName":"姓氏","firstName":"名字","gender":"性別","birth":"生日","nation":"國籍","email":"信箱","phone":"手機","background":"學歷經驗","condition":"求職條件","jobInfo":"職業資訊","expectedJobName":"希望職務名稱","pay":"薪資","salaryRequest":"薪資條件","salaryFrom":"最低薪資","salaryTo":"最高薪資","language":"語言能力","lang":"語言","ability":"能力","skill":"具備技能","certificate":"證照能力","bio":"自傳","notExist":"履歷表不存在或已被刪除","acceptInvite":"接受邀請","refuseInvite":"婉拒邀請"},"user":{"title":"會員中心","personalInformation":"基本資料","editPersonal":"個人資料修改","studentID":"學生證號碼","companyName":"公司名稱","companyID":"公司統編","hrEmail":"人資部Email","hrPhone":"人資部電話","hrPhoneHint":"※我們將會透過這個號碼與您聯繫確認廠商身分"},"alert":{"saveSuccess":"保存成功","saveFail":"保存失敗, 再試一次","submitSuccess":"送出成功!","submitFail":"送出失敗! 請檢查後再試一次，若已投遞過亦會失敗","sureDelete":"確定要刪除?","sureAccept":"接受邀請後會將完整履歷傳送給廠商，是否繼續?","acceptInviteSuccess":"接受邀約成功! 已將您的履歷發送給廠商進一步查看","acceptInviteFail":"接受邀約失敗! 請重新整理後再試一次","sureRefuse":"確定要婉拒?","refuseInviteSuccess":"已成功婉拒邀約!","refuseInviteFail":"婉拒邀約失敗! 請重新整理後再試一次","dataCompleted":"所有資訊已填寫完整! 徵才訊息將很快公開"},"gender":{"male":"男","female":"女","other":"其他"}}
+module.exports = {"common":{"login":"登入","register":"註冊","logout":"登出","student":"學生","company":"廠商","submit":"送出","hint":"提示","close":"關閉","add":"新增","edit":"修改","save":"保存","delete":"刪除","see":"查看","back":"返回","notFill":"尚未填寫","agree":"同意","no":"取消"},"login":{"chooseIdentify":"- 選擇您的身分 -","alreadyHaveAcc":"已經有帳號? 立刻登入","email":"信箱","password":"密碼","forgetAccount":"忘記密碼？","registerNow":"立刻註冊","wrongAccount":"帳號密碼組合錯誤","agreementTitle":"個人資料使用同意書","agreementContent":"1.您同意提供個人資料（例如：姓名、性別、e-mail）予本網站，並同意本網站及使用本網站徵才之公司企業為人才招募用途蒐集、處理及利用您的個人資料，並得委託第三人為前述之行為。<br>2.您可自由選擇是否提供本網站您的個人資料，但若您所提供之個人資料，經檢舉或本網站發現不足以確認您的身分真實性或其他個人資料冒用、盜用、資料不實等情形，本網站有權暫時停止提供對您的服務。<br>3.本網站將嚴謹的保管您的個人資料，不會任意揭露或出售、交換、或轉讓您的任何非公開性資料予第三人，除非經由您的同意或法律之規定。<br>4.您瞭解此一同意符合個人資料保護法及相關法規之要求，具有書面同意本公司蒐集、處理及利用您的個人資料之效果。"},"main":{"start":"開始使用"},"recruit":{"title":"徵才列表","throw":"投履歷","match":"主動配對","showMatch":"查看配對結果","manageRecord":"記錄管理","history":"邀請紀錄","editResume":"修改履歷","yearsOld":"歲","deleteSuccess":"成功刪除!","deleteFail":"刪除失敗! 請重新整理後再試一次","throwSuccess":"履歷投遞成功!","throwFail":"投遞失敗! 請重新整理後再試一次","allRecruit":"徵才總覽","JobOpening":"徵才資訊","completeness":"完成度","postJob":"新增徵才訊息","salary":"薪資","dpay":"最低薪資","upay":"最高薪資","jobTitle":"標題","jobName":"職務名稱","jobType":"工作類型","partTime":"兼職","fullTime":"全職","requireLanguage":"語言需求","jobInfo":"工作內容","jobRequire":"條件需求","benefits":"公司福利","notCompleted":"尚未填寫","contact":"聯絡資訊","notExist":"徵才表不存在或已被刪除"},"resume":{"title":"個人履歷","resume":"履歷資料","editTitle":"履歷編輯","sendInvite":"寄出邀請","match":"配對結果","showMatch":"查看配對結果","manageRecord":"記錄管理","type":"類別","history":"投遞紀錄","basic":"基本資料","name":"姓名","lastName":"姓氏","firstName":"名字","gender":"性別","birth":"生日","nation":"國籍","email":"信箱","phone":"手機","background":"學歷經驗","condition":"求職條件","jobInfo":"職業資訊","expectedJobName":"希望職務名稱","pay":"薪資","salaryRequest":"薪資條件","salaryFrom":"最低薪資","salaryTo":"最高薪資","language":"語言能力","lang":"語言","ability":"能力","skill":"具備技能","certificate":"證照能力","bio":"自傳","notExist":"履歷表不存在或已被刪除","acceptInvite":"接受邀請","refuseInvite":"婉拒邀請"},"user":{"title":"會員中心","personalInformation":"基本資料","editPersonal":"個人資料修改","studentID":"學生證號碼","companyName":"公司名稱","companyID":"公司統編","hrEmail":"人資部Email","hrPhone":"人資部電話","hrPhoneHint":"※我們將會透過這個號碼與您聯繫確認廠商身分"},"alert":{"saveSuccess":"保存成功","saveFail":"保存失敗, 再試一次","submitSuccess":"送出成功!","submitFail":"送出失敗! 請檢查後再試一次，若已投遞過亦會失敗","sureDelete":"確定要刪除?","sureAccept":"接受邀請後會將完整履歷傳送給廠商，是否繼續?","acceptInviteSuccess":"接受邀約成功! 已將您的履歷發送給廠商進一步查看","acceptInviteFail":"接受邀約失敗! 請重新整理後再試一次","sureRefuse":"確定要婉拒?","refuseInviteSuccess":"已成功婉拒邀約!","refuseInviteFail":"婉拒邀約失敗! 請重新整理後再試一次","dataCompleted":"所有資訊已填寫完整! 徵才訊息將很快公開"},"gender":{"male":"男","female":"女","other":"其他"}}
 
 /***/ })
 /******/ ]);

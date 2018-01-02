@@ -142,7 +142,7 @@ class RegisterController extends Controller
 
         if(User::where('email', '=', Input::get('email')) ->exists())
         {
-            $ret ->stat = 0;
+            $ret ->stat = 2;
             return json_encode($ret);
         }
 
@@ -192,12 +192,13 @@ class RegisterController extends Controller
 
     public function emailVerify($emailtok)
     {
-        $ret = new \stdClass();
-        $ret ->stat = 0;
+        // $ret = new \stdClass();
+        // $ret ->stat = 0;
+        $ret = '驗證成功，請回首頁登入(Email verify Successfully)';
 
         if(User::where('emailtok', '=', $emailtok) ->exists())
         {
-            $ret ->stat = 1;
+            // $ret ->stat = 1;
             $thisUser = (User::where('emailtok', '=', $emailtok) ->first());
 
             switch($thisUser ->user_type)
