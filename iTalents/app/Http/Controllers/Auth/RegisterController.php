@@ -220,6 +220,7 @@ class RegisterController extends Controller
                     break;
             }
         }
-        return json_encode($ret);
+        //header("Content-Type:text/html;charset=UTF-8");
+        echo($ret);
     }
 }
