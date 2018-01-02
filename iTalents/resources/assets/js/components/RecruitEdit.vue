@@ -31,10 +31,10 @@
                                     v-select(v-bind:items="languageOpt" :label='$t("recruit.requireLanguage")' v-model='recruit.lang' single-line bottom)
                                     v-layout(wrap)
                                         v-flex(xs5)
-                                            v-text-field(type='number' :label='$t("recruit.dpay")' v-model.trim='recruit.dpay')
+                                            v-text-field(type='number' :label='$t("recruit.dpay")' v-model.number='recruit.dpay' min=0 @change="recruit.dpay = Math.abs(recruit.dpay)")
                                         v-flex(xs0 style='margin=20px 0 0 20px;') ~
                                         v-flex(xs5)
-                                            v-text-field(type='number' :label='$t("recruit.upay")' v-model.trim='recruit.upay')
+                                            v-text-field(type='number' :label='$t("recruit.upay")' v-model.number='recruit.upay' min=0 @change="recruit.upay = Math.abs(recruit.upay)")
 
                             p.recruit-edit-title {{ $t('recruit.jobInfo') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.jobinfo = true' v-if='!edit.jobinfo')
@@ -191,7 +191,7 @@ export default {
                     let msg = response.data.stat ? this.$t('alert.saveSuccess') : this.$t('alert.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = this.$t('common.dataCompleted')
+                        if (response.data.is_complete) msg = this.$t('alert.dataCompleted')
                     }
                     this.showDialog(msg)
                 })

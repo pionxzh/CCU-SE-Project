@@ -35320,7 +35320,8 @@ var render = function() {
                                     )
                                 )
                               ]),
-                              _vm.$route.params.id && _vm.resume.birth
+                              (_vm.$route.params.id && _vm.resume.birth) ||
+                              !_vm.$route.params.id
                                 ? _c(
                                     "p",
                                     { staticClass: "recruit-show-info" },
@@ -35346,7 +35347,8 @@ var render = function() {
                                     )
                                 )
                               ]),
-                              _vm.$route.params.id && _vm.resume.birth
+                              (_vm.$route.params.id && _vm.resume.email) ||
+                              !_vm.$route.params.id
                                 ? _c(
                                     "p",
                                     { staticClass: "recruit-show-info" },
@@ -35362,7 +35364,8 @@ var render = function() {
                                     ]
                                   )
                                 : _vm._e(),
-                              _vm.$route.params.id && _vm.resume.birth
+                              (_vm.$route.params.id && _vm.resume.phone) ||
+                              !_vm.$route.params.id
                                 ? _c(
                                     "p",
                                     { staticClass: "recruit-show-info" },
@@ -49860,7 +49863,17 @@ var render = function() {
                                           _c("v-text-field", {
                                             attrs: {
                                               type: "number",
-                                              label: _vm.$t("resume.salaryFrom")
+                                              label: _vm.$t(
+                                                "resume.salaryFrom"
+                                              ),
+                                              min: "0"
+                                            },
+                                            on: {
+                                              change: function($event) {
+                                                _vm.resume.salaryFrom = Math.abs(
+                                                  _vm.resume.salaryFrom
+                                                )
+                                              }
                                             },
                                             model: {
                                               value: _vm.resume.salaryFrom,
@@ -49868,9 +49881,7 @@ var render = function() {
                                                 _vm.$set(
                                                   _vm.resume,
                                                   "salaryFrom",
-                                                  typeof $$v === "string"
-                                                    ? $$v.trim()
-                                                    : $$v
+                                                  _vm._n($$v)
                                                 )
                                               },
                                               expression: "resume.salaryFrom"
@@ -49889,7 +49900,15 @@ var render = function() {
                                           _c("v-text-field", {
                                             attrs: {
                                               type: "number",
-                                              label: _vm.$t("resume.salaryTo")
+                                              label: _vm.$t("resume.salaryTo"),
+                                              min: "0"
+                                            },
+                                            on: {
+                                              change: function($event) {
+                                                _vm.resume.salaryTo = Math.abs(
+                                                  _vm.resume.salaryTo
+                                                )
+                                              }
                                             },
                                             model: {
                                               value: _vm.resume.salaryTo,
@@ -49897,9 +49916,7 @@ var render = function() {
                                                 _vm.$set(
                                                   _vm.resume,
                                                   "salaryTo",
-                                                  typeof $$v === "string"
-                                                    ? $$v.trim()
-                                                    : $$v
+                                                  _vm._n($$v)
                                                 )
                                               },
                                               expression: "resume.salaryTo"
@@ -52089,7 +52106,7 @@ if (false) {(function () {
                     let msg = response.data.stat ? this.$t('alert.saveSuccess') : this.$t('alert.saveFail')
                     if (response.data.is_complete != null) {
                         this.recruit.is_complete = response.data.is_complete
-                        if (response.data.is_complete) msg = this.$t('common.dataCompleted')
+                        if (response.data.is_complete) msg = this.$t('alert.dataCompleted')
                     }
                     this.showDialog(msg)
                 })
@@ -52390,7 +52407,15 @@ var render = function() {
                                         _c("v-text-field", {
                                           attrs: {
                                             type: "number",
-                                            label: _vm.$t("recruit.dpay")
+                                            label: _vm.$t("recruit.dpay"),
+                                            min: "0"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              _vm.recruit.dpay = Math.abs(
+                                                _vm.recruit.dpay
+                                              )
+                                            }
                                           },
                                           model: {
                                             value: _vm.recruit.dpay,
@@ -52398,9 +52423,7 @@ var render = function() {
                                               _vm.$set(
                                                 _vm.recruit,
                                                 "dpay",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
+                                                _vm._n($$v)
                                               )
                                             },
                                             expression: "recruit.dpay"
@@ -52424,7 +52447,15 @@ var render = function() {
                                         _c("v-text-field", {
                                           attrs: {
                                             type: "number",
-                                            label: _vm.$t("recruit.upay")
+                                            label: _vm.$t("recruit.upay"),
+                                            min: "0"
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              _vm.recruit.upay = Math.abs(
+                                                _vm.recruit.upay
+                                              )
+                                            }
                                           },
                                           model: {
                                             value: _vm.recruit.upay,
@@ -52432,9 +52463,7 @@ var render = function() {
                                               _vm.$set(
                                                 _vm.recruit,
                                                 "upay",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
+                                                _vm._n($$v)
                                               )
                                             },
                                             expression: "recruit.upay"

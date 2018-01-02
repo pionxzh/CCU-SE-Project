@@ -223,7 +223,7 @@ class EmployerController extends Controller
             unset($thisLang ->uid);
             unset($thisLang ->updated_at);
             unset($thisLang ->created_at);
-            $ret ->lang = $thisLang;
+            $ret ->language = $thisLang;
             // 如果廠商與學生之間有配對關係, 則回傳完整資訊, 且stat = 2
             if(Matching::where([['cid', '=', Auth::User() ->id], ['uid', '=', $uid], ['employeeCheck', '=', 1]]) ->exists())
             {

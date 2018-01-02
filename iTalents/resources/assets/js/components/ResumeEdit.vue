@@ -67,11 +67,11 @@
                                     p {{ $t('resume.salaryRequest') }}
                                     v-layout(wrap)
                                         v-flex(xs5)
-                                            v-text-field(type='number' :label='$t("resume.salaryFrom")' v-model.trim='resume.salaryFrom')
+                                            v-text-field(type='number' :label='$t("resume.salaryFrom")' v-model.number='resume.salaryFrom' min=0 @change="resume.salaryFrom = Math.abs(resume.salaryFrom)")
                                         v-flex(xs0) 
                                             | ~
                                         v-flex(xs5)
-                                            v-text-field(type='number' :label='$t("resume.salaryTo")' v-model.trim='resume.salaryTo')
+                                            v-text-field(type='number' :label='$t("resume.salaryTo")' v-model.number='resume.salaryTo' min=0 @change="resume.salaryTo = Math.abs(resume.salaryTo)")
 
                             p.recruit-edit-title {{ $t('resume.language') }}
                                 v-btn.white--text(flat icon color='primary' @click='edit.language = true' v-if='!edit.language')
