@@ -19,10 +19,10 @@
                                 v-flex(xs12 md6)
                                     p.recruit-show-info {{ $t('resume.name') }}: {{ resume.lastName }}{{ resume.firstName || $t("common.notFill") }}
                                     p.recruit-show-info {{ $t('resume.gender') }}: {{ gender || $t("common.notFill") }}
-                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.birth') }}: {{ resume.birth || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='($route.params.id && resume.birth) || !$route.params.id') {{ $t('resume.birth') }}: {{ resume.birth || $t("common.notFill") }}
                                     p.recruit-show-info {{ $t('resume.nation') }}: {{ resume.nation || $t("common.notFill") }}
-                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.email') }}: {{ resume.email || $t("common.notFill") }}
-                                    p.recruit-show-info(v-if='$route.params.id && resume.birth') {{ $t('resume.phone') }}: {{ resume.phone || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='($route.params.id && resume.email) || !$route.params.id') {{ $t('resume.email') }}: {{ resume.email || $t("common.notFill") }}
+                                    p.recruit-show-info(v-if='($route.params.id && resume.phone) || !$route.params.id') {{ $t('resume.phone') }}: {{ resume.phone || $t("common.notFill") }}
                             p.recruit-show-title {{ $t('resume.jobInfo') }}
                             .recruit-edit-field
                                 v-flex(xs12 md6)
