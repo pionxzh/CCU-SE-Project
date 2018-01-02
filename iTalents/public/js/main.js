@@ -35127,6 +35127,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -35136,6 +35140,7 @@ if (false) {(function () {
         genderList: [],
         langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
         langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
+        abilityLevel: ['', '略懂', '中等', '熟練', '精通'],
         langLevel: ['D', 'C', 'B', 'A', 'S'],
         loading: false
     }),
@@ -35428,28 +35433,52 @@ var render = function() {
                             _vm._l(_vm.resume.language, function(value, key) {
                               return value
                                 ? _c(
-                                    "v-chip",
+                                    "div",
                                     { key: key },
                                     [
                                       _c(
-                                        "v-avatar",
-                                        { class: _vm.langColor[value] },
+                                        "v-tooltip",
+                                        { attrs: { top: "top" } },
                                         [
                                           _c(
-                                            "span",
+                                            "v-chip",
                                             {
-                                              staticClass:
-                                                "white--text headline"
+                                              attrs: { slot: "activator" },
+                                              slot: "activator"
                                             },
                                             [
-                                              _vm._v(
-                                                _vm._s(_vm.langLevel[value])
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(_vm._s(_vm.langMap[key]))
+                                              _c(
+                                                "v-avatar",
+                                                { class: _vm.langColor[value] },
+                                                [
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "white--text headline"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.langLevel[value]
+                                                        )
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(_vm._s(_vm.langMap[key]))
+                                            ],
+                                            1
+                                          ),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(_vm.abilityLevel[value])
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      )
                                     ],
                                     1
                                   )

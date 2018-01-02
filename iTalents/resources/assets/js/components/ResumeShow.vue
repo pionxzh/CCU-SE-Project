@@ -31,10 +31,14 @@
 
                             p.recruit-show-title {{ $t('resume.language') }}
                                 div.language-show(v-if='resume.language')
-                                        v-chip(v-for="(value, key) in resume.language" :key='key' v-if='value')
-                                            v-avatar(:class='langColor[value]')
-                                                span.white--text.headline {{langLevel[value]}}
-                                            | {{langMap[key]}}
+                                    div(v-for="(value, key) in resume.language" :key='key' v-if='value')
+                                        v-tooltip(top)
+                                            v-chip(slot='activator')
+                                                v-avatar(:class='langColor[value]')
+                                                    span.white--text.headline {{langLevel[value]}}
+                                                | {{langMap[key]}}
+                                            span {{ abilityLevel[value] }}
+                                        
                                 p.recruit-edit-content.ql-editor(v-html='$t("common.notFill")' v-if='!resume.language')
 
                             p.recruit-show-title {{ $t('resume.background') }}
@@ -61,6 +65,7 @@ export default {
         genderList: [],
         langColor: ['light-blue', 'light-green', 'yellow accent-4', 'deep-orange', 'pink'],
         langMap: {en: '英語', ch: '中文', jp: '日文', fr: '法語'},
+        abilityLevel: ['', '略懂', '中等', '熟練', '精通'],
         langLevel: ['D', 'C', 'B', 'A', 'S'],
         loading: false
     }),
